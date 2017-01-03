@@ -1302,7 +1302,7 @@ root> ls -l /kern*
 -r-xr-xr-x  1 root  wheel  3352178 Apr 21  2001 /kernel.old
 
 <a name="new"></a>
-# Installing a New Version of BSD
+#Installing a New Version of BSD
 
 Doing a fresh re-installation from an iso image on a bootable CD is the safest and easiest way to go.
 
