@@ -30,7 +30,7 @@ FreeBSD Setup
 23. Window Geometry and Placement
 24. Sound Support via a New Kernel
 25. Slice Methodology
-25. Installing a New Version of BSD
+* [Installing a New Version of BSD](#new)
 26. Real Player Installation
 27. Package Won't Kick Off
 28. Readability Check
@@ -1301,8 +1301,8 @@ root> ls -l /kern*
 -r-xr-xr-x  1 root  wheel  3352178 Apr 21  2001 /kernel.GENERIC
 -r-xr-xr-x  1 root  wheel  3352178 Apr 21  2001 /kernel.old
 
-
-25. Installing a New Version of BSD
+<a name="new"></a>
+# Installing a New Version of BSD
 
 Doing a fresh re-installation from an iso image on a bootable CD is the safest and easiest way to go.
 
@@ -1361,8 +1361,6 @@ run_interrupt_driven_hooks: still waiting after 180 seconds for xpt_config
 (aprobe0:ata0:0:1:0):CAM status: Command timeout
 (aprobe0:ata0:0:1:0):Retry command
 (aprobe0:ata0:0:1:0):Error 5, Retries exhausted
-
-
 
 4. Set BIOS settings. Press the DEL key to access the BIOS on the Dell:
 
