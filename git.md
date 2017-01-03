@@ -37,3 +37,4 @@ git clone git@github.com:gmcmillan100/docs.git
 # Resources
 
 Markdown reference, https://en.support.wordpress.com/markdown-quick-reference/
+Pages, https://pages.github.com/
