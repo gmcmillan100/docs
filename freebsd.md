@@ -4,7 +4,7 @@ FreeBSD Setup
 # Contents
 
 * [Why FreeBSD](#why)
-1.  Critical System and Applications
+* [Critical System and Applications](#critical)
 2.  Inventory Survey
 3.  Boot Manager and Partitions
     Reset BIOS Setup Admin Password on Dell
@@ -64,7 +64,8 @@ FreeBSD Setup
 57. Network Printing
 58. User Accounts
 
-# Why FreeBSD <a name="why"></a>
+<a name="why"></a>
+# Why FreeBSD 
 
 Compared to Linux, FreeBSD is coherent. There are too many people
 screwing with Linux. You never really know what you'll get in a Linux
@@ -82,8 +83,8 @@ you can almost always work around them if you compile, link, and run
 using what you'll find with /usr/bin/gcc on your compute server rather
 than /tools/bin/gcc.
 
-
-1. Critical System and Applications
+<a name="critical"></a>
+# Critical System and Applications
 
 A) System Files
 

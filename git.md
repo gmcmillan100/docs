@@ -15,12 +15,14 @@ Hi gmcmillan100! You've successfully authenticated, but GitHub does not provide 
 # Setup Workflow
 
 Global config:
+
 ~~~~
 git config --global user.email "gmcmillan100@gmail.com"
 git config --global user.name "Greg McMillan"
 ~~~~
 
 Add Repo:
+
 ~~~~
 mkdir docs
 cd docs
