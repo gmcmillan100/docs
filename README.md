@@ -1,3 +1,4 @@
 # docs
-hello3
-* [see git](git.md)
+
+[git](git.md)
+[git](git.md)
