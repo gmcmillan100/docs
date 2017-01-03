@@ -3,7 +3,7 @@ FreeBSD Setup
 
 # Contents
 
-* [Why FreeBSD](#WhyFreeBSD)
+* [Why FreeBSD](#Why FreeBSD)
 1.  Critical System and Applications
 2.  Inventory Survey
 3.  Boot Manager and Partitions
@@ -64,7 +64,7 @@ FreeBSD Setup
 57. Network Printing
 58. User Accounts
 
-# WhyFreeBSD
+#Why FreeBSD
 
 Compared to Linux, FreeBSD is coherent. There are too many people
 screwing with Linux. You never really know what you'll get in a Linux
