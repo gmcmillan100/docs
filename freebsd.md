@@ -5,31 +5,31 @@ FreeBSD Setup
 
 * [Why FreeBSD](#why)
 * [Critical System and Applications](#critical)
-2.  Inventory Survey
-3.  Boot Manager and Partitions
-    Reset BIOS Setup Admin Password on Dell
-    BIOS error 0271 check date and time settings
-5.  Halt/Reboot
-6.  DHCP
-7.  Ports
-8.  FTPing Packages from ftp.freebsd.org
-9.  Installing and Removing Software Ports
-10. FTP a New Version of XFree86
-11. Configuring XFree86
-12. Tab Window Manager
-13. .xinitrc
-14. .Xdefaults
-15. Editing the XF86Config file in /etc/X11
-16. /var/log/XF86Config.log
-17. FreeBSD Device Discovery Log
-18. TCP Listening
-19. SSH + X into a Company from Home BSD
-20. SSH Addition to .twmrc
-21. Remote Applications
-22. Manually Add an Xhost
-23. Window Geometry and Placement
-24. Sound Support via a New Kernel
-25. Slice Methodology
+* Inventory Survey
+* Boot Manager and Partitions
+* Reset BIOS Setup Admin Password on Dell
+* BIOS error 0271 check date and time settings
+* Halt/Reboot
+* HCP
+* Ports
+* FTPing Packages from ftp.freebsd.org
+* Installing and Removing Software Ports
+* FTP a New Version of XFree86
+* Configuring XFree86
+* Tab Window Manager
+* .xinitrc
+* .Xdefaults
+* Editing the XF86Config file in /etc/X11
+* /var/log/XF86Config.log
+* FreeBSD Device Discovery Log
+* TCP Listening
+* SSH + X into a Company from Home BSD
+* SSH Addition to .twmrc
+* Remote Applications
+* Manually Add an Xhost
+* Window Geometry and Placement
+* Sound Support via a New Kernel
+* Slice Methodology
 * [Installing a New Version of BSD](#new)
 26. Real Player Installation
 27. Package Won't Kick Off
@@ -1296,10 +1296,12 @@ Troubleshooting, if the kernel does not boot:
 
 The backup files are stored here:
 
+~~~~
 root> ls -l /kern*
 -r-xr-xr-x  1 root  wheel  3232684 Dec 31 15:45 /kernel
 -r-xr-xr-x  1 root  wheel  3352178 Apr 21  2001 /kernel.GENERIC
 -r-xr-xr-x  1 root  wheel  3352178 Apr 21  2001 /kernel.old
+~~~~
 
 <a name="new"></a>
 #Installing a New Version of BSD
