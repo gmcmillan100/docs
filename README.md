@@ -1,4 +1,4 @@
 # docs
 
 * [git](git.md)
-* [git](git.md)
+* [ssh-keys](ssh-keys.md)
