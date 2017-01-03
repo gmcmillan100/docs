@@ -11,3 +11,7 @@ Add this Sublime keymap shortcut under Preferences > Key Bindings - User:
 	{ "keys": ["command+p"], "command": "markdown_preview", "args": {"target": "browser", "parser":"markdown"} }
 ]
 ~~~~
+
+# Resources
+
+https://guides.github.com/features/mastering-markdown/

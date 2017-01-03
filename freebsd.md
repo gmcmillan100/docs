@@ -5,8 +5,8 @@ FreeBSD Setup
 
 * [Why FreeBSD](#why)
 * [Critical System and Applications](#critical)
-* Inventory Survey
-* Boot Manager and Partitions
+* [Inventory Survey](#inventory)
+* [Boot Manager and Partitions](#boot)
 * Reset BIOS Setup Admin Password on Dell
 * BIOS error 0271 check date and time settings
 * Halt/Reboot
@@ -31,38 +31,38 @@ FreeBSD Setup
 * Sound Support via a New Kernel
 * Slice Methodology
 * [Installing a New Version of BSD](#new)
-26. Real Player Installation
-27. Package Won't Kick Off
-28. Readability Check
-29. NFS Mounted File Systems
-30. DHCP Client Troubleshooting
-31. Mounting CDROM File System
-32. Configuring xmcd for Playing Audio CDs
-33. Installing a New Ethernet NIC
-34. DNS Resolution
-35. Static IP Address
-36. Shell Scripting
-37. CPU
-38. Partitions and Disk Usage
-39. Fstab for MSDOS Mounting
-40. Windows Killed Boot Manager
-41. Custom Kernel
-42. PS/2 Mouse Problems
-43. Ripping CDs
-44. Using fvwm2 instead of twm
-45. CD Burning
-46. Mounting a Second Hard Drive for Backups
-47. NTP
-48. HTTPD ServerName Lookup Problems
-49. Sendmail Disable
-50. Fonts
-51. Compiler
-53. CSH Shell
-54. SMTP 
-55. vi recover sessions
-56. FreeBSD Newbie Sites
-57. Network Printing
-58. User Accounts
+* Real Player Installation
+* Package Won't Kick Off
+* Readability Check
+* NFS Mounted File Systems
+* DHCP Client Troubleshooting
+* Mounting CDROM File System
+* Configuring xmcd for Playing Audio CDs
+* Installing a New Ethernet NIC
+* DNS Resolution
+* Static IP Address
+* Shell Scripting
+* CPU
+* Partitions and Disk Usage
+* Fstab for MSDOS Mounting
+* Windows Killed Boot Manager
+* Custom Kernel
+* PS/2 Mouse Problems
+* Ripping CDs
+* Using fvwm2 instead of twm
+* CD Burning
+* Mounting a Second Hard Drive for Backups
+* NTP
+* HTTPD ServerName Lookup Problems
+* Sendmail Disable
+* Fonts
+* Compiler
+* CSH Shell
+* SMTP 
+* vi recover sessions
+* FreeBSD Newbie Sites
+* Network Printing
+* User Accounts
 
 <a name="why"></a>
 # Why FreeBSD 
@@ -86,23 +86,27 @@ than /tools/bin/gcc.
 <a name="critical"></a>
 # Critical System and Applications
 
-A) System Files
+* System Files
 
+~~~~
 /etc/rc.conf
 /etc/hosts
 /etc/resolv.conf
+~~~~
 
-B) Applications
+* Applications
 
+~~~~
 ~/.emacs
 ~/.vm
 ~/.initrc
 ~/.Xdefaults
 ~/.twmrc
 /etc/X11/XF86Config
+~~~~
 
-
-2. Inventory Survey
+<a name="inventory"></a>
+# Inventory Survey
 
 Before installing FreeBSD, take an inventory of all the installed
 devices: disk types, controllers, network cards, monitor (and
@@ -139,9 +143,8 @@ Following were some of the settings for Greg's Dell laptop:
 
    Sound card		ESS Technology Maestro3 (ESS Maestro PCI Audio wdm)
 
-
-
-3. Boot Manager and Partitions
+<a name="boot"></a>
+# Boot Manager and Partitions
 
 Use Partition Magic to partition the hard drive. That is, tell Windows
 it does not own the entire disk on the computer.
@@ -1312,180 +1315,187 @@ Do this:
 
 1. Back up all data
 
-Take inventory of the installed packages. Run the pkg_info command
-and redirect the output to a file that you're going to save. 
+    Take inventory of the installed packages. Run the pkg_info command and redirect the output to a file that you're going to save. 
 
-   pkg_info >> <filename>
+    ~~~~
+    pkg_info >> <filename>
+    ~~~~
 
-Back everything up into your home directory. Make
-tar files of all the home directories for users that you've
-installed. The name "tar" is an old fashion name that meant Tape
-ARchive back in the days where files were saved on tapes. 
+    Back everything up into your home directory. Make tar files of all the home directories for users that you've installed. The name "tar" is an old fashion name that meant Tape ARchive back in the days where files were saved on tapes. 
 
-   tar zcf <destination-filename> <source-directory-to-get-files-from>
+    ~~~~
+    tar zcf <destination-filename> <source-directory-to-get-files-from>
+    ~~~~
 
-Meaning of the flags in the "tar" command:
+    Meaning of the flags in the "tar" command:
 
-	 z = Use gzip
-	 c = Create a tar file
-	 f = The next parameter is the name of the tar file
+    	 z = Use gzip
+    	 c = Create a tar file
+    	 f = The next parameter is the name of the tar file
 
-   Typically, make the filename that you want to save end with
-   ".tgz". This means it's a tar file that has been gzipped
-   (compressed). 
+       Typically, make the filename that you want to save end with
+       ".tgz". This means it's a tar file that has been gzipped
+       (compressed). 
 
-   To untar a file, use tar zxf <filename>
+       To untar a file, use ``tar zxf <filename>``
 
-If you've done any customization of /etc, save that stuff too, such
-as any sendmail, rc.conf, fstab, .Xdefaults, .emacs, .xinitrc,
-/etc/XF86Config, .vm, .login, .motd, 
+    If you've done any customization of /etc, save that stuff too, such as any sendmail, rc.conf, fstab, .Xdefaults, .emacs, .xinitrc,
+    /etc/XF86Config, .vm, .login, .motd.
 
-Save any packages that are hard to find/get on the Internet, such
-as RealPlayer. Be a Pack Rat!!!!
-
+    Save any packages that are hard to find/get on the Internet, such as RealPlayer. Be a Pack Rat!!!!
 
 2. Use the USB-to-PS2 adaptor to connect the Kensington keyboard to the Dell desktop. A direct USB cable connection cannot access the initial BIOS boot setup. 
 
-
 3. Ensure the correct HDD and CD-ROM hardware connections are set:
 
-o The Maxtor HDD and Yamaha CD-RW must be connected to the same IDE ribbon cable. Put Maxtor in the first position from the motherboard.
+    * The Maxtor HDD and Yamaha CD-RW must be connected to the same IDE ribbon cable. Put Maxtor in the first position from the motherboard.
 
-o The jumper pin setting on the Maxtor HDD must be set to master; Yamaha must be set to slave. When FBSD boots, the "dmesg" output displays this:
+    * The jumper pin setting on the Maxtor HDD must be set to master; Yamaha must be set to slave. When FBSD boots, the "dmesg" output displays this:
 
-ad0: 239372MB <Maxtor 6Y250P0> [486344/16/63] at ata0-master UDMA33
-acd0: CD-RW <YAMAHA CRW8824E> at ata0-slave PIO4
+    ```
+    ad0: 239372MB <Maxtor 6Y250P0> [486344/16/63] at ata0-master UDMA33
+    acd0: CD-RW <YAMAHA CRW8824E> at ata0-slave PIO4
+    ```
 
-o During normal operations, the Yamaha is not connected to the IDE ribbon. When the Yamaha is connected, FreeBSD does not boot into multi-user mode and the system hangs on boot and displays these errors. 
+    * During normal operations, the Yamaha is not connected to the IDE ribbon. When the Yamaha is connected, FreeBSD does not boot into multi-user mode and the system hangs on boot and displays these errors. 
 
-run_interrupt_driven_hooks: still waiting after 180 seconds for xpt_config
-(aprobe0:ata0:0:1:0): INQUIRY. CDB 
-(aprobe0:ata0:0:1:0):CAM status: Command timeout
-(aprobe0:ata0:0:1:0):Retry command
-(aprobe0:ata0:0:1:0):Error 5, Retries exhausted
+    ```
+    run_interrupt_driven_hooks: still waiting after 180 seconds for xpt_config
+    (aprobe0:ata0:0:1:0): INQUIRY. CDB 
+    (aprobe0:ata0:0:1:0):CAM status: Command timeout
+    (aprobe0:ata0:0:1:0):Retry command
+    (aprobe0:ata0:0:1:0):Error 5, Retries exhausted
+    ```
 
 4. Set BIOS settings. Press the DEL key to access the BIOS on the Dell:
 
-Main screen settings:
+    * Main screen settings:
 
-	Primary IDE Master [Maxtor 6Y250P0]
-	Secondary IDE Master [YAMAHA CRW8824E]
+        Primary IDE Master [Maxtor 6Y250P0]
+        Secondary IDE Master [YAMAHA CRW8824E]
 
-Boot screen settings:
+    * Boot screen settings:
 
-	First Boot Device [ATAPI CD-ROM Drive]
-	Second Boot Device [Hard Drive]
+        First Boot Device [ATAPI CD-ROM Drive]
+        Second Boot Device [Hard Drive]
 
 5. Download the disc1 CD formatted iso image (e.g., FreeBSD-10.2-RELEASE-i386-disc1.iso) from https://www.freebsd.org/where.html#download. This image contains the ports collection.
 
-In the old Dell desktop, old CD-ROM drives are installed. They DO NOT read DVD formatted media discs.
+    In the old Dell desktop, old CD-ROM drives are installed. They DO NOT read DVD formatted media discs.
 
-Run a SHA 256 checksum on the downloaded file:
+    Run a SHA 256 checksum on the downloaded file:
 
-$ shasum -a 256 FreeBSD-10.2-RELEASE-i386-disc1.iso
-0e7094ae9f4f79d8955f193a1f2f5ab4f8b300e57eccd3b9bd959951ee079020
+    ```
+    $ shasum -a 256 FreeBSD-10.2-RELEASE-i386-disc1.iso
+    0e7094ae9f4f79d8955f193a1f2f5ab4f8b300e57eccd3b9bd959951ee079020
+    ```
 
-The hash output must match eactly what's published in the file at ftp://ftp.freebsd.org/pub/FreeBSD/releases/i386/i386/ISO-IMAGES/10.2/CHECKSUM.SHA256-FreeBSD-10.2-RELEASE-i386. If the sequence does not match, the file is corrupted and must be downloaded again.
-
-
+    The hash output must match eactly what's published in the file at ftp://ftp.freebsd.org/pub/FreeBSD/releases/i386/i386/ISO-IMAGES/10.2/CHECKSUM.SHA256-FreeBSD-10.2-RELEASE-i386. If the sequence does not match, the file is corrupted and must be downloaded again.
 
 6. Make a bootable CD for the disc1 formatted iso image.
 
-Use a plain CD-R writable disc. DO NOT use a DVD disc because the Dell's old CD drives cannot read a DVD format. 
+    Use a plain CD-R writable disc. DO NOT use a DVD disc because the Dell's old CD drives cannot read a DVD format. 
 
-Follow https://www.youtube.com/watch?v=XegXd6mPs-c
+    Follow https://www.youtube.com/watch?v=XegXd6mPs-c
 
-a. Open Disk Utility on mac
+    a. Open Disk Utility on mac
 
-b. File > Open Disk Image > choose FreeBSD-10.2-RELEASE-i386-disc1.iso
+    b. File > Open Disk Image > choose FreeBSD-10.2-RELEASE-i386-disc1.iso
 
-c. Notice the contents of the iso display, a hard drive looking icon displays next to the iso in the left panel inside Disk Utility, and the iso image is mounted on the mac's desktop.
+    c. Notice the contents of the iso display, a hard drive looking icon displays next to the iso in the left panel inside Disk Utility, and the iso image is mounted on the mac's desktop.
 
-d. In Disk Utility, select the top .iso image then click the Burn icon. The contents of the iso will be burned as a bootable image onto the CD disc.
+    d. In Disk Utility, select the top .iso image then click the Burn icon. The contents of the iso will be burned as a bootable image onto the CD disc.
 
-Note: There's no need to convert a .iso to a .cdr. Simply burn the FreeBSD source iso itself. 
-
+    Note: There's no need to convert a .iso to a .cdr. Simply burn the FreeBSD source iso itself. 
 
 8. Boot the disc
 
-o When the disc boots, the FreeBSD splash screen displays. Press spacebar to pause the boot process.
+    * When the disc boots, the FreeBSD splash screen displays. Press spacebar to pause the boot process.
 
-o Go into Configure Boot Options. Turn on Safe Mode and Single User mode.  
+    * Go into Configure Boot Options. Turn on Safe Mode and Single User mode.  
 
-o Press Backspace to return to the main menu and continue boot process by pressing Enter. During the boot up, ensure the Maxtor and Yamaha both scroll by in the log display.
+    * Press Backspace to return to the main menu and continue boot process by pressing Enter. During the boot up, ensure the Maxtor and Yamaha both scroll by in the log display.
 
-Press Enter when prompted by this:
+    Press Enter when prompted by this:
 
-	Enter full pathname of shell or RETURN for /bin/sh:
+    	Enter full pathname of shell or RETURN for /bin/sh:
 
-The boot continues. Type "exit" at the prompt, which continues the boot process:
+    The boot continues. Type "exit" at the prompt, which continues the boot process:
 
-	# exit
+    	# exit
 
-/boot/loader ... is read from the CD, the local file systems are mounted, and the install continues.
+    /boot/loader ... is read from the CD, the local file systems are mounted, and the install continues.
 
-Follow https://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/bsdinstall-start.html
-
+    Follow https://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/bsdinstall-start.html
 
 9. Follow the FreeBSD Installer wizard
 
-o Welcome > Install
-o Keymap Selection > Continue with default keymap
-o Set Hostname > bsd
-o Distribution Select > Select doc, games, ports, src
-o Partition Scheme > MBR DOS Partitions > Manual
+    * Welcome > Install
+    * Keymap Selection > Continue with default keymap
+    * Set Hostname > bsd
+    * Distribution Select > Select doc, games, ports, src
+    * Partition Scheme > MBR DOS Partitions > Manual
 
-Tips:
+    Tips:
 
-  - Use MBR because of old hardware
-  - Press Tab to get to the edit box for creating/editing partitions
-  - Create the /usr partition last
+    * Use MBR because of old hardware
+    * Press Tab to get to the edit box for creating/editing partitions
+    * Create the /usr partition last
 
-Partition Editor:
+    Partition Editor:
 
-How much space want to use on the disk:
+    How much space want to use on the disk:
 
-ada0		234	GB	MBR
-ada0s1		234	GB	BSD
+    ```
+    ada0		234	GB	MBR
+    ada0s1		234	GB	BSD
+    ```
 
-Within BSD, set what slices of storage space are used, their file systems types, and their mount points:
+    Within BSD, set what slices of storage space are used, their file systems types, and their mount points:
 
-ada0s1a		5	GB	freebsd-ufs	/
-ada0s1b		512	MB	freebsd-swap	none
-ada0s1d		5	GB	freebsd-ufs	/scratch
-ada0s1e		223	GB	freebsd-ufs	/usr
+    ```
+    ada0s1a		5	GB	freebsd-ufs	/
+    ada0s1b		512	MB	freebsd-swap	none
+    ada0s1d		5	GB	freebsd-ufs	/scratch
+    ada0s1e		223	GB	freebsd-ufs	/usr
+    ```
 
-If you're using the same partitions you had before, just Quit (Q) and finish. No changes to the MB size or space of the slices.
+    If you're using the same partitions you had before, just Quit (Q) and finish. No changes to the MB size or space of the slices.
 
-See https://www.youtube.com/watch?v=OwqCjz9Fgao
-	
-See http://daemon-notes.com/articles/system/part-fs/intro
-
+    See https://www.youtube.com/watch?v=OwqCjz9Fgao
+    	
+    See http://daemon-notes.com/articles/system/part-fs/intro
 
 
 10. Remove the Yamaha CD-RW drive from the IDE ribbon (leaving only the Maxtor HDD connected)
 
-When the Yamaha CD-RW is connected, FreeBSD does not boot into multi-user mode and the system hangs on boot and displays these errors. 
+    When the Yamaha CD-RW is connected, FreeBSD does not boot into multi-user mode and the system hangs on boot and displays these errors. 
 
-run_interrupt_driven_hooks: still waiting after 180 seconds for xpt_config
-(aprobe0:ata0:0:1:0): INQUIRY. CDB 
-(aprobe0:ata0:0:1:0):CAM status: Command timeout
-(aprobe0:ata0:0:1:0):Retry command
-(aprobe0:ata0:0:1:0):Error 5, Retries exhausted
+    ```
+    run_interrupt_driven_hooks: still waiting after 180 seconds for xpt_config
+    (aprobe0:ata0:0:1:0): INQUIRY. CDB 
+    (aprobe0:ata0:0:1:0):CAM status: Command timeout
+    (aprobe0:ata0:0:1:0):Retry command
+    (aprobe0:ata0:0:1:0):Error 5, Retries exhausted
+    ```
 
-When Yamaha CD-RW is connected, only Single User mode can be accessed (with the Safe Mode option enabled)
+    When Yamaha CD-RW is connected, only Single User mode can be accessed (with the Safe Mode option enabled)
 
 
 11. ACPI caused problems with old hardware. Disable it when the kernel boots up:
 
-vi /boot/loader.conf
+    ```
+    vi /boot/loader.conf
+    ```
 
-then add this line:
+    then add this line:
 
-hint.acpi.0.disabled="1"
+    ```
+    hint.acpi.0.disabled="1"
+```
 
 
-25. Slice Methodology
+# Slice Methodology
 
 Must create the following mandatory slices:
 
