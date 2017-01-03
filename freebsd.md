@@ -1,5 +1,5 @@
 FreeBSD Setup
-=============
+-------------
 
 # Contents
 
@@ -64,7 +64,8 @@ FreeBSD Setup
 * User Accounts
 
 <a name="why"></a>
-# Why FreeBSD 
+Why FreeBSD
+===========
 
 Compared to Linux, FreeBSD is coherent. There are too many people
 screwing with Linux. You never really know what you'll get in a Linux
