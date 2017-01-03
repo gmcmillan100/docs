@@ -6,12 +6,13 @@ FreeBSD Setup
 * [Why FreeBSD](#why)
 * [Critical System and Applications](#critical)
 * [Inventory Survey](#inventory)
+* [Installing a New Version of BSD](#new)
 * [Boot Manager and Partitions](#boot)
-* Reset BIOS Setup Admin Password on Dell
-* BIOS error 0271 check date and time settings
-* Halt/Reboot
-* HCP
-* Ports
+* [Reset BIOS Setup Admin Password on Dell](#biosreset)
+* [BIOS error 0271 check date and time settings](#biosdate)
+* [Halt/Reboot](#sync)
+* [DHCP](#dhcp)
+* [Ports](#ports)
 * FTPing Packages from ftp.freebsd.org
 * Installing and Removing Software Ports
 * FTP a New Version of XFree86
@@ -30,8 +31,6 @@ FreeBSD Setup
 * Window Geometry and Placement
 * Sound Support via a New Kernel
 * Slice Methodology
-* [Installing a New Version of BSD](#new)
-* Real Player Installation
 * Package Won't Kick Off
 * Readability Check
 * NFS Mounted File Systems
@@ -175,11 +174,10 @@ seconds, the loader will default to the last command it was told.
 Note: As an alternative to Partition Magic, use fdisk to partition my hard
 drive.
 
-Reset BIOS Setup Admin Password on Dell
----------------------------------------
+<a name="biosreset"></a>
+# Reset BIOS Setup Admin Password on Dell
 
 http://www.dell.com/support/Article/us/en/04/575822/EN
-
 
 1. Power off system
 
@@ -197,16 +195,12 @@ http://www.dell.com/support/Article/us/en/04/575822/EN
 
 6. Return jumper back to normal position
 
-
-7. Power down sytem
-
+7. Power down system
 
 8. Power on system
 
-
-
-BIOS error 0271 check date and time settings
---------------------------------------------
+<a name="biosdate"></a>
+# BIOS error 0271 check date and time settings
 
 http://www.techsupportforum.com/forums/f108/solved-dell-inspiron-error-0271-and-0251-a-498037.html
 
@@ -218,58 +212,34 @@ http://www.techsupportforum.com/forums/f108/solved-dell-inspiron-error-0271-and-
 
 4. F10
 
+<a name="sync"></a>
+# Halt/Reboot
 
-5. Halt/Reboot
+```
+sync;reboot
+sync;halt
+```
 
+The ";" is just a command separator. You could also enter "sync", Return, then "halt". After entering "sync;halt", just press the power button to turn off the machine. 
 
-    Commands to use:
+To reboot, you must be "root". However, first enter "sync;". Reason: When you write to a disk, it does not go all the way to the disk. It goes into buffers and memory. Eventually, it finds its way out to the disk. The "sync" command takes all the stuff that is cached in the buffers and kernel and pushes it out now. Do this to put everything into a consistent state. 
 
-	sync;reboot
+One of the ways a highly evolved operating system gets to be fast is by doing updates to relatively slow media asynchronously. When you say write this file, the system tells you its done. But it's not really done. The system sent the operation on its way. 
 
-	sync;halt
+The LAST THING YOU WANT TO DO, IS POWER THE MACHINE OFF. When taking the machine down, need to push out the pending operations (runs). This is why when the power goes off, some machines take a long time to come back up.
 
-    The ";" is just a command separator. You could also enter
-    "sync", Return, then "halt". After entering "sync;halt", just
-    press the power button to turn off the machine. 
+<a name="dhcp"></a>
+# DHCP
 
-    To reboot, you must be "root". However, first enter "sync;". 
-    Reason: When you write to a disk, it does not go all the
-    way to the disk. It goes into buffers and memory. Eventually, it
-    finds its way out to the disk. The "sync" command takes all the
-    stuff that is cached in the buffers and kernel and pushes it out
-    now. Do this to put everything into a consistent state. 
+If you haven't already been assigned an IP address through DHCP, enter "dhclient <interface-name>" to request an IP address and name server from the remote DHCP server. Then ping a device on the network for
+verification. Go into /stand/sysinstall and tell the networking program to enable DHCP on fxp0. The configuration info gets stored in /etc/rc.conf
 
-    One of the ways a highly evolved operating system gets to be fast is
-    by doing updates to relatively slow media asynchronously. When you
-    say write this file, the system tells you its done. But it's not
-    really done. The system sent the operation on its way. 
+Enter "ifconfig" to display the <interface-names> and see if the box is on the network. Can also enter "ifconfig <interface-name>". On the laptop, the Ethernet interface is called "fxp0", so enter "ifconfig fxp0" as a short cut.
 
-    The LAST THING YOU WANT TO DO, IS POWER THE MACHINE OFF. When taking the
-    machine down, need to push out the pending operations (runs). This
-    is why when the power goes off, some machines take a long time to
-    come back up. 
+To shutdown an interface, enter "ifconfig fxp0 down". If you unplug the Ethernet cable without doing this, might get some console messages about the network being down.
 
-
-6. DHCP
-
-If you haven't already been assigned an IP address through DHCP, enter
-"dhclient <interface-name>" to request an IP address and name server
-from the remote DHCP server. Then ping a device on the network for
-verification. Go into /stand/sysinstall and tell the networking
-program to enable DHCP on fxp0. The configuration info gets stored in
-/etc/rc.conf
-
-Enter "ifconfig" to display the <interface-names> and see if the box
-is on the network. Can also enter "ifconfig <interface-name>". On the
-laptop, the Ethernet interface is called "fxp0", so enter "ifconfig
-fxp0" as a short cut.
-
-To shutdown an interface, enter "ifconfig fxp0 down". If you unplug
-the Ethernet cable without doing this, might get some console messages
-about the network being down.
-
-
-7. Ports
+<a name="ports"></a>
+# Ports
 
 There are two issues when installing ports (packages and applications)
 on BSD:
@@ -292,7 +262,7 @@ x86 Solaris might be supported under BSD emulation, but don't bet the
 farm on it. 
 
 
-8. FTPing Packages from ftp.freebsd.org
+# FTPing Packages from ftp.freebsd.org
 
 Read this 
 
@@ -394,7 +364,7 @@ wazoo>
 
 
 
-9. Installing and Removing Software Ports
+# Installing and Removing Software Ports
 
 A) Installing
 
@@ -429,7 +399,7 @@ Makefile to do a more elaborate and clean deinstall. Don't delete
 questionable packages. They might be libraries.
 
 
-10. FTP a New Version of XFree86
+# FTP a New Version of XFree86
 
 Two ways to go:
 
@@ -494,8 +464,6 @@ safe) that have the same version number.
 13. Run through the XFree86 install program again ....
 
     (see next section)
-
-
 
 11. Configuring XFree86 
 
@@ -1497,7 +1465,7 @@ Do this:
 
 # Slice Methodology
 
-Must create the following mandatory slices:
+You must create the following mandatory slices:
 
 
 	/	   Root does not need to be very big. Only reason to make it
@@ -1548,32 +1516,6 @@ Back in the dark ages, folks gauged partition sizes according to the
 capacity size of the backup devices. 
 
 Don't be stingy on the partition sizes. It's such a nuisance to change the partition size after you've already allocated space to it. 
-
-
-
-
-26. Real Player Installation
-
-Grab ~jerry/rp8_linux20_libc6_i386_cs2.bin.  It's the linux real-audio
-player.  Should work on bsd if you have linux emulation installed.  
-
-To install it:
-
-	chmod u+x rp8_linux20_libc6_i386_cs2.bin
-	./rp8_linux20_libc6_i386_cs2.bin
-
-Tips from linux.com
-Named something like rp8_linux20_libc6_i386_cs1.bin, most
-people seem to automatically assume they made some sort of mistake, as
-they are assuming a .tar.gz loaded full of README files and the
-like. The bin file is, in fact, the binary package itself in an
-executable form. You will need to make it executable:
-
-After the install, you should squirrel the program away somewhere
-so you could reinstall if necessary some day.  real.com doesn't make
-it easy to find the free version, and they could discontinue it or go
-out of business.
-
 
 27. Package Won't Kick Off
 
