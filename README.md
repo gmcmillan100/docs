@@ -1,3 +1,3 @@
 # docs
 hello3
-[see git](git.md)
+* [see git](git.md)
