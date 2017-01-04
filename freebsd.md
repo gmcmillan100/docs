@@ -2,14 +2,14 @@
 
 # Contents
 
-* [Why FreeBSD](#why)
-* [Critical System and Applications](#critical)
+* [Why FreeBSD](#why-freebsd)
+* [Critical System and Applications](#critical-system-and-applications)
 * [Inventory Survey](#inventory)
-* [Installing a New Version of BSD](#new)
-* [Boot Manager and Partitions](#boot)
-* [Reset BIOS Setup Admin Password on Dell](#biosreset)
-* [BIOS error 0271 check date and time settings](#biosdate)
-* [Halt/Reboot](#sync)
+* [Installing a New Version of BSD](#installing-a-new-version-of-bsd)
+* [Boot Manager and Partitions](#boot-manager-and-partitions)
+* [Reset BIOS Setup Admin Password on Dell](#reset-bios-setup-admin-password-on-dell)
+* [BIOS error 0271 check date and time settings](#bios-error-0271-check-date-and-time-settings)
+* [Halt Reboot](#halt-reboot)
 * [DHCP](#dhcp)
 * [Ports](#ports)
 * FTPing Packages from ftp.freebsd.org
@@ -62,9 +62,7 @@
 * Network Printing
 * User Accounts
 
-
-# Why FreeBSD 
-<a name="why"></a>
+# Why FreeBSD
 
 Compared to Linux, FreeBSD is coherent. There are too many people
 screwing with Linux. You never really know what you'll get in a Linux
@@ -82,9 +80,7 @@ you can almost always work around them if you compile, link, and run
 using what you'll find with /usr/bin/gcc on your compute server rather
 than /tools/bin/gcc.
 
-
 # Critical System and Applications
-<a name="critical"></a>
 
 * System Files
 
@@ -105,7 +101,6 @@ than /tools/bin/gcc.
 /etc/X11/XF86Config
 ~~~~
 
-<a name="inventory"></a>
 # Inventory Survey
 
 Before installing FreeBSD, take an inventory of all the installed devices: disk types, controllers, network cards, monitor (and recommended resolution and color display bits), soundcard, video card,
@@ -137,7 +132,6 @@ Following were some of the settings for Greg's Dell laptop:
 
    Sound card		ESS Technology Maestro3 (ESS Maestro PCI Audio wdm)
 
-<a name="boot"></a>
 # Boot Manager and Partitions
 
 Use Partition Magic to partition the hard drive. That is, tell Windows
@@ -169,7 +163,6 @@ seconds, the loader will default to the last command it was told.
 Note: As an alternative to Partition Magic, use fdisk to partition my hard
 drive.
 
-<a name="biosreset"></a>
 # Reset BIOS Setup Admin Password on Dell
 
 http://www.dell.com/support/Article/us/en/04/575822/EN
@@ -194,7 +187,6 @@ http://www.dell.com/support/Article/us/en/04/575822/EN
 
 8. Power on system
 
-<a name="biosdate"></a>
 # BIOS error 0271 check date and time settings
 
 http://www.techsupportforum.com/forums/f108/solved-dell-inspiron-error-0271-and-0251-a-498037.html
@@ -208,11 +200,11 @@ http://www.techsupportforum.com/forums/f108/solved-dell-inspiron-error-0271-and-
 4. F10
 
 <a name="sync"></a>
-# Halt/Reboot
+# Halt Reboot
 
 ```
-sync;reboot
 sync;halt
+sync;reboot
 ```
 
 The ";" is just a command separator. You could also enter "sync", Return, then "halt". After entering "sync;halt", just press the power button to turn off the machine. 
@@ -223,7 +215,6 @@ One of the ways a highly evolved operating system gets to be fast is by doing up
 
 The LAST THING YOU WANT TO DO, IS POWER THE MACHINE OFF. When taking the machine down, need to push out the pending operations (runs). This is why when the power goes off, some machines take a long time to come back up.
 
-<a name="dhcp"></a>
 # DHCP
 
 If you haven't already been assigned an IP address through DHCP, enter "dhclient <interface-name>" to request an IP address and name server from the remote DHCP server. Then ping a device on the network for
@@ -233,7 +224,6 @@ Enter "ifconfig" to display the <interface-names> and see if the box is on the n
 
 To shutdown an interface, enter "ifconfig fxp0 down". If you unplug the Ethernet cable without doing this, might get some console messages about the network being down.
 
-<a name="ports"></a>
 # Ports
 
 There are two issues when installing ports (packages and applications)
@@ -1274,7 +1264,6 @@ root> ls -l /kern*
 -r-xr-xr-x  1 root  wheel  3352178 Apr 21  2001 /kernel.old
 ~~~~
 
-<a name="new"></a>
 #Installing a New Version of BSD
 
 Doing a fresh re-installation from an iso image on a bootable CD is the safest and easiest way to go.
