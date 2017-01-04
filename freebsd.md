@@ -62,8 +62,9 @@
 * Network Printing
 * User Accounts
 
+
+# Why FreeBSD 
 <a name="why"></a>
-# Why FreeBSD
 
 Compared to Linux, FreeBSD is coherent. There are too many people
 screwing with Linux. You never really know what you'll get in a Linux
@@ -81,8 +82,9 @@ you can almost always work around them if you compile, link, and run
 using what you'll find with /usr/bin/gcc on your compute server rather
 than /tools/bin/gcc.
 
-<a name="critical"></a>
+
 # Critical System and Applications
+<a name="critical"></a>
 
 * System Files
 
