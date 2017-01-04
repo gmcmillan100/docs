@@ -199,7 +199,6 @@ http://www.techsupportforum.com/forums/f108/solved-dell-inspiron-error-0271-and-
 
 4. F10
 
-<a name="sync"></a>
 # Halt Reboot
 
 ```
