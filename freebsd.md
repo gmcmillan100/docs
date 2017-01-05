@@ -1965,52 +1965,56 @@ Each item you delete that the system does not support saves you one interrupt. W
 
 1. Note the existing installed kernel at bootup:
 
-vi /var/log/messages
-
-Feb 25 10:09:49 bsd kernel: root@releng1.nyi.freebsd.org:/usr/obj/usr/src/sys/GENERIC i386
+    ```
+    vi /var/log/messages
+    Feb 25 10:09:49 bsd kernel: root@releng1.nyi.freebsd.org:/usr/obj/usr/src/sys/GENERIC i386
+    ```
 
 2. Collect all driver and controller information for the machine:
 
-```
-dmesg
-vi /var/log/messages
-pciconf -lv
-```
+    ```
+    dmesg
+    vi /var/log/messages
+    pciconf -lv
+    ```
 
 3. The kernel source must be installed. Ensure /usr/src/ exists and is not empty.
 
-cd /usr/src
-ls
-
+    ```
+    cd /usr/src
+    ls
+    ```
 
 4. Create custom kernel:
 
-```
-sudo root
-cd /usr/src/sys/i386/conf
-cp GENERIC GREGKERNEL
-vim GREGKERNEL
-```
+    ```
+    sudo root
+    cd /usr/src/sys/i386/conf
+    cp GENERIC GREGKERNEL
+    vim GREGKERNEL
+    ```
 
 5. Build and install the custom kernel:
 
-```
-cp GREGKERNEL /usr/src
-make buildkernel KERNCONF=GREGKERNEL
-make installkernel KERNCONF=GREGKERNEL
-```
+    ```
+    cp GREGKERNEL /usr/src
+    make buildkernel KERNCONF=GREGKERNEL
+    make installkernel KERNCONF=GREGKERNEL
+    ```
 
 6. Reboot machine:
 
-sync;reboot
+    ```
+    sync;reboot
+    ```
 
 7. Confirm custom kernel was loaded:
 
-```
-vi /var/log/messages
+    ```
+    vi /var/log/messages
 
-Feb 26 00:36:34 bsd kernel: greg@bsd:/usr/obj/usr/src/sys/GREGKERNEL i386
-```
+    Feb 26 00:36:34 bsd kernel: greg@bsd:/usr/obj/usr/src/sys/GREGKERNEL i386
+    ```
 
 # PS/2 Mouse Problems
 
@@ -2610,134 +2614,133 @@ mv backup-criticals.tgz /ad1s1e-backup
 3. According to /var/log/messages, the names of my hard drives are ad0
    and ad1:
 
-```
-Aug 31 00:12:25 bsd1 /kernel: ad0: 239372MB <Maxtor 6Y250P0> [486344/16/63] at ata0-master UDMA100
-Aug 31 00:12:25 bsd1 /kernel: ad1: 32253MB <HDS722540VLAT20> [65531/16/63] at ata0-slave UDMA100
-```
+    ```
+    Aug 31 00:12:25 bsd1 /kernel: ad0: 239372MB <Maxtor 6Y250P0> [486344/16/63] at ata0-master UDMA100
+    Aug 31 00:12:25 bsd1 /kernel: ad1: 32253MB <HDS722540VLAT20> [65531/16/63] at ata0-slave UDMA100
+    ```
 
 4. Create a mount point:
 
-```
-bsd1# cd /
-bsd1# mkdir ad1-slave
-```
+    ```
+    bsd1# cd /
+    bsd1# mkdir ad1-slave
+    ```
 5. Mount the drive
 
 On the first try, mounting the drive itself on "ad1" didn't work:
 
-```
-bsd1# mount /dev/ad1 /ad1-slave
-mount: /dev/ad1 /ad1-slave: incorrect super block
-```
+    ```
+    bsd1# mount /dev/ad1 /ad1-slave
+    mount: /dev/ad1 /ad1-slave: incorrect super block
+    ```
 
 After looking in stand/sysinstall, found out the actual slice name
 given to the mountable file system was "ad1s1". The "s1" stands for
 slice 1. Mounting that worked:
 
-```
-bsd1# mount /dev/ad1s1 /ad1-slave/
-bsd1# df
-Filesystem  1K-blocks    Used     Avail Capacity  Mounted on
-/dev/ad0s1a   5040174   42640   4594322     1%    /
-/dev/ad0s1e   1007950       2    927312     0%    /scratch
-/dev/ad0s1f 234458900 1011908 214690280     0%    /usr
-procfs              4       4         0   100%    /proc
-/dev/acd0c     636256  636256         0   100%    /dist
-/dev/ad1s1    1007950   37816    889498     4%    /ad1-slave
-bsd1# cd /ad1-slave/
-bsd1# ls
-.cshrc          boot            dist            kernel.GENERIC  root            tmp
-.profile        cdrom           etc             mnt             sbin            usr
-COPYRIGHT       compat          home            modules         stand           var
-bin             dev             kernel          proc            sys
-```
+    ```
+    bsd1# mount /dev/ad1s1 /ad1-slave/
+    bsd1# df
+    Filesystem  1K-blocks    Used     Avail Capacity  Mounted on
+    /dev/ad0s1a   5040174   42640   4594322     1%    /
+    /dev/ad0s1e   1007950       2    927312     0%    /scratch
+    /dev/ad0s1f 234458900 1011908 214690280     0%    /usr
+    procfs              4       4         0   100%    /proc
+    /dev/acd0c     636256  636256         0   100%    /dist
+    /dev/ad1s1    1007950   37816    889498     4%    /ad1-slave
+    bsd1# cd /ad1-slave/
+    bsd1# ls
+    .cshrc          boot            dist            kernel.GENERIC  root            tmp
+    .profile        cdrom           etc             mnt             sbin            usr
+    COPYRIGHT       compat          home            modules         stand           var
+    bin             dev             kernel          proc            sys
+    ```
 
-5. Ooops. Mounted wrong slice. "df -h" tells me I mounted a small
-   slice. It's probably "root" (not the big /usr):
+Ooops. Mounted wrong slice. "df -h" tells me I mounted a small slice. It's probably "root" (not the big /usr):
 
-```
-bsd1# df -h
-Filesystem    Size   Used  Avail Capacity  Mounted on
-/dev/ad0s1a   4.8G    42M   4.4G     1%    /
-/dev/ad0s1e   984M   2.0K   906M     0%    /scratch
-/dev/ad0s1f   224G   988M   205G     0%    /usr
-procfs        4.0K   4.0K     0B   100%    /proc
-/dev/acd0c    621M   621M     0B   100%    /dist
-/dev/ad1s1    984M    37M   869M     4%    /ad1-slave
-```
+    ```
+    bsd1# df -h
+    Filesystem    Size   Used  Avail Capacity  Mounted on
+    /dev/ad0s1a   4.8G    42M   4.4G     1%    /
+    /dev/ad0s1e   984M   2.0K   906M     0%    /scratch
+    /dev/ad0s1f   224G   988M   205G     0%    /usr
+    procfs        4.0K   4.0K     0B   100%    /proc
+    /dev/acd0c    621M   621M     0B   100%    /dist
+    /dev/ad1s1    984M    37M   869M     4%    /ad1-slave
+    ```
 
 So, use the "disklabel" utility to discover disk info. Specifically,
 looks like partition "e" has a size of 62422288:
 
-```
-bsd1# disklabel -r /dev/ad1s1
-# /dev/ad1s1:
-type: ESDI
-disk: ad1s1
-label: 
-flags:
-bytes/sector: 512
-sectors/track: 63
-tracks/cylinder: 255
-sectors/cylinder: 16065
-cylinders: 4110
-sectors/unit: 66043152
-rpm: 3600
-interleave: 1
-trackskew: 0
-cylinderskew: 0
-headswitch: 0           # milliseconds
-track-to-track seek: 0  # milliseconds
-drivedata: 0 
+    ```
+    bsd1# disklabel -r /dev/ad1s1
+    # /dev/ad1s1:
+    type: ESDI
+    disk: ad1s1
+    label: 
+    flags:
+    bytes/sector: 512
+    sectors/track: 63
+    tracks/cylinder: 255
+    sectors/cylinder: 16065
+    cylinders: 4110
+    sectors/unit: 66043152
+    rpm: 3600
+    interleave: 1
+    trackskew: 0
+    cylinderskew: 0
+    headswitch: 0           # milliseconds
+    track-to-track seek: 0  # milliseconds
+    drivedata: 0 
 
-8 partitions:
-#        size   offset    fstype   [fsize bsize bps/cpg]
-  a:  2048000        0    4.2BSD     2048 16384    90   # (Cyl.    0 - 127*)
-  b:  1572864  2048000      swap                        # (Cyl.  127*- 225*)
-  c: 66043152        0    unused        0     0         # (Cyl.    0 - 4110*)
-  e: 62422288  3620864    4.2BSD     2048 16384    89   # (Cyl.  225*- 4110*)
-```
+    8 partitions:
+    #        size   offset    fstype   [fsize bsize bps/cpg]
+      a:  2048000        0    4.2BSD     2048 16384    90   # (Cyl.    0 - 127*)
+      b:  1572864  2048000      swap                        # (Cyl.  127*- 225*)
+      c: 66043152        0    unused        0     0         # (Cyl.    0 - 4110*)
+      e: 62422288  3620864    4.2BSD     2048 16384    89   # (Cyl.  225*- 4110*)
+    ```
 
 Tried mouting e. That fixed it. That slice size is 29G:
 
-```
-bsd1# mount /dev/ad1s1e /ad1-slave/
-bsd1# df -h
-Filesystem    Size   Used  Avail Capacity  Mounted on
-/dev/ad0s1a   4.8G    42M   4.4G     1%    /
-/dev/ad0s1e   984M   2.0K   906M     0%    /scratch
-/dev/ad0s1f   224G   988M   205G     0%    /usr
-procfs        4.0K   4.0K     0B   100%    /proc
-/dev/acd0c    621M   621M     0B   100%    /dist
-/dev/ad1s1e    29G   693M    26G     3%    /ad1-slave
-```
+    ```
+    bsd1# mount /dev/ad1s1e /ad1-slave/
+    bsd1# df -h
+    Filesystem    Size   Used  Avail Capacity  Mounted on
+    /dev/ad0s1a   4.8G    42M   4.4G     1%    /
+    /dev/ad0s1e   984M   2.0K   906M     0%    /scratch
+    /dev/ad0s1f   224G   988M   205G     0%    /usr
+    procfs        4.0K   4.0K     0B   100%    /proc
+    /dev/acd0c    621M   621M     0B   100%    /dist
+    /dev/ad1s1e    29G   693M    26G     3%    /ad1-slave
+    ```
 
 6. Now put the following line in /etc/fstab and test the mount. Make
    sure to specify the FreeBSD universal file system (ufs):
 
-```
-/dev/ad1s1e             /ad1s1e-backup  ufs     rw              0       0
+    ```
+    /dev/ad1s1e             /ad1s1e-backup  ufs     rw              0       0
 
-bsd1# mount -a
-bsd1# df -h
-Filesystem    Size   Used  Avail Capacity  Mounted on
-/dev/ad0s1a   4.8G    42M   4.4G     1%    /
-/dev/ad0s1e   984M   2.0K   906M     0%    /scratch
-/dev/ad0s1f   224G   988M   205G     0%    /usr
-procfs        4.0K   4.0K     0B   100%    /proc
-/dev/acd0c    621M   621M     0B   100%    /dist
-/dev/ad1s1e    29G   693M    26G     3%    /ad1s1e-backup
-```
+    bsd1# mount -a
+    bsd1# df -h
+    Filesystem    Size   Used  Avail Capacity  Mounted on
+    /dev/ad0s1a   4.8G    42M   4.4G     1%    /
+    /dev/ad0s1e   984M   2.0K   906M     0%    /scratch
+    /dev/ad0s1f   224G   988M   205G     0%    /usr
+    procfs        4.0K   4.0K     0B   100%    /proc
+    /dev/acd0c    621M   621M     0B   100%    /dist
+    /dev/ad1s1e    29G   693M    26G     3%    /ad1s1e-backup
+    ```
 
 Next time I reboot the box, /dev/ad1s1e will be auto mounted.
 
 7. Test data backup is working and the second hard disk is bootable. 
 
-```
-cd /
-touch testfile
-mv testfile /ad1s1e-backup
-```
+    ```
+    cd /
+    touch testfile
+    mv testfile /ad1s1e-backup
+    ```
 
 shutdown the bsd1
 disconnect the primary drive (ad0). It's "dead".
@@ -2761,141 +2764,141 @@ The "mv" operations and drive disaster recovery worked!!!!
 
 1. Set up the system files:
 
-Specify the NTP devices and drift file in /etc/ntp.conf:
+    Specify the NTP devices and drift file in /etc/ntp.conf:
 
-```
-server 140.142.16.34
-server  146.186.218.60
-server 203.21.37.18
+    ```
+    server 140.142.16.34
+    server  146.186.218.60
+    server 203.21.37.18
 
-driftfile /etc/ntp.drift
-logfile /var/log/ntp.log
-```
-Create the drift file that records information about the (in)accuracy
-of the local system's clock. Also create the log file:
+    driftfile /etc/ntp.drift
+    logfile /var/log/ntp.log
+    ```
+    Create the drift file that records information about the (in)accuracy
+    of the local system's clock. Also create the log file:
 
-```
-touch /etc/ntp.drift
-touch /var/log/ntp.log
-```
+    ```
+    touch /etc/ntp.drift
+    touch /var/log/ntp.log
+    ```
 
-Enable NTP daemon in rc.conf:
+    Enable NTP daemon in rc.conf:
 
-```
-xntpd_enable="YES"
-```
+    ```
+    xntpd_enable="YES"
+    ```
 
 2. Start xntpd process:
 
-```
-ntpd -c /etc/ntp.conf -l /var/log/ntp.log
-```
+    ```
+    ntpd -c /etc/ntp.conf -l /var/log/ntp.log
+    ```
 
-Look at the log file:
+    Look at the log file:
 
-```
-bsd1 /root> more /var/log/ntp.log 
-12 Sep 15:34:04 ntpd[278]: logging to file /var/log/ntp.log
-12 Sep 15:34:04 ntpd[278]: ntpd 4.1.0-a Tue May 25 21:15:34 GMT 2004 (1)
-12 Sep 15:34:04 ntpd[278]: kernel time discipline status 2040
-12 Sep 15:34:04 ntpd[278]: Un-parsable frequency in /etc/ntp.drift
-```
+    ```
+    bsd1 /root> more /var/log/ntp.log 
+    12 Sep 15:34:04 ntpd[278]: logging to file /var/log/ntp.log
+    12 Sep 15:34:04 ntpd[278]: ntpd 4.1.0-a Tue May 25 21:15:34 GMT 2004 (1)
+    12 Sep 15:34:04 ntpd[278]: kernel time discipline status 2040
+    12 Sep 15:34:04 ntpd[278]: Un-parsable frequency in /etc/ntp.drift
+    ```
 
-The "Un-parsable frequency" message is simply the result of an
-initiallly empty /etc/ntp.drift file and hence can be ignored. The
-server will store a value in that file after some time.
+    The "Un-parsable frequency" message is simply the result of an
+    initiallly empty /etc/ntp.drift file and hence can be ignored. The
+    server will store a value in that file after some time.
 
 
 3. Use the NTP query program to print a list of the peers known to the
    server as well as a summary of their state. A "*" in front of the
    peer indicates successful synchronization:
 
-```
-bsd1 /root> ntpq -p
-     remote           refid      st t when poll reach   delay   offset  jitter
-==============================================================================
-* bigben.cac.wash .USNO.           1 u   22   64    7   42.230  -56.434   9.399
-+ b50.cede.psu.ed avi-lis.gw.ligh  2 u   13   64    7  103.876  -59.719   9.158
-  ns.saard.net    0.0.0.0         16 u    -   64    0    0.000    0.000 4000.00
-```
+    ```
+    bsd1 /root> ntpq -p
+         remote           refid      st t when poll reach   delay   offset  jitter
+    ==============================================================================
+    * bigben.cac.wash .USNO.           1 u   22   64    7   42.230  -56.434   9.399
+    + b50.cede.psu.ed avi-lis.gw.ligh  2 u   13   64    7  103.876  -59.719   9.158
+      ns.saard.net    0.0.0.0         16 u    -   64    0    0.000    0.000 4000.00
+    ```
 
-Enter ntpq interactive mode and collect more stats:
+    Enter ntpq interactive mode and collect more stats:
 
-```
-bsd1 /root> ntpq
-ntpq> ?
-Commands available:
-addvars        associations   authenticate   cl             clearvars
-clocklist      clockvar       cooked         cv             debug
-delay          exit           help           host           hostnames
-keyid          keytype        lassociations  lopeers        lpassociations
-lpeers         mreadlist      mreadvar       mrl            mrv
-ntpversion     opeers         passociations  passwd         peers
-poll           pstatus        quit           raw            readlist
-readvar        rl             rmvars         rv             showvars
-timeout        version        writelist      writevar
+    ```
+    bsd1 /root> ntpq
+    ntpq> ?
+    Commands available:
+    addvars        associations   authenticate   cl             clearvars
+    clocklist      clockvar       cooked         cv             debug
+    delay          exit           help           host           hostnames
+    keyid          keytype        lassociations  lopeers        lpassociations
+    lpeers         mreadlist      mreadvar       mrl            mrv
+    ntpversion     opeers         passociations  passwd         peers
+    poll           pstatus        quit           raw            readlist
+    readvar        rl             rmvars         rv             showvars
+    timeout        version        writelist      writevar
 
-ntpq> pe
-     remote           refid      st t when poll reach   delay   offset  jitter
-==============================================================================
-*bigben.cac.wash .USNO.           1 u    4   64  377   43.348  -106.55  26.618
-+b50.cede.psu.ed gps1.tns.its.ps  2 u    3   64  377  103.536  -73.528  25.553
- ns.saard.net    0.0.0.0         16 u    -  128    0    0.000    0.000 4000.00
-ntpq> as
-ind assID status  conf reach auth condition  last_event cnt
-===========================================================
-  1 46420  9624   yes   yes  none  sys.peer   reachable  2
-  2 46421  9424   yes   yes  none  candidat   reachable  2
-  3 46422  8000   yes   yes  none    reject
-ntpq> rv
-status=0674 leap_none, sync_ntp, 7 events, event_peer/strat_chg,
-version="ntpd 4.1.0-a Tue May 25 21:15:34 GMT 2004 (1)",
-processor="i386", system="FreeBSD4.10-RELEASE", leap=00, stratum=2,
-precision=-20, rootdelay=43.345, rootdispersion=25.513, peer=46420,
-refid=bigben.cac.washington.edu,
-reftime=c4ef547c.9aa6e32e  Sun, Sep 12 2004 16:04:28.604, poll=6,
-clock=c4ef5482.9e62888b  Sun, Sep 12 2004 16:04:34.618, state=4,
-offset=-68.212, frequency=-32.194, jitter=22.559, stability=11.297
-```
+    ntpq> pe
+         remote           refid      st t when poll reach   delay   offset  jitter
+    ==============================================================================
+    *bigben.cac.wash .USNO.           1 u    4   64  377   43.348  -106.55  26.618
+    +b50.cede.psu.ed gps1.tns.its.ps  2 u    3   64  377  103.536  -73.528  25.553
+     ns.saard.net    0.0.0.0         16 u    -  128    0    0.000    0.000 4000.00
+    ntpq> as
+    ind assID status  conf reach auth condition  last_event cnt
+    ===========================================================
+      1 46420  9624   yes   yes  none  sys.peer   reachable  2
+      2 46421  9424   yes   yes  none  candidat   reachable  2
+      3 46422  8000   yes   yes  none    reject
+    ntpq> rv
+    status=0674 leap_none, sync_ntp, 7 events, event_peer/strat_chg,
+    version="ntpd 4.1.0-a Tue May 25 21:15:34 GMT 2004 (1)",
+    processor="i386", system="FreeBSD4.10-RELEASE", leap=00, stratum=2,
+    precision=-20, rootdelay=43.345, rootdispersion=25.513, peer=46420,
+    refid=bigben.cac.washington.edu,
+    reftime=c4ef547c.9aa6e32e  Sun, Sep 12 2004 16:04:28.604, poll=6,
+    clock=c4ef5482.9e62888b  Sun, Sep 12 2004 16:04:34.618, state=4,
+    offset=-68.212, frequency=-32.194, jitter=22.559, stability=11.297
+    ```
 
-Notes:
-The local time (reftime=) was "Sep 12 2004 16:04:28" when the local
-clock was last updated. If the local clock had never been
-synchronized, the value would be zero: reftime=00000000.00000000
+    Notes:
+    The local time (reftime=) was "Sep 12 2004 16:04:28" when the local
+    clock was last updated. If the local clock had never been
+    synchronized, the value would be zero: reftime=00000000.00000000
 
-Th time of the local bsd1 is "Sep 12 2004 16:04:34"
+    Th time of the local bsd1 is "Sep 12 2004 16:04:34"
 
 4. Fix the sanity limit and time correction problem:
 
-Here's what happened. A few minutes after Step 3, I got a connection
-refused:
+    Here's what happened. A few minutes after Step 3, I got a connection
+    refused:
 
-```
-bsd1 /root> ntpq -p
-ntpq: read: Connection refused
+    ```
+    bsd1 /root> ntpq -p
+    ntpq: read: Connection refused
 
-... then this appeared in /var/log/messages:
+    ... then this appeared in /var/log/messages:
 
-```
-Sep 12 16:08:58 bsd1 ntpd[134]: time correction of 21529 seconds
-exceeds sanity limit (1000); set clock manually to the correct UTC
-time.
-```
+    ```
+    Sep 12 16:08:58 bsd1 ntpd[134]: time correction of 21529 seconds
+    exceeds sanity limit (1000); set clock manually to the correct UTC
+    time.
+    ```
 
-After reading a website:
+    After reading a website:
 
- http://freeunix.dyndns.org:8088/site2/howto/NTP3.shtml
+     http://freeunix.dyndns.org:8088/site2/howto/NTP3.shtml
 
-Learned before starting ntpd, I should sync the time of the server a
-few times using ntpdate. This is to minimize the difference in time
-(offset) between the local server and the server(s) to sync with :
+    Learned before starting ntpd, I should sync the time of the server a
+    few times using ntpdate. This is to minimize the difference in time
+    (offset) between the local server and the server(s) to sync with :
 
-```
-bsd1 /root> ntpdate -b 140.142.16.34
-12 Sep 15:24:58 ntpdate[268]: step time server 140.142.16.34 offset 21528.515705 sec
-```
+    ```
+    bsd1 /root> ntpdate -b 140.142.16.34
+    12 Sep 15:24:58 ntpdate[268]: step time server 140.142.16.34 offset 21528.515705 sec
+    ```
 
-The -b option adjusts the time immediately rather than slewing it.
+    The -b option adjusts the time immediately rather than slewing it.
 
 # HTTPD ServerName Lookup Problems
 
