@@ -1,5 +1,6 @@
-Generate a new ssh key:
+# Generate a new ssh key
 
+```
 $ ssh-keygen -t rsa -b 4096 -C "gmcmillan100@gmail.com"
 Generating public/private rsa key pair.
 
@@ -21,7 +22,7 @@ The key's randomart image is:
 |        +=* ..  o|
 |       .+B++..E+ |
 +-----------------+
-
+```
 
 Display existing key files:
 
@@ -47,3 +48,26 @@ Display the new public key:
 $ cat ~/.ssh/id_rsa.pub 
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDF+17iqUOfTtcjlAEDFBNh23qXqn7WGVaXqKMEMIOtezOrHTsS4TF1vLE0aQDXKjlv1JKi1PBm5ueIr+xe+WTswXRjg5dU2iijkeBLVZKo//7HCXY+W5nNO0wCKMNmnng2JwzhGW28FpwafnuhbHahzL1R8fkYUms4qsYQCoMP+femNr1aWEv9nOs7atpXjugrmhQXwZmuUOkci3pYmOXrrDZxko2EVMaSA03mN48uxQ0ZbPn6L06gzu26cZa2Wip79NmlT/+Ilc8qnjH0MahHpXe1k/fX+3VT9IYMomekOP5jTFuZpNtzrzukSnmkjBABH7Esgo+6TSp3vjOVBm8mEQk4KvUyc8s+POY4jrZr8Z8SRFQAo6XfSs0jPhxe7VIkwIt0oV1jOb0g0x/tudpf/byFWjqmQcFh27MIzf4rsPBt+sP6Tyg59Fn6nqC0UhofuxY3rkLtVnBK6VtiKoPdK1xkSJ4vRi7GzOOMe3txOClR9k0Afdj3Oa9q8GTbXjXc65NsMj33eoHnl/f1O1nHo7gFBaPBDvaSCf16sJ6UwrLy2ZfH0cJuFk9Vfp24Sb8L5o5IL8EoY3ydX1UpXEVtxU4140780mWZKgfThxGjO5xTygLs8BcymkN0ZS+RGrocH7sTf7LIzikY1cGBeBs60BaOs90sxROjPnwpTIXqRQ== gmcmillan100@gmail.com
 
+# Avoid being asked “Enter passphrase for key"
+
+Start ssh-agent:
+
+```
+$ eval `ssh-agent -s`
+Agent pid 899
+```
+
+Add my private identity to ssh-agent:
+
+```
+$ ssh-add ~/.ssh/id_rsa    
+Enter passphrase for /home/greg/.ssh/id_rsa: 
+Identity added: /home/greg/.ssh/id_rsa (/home/greg/.ssh/id_rsa)
+```
+
+Confirm it was added:
+
+```
+$ ssh-add -l
+4096 ef:63:96:f2:47:90:76:69:27:ab:62:9b:d9:df:67:ea /home/greg/.ssh/id_rsa (RSA)
+```

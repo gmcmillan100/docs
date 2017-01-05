@@ -1880,9 +1880,11 @@ the -k option. It will count allocation units.
 Use the "df" command to view my disk partitioning structure. For
 example, you can have many partitions: 
 
+``
 / = the root partition
 usr = the user partition
 the swap partition
+``
 
 ```
 $ df
