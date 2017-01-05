@@ -206,7 +206,7 @@ sync;halt
 sync;reboot
 ```
 
-The ";" is just a command separator. You could also enter "sync", Return, then "halt". After entering "sync;halt", just press the power button to turn off the machine. 
+The ";" is just a command separator. You could also enter "sync", Return, then "halt". After entering "sync;halt", just press the power button to turn off the machine.
 
 To reboot, you must be "root". However, first enter "sync;". Reason: When you write to a disk, it does not go all the way to the disk. It goes into buffers and memory. Eventually, it finds its way out to the disk. The "sync" command takes all the stuff that is cached in the buffers and kernel and pushes it out now. Do this to put everything into a consistent state. 
 
@@ -248,7 +248,7 @@ farm on it.
 
 # FTPing Packages from ftp.freebsd.org
 
-Read this 
+Read this:
 
     http://www.freebsddiary.org/portupgrade.php
 
@@ -342,21 +342,21 @@ unless I reboot my system.
 
 To verify that a package is present, enter:
 
+```
 wazoo> ls -l `which freeamp`
 -r-xr-xr-x  1 root  wheel  686488 Apr 18  2001 /usr/local/bin/freeamp*
 wazoo> 
-
-
+```
 
 # Installing and Removing Software Ports
 
 A) Installing
 
-
 Always try "pkg_add" first on a FreeBSD compiled port:
 
-   pkg_add sp-1.3.4.tgz
-
+```
+pkg_add sp-1.3.4.tgz
+```
 Then do a "pkg_info" to see if it installed.
 
 Freebsd makes it extremely simple to try new software.
@@ -381,7 +381,6 @@ Read "man pkg_info".
 'pkg_delete' blindly deletes packages. 'make deinstall' will use the
 Makefile to do a more elaborate and clean deinstall. Don't delete
 questionable packages. They might be libraries.
-
 
 # FTP a New Version of XFree86
 
@@ -449,9 +448,10 @@ safe) that have the same version number.
 
     (see next section)
 
-11. Configuring XFree86 
+# Configuring XFree86 
 
 Settings for old home-dell system:
+
 	 Mouse proto: Sysmouse (had problems with P/S2)
 	 Horrizontal sync: 7 high freq, Super VGA 1024x768 @ 70hz
 	 Vertical sync: 3 50-100
@@ -680,15 +680,13 @@ http://www.FreeBSD.org/cgi/getmsg.cgi?fetch=495447+501561+/usr/local/www/db/text
 
         chmod 4711 /usr/X11R6/bin/X
 
-
-12. Tab Window Manager
+# Tab Window Manager
 
 Read "man twm" 
 
 You can change the colors on the TWM window bars.
 
-
-13. .xinitrc 
+# .xinitrc 
 
 It's the X Windows System Initializer
 
@@ -734,8 +732,7 @@ Tip3. The sequence "Ctrl Alt -" will cycle through my resolution
 settings. The "-" is the purple minus numeric key on my Dell
 keyboard. It's the "P" key. 
 
-
-14. .Xdefaults
+# .Xdefaults
 
 A set of central properties for the things you will be doing within
 X. This is the most central place to customize X settings. The X
@@ -748,6 +745,7 @@ machine where the client was invoked.
 
 For example:
 
+```
 cat ~jerry/.Xdefaults
 
 XTerm.VT100.geometry:			80x40
@@ -781,10 +779,9 @@ Emacs.cursorColor:	red
 Emacs.pointerColor:	red
 Emacs.pane.menubar*background: black
 Emacs.pane.menubar*foreground: white
-[gmcmillan@redd3132 ~]% 
+```
 
-
-15. Editing the XF86Config file in /etc/X11
+# Editing the XF86Config file in /etc/X11
 
 Caution: Be very conservative when trying out something in this file.
 When in doubt while editing, make a backup of the original XF86Config
@@ -801,10 +798,10 @@ Poke around on freebsd.org to find sample XF86Config files.
 Sometimes there are problems using external mice. Use the touchpad
 when in trouble.
 
-
 1. See what's in /etc. Notice the date on /etc/XF86Config. That's the
    old copy of X we installed previously. It's garbage.
 
+```
 greg-pc# ls /etc
 X11             gnats           motd            rc              remote
 XF86Config      group           mtree           rc.atm          resolv.conf
@@ -827,15 +824,16 @@ ftpusers        master.passwd   protocols       rc.syscons      uucp
 gettytab        modems          pwd.db          rc.sysctl       wall_cmos_clock
 greg-pc# ls -l /etc/XF86Config 
 -rw-r--r--  1 root  wheel  19917 Sep  6 18:37 /etc/XF86Config
-greg-pc# 
+```
 
 2. The version we want is in /etc/X11:
 
-greg-pc# ls /etc/X11
+```
+$ls /etc/X11
 XF86Config      fs              rstart          xinit           xsm
 XF86Config~     lbxproxy        twm             xkb
 app-defaults    proxymngr       xdm             xserver
-greg-pc# 
+```
 
 3. Open the file "XF86Config":
 
@@ -887,14 +885,15 @@ We put "1400x1050" on the line marked <== .
 5. To set resolution to 1400x1050, we also had to insert the
    following line in the "Monitor" section:
 
-Section "Monitor"
-        ModeLine     "1400x1050"   107.86   1400 1440 1552 1688   1050 1050 1053 1066 +hsync +vsync
+Section "Monitor":
 
+```
+ModeLine     "1400x1050"   107.86   1400 1440 1552 1688   1050 1050 1053 1066 +hsync +vsync
+```
 
 6. Save the file
 
-
-16. /var/log/XF86Config.log
+# /var/log/XF86Config.log
 
 This is the startup log file.
 
@@ -905,18 +904,20 @@ settings are not support on my hardware.
 
 There is a code key at the top of the file that looks like this:
 
+```
 Markers: (--) probed, (**) from config file, (==) default setting,
          (++) from command line, (!!) notice, (II) informational,
          (WW) warning, (EE) error, (??) unknown.
+```
 
-
-17. FreeBSD Device Discovery Log
+# FreeBSD Device Discovery Log
 
 ... all the stuff that BSD found when it last booted. For example, use
 "dmesg | more" to see what sound card chip set you have. The output of
 this command is a little more readable than /var/log/messages
 
-greg-pc# dmesg | more
+```
+$ dmesg | more
 Copyright (c) 1992-2001 The FreeBSD Project.
 Copyright (c) 1979, 1980, 1983, 1986, 1988, 1989, 1991, 1992, 1993, 1994
         The Regents of the University of California. All rights reserved.
@@ -1001,7 +1002,7 @@ Mounting root from ufs:/dev/ad0s2a
 ums0: Logitech USB Mouse, rev 1.10/6.20, addr 2, iclass 3/1
 ums0: 3 buttons and Z dir.
 microuptime() went backwards (49.075199 -> 49.-695330400)
-
+```
 
 # TCP Listening
 
@@ -1024,12 +1025,14 @@ it. Ssee "34. DNS resolution"
 
 To SSH and use X, do this:
 
- ssh -X gmcmillan@ssh.procket.com
+ssh -X gmcmillan@ssh.procket.com
 
 Add the following lines to /etc/ssh/ssh_config:
 
- ForwardX11 yes
- Protocol 2,1
+```
+ForwardX11 yes
+Protocol 2,1
+```
 
 You shouldn't need to run xhost. Only make sure you run ssh with the "-X"
 option or check that the line "ForwardX11 yes" is present in your
@@ -1070,16 +1073,16 @@ option for when you need to access work from home.
 
 Add the following line to .twmrc:
 
-    ```
-    #
-    # alt-s over root window fires up ssh to work.
-    #
-    Function "ssh2work"     { f.exec "xhost +ssh.procket.com; xterm -e ssh -X -C -l gmcmillan ssh.procket.com &" }
-    "s"     =   m   : root  : f.function "ssh2work"
+```
+#
+# alt-s over root window fires up ssh to work.
+#
+Function "ssh2work"     { f.exec "xhost +ssh.procket.com; xterm -e ssh -X -C -l gmcmillan ssh.procket.com &" }
+"s"     =   m   : root  : f.function "ssh2work"
 
 
-    "xhost + ssh.procket.com xterm -e ssh -X -C -l gmcmillan ssh.procket.com &"
-    ```
+"xhost + ssh.procket.com xterm -e ssh -X -C -l gmcmillan ssh.procket.com &"
+```
 
 In front of the line, add "ssh to work" 
 
@@ -1089,7 +1092,7 @@ executes ssh with a -X and a -C (compression) followed by my ID and
 host. The entire statement needs to be in quotes (a quoted string). 
 
 
-21. Remote Applications
+# Remote Applications
 
 It's better to rlogin to a recognized host on the network and run my
 applications (i.e., emacs, netscape) from that machine instead of
@@ -1109,10 +1112,10 @@ maybe you would want to configure automount to mount Procket's file
 system. However, if you use greg-pc at home where those file systems
 will not be found, then dont' do it.
 
+# Manually Add an Xhost
 
-22. Manually Add an Xhost
-
-greg-pc# xhost + suncs9
+```
+$ xhost + suncs9
 suncs9 being added to access control list
 greg-pc# rlogin -l gmcmillan suncs9
 Password: 
@@ -1120,22 +1123,15 @@ Last login: Mon Sep 24 10:54:46 from dhcp5132.procket
 OS Release is Solaris 7 8/99 s998s_u3wos_11 SPARC
 System is a Sun Ultra 60 UPA/PCI (2 X UltraSPARC-II 450MHz) 2.0 GB RAM
 Sun Microsystems Inc.   SunOS 5.7       Generic October 1998
-  
-        This system is a Compute Server.
-  
-        Temporary Storage is available in /local/[0,1] 
- 
-        NO BACKUPS of local data are performed.
-  
-[gmcmillan@suncs9 ~]% emacs
+```
 
 Tip: Can set a local password file on my laptop. It will
 not be exported to anyone else. 
 
 
-23. Window Geometry and Placement
+# Window Geometry and Placement
 
-A handy tool for placing windows on the screen. 
+A handy tool for placing windows on the screen:
 
 1. Enter "xwininfo"
 
@@ -1145,37 +1141,43 @@ A handy tool for placing windows on the screen.
 
 4. Place the geometry values in the appropriate file:
 
-   For Emacs, put this in ~/.Xdefaults:
+For Emacs, put this in ~/.Xdefaults:
 
-      Emacs.geometry: 104x33+227+50
+```
+Emacs.geometry: 104x33+227+50
+```
 
-   For the initial xterm that "startx" creates, put this in ~/.xinitrc:
+For the initial xterm that "startx" creates, put this in ~/.xinitrc:
 
-      xterm -r -vb -sl 500 -geometry 118x26+227-11 &
+```
+xterm -r -vb -sl 500 -geometry 118x26+227-11 &
+```
 
-   For the second xterm created by twm pulldown, put this in ~/.Xdefaults:
+For the second xterm created by twm pulldown, put this in ~/.Xdefaults:
 
-     XTerm.VT100.geometry:                   85x20+156-19
+```
+XTerm.VT100.geometry:                   85x20+156-19
+```
 
 The next time you start the window manager, the clients will use the
 specified window geometry.
 
-
-24. Sound Support via a New Kernel
+# Sound Support via a New Kernel
 
 Note: For robust kernel config info, see "41. Custom Kernel"
 
 1. Make a copy of the working GENERIC kernel config file:
 
-   cd /usr/src/sys/i386/conf
-   cp GENERIC greg-kernel-1
- 
-   root> pwd
-   /usr/src/sys/i386/conf
-   root> ls
-   GENERIC         LINT            greg-kernel-1   greg-kernel-1~
-   root> 
+```
+cd /usr/src/sys/i386/conf
+cp GENERIC greg-kernel-1
 
+root> pwd
+/usr/src/sys/i386/conf
+root> ls
+GENERIC         LINT            greg-kernel-1   greg-kernel-1~
+root> 
+```
    Note: You must be root (#) to perform these operations.
 
    Note: When reconfiguring a kernel, it is always a
@@ -1239,20 +1241,21 @@ Note: For robust kernel config info, see "41. Custom Kernel"
 
 Troubleshooting, if the kernel does not boot:
 
-     Choose the kernel you want to boot from at the FreeBSD boot
-     loader. You can access this when the system counts down from
-     10. Hit any key except for the enter key, type "unload" and then
-     type "boot kernel.old", or the filename of any other kernel that
-     will boot properly. When reconfiguring a kernel, it is always a
-     good idea to keep a kernel that is known to work on hand.
-     After booting with a good kernel you can check over your
-     configuration file and try to build it again. One helpful
-     resource is the /var/log/messages file which records, among other
-     things, all of the kernel messages from every successful
-     boot. Also, the dmesg(8) command will print the kernel messages
-     from the current boot. 
-
-     If things still aren't booting, boot the file "kernel.GENERIC". 
+```
+Choose the kernel you want to boot from at the FreeBSD boot
+loader. You can access this when the system counts down from
+10. Hit any key except for the enter key, type "unload" and then
+type "boot kernel.old", or the filename of any other kernel that
+will boot properly. When reconfiguring a kernel, it is always a
+good idea to keep a kernel that is known to work on hand.
+After booting with a good kernel you can check over your
+configuration file and try to build it again. One helpful
+resource is the /var/log/messages file which records, among other
+things, all of the kernel messages from every successful
+boot. Also, the dmesg(8) command will print the kernel messages
+from the current boot. 
+```
+If things still aren't booting, boot the file "kernel.GENERIC". 
 
 The backup files are stored here:
 
@@ -1422,7 +1425,6 @@ Do this:
     	
     See http://daemon-notes.com/articles/system/part-fs/intro
 
-
 10. Remove the Yamaha CD-RW drive from the IDE ribbon (leaving only the Maxtor HDD connected)
 
     When the Yamaha CD-RW is connected, FreeBSD does not boot into multi-user mode and the system hangs on boot and displays these errors. 
@@ -1455,33 +1457,32 @@ Do this:
 
 You must create the following mandatory slices:
 
+```
+/	   Root does not need to be very big. Only reason to make it
+	   big is to make /temp big if I'm doing something that
+	   needs alot of temp files. Many people cope with this
+	   by making /temp a simlink to /user/temp because the
+	   /user partition is usually alot bigger. A fairly
+	   small number of things is done in root. For example,
+	   /etc, /sbin, and /boot. 
 
-	/	   Root does not need to be very big. Only reason to make it
-		   big is to make /temp big if I'm doing something that
-		   needs alot of temp files. Many people cope with this
-		   by making /temp a simlink to /user/temp because the
-		   /user partition is usually alot bigger. A fairly
-		   small number of things is done in root. For example,
-		   /etc, /sbin, and /boot. 
-
-		   Allocated 400MB to this root slice
-
-
-        swap	   Should be at least twice as big as the amount of
-		   physical RAM memory in my entire system
-
-		   256 X 2 = 512 MB
-
-		   Allocated 500MB to this swap slice
+	   Allocated 400MB to this root slice
 
 
-	/usr	   Almost all my applications are in /user/local. Normal
-	           stuff is in /user/sbin
+swap	   Should be at least twice as big as the amount of physical RAM memory in my entire system
 
-	           Allocated 5.5 G for this slice
- 
+	   256 X 2 = 512 MB
 
-	/scratch   (optional). Allocated 1G for this slice
+	   Allocated 500MB to this swap slice
+
+
+/usr	   Almost all my applications are in /user/local. Normal
+           stuff is in /user/sbin
+
+           Allocated 5.5 G for this slice
+
+/scratch   (optional). Allocated 1G for this slice
+```
 
 Beyond these, you can create more if desired. You might create a scratch
 partition too for new release testing. A scratch partition allows you
@@ -1505,7 +1506,7 @@ capacity size of the backup devices.
 
 Don't be stingy on the partition sizes. It's such a nuisance to change the partition size after you've already allocated space to it. 
 
-27. Package Won't Kick Off
+# Package Won't Kick Off
 
 then create an alias to the program
 
@@ -1516,42 +1517,49 @@ Or you could make an alias for it:
    alias realplay /usr/local/RealPlayer8/realplay
 
 
-28. Readability Check
+# Readability Check
 
 To verify if a directory can be read by others:
 
+```
 root> ls -ld /dos
 drwxr-xr-x  1 root  wheel  8192 Jan  1  1980 /dos
 root> ls /dos
 ADOBEAPP                Dumplog.txt             _RESTORE
 ATI                     LOGO.SYS                autoexec.nav
 AUTOEXEC.BAK            MSDOS.---               command.PIF
-...
+```
 
-29. NFS Mounted File Systems
+# NFS Mounted File Systems
 
+```
 rlogin suncs9
 /home/gmcmillan
+```
 
 The /home is not local to suncs9. The /home is NFS mounted. However,
 according to Procket, /home is my home on whatever host I'm running
 programs on.
 
 
-30. DHCP Client Troubleshooting
+# DHCP Client Troubleshooting
 
 A.
 
 Do this if dhcpclient is not releasing an old IP address:
 
-   kill `cat /var/run/dhclient.pid`
-   ifconfig fxp0 down
-   dhclient fxp0
+```
+kill `cat /var/run/dhclient.pid`
+ifconfig fxp0 down
+dhclient fxp0
+```
 
 Alternatively, do this:
 
-   ps aux | grep dhclient
-   kill <pid>
+```
+ps aux | grep dhclient
+kill <pid>
+```
 
 B.
 
@@ -1567,14 +1575,14 @@ C.
 
 A healthy set of /etc/hosts and /etc/resolve.config looks like this:
 
+```
 greg-pc# cat /etc/hosts
 127.0.0.1	localhost.procket.com localhost
 greg-pc# cat /etc/resolve.config
 search
-greg-pc#
+```
 
-
-31. Mounting CDROM File System
+# Mounting CDROM File System
 
  umount /dev/acd0c
 
@@ -1592,16 +1600,17 @@ If you do, then (as root):
 ought to be all you need to say with the fstab entry in place.
 
 
-32. Configuring xmcd for Playing Audio CDs
+# Configuring xmcd for Playing Audio CDs
 
 Since audio CDs are NOT file systems, you can't mount them without
 special software, such as the xmcd package:
 
 1. After install, start the configuration script:
 
+```
 cd /usr/X11R6/lib/X11/xmcd/config/
 ./config.sh
-
+```
 
 2. Answer the questions in the script dialog.
 
@@ -1609,7 +1618,9 @@ To get your CDROM specifications, enter dmesg | more
 
 Got this from the log file:
 
+```
 acd0: DVD-ROM <TOSHIBA DVD-ROM SD-C2502> at ata0-slave using PIO4
+```
 
 Note: If you try to mount an audio CD, you will get an error like
 ``cd9660: /dev/acd0c: Invalid argument''. This is because mount only
@@ -1618,7 +1629,7 @@ have data. You need a program that reads audio CDs, such as the
 audio/xmcd port.
 
 
-33. Installing a New Ethernet NIC
+# Installing a New Ethernet NIC
 
 1. Insert the new card and boot up the system.
 
@@ -1626,14 +1637,18 @@ audio/xmcd port.
    the file. For example, "xe0" stands for the new Xircom card. Notice
    its MAC address:
 
+```
 xe0 at port 0x240-0x24f iomem 0xd5000-0xd5fff irq 11 slot 0 on pccard0
 xe0: Xircom CE3, bonding version 0x45, 100Mbps capable
 xe0: DingoID = 0x444b, RevisionID = 0x1, VendorID = 0
 xe0: Ethernet address 00:10:a4:7e:c9:cf
+```
 
 3. Insert the new card name into /etc/rc.conf and enable DHCP:
 
+```
 ifconfig_xe0="DHCP"
+```
 
 4. Reboot the system. In the following case, several watchdog timeouts
    and card resets occurred before xe0 successfully performed an ARP
@@ -1641,18 +1656,22 @@ ifconfig_xe0="DHCP"
 
 During bootup, these messages were displayed and logged inside "dmesg":
 
+```
 xe0: watchdog timeout; resetting card
 xe0: watchdog timeout; resetting card
 xe0: watchdog timeout; resetting card
 xe0: watchdog timeout; resetting card
+```
 
 Eventually, ifconfig got this:
 
+```
 xe0: flags=8843<UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST> mtu 1500
         inet6 fe80::210:a4ff:fe7e:c9cf%xe0 prefixlen 64 scopeid 0x7 
         inet 10.1.4.176 netmask 0xfffff800 broadcast 10.1.7.255
         ether 00:10:a4:7e:c9:cf 
         media: Ethernet autoselect (100baseTX)
+```
 
 5. Troubleshooting IRQ, Port, or IOMEM
 
@@ -1715,13 +1734,12 @@ file.  Look for xe entries and elaborate a likely one.  See the
 pccard.conf man page.
 
 
-34. DNS Resolution
+# DNS Resolution
 
 It's amazing how many things stop working when DNS isn't working
 properly.
 
-a. Example 1
-- - - - - - -
+## Example 1
 
 Problem: From bsd, I couldn't "ping" or "nslookup" a domain name, such
 as "cisco.com". 
@@ -1740,8 +1758,7 @@ A two part solution:
 
 The nameservers are tried in order. Make sure the primary is first; otherwise, the machine will hang intermittently.
 
-b. Example 2
-- - - - - - -
+## Example 2
 
 Couldn't ssh into bsd1 from my home-winxp box (192.168.1.101) via the
 SSH Client. Would get the following syslog error:
@@ -1761,16 +1778,19 @@ So, after I commented out the nameservers:
  
 sshd started accepting client connections again. 
 
-35. Static IP Address
+# Static IP Address
 
 Insert the following into /etc/rc.conf
 
+```
 ifconfig_sis0="inet 192.168.1.101/24"
 defaultrouter="192.168.1.1"
 inetd_enable="YES"
+```
 
 LinkSys is the default router, and here is what "ifconfig" looks like:
 
+```
 sis0: flags=8843<UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST> metric 0 mtu 1500
 	options=83808<VLAN_MTU,WOL_UCAST,WOL_MCAST,WOL_MAGIC,LINKSTATE>
 	ether 00:a0:cc:a0:e0:ce
@@ -1778,6 +1798,7 @@ sis0: flags=8843<UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST> metric 0 mtu 1500
 	nd6 options=29<PERFORMNUD,IFDISABLED,AUTO_LINKLOCAL>
 	media: Ethernet autoselect (100baseTX <full-duplex>)
 	status: active
+```
 
 Then, restart inetd service:
 
@@ -1785,8 +1806,7 @@ Then, restart inetd service:
 
 https://www.cyberciti.biz/tips/freebsd-how-to-start-restart-stop-network-service.html
 
-
-36. Shell Scripting
+# Shell Scripting
 
 A) A bunch of notes from bsd newbies:
 
@@ -1818,6 +1838,7 @@ different from the Bourne shell, sh.
 
 B) Comments from Engineers
 
+```
 Jerry uses "tcsh"
 
 From Rex:
@@ -1838,9 +1859,9 @@ learn emacs.  Its an editor, but -so- much more.
 You can work within many split windows.
 Do you telnet to other systems?  I use emacs to
 capture all the debug I need.
+```
 
-
-37. CPU 
+# CPU 
 
 CPU clock speed is bogus (i.e., 2 GhZ CPU). The thing that slows
 computers down these days is the speed of memory access. If your
@@ -1851,7 +1872,7 @@ investments. Get faster memory, but it's expensive. Sometimes larger
 caches increase speed too.
 
 
-38. Partitions and Disk Usage
+# Partitions and Disk Usage
 
 Use the "du" command. It stands for Disk Usage. Try it with/without
 the -k option. It will count allocation units.
@@ -1863,14 +1884,14 @@ example, you can have many partitions:
 usr = the user partition
 the swap partition
 
-root> df
+```
+$ df
 Filesystem  1K-blocks     Used    Avail Capacity  Mounted on
 /dev/ad0s2a    389128    61470   296528    17%    /
 /dev/ad0s4e   5395143   899754  4063778    18%    /usr
 /dev/ad0s1   12044976  5386968  6658008    45%    /dos
 procfs              4        4        0   100%    /proc
-root> 
-
+```
 
 # Fstab for MSDOS Mounting
 
@@ -1881,45 +1902,45 @@ For XP, might need to use "mount_ntfs"
 The device should be /dev/ad0s1.  Lose the /dos part of what you have
 there.
 
-    ```
-    > greg-pc# mount -a
-    > msdos: /dev/ad0s1/dos: Operation not supported
-    > greg-pc# 
-    > greg-pc# cat /etc/fstab
-    > # Device                Mountpoint      FStype  Options         Dump    Pass#
-    > /dev/ad0s3b             none            swap    sw              0       0
-    > /dev/ad0s2a             /               ufs     rw              1       1
-    > #/dev/X         /scratch                ufs     rw              2       2
-    > /dev/ad0s4e             /usr            ufs     rw              2       2
-    > /dev/acd0c              /cdrom          cd9660  ro,noauto       0       0
-    > /dev/ad0s1/dos          /msdos          msdos   rw              0       0
-    > proc                    /proc           procfs  rw              0       0
-    > greg-pc# 
-    > greg-pc# 
-    > greg-pc# pwd
-    > /
-    > 
-    > Jerry Kreuscher writes:
-    >  > Greg McMillan wrote (on Monday Oct  8, at 12:03:01):
-    >  > 
-    >  > > Any idea what I'm doing wrong?
-    >  > > 
-    >  > 
-    >  > Try it with msdos for the fstype instead of dos.
-    >  > 
-    >  > > greg-pc# mount -a
-    >  > > mount: exec mount_dos not found in /sbin, /usr/sbin: No such file or directory
-    >  > > greg-pc# cat /etc/fstab
-    >  > > # Device                Mountpoint      FStype  Options         Dump    Pass#
-    >  > > /dev/ad0s3b             none            swap    sw              0       0
-    >  > > /dev/ad0s2a             /               ufs     rw              1       1
-    >  > > #/dev/X         /scratch                ufs     rw              2       2
-    >  > > /dev/ad0s4e             /usr            ufs     rw              2       2
-    >  > > /dev/acd0c              /cdrom          cd9660  ro,noauto       0       0
-    >  > > /dev/ad0s1/dos          /msdos          dos     rw              0       0
-    >  > > proc                    /proc           procfs  rw              0       0
-    >  > > greg-pc# 
-    ```
+```
+> greg-pc# mount -a
+> msdos: /dev/ad0s1/dos: Operation not supported
+> greg-pc# 
+> greg-pc# cat /etc/fstab
+> # Device                Mountpoint      FStype  Options         Dump    Pass#
+> /dev/ad0s3b             none            swap    sw              0       0
+> /dev/ad0s2a             /               ufs     rw              1       1
+> #/dev/X         /scratch                ufs     rw              2       2
+> /dev/ad0s4e             /usr            ufs     rw              2       2
+> /dev/acd0c              /cdrom          cd9660  ro,noauto       0       0
+> /dev/ad0s1/dos          /msdos          msdos   rw              0       0
+> proc                    /proc           procfs  rw              0       0
+> greg-pc# 
+> greg-pc# 
+> greg-pc# pwd
+> /
+> 
+> Jerry Kreuscher writes:
+>  > Greg McMillan wrote (on Monday Oct  8, at 12:03:01):
+>  > 
+>  > > Any idea what I'm doing wrong?
+>  > > 
+>  > 
+>  > Try it with msdos for the fstype instead of dos.
+>  > 
+>  > > greg-pc# mount -a
+>  > > mount: exec mount_dos not found in /sbin, /usr/sbin: No such file or directory
+>  > > greg-pc# cat /etc/fstab
+>  > > # Device                Mountpoint      FStype  Options         Dump    Pass#
+>  > > /dev/ad0s3b             none            swap    sw              0       0
+>  > > /dev/ad0s2a             /               ufs     rw              1       1
+>  > > #/dev/X         /scratch                ufs     rw              2       2
+>  > > /dev/ad0s4e             /usr            ufs     rw              2       2
+>  > > /dev/acd0c              /cdrom          cd9660  ro,noauto       0       0
+>  > > /dev/ad0s1/dos          /msdos          dos     rw              0       0
+>  > > proc                    /proc           procfs  rw              0       0
+>  > > greg-pc# 
+```
 
 # Windows Killed Boot Manager
 
@@ -1938,7 +1959,7 @@ there.
 4) Quit out of the installation menu and reboot off the hard disk as normal. 
 
 
-41. Custom Kernel
+# Custom Kernel
 
 Each item you delete that the system does not support saves you one interrupt. When reconfiguring a kernel, it is always a good idea to keep a kernel that is known to work on hand.
 
@@ -1950,10 +1971,11 @@ Feb 25 10:09:49 bsd kernel: root@releng1.nyi.freebsd.org:/usr/obj/usr/src/sys/GE
 
 2. Collect all driver and controller information for the machine:
 
+```
 dmesg
 vi /var/log/messages
 pciconf -lv
-
+```
 
 3. The kernel source must be installed. Ensure /usr/src/ exists and is not empty.
 
@@ -1963,30 +1985,34 @@ ls
 
 4. Create custom kernel:
 
+```
 sudo root
 cd /usr/src/sys/i386/conf
 cp GENERIC GREGKERNEL
 vim GREGKERNEL
+```
 
 5. Build and install the custom kernel:
 
+```
 cp GREGKERNEL /usr/src
 make buildkernel KERNCONF=GREGKERNEL
 make installkernel KERNCONF=GREGKERNEL
+```
 
 6. Reboot machine:
 
 sync;reboot
 
-
 7. Confirm custom kernel was loaded:
 
+```
 vi /var/log/messages
 
 Feb 26 00:36:34 bsd kernel: greg@bsd:/usr/obj/usr/src/sys/GREGKERNEL i386
+```
 
-
-42. PS/2 Mouse Problems
+# PS/2 Mouse Problems
 
 Problem description. Mouse worked fine without X. After X is started,
 the mouse cursor accelerates and bounces off the monitor.
@@ -1995,12 +2021,14 @@ Solution. Put this in /etc/X11/XFConfig
 
 Section "InputDevice"
 
-# Identifier and driver
+Identifier and driver
 
-    Identifier  "Mouse1"
-    Driver      "mouse"
-    Option "Protocol"    "SysMouse"
-    Option "Device"      "/dev/sysmouse"
+```
+Identifier  "Mouse1"
+Driver      "mouse"
+Option "Protocol"    "SysMouse"
+Option "Device"      "/dev/sysmouse"
+```
 
 Having "PS/2" as the mouse protocol broke the mouse. It needed to be
 changed to "SysMouse". Found solution at
@@ -2014,7 +2042,7 @@ When running the mouseddaemon, you must always specify the
 regardless of the actual type of your mouse.
 
 
-43. Ripping CDs
+# Ripping CDs
 
 dagrab is what you want for getting tracks off of audio CDs. Be sure
 not to default the "-n <num>" parameter if your drive is IDE. It's
@@ -2501,7 +2529,7 @@ Dino uses fvwm2. Here is a copy of his .fvwm2rc file:
     #*FvwmBannerTimeout 2
     ```
 
-45. CD Burning
+# CD Burning
 
 See "man burncd"
 
@@ -2514,6 +2542,7 @@ disc:
 
 See the before and after affects of umount:
 
+```
 bsd1 /usr/source-tgz/disc1.iso.4.10.freebsd> df -h
 Filesystem    Size   Used  Avail Capacity  Mounted on
 /dev/ad0s1a   126M    49M    67M    42%    /
@@ -2530,9 +2559,11 @@ Filesystem    Size   Used  Avail Capacity  Mounted on
 /dev/ad0s1g   229G   5.8G   205G     3%    /usr
 /dev/ad0s1e   252M   3.4M   228M     1%    /var
 procfs        4.0K   4.0K     0B   100%    /proc
+```
 
 But when it's mounted, I can cd to /cdrom mountpoint:
 
+```
 bsd1 /usr/source-tgz/disc1.iso.4.10.freebsd> cd /cdrom
 bsd1 /cdrom> pwd
 /cdrom
@@ -2545,26 +2576,31 @@ Filesystem    Size   Used  Avail Capacity  Mounted on
 /dev/ad0s1e   252M   3.4M   228M     1%    /var
 procfs        4.0K   4.0K     0B   100%    /proc
 /dev/acd0c    610M   610M     0B   100%    /dist
+```
 
 but now I get some errors:
 
+```
 bsd1 /usr/source-tgz/disc1.iso.4.10.freebsd> umount /dev/acd0c
 bsd1 /usr/source-tgz/disc1.iso.4.10.freebsd> burncd -f /dev/acd0c -s 4 -e data 4.10-RELEASE-i386-disc1.iso fixate
 burncd: ioctl(CDRIOCNEXTWRITEABLEADDR): Input/output error
+```
 
 techtip says do this:
 
+```
 burncd -f /dev/acd0c blank
 burncd -f /dev/acd0c data sample.iso fixate
+```
 
-
-46. Mounting a Second Hard Drive for Backups
+# Mounting a Second Hard Drive for Backups
 
 For quick system backups, tar select directories:
 
+```
 tar zcf backup-criticals.tgz docs/ root/ etc/ source-tgz/ xml/ finances/ employees.org/ resumes/ commands/ 
 mv backup-criticals.tgz /ad1s1e-backup
-
+```
 
 1. Physically set the jumper as slave on the second drive and connect
    the scsi and power connector.
@@ -2574,25 +2610,31 @@ mv backup-criticals.tgz /ad1s1e-backup
 3. According to /var/log/messages, the names of my hard drives are ad0
    and ad1:
 
+```
 Aug 31 00:12:25 bsd1 /kernel: ad0: 239372MB <Maxtor 6Y250P0> [486344/16/63] at ata0-master UDMA100
 Aug 31 00:12:25 bsd1 /kernel: ad1: 32253MB <HDS722540VLAT20> [65531/16/63] at ata0-slave UDMA100
+```
 
 4. Create a mount point:
 
+```
 bsd1# cd /
 bsd1# mkdir ad1-slave
-
+```
 5. Mount the drive
 
 On the first try, mounting the drive itself on "ad1" didn't work:
 
+```
 bsd1# mount /dev/ad1 /ad1-slave
 mount: /dev/ad1 /ad1-slave: incorrect super block
+```
 
 After looking in stand/sysinstall, found out the actual slice name
 given to the mountable file system was "ad1s1". The "s1" stands for
 slice 1. Mounting that worked:
 
+```
 bsd1# mount /dev/ad1s1 /ad1-slave/
 bsd1# df
 Filesystem  1K-blocks    Used     Avail Capacity  Mounted on
@@ -2608,12 +2650,12 @@ bsd1# ls
 .profile        cdrom           etc             mnt             sbin            usr
 COPYRIGHT       compat          home            modules         stand           var
 bin             dev             kernel          proc            sys
-bsd1# 
-
+```
 
 5. Ooops. Mounted wrong slice. "df -h" tells me I mounted a small
    slice. It's probably "root" (not the big /usr):
 
+```
 bsd1# df -h
 Filesystem    Size   Used  Avail Capacity  Mounted on
 /dev/ad0s1a   4.8G    42M   4.4G     1%    /
@@ -2622,10 +2664,12 @@ Filesystem    Size   Used  Avail Capacity  Mounted on
 procfs        4.0K   4.0K     0B   100%    /proc
 /dev/acd0c    621M   621M     0B   100%    /dist
 /dev/ad1s1    984M    37M   869M     4%    /ad1-slave
+```
 
 So, use the "disklabel" utility to discover disk info. Specifically,
 looks like partition "e" has a size of 62422288:
 
+```
 bsd1# disklabel -r /dev/ad1s1
 # /dev/ad1s1:
 type: ESDI
@@ -2652,10 +2696,11 @@ drivedata: 0
   b:  1572864  2048000      swap                        # (Cyl.  127*- 225*)
   c: 66043152        0    unused        0     0         # (Cyl.    0 - 4110*)
   e: 62422288  3620864    4.2BSD     2048 16384    89   # (Cyl.  225*- 4110*)
-
+```
 
 Tried mouting e. That fixed it. That slice size is 29G:
 
+```
 bsd1# mount /dev/ad1s1e /ad1-slave/
 bsd1# df -h
 Filesystem    Size   Used  Avail Capacity  Mounted on
@@ -2665,11 +2710,12 @@ Filesystem    Size   Used  Avail Capacity  Mounted on
 procfs        4.0K   4.0K     0B   100%    /proc
 /dev/acd0c    621M   621M     0B   100%    /dist
 /dev/ad1s1e    29G   693M    26G     3%    /ad1-slave
-
+```
 
 6. Now put the following line in /etc/fstab and test the mount. Make
    sure to specify the FreeBSD universal file system (ufs):
 
+```
 /dev/ad1s1e             /ad1s1e-backup  ufs     rw              0       0
 
 bsd1# mount -a
@@ -2681,14 +2727,17 @@ Filesystem    Size   Used  Avail Capacity  Mounted on
 procfs        4.0K   4.0K     0B   100%    /proc
 /dev/acd0c    621M   621M     0B   100%    /dist
 /dev/ad1s1e    29G   693M    26G     3%    /ad1s1e-backup
+```
 
 Next time I reboot the box, /dev/ad1s1e will be auto mounted.
 
 7. Test data backup is working and the second hard disk is bootable. 
 
+```
 cd /
 touch testfile
 mv testfile /ad1s1e-backup
+```
 
 shutdown the bsd1
 disconnect the primary drive (ad0). It's "dead".
@@ -2708,40 +2757,49 @@ The "mv" operations and drive disaster recovery worked!!!!
     don't support auto mount (wait to be told to auto mount). 
 
 
-47. NTP
+# NTP
 
 1. Set up the system files:
 
 Specify the NTP devices and drift file in /etc/ntp.conf:
 
-     server 140.142.16.34
-     server  146.186.218.60
-     server 203.21.37.18
+```
+server 140.142.16.34
+server  146.186.218.60
+server 203.21.37.18
 
-     driftfile /etc/ntp.drift
-     logfile /var/log/ntp.log
-
+driftfile /etc/ntp.drift
+logfile /var/log/ntp.log
+```
 Create the drift file that records information about the (in)accuracy
 of the local system's clock. Also create the log file:
 
-    touch /etc/ntp.drift
-    touch /var/log/ntp.log
+```
+touch /etc/ntp.drift
+touch /var/log/ntp.log
+```
 
 Enable NTP daemon in rc.conf:
 
-    xntpd_enable="YES"
+```
+xntpd_enable="YES"
+```
 
 2. Start xntpd process:
 
-   ntpd -c /etc/ntp.conf -l /var/log/ntp.log
+```
+ntpd -c /etc/ntp.conf -l /var/log/ntp.log
+```
 
 Look at the log file:
 
+```
 bsd1 /root> more /var/log/ntp.log 
 12 Sep 15:34:04 ntpd[278]: logging to file /var/log/ntp.log
 12 Sep 15:34:04 ntpd[278]: ntpd 4.1.0-a Tue May 25 21:15:34 GMT 2004 (1)
 12 Sep 15:34:04 ntpd[278]: kernel time discipline status 2040
 12 Sep 15:34:04 ntpd[278]: Un-parsable frequency in /etc/ntp.drift
+```
 
 The "Un-parsable frequency" message is simply the result of an
 initiallly empty /etc/ntp.drift file and hence can be ignored. The
@@ -2752,16 +2810,18 @@ server will store a value in that file after some time.
    server as well as a summary of their state. A "*" in front of the
    peer indicates successful synchronization:
 
-
+```
 bsd1 /root> ntpq -p
      remote           refid      st t when poll reach   delay   offset  jitter
 ==============================================================================
 * bigben.cac.wash .USNO.           1 u   22   64    7   42.230  -56.434   9.399
 + b50.cede.psu.ed avi-lis.gw.ligh  2 u   13   64    7  103.876  -59.719   9.158
   ns.saard.net    0.0.0.0         16 u    -   64    0    0.000    0.000 4000.00
+```
 
 Enter ntpq interactive mode and collect more stats:
 
+```
 bsd1 /root> ntpq
 ntpq> ?
 Commands available:
@@ -2796,7 +2856,7 @@ refid=bigben.cac.washington.edu,
 reftime=c4ef547c.9aa6e32e  Sun, Sep 12 2004 16:04:28.604, poll=6,
 clock=c4ef5482.9e62888b  Sun, Sep 12 2004 16:04:34.618, state=4,
 offset=-68.212, frequency=-32.194, jitter=22.559, stability=11.297
-
+```
 
 Notes:
 The local time (reftime=) was "Sep 12 2004 16:04:28" when the local
@@ -2805,22 +2865,22 @@ synchronized, the value would be zero: reftime=00000000.00000000
 
 Th time of the local bsd1 is "Sep 12 2004 16:04:34"
 
-
-
 4. Fix the sanity limit and time correction problem:
-
 
 Here's what happened. A few minutes after Step 3, I got a connection
 refused:
 
+```
 bsd1 /root> ntpq -p
 ntpq: read: Connection refused
 
 ... then this appeared in /var/log/messages:
 
+```
 Sep 12 16:08:58 bsd1 ntpd[134]: time correction of 21529 seconds
 exceeds sanity limit (1000); set clock manually to the correct UTC
 time.
+```
 
 After reading a website:
 
@@ -2830,19 +2890,22 @@ Learned before starting ntpd, I should sync the time of the server a
 few times using ntpdate. This is to minimize the difference in time
 (offset) between the local server and the server(s) to sync with :
 
+```
 bsd1 /root> ntpdate -b 140.142.16.34
 12 Sep 15:24:58 ntpdate[268]: step time server 140.142.16.34 offset 21528.515705 sec
+```
 
 The -b option adjusts the time immediately rather than slewing it.
 
-
-48. HTTPD ServerName Lookup Problems
+# HTTPD ServerName Lookup Problems
 
 While my DSL and Internet connection was down, got the following error
 message during bootup:
 
+```
     httpd: Could not determine the servers fully qualified domain name
     using 127.0.0.1 for ServerName
+```
 
 Also, "startx" hung for 5 minutes before starting. It displayed an
 error like this: 
@@ -2855,16 +2918,18 @@ The problem was the machine couldn't find it's DNS lookup. To fix it,
 had to add the static ip addr (192.168.1.49) and hostname.domain.com
 hostname (bsd1.mcmillan.com bsd1) to /etc/hosts:
 
+```
 ::1                     localhost localhost.my.domain
 127.0.0.1               localhost localhost.my.domain
 
 192.168.1.1             mcmillan.com
 192.168.1.49            bsd1.mcmillan.com bsd1
+```
 
 Note: The actual hostname of the machine must match the hostname in
 /etc/hosts. In this case, it's "bsd1". The domain name can be anything.
 
-49. Sendmail Disable
+# Sendmail Disable
 
 During bootup, the sequence would hang (1-5 minutes) at the start of
 the sendmail daemons.
@@ -2874,18 +2939,22 @@ starting during boot up:
 
 sendmail_enable="NONE"
 
-50. Fonts
+# Fonts
 
 a. Summary
 
 To set the font family and size for Emacs, edit the ~/.Xdefaults file
 to include the "emacs.font:<font-name>" command:
 
-   emacs.font:-sony-fixed-medium-r-normal--16-150-75-75-c-80-iso8859-1
+```
+emacs.font:-sony-fixed-medium-r-normal--16-150-75-75-c-80-iso8859-1
+```
 
 For xterm, font settings go in ~/.Xdefaults also:
 
-   xterm*font:     -sony-fixed-medium-r-normal--24-230-75-75-c-120-iso8859-1
+```
+xterm*font:     -sony-fixed-medium-r-normal--24-230-75-75-c-120-iso8859-1
+```
 
 In general, the pixel number (in this case 16) is the overall
 important size parameter.
@@ -2894,8 +2963,10 @@ Use the "xlsfonts" command to display the loaded fonts (-fn) on my
 system that are fixed-width-fonts (m or c). The more stylish fonts,
 such as sony-fixed are 'c' fonts:
 
+```
      xlsfonts -fn '*-*-*-*-*-*-*-*-*-*-*-m*'
      xlsfonts -fn '*-*-*-*-*-*-*-*-*-*-*-c*'
+```
 
 b. Font Background
 
@@ -2906,18 +2977,23 @@ name. You can use wildcard patterns for the font name; then Emacs lets
 X choose one of the fonts that match the pattern. Here is an example,
 which happens to specify the font whose nickname is 6x13:
 
+```
+emacs -fn "-misc-fixed-medium-r-semicondensed--13-*-*-*-c-60-iso8859-1" &
+```
 
-     emacs -fn "-misc-fixed-medium-r-semicondensed--13-*-*-*-c-60-iso8859-1" &
-     
 You can also specify the font in your .Xdefaults file: 
 
-     emacs.font: -misc-fixed-medium-r-semicondensed--13-*-*-*-c-60-iso8859-1
-     
+```
+emacs.font: -misc-fixed-medium-r-semicondensed--13-*-*-*-c-60-iso8859-1
+```
+
 A long font name has the following form: 
 
+```
      -maker-family-weight-slant-widthtype-style...
      ...-pixels-height-horiz-vert-spacing-width-charset
-     
+```
+
 maker 
 This is the name of the font manufacturer. 
 
@@ -2969,17 +3045,21 @@ font with m or c in the spacing field of the long name is a
 fixed-width font. Here's how to use the xlsfonts program to list all
 the fixed-width fonts available on your system:
 
+```
      xlsfonts -fn '*x*' | egrep "^[0-9]+x[0-9]+"
      xlsfonts -fn '*-*-*-*-*-*-*-*-*-*-*-m*'
      xlsfonts -fn '*-*-*-*-*-*-*-*-*-*-*-c*'
-     
+```
+
 To see what a particular font looks like, use the xfd command. For example: 
 
-     xfd -fn 6x13
+```
+xfd -fn 6x13
+```
      
 displays the entire font 6x13. 
 
-51. Compiler
+# Compiler
 
 The GNU project C and C++ Compiler is installed on my
 system. Sometimes it is called GNU Make (or gmake). 
@@ -2990,7 +3070,7 @@ The C and C++ compilers are integrated.  Both process input files
 through one or more of four stages: preprocessing, compilation, assem-
 bly, and linking.
 
-53. CSH Shell
+# CSH Shell
 
 A Unix shell is an interface for controlling a Unix system. There are
 many different shells available. Some of them have similar
@@ -3073,12 +3153,12 @@ III) Shell docs
 http://www.nscp.umd.edu/shells.html
  
 
-54. SMTP 
+# SMTP 
 
 http://josefsson.org/smtpmail.html
 
 
-55. vi recover sessions
+# vi recover sessions
 
 > While booting I get the message "recovering vi editor sessions" and
 > the booting process is halted for a couple of minutes. I'm new to
@@ -3095,7 +3175,7 @@ Also, if the first one or two DNS server entries are not working you will see
 this behavior
 
 
-56. FreeBSD Newbie Sites
+# FreeBSD Newbie Sites
 
 http://bsdvault.net/
 
@@ -3108,26 +3188,29 @@ http://freebsdhowtos.com/
 http://elibrary.fultus.com/technical/index.jsp?topic=/com.fultus.freebsd/index.htm
 l
 
-57. Network Printing
+# Network Printing
 
 Put this in /etc/printcap:
 
+```
 lp|hp2610:
        :sh:
        :lp=:rm=192.168.1.102:rp=RAW:
        :sd=/var/spool/output/hp2610:
        :lf=var/log/lpd-errs:
+```
 
 Then do this:
 
+```
 bsd1 /root> cd /var/spool/output/
 bsd1 /var/spool/output> mkdir hp2610
 bsd1 /var/spool/output> chown bin hp2610
 bsd1 /var/spool/output> chgrp daemon hp2610
 bsd1 /var/spool/output> chmod 775 hp2610
+```
 
-
-58. User Accounts
+# User Accounts
 
 Use adduser and rmuser. 
 
@@ -3140,45 +3223,58 @@ usage:
 
 To display the user named 'greg':
 
+```
 $ pw user show greg
 greg:*:1000:1000::0:0:Greg McMillan:/home/greg:/bin/sh
+```
 
 http://www.bsdguides.org/2004/managing-usersgroups-with-pw/
 
 
 To add a user:
 
+```
 $ pw user add della -d /usr/home/della -s /bin/sh -m
 $ pw user show della
 della:*:1002:1002::0:0:User &:/usr/home/della:/bin/sh
+```
 
 To add a user's password (must do as root):
 
+```
 $ passwd della
 Changing local password for della.
 New password:
+```
 
 To change greg's shell to csh then copy over the startup script:
 
+```
 $ pw user mod greg -s /bin/csh
 $ cp .tcshrc ~greg 
-
+```
 
 To remove a user:
 
+```
 $ pw user del della
+```
 
 o Add User
 
+```
 $ adduser -silent
-
+```
 
 o Add User to Group
 
+```
 $ vi /etc/group
+```
 
 Then, add the username to the appropriate group line. Adding users to wheel grants "su root" access:
 
+```
 wheel:*:0:root,greg
 
 $ id
@@ -3188,23 +3284,24 @@ Password:
 bsd1 /usr/home/greg>
 bsd1 /usr/home/greg> id
 uid=0(root) gid=0(wheel) groups=0(wheel), 2(kmem), 3(sys), 4(tty), 5(operator), 20(staff), 31(guest)
-
+```
 
 o Test login
 
+```
 $ exit
 $ login: user
 $ password:
 $ id
-
-
+```
 
 o Error: Usernames must match regulare expression:
 
 When I type adduser, I get:
 
+```
 > Usernames must match regulare expression: [greg mcmillan]:
-
+```
 
 The first time you run adduser it prompts you to enter the default
 settings you want it to use in future (here you've chosen to allow only
@@ -3213,12 +3310,15 @@ wanted).
 
 The best thing to do would be to do:
 
+```
 mv /etc/adduser.conf /etc/adduser.conf.bak
-
+```
 
 and then run adduser as root again, but this time run it as:
 
+```
 adduser -silent
+```
 
 This will stop adduser from asking you for defaults and instead will
 work it out from it's default settings.
