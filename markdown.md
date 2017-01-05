@@ -30,7 +30,10 @@ Will jump to a heading like this:
 # Critical System and Applications
 ```
 
-Tip. For heading Markdown-to-Jekyll frontend conversion to work on Github Pages (https://gmcmillan100.github.io/docs/freebsd.html), there must be a blank space immediately before the Heading (#).
+Tips. For Markdown-to-Jekyll frontend conversion to work for headings on Github Pages (https://gmcmillan100.github.io/docs/freebsd.html), the following must be true:
+
+* The line immediately before the heading hash (#) must be blank
+* No blank space after the #
 
 # Resources
 
