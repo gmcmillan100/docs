@@ -12,7 +12,7 @@ rsync-3.0.2.tar.gz
 Copy many files:
 
 ```
-bsd1 /home/backup/fdry-files> scp _emacs _mailrc clipart_greg.eps frame.txt framemaker-postscript.txt illu
+$ scp _emacs _mailrc clipart_greg.eps frame.txt framemaker-postscript.txt illu
 strator rmailsetup webworks.txt mcmillan@192.83.249.36:/export/homed/mcmillan/docs/fdry-files
 Password:
 _emacs               100% |*******************************************************|  3905       00:00    
