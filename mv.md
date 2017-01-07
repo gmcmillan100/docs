@@ -1,4 +1,6 @@
 Move all files:
 
-	mv * ~greg/docs/
+```
+$ mv * ~greg/docs/
+```
 
