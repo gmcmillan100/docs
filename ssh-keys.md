@@ -90,3 +90,24 @@ Confirm it was added:
 $ ssh-add -l
 4096 ef:63:96:f2:47:90:76:69:27:ab:62:9b:d9:df:67:ea /home/greg/.ssh/id_rsa (RSA)
 ```
+
+# Add SSH Passphrase Permanently Across Reboots
+
+(Tried this but it isn't working yet... don't know why)
+
+https://sanctum.geek.nz/arabesque/uses-for-ssh-config/
+
+Force the key files to be kept permanently, by adding them in your ~/.ssh/config file.
+
+```
+cd ~/.ssh/
+touch config
+vi config
+```
+
+then add this inside:
+
+```
+IdentityFile ~/.ssh/id_rsa.pub
+```
+
