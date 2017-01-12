@@ -38,30 +38,29 @@ It works if you see the Apache Test Page
 http://apache-server.com/tutorials/ATgetting-started.html#downloading
 
 
-1. Get apache_1.3.31.tar.gz source code from www.apache.org and
-   install it in a directory
+1. Get apache_1.3.31.tar.gz source code from www.apache.org and install it in a directory
 
-/usr/local/apache-2
+	```
+	/usr/local/apache-2
+	```
 
 2. Unzip and expand the file
 
-```
-gunzip apache_1.3.31.tar.gz
-tar xvf apache_1.3.31.tar
-```
+	```
+	gunzip apache_1.3.31.tar.gz
+	tar xvf apache_1.3.31.tar
+	```
 
 3. Configure, make, then install
 
-```
-cd /usr/local/apache-2/apache_1.3.31
-./configure --prefix=/usr/local/apache
-make
-make install
-```
+	```
+	cd /usr/local/apache-2/apache_1.3.31
+	./configure --prefix=/usr/local/apache
+	make
+	make install
+	```
 
 Note: Excellent documentation at /usr/local/apache-2/apache_1.3.31/README.configure
-
-
 
 # Troubleshooting
 
@@ -102,9 +101,9 @@ $ /usr/local/sbin/apachectl start
 
 This line appeared in /var/log/httpd-error.log:
 
+```
 [Sat Jan 23 21:59:25 2016] [notice] Apache/1.3.29 (Unix) configured -- resuming normal operations
 
-```
 $ /usr/local/sbin/apachectl configtest
 Syntax OK
 ```

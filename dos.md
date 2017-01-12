@@ -1,5 +1,5 @@
 
-
+```
 ipconfig [/all | /release | /renew]
 ipconfig > stuff.txt
 edit <filename>
@@ -8,8 +8,12 @@ tracert <host-ipaddr>
 route print
 netstat [-a | -e | -r | -s]
 hostname
-continuous "ping <ip-addr> -t". Understanding the difference between these types of ping output significantly aids troubleshooting:
+continuous "ping <ip-addr> -t". Understanding the difference between these types of ping output 
+```
 
+# ping -t
+
+```
 C:\Documents and Settings\Greg McMillan>ping 210.10.10.10 -t
 
 Request timed out.
@@ -36,9 +40,11 @@ Reply from 210.10.10.10: bytes=32 time<1ms TTL=254
 Reply from 210.10.10.10: bytes=32 time<1ms TTL=254
 Reply from 210.10.10.10: bytes=32 time<1ms TTL=254
 Reply from 210.10.10.10: bytes=32 time<1ms TTL=254
-  
-netstat -an | more 
+```
 
+# netstat -an
+
+```
 C:\Documents and Settings\Greg McMillan>netstat -an | more
 
 Active Connections
@@ -68,6 +74,7 @@ Active Connections
   UDP    192.168.5.159:1900     *:*
   UDP    192.168.5.159:8366     *:*
   UDP    192.168.5.159:12762    *:*
+  ```
 
 
 Port "139" is windows networking. That means I'm acting as a Windows's server for whover
@@ -77,10 +84,12 @@ other users.
 
 "LISTENTING" means my box is acting as a server for other users. Not good. 
 
+# nslookup
 
-use "nslookup" alone to retrieve/test the nslookup table. Enter various "server" and "www..." 
+Use "nslookup" alone to retrieve/test the nslookup table. Enter various "server" and "www..." 
 commands at the ">" prompt.
 
+```
 C:\Documents and Settings\Greg McMillan>nslookup
 *** Default servers are not available
 Default Server:  UnKnown
@@ -95,7 +104,11 @@ Address:  127.0.0.1
 > server 1.1.1.1
 Default Server:  [1.1.1.1]
 Address:  1.1.1.1
+```
 
+# And More
+
+```
 > ?
 Commands:   (identifiers are shown in uppercase, [] means optional)
 NAME            - print info about the host/domain NAME using default server
@@ -129,4 +142,4 @@ ls [opt] DOMAIN [> FILE] - list addresses in DOMAIN (optional: output to FILE)
     -t TYPE     -  list records of the given type (e.g. A,CNAME,MX,NS,PTR etc.)
 view FILE           - sort an 'ls' output file and view it with pg
 exit            - exit the program
-
+```

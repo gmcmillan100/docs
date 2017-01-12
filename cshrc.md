@@ -1,6 +1,7 @@
-Enter "man tcsh" to learn all kinds of tricks:
+See "man tcsh" to learn all kinds of tricks:
 
 
+```
 greg-pc# cat ~/.cshrc
 # $FreeBSD: src/etc/root/dot.cshrc,v 1.25.2.2 2001/03/05 13:36:53 asmodai Exp $
 #
@@ -40,4 +41,4 @@ if ($?prompt) then
                 bindkey -k down history-search-forward
         endif
 endif
-greg-pc# 
+```

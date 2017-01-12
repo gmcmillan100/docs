@@ -1,3 +1,7 @@
+dmsg from the BSD1 host:
+
+```
+$dmsg
 Copyright (c) 1992-2015 The FreeBSD Project.
 Copyright (c) 1979, 1980, 1983, 1986, 1988, 1989, 1991, 1992, 1993, 1994
 	The Regents of the University of California. All rights reserved.
@@ -454,3 +458,4 @@ warning: total configured swap (986208 pages) exceeds maximum recommended amount
 warning: increase kern.maxswzone or reduce amount of swap.
 sis0: Applying short cable fix (reg=1d)
 pid 569 (ntpd), uid 0: exited on signal 11 (core dumped)
+```

@@ -1,15 +1,13 @@
-$Id$
+# IP Routing and MPLS Hot Talk, Tips, and Trends
 
+```
 Technical Documentation	            			Greg McMillan
 Personal Draft: For Greg's Eyes Only			Procket Networks
 Expiration Date: Who knows ...
+```
 
 
-                 IP Routing and MPLS Hot Talk, Tips, and Trends
-                 ----------------------------------------------
-
-
-Table of Contents
+# Contents
 
       1   IP Routing Terms and Routing 101 Basics
       2	  Why Route Optimize Using CSPF and MPLS?
@@ -37,7 +35,7 @@ Table of Contents
      25   Procket Close Out
      26   Packet Processing
 
-1 IP Routing Terms and Routing 101 Basics
+# 1 IP Routing Terms and Routing 101 Basics
 
 tli
 
@@ -262,7 +260,7 @@ IP, IP says here's a packet, IP looks up the destination address in
 the routing table, an IP forwards the packet.
 
 
-2 Why Route Optimize Using CSPF and MPLS?
+# 2 Why Route Optimize Using CSPF and MPLS?
 
 tli
 
@@ -300,7 +298,7 @@ established, it has an indefinite lifetime; the overhead of the
 connection is well amortized.
 
 
-3 Motivation for TE and QoS
+# 3 Motivation for TE and QoS
 
 tli
 
@@ -502,7 +500,7 @@ for Internet access. Someone else, with the right model, can do the
 same for VoIP.
 
 
-4 ATM
+# 4 ATM
 
 tli
 
@@ -540,7 +538,7 @@ Procket router, when cells are much larger than the packets getting
 presented, DRAM bandwidth is wasted.
 
 
-5 IGP Notes
+# 5 IGP Notes
 
 
 a) Rajesh per OSPF:
@@ -577,7 +575,7 @@ one OSPF LSA is different from the amount of information carried in an
 ISIS LSP.
 
 
-6  Link Types & DRs/Pseudo Nodes
+# 6  Link Types & DRs/Pseudo Nodes
 
 Srihari
 
@@ -608,7 +606,7 @@ A single router can be a psuedo-node/DR where he has multiple LAX
 networks that he can be connected to. 
 
 
-7 Packet Classifications 
+# 7 Packet Classifications 
 
 (RP queue priority assignments in ucode)
 
@@ -648,7 +646,7 @@ Legends:
        protocol's packets are unknown.
 
 
-
+```
 Layer 2: Encapsulations
 ----------------------
                              Ethernet           VLAN               HDLC            PPP             GRE    RP-Prio Protocol-Type     
@@ -713,7 +711,7 @@ RP-Prio Protocol
 2       ISIS P2P hello packets
 2       ISIS LAN hello packets
 3       All other ISIS packets (except the above two types).
-
+```
 
 Rajesh,
 
@@ -761,7 +759,7 @@ Q#7 -- Used by H/W for invalid packets   (Lowest Priority)
 
 
 
-8 IPv6 Notes
+# 8 IPv6 Notes
 
 Why IPv6? Need to move from a 32-bit address space (IPv4) to a
 128-bit address space (IPv6). There wasn't enough hierarchy in a
@@ -822,7 +820,7 @@ More IPv6 features:
     mechanisms. 
 
 
-9 IPsec VPNs, CPE, RFC 2547
+# 9 IPsec VPNs, CPE, RFC 2547
 
 
 a)
@@ -1068,7 +1066,7 @@ from dino to innet email regarding KT wanting 2547
     the core moving MPLS packets at line rate. Do you agree?
 
 
-10  Future Network Architectures, Pains, and Trends
+# 10  Future Network Architectures, Pains, and Trends
 
 This summary is the bulk of the feedback that tli and dino have heard
 from customers over the past 10 years.
@@ -1353,7 +1351,7 @@ Does router clustering address your concerns with managing too much
 equipment? Or, is L1 and L2 integration sufficient?
 
 
-11 Wireless
+# 11 Wireless
 
 The future of networking will be driven by the need for more
 bandwidth at ever decreasing costs. The resulting technology will
@@ -1373,7 +1371,7 @@ and beyond an existing broadband connection and flat rate Internet
 access fee.
 
 
-12 Netheads vs Bellheads
+# 12 Netheads vs Bellheads
 
 There's a limit to what packet
 switching can and should be used for. Use the right tool for the job
@@ -1392,7 +1390,7 @@ engineer. A good engineer should be trying to look at things as
 objectively as possible, understand that all technologies have
 limitations, and optimize to meet requirements. That's it.
 
-13  Packet Network vs Circuit Network
+# 13  Packet Network vs Circuit Network
 
 You ask why we should consider merging technologies. The
 economic answers are clear: running two networks is more
@@ -1408,7 +1406,7 @@ like our lifetime. Most new services will be deployed on the packet
 network. And all of this feuding is pretty much for naught, because
 the economics of the situation are pretty compelling.
 
-14  VoIP vs POTs vs Cell Phone
+# 14  VoIP vs POTs vs Cell Phone
 
 The case for VoIP is quite clear and it arrives in the mail monthly. If I
 can make phone calls and not pay POTS rates for them, then that
@@ -1473,7 +1471,7 @@ folks actually been able to raise their prices because of quality
 improvements? As far as I can tell prices are stable or falling.
 
 
-15  Enterprise Market
+# 15  Enterprise Market
 
 mass market = residential access
 
@@ -1495,7 +1493,7 @@ way up. That little phrase "carrier grade" is a 10x price multiplier.
 Tony
 
 
-16  SW Release Maintenance Issues
+# 16  SW Release Maintenance Issues
 
 tli
 
@@ -1521,7 +1519,7 @@ provide stability and all patches at the same time.  IOS tried
 and you see the result.
 
 
-17 Multicast Test Scenarios, Demo Setup, and Troubleshooting Tips
+# 17 Multicast Test Scenarios, Demo Setup, and Troubleshooting Tips
 
 a) Multicast Test Scenarios
 
@@ -1801,7 +1799,7 @@ c=IN IP4 233.0.236.100/128/1
 
 
 
-18  BGP History 
+# 18  BGP History 
 
 tli
 
@@ -1848,7 +1846,7 @@ our 'geek network' together.
 Tony
 
 
-19  ASIC vs COT
+# 19  ASIC vs COT
 
 tli
 
@@ -1901,7 +1899,7 @@ NPUs as ASICs or via COT. That does not change their role as an
 NPU, it just affects performance.
 
 
-20  Multicast Initiative and Applications
+# 20  Multicast Initiative and Applications
 
 dino
 
@@ -1989,7 +1987,7 @@ any IPv6 implementation.
     for revenue opportunities would be what I suggest for starters.
 
 
-21  Growth of the Internet
+# 21  Growth of the Internet
 
 tli
 
@@ -2007,7 +2005,7 @@ probably stop. Or at least not grow faster than Moore's law. Since
 that's not going to happen, the control plane will always need more
 cycles.
 
-22  Forklift Upgrades
+# 22  Forklift Upgrades
 
 The history of this market is somewhat interesting and relevant. At
 any point in time, the industry is capable of producing a router at
@@ -2061,7 +2059,7 @@ Number of Electra interfaces per MA:
 The total throughput per Line Card is 40G. 
 
 
-23   Multicast vs MPLS
+# 23   Multicast vs MPLS
 
 Multicast over mpls will most likely not work. With MPLS, there is no
 way to do an RPF lookup for multicast. 
@@ -2101,7 +2099,7 @@ what the People are really looking for). Way the dog. Same with
 rope to do it. 
 
  
-25   Procket Close Out
+# 25   Procket Close Out
 
 The ">" marks a lightreading question that tli is responding to.
 
@@ -2379,7 +2377,7 @@ A cnet interview with tli. The ">" marks cnet's question to tli.
  connection) up in an hour, that might be a business
  advantage.   
 
-26   Packet Processing
+# 26   Packet Processing
 
 In fact, both matter, but the packets/sec is harder to achieve. Consider that for each packet, a router has to perform an IP lookup, make a switching decision and get the packet to the correct output interface with the correct encapsulation. The amount of work is the same regardless of the size of the packet. This leads some manufacturers to skimp on the processing power for packet processing, so they will underperform when tested with small packets. With large packets, the packet processing rate is lower, so it's simply a matter of bandwidth. Most players get that right, or come arbitrarily close.
 
