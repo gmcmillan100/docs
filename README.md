@@ -15,6 +15,7 @@
 * [chmod](chmod.md)
 * [cshrc](cshrc.md)
 * [rsync](rsync.md)
+* [dos](dos.md)
 * [emacs](emacs.md)
 * [emacs-cursor-control](emacs-cursor-control.md.md)
 * [ip-routing-cheatsheet](ip-routing-cheatsheet.md)
