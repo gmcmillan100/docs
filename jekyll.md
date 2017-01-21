@@ -16,12 +16,12 @@ Main article: https://jekyllrb.com/docs/installation/
 
 2. Verify location and version:
 
-	~~~~
-	$ which jekyll
-	/Users/gmcmilla/.rvm/gems/ruby-2.0.0-p576/bin/jekyll
-	$ jekyll --version
-	jekyll 3.3.1
-	~~~~
+		```
+		$ which jekyll
+		/Users/gmcmilla/.rvm/gems/ruby-2.0.0-p576/bin/jekyll
+		$ jekyll --version
+		jekyll 3.3.1
+		```
 
 3. Inspect Jekyll's gems:
 
