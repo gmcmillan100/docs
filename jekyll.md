@@ -10,9 +10,9 @@ Main article: https://jekyllrb.com/docs/installation/
 
 1. Install it:
 
-	```
-	$ gem install jekyll
-	```
+		```
+		$ gem install jekyll
+		```
 
 2. Verify location and version:
 
@@ -25,15 +25,15 @@ Main article: https://jekyllrb.com/docs/installation/
 
 3. Inspect Jekyll's gems:
 
-	```
-	$ gem list jekyll
+		```
+		$ gem list jekyll
 
-	*** LOCAL GEMS ***
+		*** LOCAL GEMS ***
 
-	jekyll (3.3.1)
-	jekyll-sass-converter (1.5.0)
-	jekyll-watch (1.5.0)
-	```
+		jekyll (3.3.1)
+		jekyll-sass-converter (1.5.0)
+		jekyll-watch (1.5.0)
+		```
 # Hello World
 
 Running `jekyll new` will bundle install, resolve default dependencies, and create default config files:
@@ -72,13 +72,13 @@ Main article: https://jekyllrb.com/docs/themes/ and https://github.com/pietromen
 
 1. Find theme on remote server:
 
-	```
-	$ gem search jekyll-theme-cayman --remote
+```
+$ gem search jekyll-theme-cayman --remote
 
-	*** REMOTE GEMS ***
+*** REMOTE GEMS ***
 
-	jekyll-theme-cayman (0.0.3)
-	```
+jekyll-theme-cayman (0.0.3)
+```
 
 2. Install theme:
 
