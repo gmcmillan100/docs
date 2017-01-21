@@ -66,9 +66,6 @@ jekyll build
 jekyll serve
 ```
 
-
-
-
 # Install Theme
 
 Main article: https://jekyllrb.com/docs/themes/ and https://github.com/pietromenna/jekyll-cayman-theme
@@ -89,7 +86,7 @@ Main article: https://jekyllrb.com/docs/themes/ and https://github.com/pietromen
 	$ gem install jekyll-theme-cayman
 	```
 
-Confirm installed:
+	Confirm installed:
 
 	```
 	$ bundle show jekyll-theme-cayman
