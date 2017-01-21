@@ -1,5 +1,6 @@
 # docs
 
+* [jekyll](jekyll.md)
 * [git](git.md)
 * [markdown](markdown.md)
 * [freebsd](freebsd.md)
