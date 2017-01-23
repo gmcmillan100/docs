@@ -1,0 +1,48 @@
+# my .tcshrc
+#
+
+# tcshrc set commands
+
+set autolist
+set prompt = "%M %/> "
+unset autologout
+
+alias nxml     cd /usr/nxml/nxml-mode-20041004/schema
+alias e         'emacs &'
+alias w         ssh mcmillan@192.83.249.36
+alias p         ping cisco.com
+alias stuff     more ~backup/finances/stuff
+alias b         cd ~backup
+alias d         cd ~backup/docs
+alias todo      vi ~backup/docs/todo 
+alias x         cd ~backup/xml
+
+# leftover csh commands
+
+# A righteous umask
+umask 22
+
+set path = (/sbin /usr /bin /usr/sbin /usr/bin /usr/ports /usr/games /usr/local/sbin /usr/local/bin /usr/X
+11R6/bin $HOME/bin)
+
+setenv LD_LIBRARY_PATH /usr/xalan/Xalan-C_1_8_0-redhat_72_64-ecc_71/lib:/usr/xerces/xerces-c_2_5_0-redhat_
+72_64-ecc_71/lib
+
+setenv  EDITOR  emacs   
+setenv  PAGER   more
+setenv  BLOCKSIZE       K
+
+if ($?prompt) then
+        # An interactive shell -- set some stuff up
+        # set prompt = "`hostname -s`# "
+        set filec
+        set history = 100
+        set savehist = 100
+        set mail = (/var/mail/$USER)
+        if ( $?tcsh ) then
+                bindkey "^W" backward-delete-word
+                bindkey -k up history-search-backward
+                bindkey -k down history-search-forward
+        endif
+endif
+
