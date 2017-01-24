@@ -10,27 +10,35 @@ Jekyll and GitHub Pages, http://jmcglone.com/guides/github-pages/
 
 1. Create `.gitignore` and ignore the `_site` directory that Jekyll automatically generates each time you commit:
 
-```
-vi .gitignore
+	```
+	vi .gitignore
+	```
 
 and put this in it:
 
-_site
-```
+	```
+	_site
+	```
 
 2. Create a _config.yml file that tells Jekyll some basics about your project. In this example, we're telling Jekyll the name of our site and what version of Markdown we'd like to use:
 
-```
-vi _config.yml
-```
+	```
+	vi _config.yml
+	```
 
 and put this in it:
 
-```
-name: Greg McMillan
-markdown: kramdown
-```
+	```
+	name: Greg McMillan
+	markdown: kramdown
+	```
 
+3. Make index.html and main layout that will contain repeated elements like our <head> and <footer>:
+
+$ touch index.html
+$ mkdir _layouts
+$ cd _layouts
+$ touch default.html
 
 
 # Installation
