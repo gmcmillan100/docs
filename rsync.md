@@ -131,6 +131,27 @@ $ which rsync
 Just run the command ‘rsync’ and confirm…
 
 
+# Launching the Rsync Daemon on Server
+
+```
+vi /etc/services
+```
+
+then add this line:
+
+```
+rsync           873/tcp
+```
+
+```
+vi /etc/inetd.conf
+```
+
+then add this line:
+
+```
+rsync   stream  tcp     nowait  root   /usr/bin/rsync rsyncd --daemon
+```
 
 # Resources
 

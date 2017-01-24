@@ -106,7 +106,7 @@ than /tools/bin/gcc.
 Before installing FreeBSD, take an inventory of all the installed devices: disk types, controllers, network cards, monitor (and recommended resolution and color display bits), soundcard, video card,
 modems. 
 
-The easiest way to find this information is to look at the boot messages in /var/log/messages.
+The easiest way to find this information is to look at the boot messages in /var/log/messages. Enter "vi /var/log/messages". After the file opens, go to the end of it by entering a capital G. It's better to go to the latest events then scroll backward. Go to the moment that I last booted the machine. Scroll back until I see the copyrights for the Univ of Calif. That's the beginning. That's the beginning of the boot sequence.
 
 'dmesg' shows the bootup messages, which provide some info.
 
@@ -213,6 +213,11 @@ To reboot, you must be "root". However, first enter "sync;". Reason: When you wr
 One of the ways a highly evolved operating system gets to be fast is by doing updates to relatively slow media asynchronously. When you say write this file, the system tells you its done. But it's not really done. The system sent the operation on its way. 
 
 The LAST THING YOU WANT TO DO, IS POWER THE MACHINE OFF. When taking the machine down, need to push out the pending operations (runs). This is why when the power goes off, some machines take a long time to come back up.
+
+The ";" is just a command separator. I could also just enter "sync", Return, then "halt". I need to be "root" to do this.
+
+After entering "sync;halt", just press the power button to turn off the machine.
+
 
 # DHCP
 
@@ -1268,6 +1273,13 @@ root> ls -l /kern*
 
 # Installing a New Version of BSD
 
+Use uname to display what's running:
+
+```
+$ uname -a
+FreeBSD bsd 10.2-RELEASE FreeBSD 10.2-RELEASE #0: Thu Feb 25 15:49:12 PST 2016     greg@bsd:/usr/obj/usr/src/sys/GREGKERNEL  i386
+```
+
 Doing a fresh re-installation from an iso image on a bootable CD is the safest and easiest way to go.
 
 Do this:
@@ -1476,13 +1488,14 @@ swap	   Should be at least twice as big as the amount of physical RAM memory in 
 	   Allocated 500MB to this swap slice
 
 
-/usr	   Almost all my applications are in /user/local. Normal
-           stuff is in /user/sbin
+/usr	   Almost all my applications are in /user/local. Normal stuff is in /user/sbin
 
            Allocated 5.5 G for this slice
 
 /scratch   (optional). Allocated 1G for this slice
 ```
+
+Note: /local is always a local harddrive on whatever machine you are logged into.
 
 Beyond these, you can create more if desired. You might create a scratch
 partition too for new release testing. A scratch partition allows you
@@ -1897,6 +1910,8 @@ procfs              4        4        0   100%    /proc
 
 # Fstab for MSDOS Mounting
 
+Fstab defines the filesystem or device to be mounted.
+
 See http://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/book.html
 
 For XP, might need to use "mount_ntfs"
@@ -1943,6 +1958,13 @@ there.
 >  > > proc                    /proc           procfs  rw              0       0
 >  > > greg-pc# 
 ```
+Jerry entered "cat /etc/fstab". We need to edit this file, so we
+    can comment off this "X". Jerry then entered "mount -a". Then,
+    "mount /usr". Then, "vi /etc/fstab". Jerry put a "#" in front of
+    the line "/dev/X". Then, "mount -a". Then, "Ctrl d". The command
+    "mount -a" mounts everything that is in the fstab that is
+    auto mountable. However, sometimes I'll have fstab entries that
+    don't support auto mount (wait to be told to auto mount). 
 
 # Windows Killed Boot Manager
 
@@ -3328,5 +3350,45 @@ adduser -silent
 This will stop adduser from asking you for defaults and instead will
 work it out from it's default settings.
 
+# motd
 
+Message of the Day (MOTD)
 
+```
+greg-pc# cat /etc/motd
+```
+
+# spkrtest
+
+Tests the onboard speaker:
+
+```
+$ spkrtest
+You have no write access to /dev/speaker or the speaker device is not enabled
+in kernel. Cannot play any melody! See spkr(4).
+```
+
+2. Select the melody I want to play.
+
+   If it doesn't work, I'll get this message:
+
+```
+Sorry, cannot play any melody!!!
+```
+
+To set up my sound-card capabilities:
+
+   1. Read the BSD Handbook
+
+   2. Inspect /var/log/messages from the last time I booted. Check out
+   what the device probe stuff said about any kind of sound
+   capabilities that it found when it was coming up.
+
+# uptime
+
+Show how long system has been running:
+
+```
+$ uptime
+ 7:53AM  up  3:29, 1 user, load averages: 0.00, 0.00, 0.00
+```
