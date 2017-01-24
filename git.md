@@ -112,5 +112,6 @@ git clone git@github.com:gmcmillan100/docs.git
 
 # Resources
 
+GitHub Pages, https://pages.github.com/
+
 Markdown reference, https://en.support.wordpress.com/markdown-quick-reference/
-Pages, https://pages.github.com/

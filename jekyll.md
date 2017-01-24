@@ -4,6 +4,35 @@ Jekyll is, at its core, a text transformation engine. The concept behind the sys
 
 See https://jekyllrb.com/docs/structure/
 
+Jekyll and GitHub Pages, http://jmcglone.com/guides/github-pages/
+
+# Basic Setup
+
+1. Create `.gitignore` and ignore the `_site` directory that Jekyll automatically generates each time you commit:
+
+```
+vi .gitignore
+
+and put this in it:
+
+_site
+```
+
+2. Create a _config.yml file that tells Jekyll some basics about your project. In this example, we're telling Jekyll the name of our site and what version of Markdown we'd like to use:
+
+```
+vi _config.yml
+```
+
+and put this in it:
+
+```
+name: Greg McMillan
+markdown: kramdown
+```
+
+
+
 # Installation
 
 Main article: https://jekyllrb.com/docs/installation/

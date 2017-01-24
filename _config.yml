@@ -1,2 +1,5 @@
+name: Greg McMillan
+markdown: kramdown
+
 #theme: jekyll-theme-cayman
 theme: minima

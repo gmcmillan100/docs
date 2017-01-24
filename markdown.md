@@ -1,7 +1,3 @@
-# Jekyll and GitHub Pages
-
-http://jmcglone.com/guides/github-pages/
-
 # Sublime Markdown Preview
 
 Github Flavored Markdown (GFM)
