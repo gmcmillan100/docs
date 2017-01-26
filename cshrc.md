@@ -1,3 +1,10 @@
+---
+layout: page
+title: cshrc
+permalink: /cshrc/
+resource: true
+---
+
 See "man tcsh" to learn all kinds of tricks:
 
 

@@ -1,45 +1,89 @@
+---
+layout: page
+title: Jekyll
+permalink: /jekyll/
+resource: true
+categories: [gold]
+description: A 400 oz bar
+---
+
 # Intro
 
 Jekyll is, at its core, a text transformation engine. The concept behind the system is this: you give it text written in your favorite markup language, be that Markdown, Textile, or just plain HTML, and it churns that through a layout or a series of layout files. 
 
 See https://jekyllrb.com/docs/structure/
 
+[See Markdown](/markdown/index.html)
+
 Jekyll and GitHub Pages, http://jmcglone.com/guides/github-pages/
 
 # Basic Setup
 
-1. Create `.gitignore` and ignore the `_site` directory that Jekyll automatically generates each time you commit:
+1. Run `jekyll new <name>` to create a new site, bundle install, resolve default dependencies, and create default config files:
 
 	```
-	vi .gitignore
+	jekyll new mynewsite
+	cd mynewsite
+	```
+	These files were autogen'd:
+
+	```
+	Gemfile		
+	Gemfile.lock	
+	_config.yml	
+	_posts		
+	about.md	
+	index.md
 	```
 
-and put this in it:
-
-	```
-	_site
-	```
-
-2. Create a _config.yml file that tells Jekyll some basics about your project. In this example, we're telling Jekyll the name of our site and what version of Markdown we'd like to use:
+2. Open the Jekyll's `_config.yml` configuration file:
 
 	```
 	vi _config.yml
 	```
 
-and put this in it:
+	then add some basic info:
 
 	```
+	title: Docs: A KB for learning in the cold
 	name: Greg McMillan
-	markdown: kramdown
+	email: gmcmillan100@gm**l.com
+	```
+
+3. Create `.gitignore` and ignore the `_site` directory that Jekyll automatically generates each time you commit:
+
+	```
+	vi .gitignore
+	```
+
+	and put this in it:
+
+	```
+	_site
+	```
+
+4. Build, serve, then visit the local URL at http://127.0.0.1:4000/:
+
+	```
+	jekyll build
+	jekyll serve
 	```
 
 3. Make index.html and main layout that will contain repeated elements like our <head> and <footer>:
 
-$ touch index.html
-$ mkdir _layouts
-$ cd _layouts
-$ touch default.html
+	```
+	$ touch index.html
+	$ mkdir _layouts
+	$ cd _layouts
+	$ touch default.html
+	```
+# Editing
 
+Links
+
+```
+[See Markdown](/markdown/index.html)
+```
 
 # Installation
 
@@ -60,7 +104,7 @@ Main article: https://jekyllrb.com/docs/installation/
 		jekyll 3.3.1
 		```
 
-3. Inspect Jekyll's gems:
+3. Inspect Jekyll's locally installed gems:
 
 		```
 		$ gem list jekyll
@@ -68,40 +112,11 @@ Main article: https://jekyllrb.com/docs/installation/
 		*** LOCAL GEMS ***
 
 		jekyll (3.3.1)
+		jekyll-feed (0.8.0)
 		jekyll-sass-converter (1.5.0)
+		jekyll-theme-cayman (0.0.3)
 		jekyll-watch (1.5.0)
 		```
-# Hello World
-
-Running `jekyll new` will bundle install, resolve default dependencies, and create default config files:
-
-```
-jekyll new mynewsite
-cd mynewsite
-```
-
-```
-Gemfile		
-Gemfile.lock	
-_config.yml	
-_posts		
-about.md	
-index.md
-```
-
-Look at the configs:
-
-```
-cat Gemfile
-cat _config.yml
-```
-
-Build, serve, then visit the local URL at http://127.0.0.1:4000/:
-
-```
-jekyll build
-jekyll serve
-```
 
 # Install Theme
 
@@ -200,6 +215,41 @@ jekyll-theme-cayman (0.0.3)
 	[2017-01-20 11:51:17] ERROR `/favicon.ico' not found.
 	```
 
+# Filtering and Linking Using the Liquid Contains Property
+
+In `_config.yml`, add the index of categories:
+
+```
+category: [gold, silver, copper]
+```
+In your `page.md` inside the front matter, add one or more of the matching categories available in the `_config.yml`:
+
+```
+---
+layout: page
+title: Jekyll
+categories: [gold]
+description: A 400 oz bar
+---
+```
+
+In your template to get all the pages in the `gold` category you do:
+
+
+```ruby
+<ul>
+{% for page in site.pages %}
+  {% if page.categories contains 'gold' %}
+    <div class="item">
+      <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+      <p>{{page.description}}</p>  
+    </div>
+  {% endif %}
+{% endfor %}
+</ul>
+```
+
+
 # Resources
 
 Jekyll docs, https://jekyllrb.com/docs/themes/
@@ -210,6 +260,8 @@ http://idratherbewriting.com/2017/01/18/writing-tech-docs-like-a-hacker-with-jek
 
 
 # Source
+
+jekyll cheat sheet, http://ricostacruz.com/cheatsheets/jekyll.html
 
 https://github.com/jekyll/jekyll
 

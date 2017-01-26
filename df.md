@@ -1,3 +1,9 @@
+---
+layout: page
+title: df
+permalink: /df/
+resource: true
+---
 Use the "df" command to view my disk partitioning structure. This is what is looks like when the temp dir on suncs9 is full: 
 
 ```

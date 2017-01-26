@@ -1,3 +1,9 @@
+---
+layout: page
+title: Apache
+permalink: /apache/
+resource: true
+---
 
 # Apache Setup
 

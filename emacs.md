@@ -1,6 +1,9 @@
-
-                           Emacs
-                           =====
+---
+layout: page
+title: Emacs
+permalink: /emacs/
+resource: true
+---
 
 Table of Contents:
 

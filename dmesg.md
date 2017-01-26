@@ -1,3 +1,9 @@
+---
+layout: page
+title: dmsg
+permalink: /dmsg/
+resource: true
+---
 dmsg from the BSD1 host:
 
 ```

@@ -1,4 +1,9 @@
-# FreeBSD Setup
+---
+layout: page
+title: FreeBSD
+permalink: /freebsd/
+resource: true
+---
 
 # Contents
 

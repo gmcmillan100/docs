@@ -1,3 +1,9 @@
+---
+layout: page
+title: Bash
+permalink: /bash/
+resource: true
+---
 
 # The GNU Bourne-Again SHell (BASH)
 

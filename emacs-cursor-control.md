@@ -1,7 +1,9 @@
-Basic Emacs Cursor Control 
-==========================
-
-Last updated: 6/27/02
+---
+layout: page
+title: Emacs Cursor Control
+permalink: /emacscontrol/
+resource: true
+---
 
 	C-s	Incremental search forward (isearch-forward)
 		Type another C-s to move to the next occurrence of the search string. 

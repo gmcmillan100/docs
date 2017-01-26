@@ -1,3 +1,10 @@
+---
+layout: page
+title: cp
+permalink: /cp/
+resource: true
+---
+
 ```
 cp -rf <olddir> <newdir>
 rm -rf <dirname>

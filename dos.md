@@ -1,3 +1,9 @@
+---
+layout: page
+title: DOS
+permalink: /dos/
+resource: true
+---
 
 ```
 ipconfig [/all | /release | /renew]

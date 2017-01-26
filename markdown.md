@@ -1,3 +1,10 @@
+---
+layout: page
+title: Markdown
+permalink: /markdown/
+resource: true
+---
+
 # Sublime Markdown Preview
 
 Github Flavored Markdown (GFM)

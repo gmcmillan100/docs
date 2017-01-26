@@ -1,3 +1,9 @@
+---
+layout: page
+title: du
+permalink: /du/
+resource: true
+---
 It stands for Disk Usage. 
 
 Try it with/without the -h (human readable) and -k options. It will count allocation units.

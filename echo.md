@@ -1,3 +1,9 @@
+---
+layout: page
+title: echo
+permalink: /echo/
+resource: true
+---
 Use "echo" to identify the search path for the executable files that
 I'm using. For example, my "ping" utility is coming from /usr/sbin/ping:
 

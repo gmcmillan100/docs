@@ -1,3 +1,10 @@
+---
+layout: page
+title: chmod
+permalink: /chmod/
+resource: true
+---
+
 chmod = Change File Modes
 
 # Owner, group, world
