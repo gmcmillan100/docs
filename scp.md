@@ -1,3 +1,9 @@
+---
+layout: page
+title: scp
+permalink: /scp/
+resource: true
+---
 # Copy File To Remote
 
 To copy local file "rsync-3.0.2.tar.gz" to a remote host at "192.168.1.101" via user "greg". Don't forget the ":"

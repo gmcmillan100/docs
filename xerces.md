@@ -1,7 +1,9 @@
-
-
-       Xerces
-       ------
+---
+layout: page
+title: Xerces
+permalink: /xerces/
+resource: true
+---
 
 Installation
 ------------

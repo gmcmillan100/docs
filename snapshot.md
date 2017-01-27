@@ -1,3 +1,9 @@
+---
+layout: page
+title: Snapshot
+permalink: /snapshot/
+resource: true
+---
 > You can recover files up to a few days old by taking advantage of 
 > the dot-snapshot facility.  Every directory on the filers (ie, 
 > home dirs and /procket) contains a (sometimes invisible) directory 

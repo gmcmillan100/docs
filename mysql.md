@@ -1,3 +1,9 @@
+---
+layout: page
+title: Mysql
+permalink: /mysql/
+resource: true
+---
 Monitor login
 -------------
 To access the MySQL Remote Monitor, as the user (-u) "mcmillan", call that user's password (-p), then choose the db named "mcmillan":

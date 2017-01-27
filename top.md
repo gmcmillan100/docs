@@ -1,4 +1,11 @@
-[gmcmillan@redd3132 specs]% top
+---
+layout: page
+title: top
+permalink: /top/
+resource: true
+---
+```
+% top
   7:06pm  up 14 days,  8:55,  2 users,  load average: 0.09, 0.09, 0.04
 80 processes: 64 sleeping, 2 running, 0 zombie, 14 stopped
 CPU states:  3.5% user,  4.3% system,  0.0% nice, 92.0% idle
@@ -18,10 +25,12 @@ Swap:  393552K av,   15376K used,  378176K free                   70460K cached
     5 root       0   0     0    0     0 SW    0.0  0.0   0:08 kswapd
     6 root     -20 -20     0    0     0 SW<   0.0  0.0   0:00 mdrecoveryd
    63 root       0   0     0    0     0 SW    0.0  0.0   0:00 khubd
-
+```
 
 Tips:
 
+```
 SHIFT+M		=	sort memory usage by application 
 q		=	escape from memory-display mode 
 free		=	display mem usage
+```

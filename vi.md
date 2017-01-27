@@ -1,3 +1,9 @@
+---
+layout: page
+title: vi
+permalink: /vi/
+resource: true
+---
 
 # Commands
 

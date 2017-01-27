@@ -1,3 +1,10 @@
+---
+layout: page
+title: Java
+permalink: /java/
+resource: true
+---
+
 Next learning:
 
 http://www.java-made-easy.com/java-for-beginners.html

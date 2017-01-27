@@ -1,7 +1,9 @@
-
-home netowrk security tips
---------------------------
-
+---
+layout: page
+title: Security
+permalink: /security/
+resource: true
+---
 
 all incoming ports blocks, 23, 80, ...
 

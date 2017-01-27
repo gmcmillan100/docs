@@ -1,3 +1,9 @@
+---
+layout: page
+title: su
+permalink: /su/
+resource: true
+---
 Switch user. The "-l" is a dash followed by a lowercase "L".
 
 [gmcmillan@redd2212 11beta]% su -l frank 

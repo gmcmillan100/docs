@@ -1,3 +1,9 @@
+---
+layout: page
+title: ifconfig
+permalink: /ifconfig/
+resource: true
+---
 Enter "ifconfig" to see if I'm on the network. I can also enter
 "ifconfig <interface-type>". On my laptop, the Ethernet interface is
 called "fxp0", so I would enter "ifconfig fxp0" as a short cut.

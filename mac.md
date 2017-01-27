@@ -1,3 +1,10 @@
+---
+layout: page
+title: Mac
+permalink: /mac/
+resource: true
+---
+
 Boot Up
 -------
 

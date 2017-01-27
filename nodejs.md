@@ -1,3 +1,9 @@
+---
+layout: page
+title: Node JS
+permalink: /node/
+resource: true
+---
 Node.js and node-mysql
 
 try this http://www.sitepoint.com/using-node-mysql-javascript-client/

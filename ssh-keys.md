@@ -1,3 +1,9 @@
+---
+layout: page
+title: SSH
+permalink: /ssh/
+resource: true
+---
 # Generate a new ssh key
 
 ```

@@ -1,5 +1,9 @@
-
-
+---
+layout: page
+title: Procmail
+permalink: /procmail/
+resource: true
+---
 
 Use a proc mail filter to filter email. This filtering gets done
 before emacs or VM gets the mail. Jerry uses a simple filter for the rrcs
@@ -10,8 +14,6 @@ describes how to set this up.
 I still have to poll the IMAP server to get my email. 
 
 rrcs messages. Send them to a dev/null.
-
-
 
 1. Procmail Overview
 

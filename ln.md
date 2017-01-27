@@ -1,3 +1,9 @@
+---
+layout: page
+title: ln
+permalink: /ln/
+resource: true
+---
 Create a sim link.
 
 The other choice is to create a file named that. All the data will go

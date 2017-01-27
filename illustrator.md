@@ -1,6 +1,9 @@
-
-              Illustrator Tips
-              ================
+---
+layout: page
+title: Illustrator
+permalink: /illustrator/
+resource: true
+---
 
 To make the granularity go away, save the illo as:
 

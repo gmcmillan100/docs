@@ -1,8 +1,9 @@
-
-                         VM
-                         ==
-
-Table of Contents
+---
+layout: page
+title: vm
+permalink: /vm/
+resource: true
+---
 
 M-x vm		Opens my email client application from Emacs
 Fundamental mode

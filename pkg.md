@@ -1,3 +1,9 @@
+---
+layout: page
+title: pkg
+permalink: /pkg/
+resource: true
+---
 pkg provides an interface for manipulating packages: registering, adding, removing and upgrading packages.
 
 

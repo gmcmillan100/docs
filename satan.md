@@ -1,7 +1,9 @@
-
-
-                 Satan
-                 -----
+---
+layout: page
+title: Satan
+permalink: /satan/
+resource: true
+---
 
 http://www.fish.com/satan/
 

@@ -1,8 +1,9 @@
-
-
-                 Xalan
-                 -----
-
+---
+layout: page
+title: Xalan
+permalink: /xalan/
+resource: true
+---
 
 Installation
 ------------

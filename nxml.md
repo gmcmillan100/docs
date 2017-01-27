@@ -1,6 +1,9 @@
-
-                    nXML Mode
-                    --------- 
+---
+layout: page
+title: nxml
+permalink: /nxml/
+resource: true
+---
 
 Overview 
 -------- 

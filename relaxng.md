@@ -1,6 +1,9 @@
-
-                        RELAX NG
-                        --------
+---
+layout: page
+title: Relax NG
+permalink: /relaxng/
+resource: true
+---
 
 Introduction 
 ------------ 

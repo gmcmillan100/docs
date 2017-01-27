@@ -1,3 +1,9 @@
+---
+layout: page
+title: Git
+permalink: /git/
+resource: true
+---
 # Access
 
 repo, https://github.com/gmcmillan100/docs

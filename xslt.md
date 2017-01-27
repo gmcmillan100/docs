@@ -1,6 +1,9 @@
-
-                          XSLT
-                          ----
+---
+layout: page
+title: XSLT
+permalink: /xslt/
+resource: true
+---
 
 Introduction
 ------------

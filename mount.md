@@ -1,3 +1,9 @@
+---
+layout: page
+title: mount
+permalink: /mount/
+resource: true
+---
 Mount a file system.
 
 An example using "mount" and "fstab"

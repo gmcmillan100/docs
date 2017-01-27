@@ -1,5 +1,11 @@
-# mail
+---
+layout: page
+title: Mail
+permalink: /mail/
+resource: true
+---
 
+```
 [gmcmillan@suncs9 ~]% mail gmcmillan
 Subject: Test Email
 Hello,
@@ -8,6 +14,7 @@ Did you get this, Greg?
 ^C  					<<-----Enter Ctrl C here
 (Interrupt -- one more to kill letter) 	<<-----Enter Ctrl D here
 EOT 					<<-----Enter Return here
+```
 
 # mailstat
 

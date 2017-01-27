@@ -1,3 +1,9 @@
+---
+layout: page
+title: tar
+permalink: /tar/
+resource: true
+---
 ```
 tar zcf <destination-filename> <source-directory-to-get-files-from>
 ```

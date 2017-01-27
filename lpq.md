@@ -1,4 +1,9 @@
-# lpq
+---
+layout: page
+title: lpq
+permalink: /lpq/
+resource: true
+---
 
 Checking a printer que:
 

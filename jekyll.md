@@ -15,7 +15,10 @@ See https://jekyllrb.com/docs/structure/
 
 [See Markdown](/markdown/index.html)
 
-Jekyll and GitHub Pages, http://jmcglone.com/guides/github-pages/
+Jekyll and GitHub Pages:
+
+https://24ways.org/2013/get-started-with-github-pages/
+http://jmcglone.com/guides/github-pages/
 
 # Basic Setup
 

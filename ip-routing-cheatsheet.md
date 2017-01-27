@@ -1,4 +1,9 @@
-# IP Routing and MPLS Hot Talk, Tips, and Trends
+---
+layout: page
+title: IP Routing and MPLS
+permalink: /iprouting/
+resource: true
+---
 
 ```
 Technical Documentation	            			Greg McMillan

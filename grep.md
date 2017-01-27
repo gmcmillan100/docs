@@ -1,3 +1,9 @@
+---
+layout: page
+title: grep
+permalink: /grep/
+resource: true
+---
 [gmcmillan@suncs9 ~]% find . -name gre.txt -print
 ./.snapshot/hourly.0/src/sw/specs/routing/gre.txt
 ./.snapshot/hourly.0/src/sw/sw/specs/routing/gre.txt

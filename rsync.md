@@ -1,3 +1,9 @@
+---
+layout: page
+title: rsync
+permalink: /rsync/
+resource: true
+---
 # To do
 
 - rsync without ssh and user account login
