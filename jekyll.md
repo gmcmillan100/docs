@@ -80,6 +80,25 @@ http://jmcglone.com/guides/github-pages/
 	$ cd _layouts
 	$ touch default.html
 	```
+# Baseurl
+
+In `_config.yml`, set baseurl to the subpath of your site:
+
+``
+baseurl: "/docs"
+``
+
+On github, the URL resolves to this:
+
+```
+https://gmcmillan100.github.io/docs/
+```
+On an .md page, add the `site.baseurl` to the `page.url` to resolve:
+
+```ruby
+ <li><a href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a></li>
+```
+
 # Editing
 
 Links
@@ -94,32 +113,32 @@ Main article: https://jekyllrb.com/docs/installation/
 
 1. Install it:
 
-		```
-		$ gem install jekyll
-		```
+	```
+	$ gem install jekyll
+	```
 
 2. Verify location and version:
 
-		```
-		$ which jekyll
-		/Users/gmcmilla/.rvm/gems/ruby-2.0.0-p576/bin/jekyll
-		$ jekyll --version
-		jekyll 3.3.1
-		```
+	```
+	$ which jekyll
+	/Users/gmcmilla/.rvm/gems/ruby-2.0.0-p576/bin/jekyll
+	$ jekyll --version
+	jekyll 3.3.1
+	```
 
 3. Inspect Jekyll's locally installed gems:
 
-		```
-		$ gem list jekyll
+	```
+	$ gem list jekyll
 
-		*** LOCAL GEMS ***
+	*** LOCAL GEMS ***
 
-		jekyll (3.3.1)
-		jekyll-feed (0.8.0)
-		jekyll-sass-converter (1.5.0)
-		jekyll-theme-cayman (0.0.3)
-		jekyll-watch (1.5.0)
-		```
+	jekyll (3.3.1)
+	jekyll-feed (0.8.0)
+	jekyll-sass-converter (1.5.0)
+	jekyll-theme-cayman (0.0.3)
+	jekyll-watch (1.5.0)
+	```
 
 # Install Theme
 
@@ -127,13 +146,13 @@ Main article: https://jekyllrb.com/docs/themes/ and https://github.com/pietromen
 
 1. Find theme on remote server:
 
-```
-$ gem search jekyll-theme-cayman --remote
+	```
+	$ gem search jekyll-theme-cayman --remote
 
-*** REMOTE GEMS ***
+	*** REMOTE GEMS ***
 
-jekyll-theme-cayman (0.0.3)
-```
+	jekyll-theme-cayman (0.0.3)
+	```
 
 2. Install theme:
 
@@ -175,8 +194,6 @@ jekyll-theme-cayman (0.0.3)
 	Using jekyll-theme-cayman 0.0.3
 	...
 	```
-
-
 
 # Build and Serve
 

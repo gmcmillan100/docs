@@ -11,7 +11,6 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
 category: [gold, silver, copper]
 
-# Build settings
 markdown: kramdown
 #theme: jekyll-theme-cayman
 theme: minima
@@ -20,3 +19,6 @@ gems:
 exclude:
   - Gemfile
   - Gemfile.lock
+
+#sass:
+#    style: compressed
