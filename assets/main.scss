@@ -3,14 +3,17 @@
 ---
 @charset "utf-8";
 
-#grid {float:left; width:410px; height:380px; margin: 0px -22px;}
+#grid {float:left; width:410px; height:480px; margin: 0px -22px;}
 .kringle {float:right}
 
 #limheight {
-    height: 400px; /*your fixed height*/
+    height: 500px; /*your fixed height*/
+    width: 500px; /*your fixed height*/
     -webkit-column-count: 3;
        -moz-column-count: 3;
             column-count: 3; /*3 in those rules is just placeholder -- can be anything*/
+    column-gap: 40px;
+
 }
 #limheight li {
     display: inline-block; /*necessary*/

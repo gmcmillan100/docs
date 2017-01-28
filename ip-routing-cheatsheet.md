@@ -1,6 +1,6 @@
 ---
 layout: page
-title: IP Routing and MPLS
+title: IP Routing
 permalink: /iprouting/
 resource: true
 ---

@@ -7,9 +7,19 @@ categories: [gold]
 description: A 400 oz bar
 ---
 
-# Intro
+* [Introduction](#introduction)
+* [Basic Setup](#basic-setup)
+* [Baseurl](#baseurl)
+* [Linking](#linking)
+* [Installation](#installation)
+* [Theme Install](#theme-install)
+* [Build and Serve](#build-and-serve)
+* [Liquid Contains Property](#liquid-contains-property)
+* [Resources](#resources)
 
-Jekyll is, at its core, a text transformation engine. The concept behind the system is this: you give it text written in your favorite markup language, be that Markdown, Textile, or just plain HTML, and it churns that through a layout or a series of layout files. 
+# Introduction
+
+Jekyll is a text transformation engine and static site generator. The concept behind the system is this: you give it text written in your favorite markup language, be that Markdown, Textile, or just plain HTML, and it churns that through a layout or a series of layout files. 
 
 See https://jekyllrb.com/docs/structure/
 
@@ -22,24 +32,33 @@ http://jmcglone.com/guides/github-pages/
 
 # Basic Setup
 
+Do this after installation.
+
 1. Run `jekyll new <name>` to create a new site, bundle install, resolve default dependencies, and create default config files:
 
 	```
 	jekyll new mynewsite
 	cd mynewsite
 	```
-	These files were autogen'd:
+	These files were autogen'd at the root of the source directory:
 
 	```
-	Gemfile		
-	Gemfile.lock	
 	_config.yml	
+	Gemfile		
+	Gemfile.lock
 	_posts		
 	about.md	
 	index.md
 	```
 
-2. Open the Jekyll's `_config.yml` configuration file:
+	File | Purpose
+	------------ | -------------
+	`_config.yml` | Jekyll's configuration file
+	`Gemfile` | Bundler uses to keep track of required gems
+	`Gemfile.lock` | Lock file 
+
+
+2. Open the `_config.yml` configuration file:
 
 	```
 	vi _config.yml
@@ -48,12 +67,20 @@ http://jmcglone.com/guides/github-pages/
 	then add some basic info:
 
 	```
-	title: Docs: A KB for learning in the cold
+	title: Kringle KB
 	name: Greg McMillan
-	email: gmcmillan100@gm**l.com
+	email: gmcmillan100@gmail.com
 	```
 
-3. Create `.gitignore` and ignore the `_site` directory that Jekyll automatically generates each time you commit:
+3. Build the site on the local preview server then visit http://127.0.0.1:4000/ when prompted:
+
+	```
+	jekyll serve
+	```
+
+	When `jekyll serve` runs, it automatically creates a `_site` directory at the project's root. That’s where files are saved when they’re turned into static HTML. Don’t touch the files in here — they’re the generated files and will get overwritten every time changes are made.
+
+4. Create `.gitignore` and ignore the `_site` directory that Jekyll automatically generates each time you commit:
 
 	```
 	vi .gitignore
@@ -65,21 +92,6 @@ http://jmcglone.com/guides/github-pages/
 	_site
 	```
 
-4. Build, serve, then visit the local URL at http://127.0.0.1:4000/:
-
-	```
-	jekyll build
-	jekyll serve
-	```
-
-3. Make index.html and main layout that will contain repeated elements like our <head> and <footer>:
-
-	```
-	$ touch index.html
-	$ mkdir _layouts
-	$ cd _layouts
-	$ touch default.html
-	```
 # Baseurl
 
 In `_config.yml`, set baseurl to the subpath of your site:
@@ -88,7 +100,7 @@ In `_config.yml`, set baseurl to the subpath of your site:
 baseurl: "/docs"
 ``
 
-On github, the URL resolves to this:
+For example on github, the URL above resolves to this:
 
 ```
 https://gmcmillan100.github.io/docs/
@@ -99,7 +111,7 @@ On an .md page, add the `site.baseurl` to the `page.url` to resolve:
  <li><a href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a></li>
 ```
 
-# Editing
+# Linking
 
 Links
 
@@ -140,7 +152,7 @@ Main article: https://jekyllrb.com/docs/installation/
 	jekyll-watch (1.5.0)
 	```
 
-# Install Theme
+# Theme Install
 
 Main article: https://jekyllrb.com/docs/themes/ and https://github.com/pietromenna/jekyll-cayman-theme
 
@@ -235,7 +247,9 @@ Main article: https://jekyllrb.com/docs/themes/ and https://github.com/pietromen
 	[2017-01-20 11:51:17] ERROR `/favicon.ico' not found.
 	```
 
-# Filtering and Linking Using the Liquid Contains Property
+# Liquid Contains Property
+
+Pages can be filtered and published based on their matched categories.
 
 In `_config.yml`, add the index of categories:
 
@@ -272,14 +286,13 @@ In your template to get all the pages in the `gold` category you do:
 
 # Resources
 
-Jekyll docs, https://jekyllrb.com/docs/themes/
+Jekyll docs, https://jekyllrb.com/docs/
+
+https://24ways.org/2013/get-started-with-github-pages/
 
 tjohnson's video:
 
 http://idratherbewriting.com/2017/01/18/writing-tech-docs-like-a-hacker-with-jekyll/
-
-
-# Source
 
 jekyll cheat sheet, http://ricostacruz.com/cheatsheets/jekyll.html
 
