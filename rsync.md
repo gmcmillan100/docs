@@ -49,9 +49,7 @@ resource: true
 	2010/03/18 22:51:51 [15499] rsyncd version 3.0.2 starting, listening on port 873
 	```
 
-4.
-
-Create a user account named "rsync" with password "rsync" on the WD. In finder, had to connect to "Nassau" as user "rsync" in order to see sub folders in "rsync" account.
+4. Create a user account named "rsync" with password "rsync" on the WD. In finder, had to connect to "Nassau" as user "rsync" in order to see sub folders in "rsync" account.
 
 	```
 	/usr/bin/rsync

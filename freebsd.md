@@ -176,6 +176,8 @@ http://www.dell.com/support/Article/us/en/04/575822/EN
 
 2. On motherboard in the bottom right corner, there is a black plastic jumper. Move it to the configuration position (to the 2-3 pin position). This will boot the system with the factory default BIOS settings (no admin password set).
 
+![](../images/bios-pin.jpg)
+
 3. Power on system
 
 4. Look for this boot message:

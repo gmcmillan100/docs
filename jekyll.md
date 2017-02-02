@@ -12,6 +12,7 @@ description: A 400 oz bar
 * [Baseurl](#baseurl)
 * [Linking](#linking)
 * [Installation](#installation)
+* [CSS](#css)
 * [Theme Install](#theme-install)
 * [Build and Serve](#build-and-serve)
 * [Liquid Contains Property](#liquid-contains-property)
@@ -150,6 +151,35 @@ Main article: https://jekyllrb.com/docs/installation/
 	jekyll-sass-converter (1.5.0)
 	jekyll-theme-cayman (0.0.3)
 	jekyll-watch (1.5.0)
+	```
+
+# CSS
+
+Main articles:
+
+* https://jekyllrb.com/docs/assets/
+* cat ~/.rvm/gems/ruby-2.0.0-p576/gems/minima-2.1.0/README.md
+
+1. Recursively copy the `_sass` directory from the minima gem to the root level of the Jekyll project:
+
+	```
+	cd ~/.rvm/gems/ruby-2.0.0-p576/gems/minima-2.1.0
+	cp -r _sass/ ~/docs/_sass
+	```
+
+2. Edit the approprite `.scss` file. In this example, the h1 font-size was changed in the `_layout.scss` file:
+
+	```
+	.post-content {
+	  margin-bottom: $spacing-unit;
+
+	  h1 {
+	    font-size: 30px;
+
+	    @include media-query($on-laptop) {
+	      font-size: 28px;
+	    }
+	  }
 	```
 
 # Theme Install

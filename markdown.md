@@ -25,6 +25,12 @@ Add this Sublime keymap shortcut under Preferences > Key Bindings - User:
 ]
 ~~~~
 
+# Inline Images
+
+``
+![](../images/bios-pin.jpg)
+``
+
 # TOC Anchors in Markdown
 
 To create an anchor to a heading in github flavored markdown. Add - and lowercase characters between each word in the heading and wrap the value in parens (#some-markdown-heading). 

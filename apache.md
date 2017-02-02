@@ -5,8 +5,11 @@ permalink: /apache/
 resource: true
 ---
 
-# Apache Setup
+* [Apache Setup](#apache-setup)
+* [Installation](#installation)
+* [Troubleshooting](#troubleshooting)
 
+# Apache Setup
 
 Document root on bsd1:
 
@@ -40,6 +43,7 @@ From a pc on the network, point a web browser at:
 
 It works if you see the Apache Test Page
 
+# Installation
 
 http://apache-server.com/tutorials/ATgetting-started.html#downloading
 
@@ -92,11 +96,15 @@ cat /var/log/httpd-error.log
 
 ## Solution
 
+```
 vi /etc/hosts
+```
 
 then, add this line. Ensure the hostname "bsd1" resolves to 127.0.0.1:
 
+```
 127.0.0.1               localhost bsd1
+```
 
 Start apache again:
 
