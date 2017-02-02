@@ -40,7 +40,7 @@ Do this after installation.
 ```
 jekyll new mynewsite
 cd mynewsite
-	```
+```
 
 These files were autogen'd at the root of the source directory:
 
@@ -53,11 +53,11 @@ about.md
 index.md
 ```
 
-	File | Purpose
-	------------ | -------------
-	`_config.yml` | Jekyll's configuration file
-	`Gemfile` | Bundler uses to keep track of required gems
-	`Gemfile.lock` | Lock file 
+File | Purpose
+------------ | -------------
+`_config.yml` | Jekyll's configuration file
+`Gemfile` | Bundler uses to keep track of required gems
+`Gemfile.lock` | Lock file 
 
 
 2. Open the `_config.yml` configuration file:
