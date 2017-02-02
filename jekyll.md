@@ -37,23 +37,23 @@ Do this after installation.
 
 1. Run `jekyll new <name>` to create a new site, bundle install, resolve default dependencies, and create default config files:
 
-	```
-	jekyll new mynewsite
-	cd mynewsite
-	```
+```
+jekyll new mynewsite
+cd mynewsite
+```
 
-	These files were autogen'd at the root of the source directory:
+These files were autogen'd at the root of the source directory:
 
-	```
-	_config.yml	
-	Gemfile		
-	Gemfile.lock
-	_posts		
-	about.md	
-	index.md
-	```
+```
+_config.yml	
+Gemfile		
+Gemfile.lock
+_posts		
+about.md	
+index.md
+```
 
-	Jekyll's configuration file is `_config.yml`. Bundler uses `Gemfile` and `Gemfile.lock` to keep track of required gems.
+Jekyll's configuration file is `_config.yml`. Bundler uses `Gemfile` and `Gemfile.lock` to keep track of required gems.
 
 2. Open the `_config.yml` configuration file:
 
