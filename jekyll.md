@@ -35,7 +35,7 @@ http://jmcglone.com/guides/github-pages/
 
 Do this after installation.
 
-1. Run `jekyll new <name>` to create a new site, bundle install, resolve default dependencies, and create default config files:
+1: Run `jekyll new <name>` to create a new site, bundle install, resolve default dependencies, and create default config files:
 
 ```
 jekyll new mynewsite
@@ -55,39 +55,39 @@ index.md
 
 Jekyll's configuration file is `_config.yml`. Bundler uses `Gemfile` and `Gemfile.lock` to keep track of required gems.
 
-2. Open the `_config.yml` configuration file:
+2: Open the `_config.yml` configuration file:
 
-	```
-	vi _config.yml
-	```
+```
+vi _config.yml
+```
 
-	then add some basic info:
+then add some basic info:
 
-	```
-	title: Kringle KB
-	name: Greg McMillan
-	email: gmcmillan100@gmail.com
-	```
+```
+title: Kringle KB
+name: Greg McMillan
+email: gmcmillan100@gmail.com
+```
 
-3. Build the site on the local preview server then visit http://127.0.0.1:4000/ when prompted:
+3: Build the site on the local preview server then visit http://127.0.0.1:4000/ when prompted:
 
-	```
-	jekyll serve
-	```
+```
+jekyll serve
+```
 
-	When `jekyll serve` runs, it automatically creates a `_site` directory at the project's root. That’s where files are saved when they’re turned into static HTML. Don’t touch the files in here — they’re the generated files and will get overwritten every time changes are made.
+When `jekyll serve` runs, it automatically creates a `_site` directory at the project's root. That’s where files are saved when they’re turned into static HTML. Don’t touch the files in here — they’re the generated files and will get overwritten every time changes are made.
 
-4. Create `.gitignore` and ignore the `_site` directory that Jekyll automatically generates each time you commit:
+4: Create `.gitignore` and ignore the `_site` directory that Jekyll automatically generates each time you commit:
 
-	```
-	vi .gitignore
-	```
+```
+vi .gitignore
+```
 
-	and put this in it:
+and put this in it:
 
-	```
-	_site
-	```
+```
+_site
+```
 
 # Baseurl
 
