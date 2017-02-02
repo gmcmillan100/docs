@@ -13,7 +13,7 @@ resource: true
 
 # Enable rsync daemon on Nassua
 
-1. ssh into the server as root
+1. SSH into the server as root:
 
 	```
 	ssh root@192.168.1.105
@@ -44,6 +44,10 @@ resource: true
 	```
 	rsync --daemon
 	```
+
+See the log:
+
+
 	```
 	more /var/log/rsyncd.log 
 	2010/03/18 22:51:51 [15499] rsyncd version 3.0.2 starting, listening on port 873
