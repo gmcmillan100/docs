@@ -53,11 +53,9 @@ about.md
 index.md
 ```
 
-File | Purpose
------------- | -------------
-`_config.yml` | Jekyll's configuration file
-`Gemfile` | Bundler uses to keep track of required gems
-`Gemfile.lock` | Lock file 
+* `_config.yml` - Jekyll's configuration file
+* `Gemfile` - Bundler uses to keep track of required gems
+* `Gemfile.lock` - Lock file 
 
 
 2. Open the `_config.yml` configuration file:
