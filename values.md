@@ -25,7 +25,7 @@ backbone.
 
 ## OUR MEMBERS COME FIRST
 We encourage employees to know and understand our members and to
-ensure that we foster the long-term vitality of the LinkedIn
+ensure that we foster the long-term vitality of the Company
 ecosystem.
 
 ## RELATIONSHIPS MATTER
@@ -66,9 +66,9 @@ These are the main tenets of our Culture.
 
 ## Transformation
 
-People who work at LinkedIn are here because they seek to make a
+People who work at Company are here because they seek to make a
 positive and lasting impact on the world, help realize the full
-potential of LinkedIn, and fundamentally alter the trajectory of their
+potential of Company, and fundamentally alter the trajectory of their
 careers.
 
 ## Results
@@ -575,7 +575,7 @@ Remember to treat others as you would like to be treated yourself.
 ## Being Sensitive
 
 While we encourage open, honest, and constructive conversations at
-LinkedIn, you always need to be mindful that this doesn’t mean that
+Company, you always need to be mindful that this doesn’t mean that
 you can say exactly what you want all the time. Always remember that
 not everyone will share the same opinions as you.
 
