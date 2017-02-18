@@ -25,12 +25,12 @@ Depending on your version, Jabber might not appear in the list. Instead, choose 
 
 ![](../images/s1.png)
 
-**Step 4** – Go to the Options tab and configure these settings:
+**Step 4** – Go to the **Options** tab and configure these settings:
 
-* For Connect to Server, enter foo.corp.company.com
-* Check "Force old-style SSL"
-* Check "Require SSL/TLS"
-* UNCHECK "Do strict certificate checks" (this is ok since service is run on the internal network)
+* For **Connect to Server**, enter foo.corp.company.com
+* Check **Force old-style SSL**
+* Check **Require SSL/TLS**
+* UNCHECK **Do strict certificate checks** (this is okay since service is run on the internal network)
 
 ![](../images/s2.png)
 
