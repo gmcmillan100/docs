@@ -113,6 +113,10 @@ On an .md page, add the `site.baseurl` to the `page.url` to resolve:
 Links
 
 ```
+[Using Instant Messaging]({{ site.baseurl }}/im/index.html)
+```
+
+```
 [See Markdown](/markdown/index.html)
 ```
 

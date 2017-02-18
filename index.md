@@ -1,6 +1,10 @@
 ---
 layout: home
 ---
+Simple writing sample: [Using Instant Messaging]({{ site.baseurl }}/im/index.html)
+
+Techie notes:
+
 <div id="grid">
 	<ul id = "limheight">
 	{% for page in site.pages %}
