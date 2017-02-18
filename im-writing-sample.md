@@ -7,7 +7,7 @@ resource: false
 
 The Company uses Jabber as an Instant Messaging (IM) and presence protocol. 
 
-For Mac users, IT supports the Adium IM client:
+For mac users, IT supports the Adium IM client:
 
 * [Create an Adium Account](#create-an-adium-account)
 * [Add Contacts](#add-contacts)

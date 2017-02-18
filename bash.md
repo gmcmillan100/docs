@@ -5,7 +5,7 @@ permalink: /bash/
 resource: true
 ---
 
-# The GNU Bourne-Again SHell (BASH)
+It's the GNU Bourne-Again SHell (BASH).
 
 ```
 Ctrl a		Jump to beginning of line
@@ -14,7 +14,7 @@ Ctrl k		Yank a line
 Ctrl y		Put the yank back
 ```
 
-A great host prompt. Do "vi .bash_profile" then put this in it:
+For a great host prompt, issue "vi .bash_profile" then enter:
 
 ```
 PS1='\u@\h \w> $ '
@@ -34,7 +34,7 @@ $ echo $PATH
 /sbin:/bin:/usr/sbin:/usr/bin:/usr/games:/usr/local/sbin:/usr/local/bin:/usr/X11R6/bin:/home/greg/bin
 ```
 
-Which version:
+Which version is installed:
 
 ```
 $ bash --version

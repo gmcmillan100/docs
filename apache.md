@@ -11,16 +11,15 @@ resource: true
 
 # Apache Setup
 
-Document root on bsd1:
+The document root on bsd1 is here:
 
 	/usr/local/www/apache24/data
 
-
-Install version 2.4:
+To install version 2.4:
 
 	$ pkg install apache24
 
-To run apache www server on startup, add this to /etc/rc.conf
+To run apache www server on startup, add this to /etc/rc.conf:
 
 	apache24_enable="yes"
 
@@ -32,21 +31,19 @@ Add ServerName to the httpd.conf configuration file:
 
 	ServerName 192.168.1.49
 
-
-Fire up Apache the first time by running:
+Start up Apache the first time by running:
 
 	/usr/local/sbin/apachectl start
 
-From a pc on the network, point a web browser at:
+From a PC on the network, point a web browser at:
 
 	http://192.168.1.49
 
-It works if you see the Apache Test Page
+It works if you see the Apache Test Page.
 
 # Installation
 
 http://apache-server.com/tutorials/ATgetting-started.html#downloading
-
 
 1. Get apache_1.3.31.tar.gz source code from www.apache.org and install it in a directory
 
