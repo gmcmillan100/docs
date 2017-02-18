@@ -2,7 +2,7 @@
 layout: page
 title: Using Instant Messaging
 permalink: /im/
-resource: true
+resource: false
 ---
 
 The Company uses Jabber as an Instant Messaging (IM) and presence protocol. 

@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Jekyll
+title: Jekyll Setup
 permalink: /jekyll/
 resource: true
 categories: [gold]
@@ -20,18 +20,9 @@ description: A 400 oz bar
 
 # Introduction
 
-Jekyll is a text transformation engine and static site generator. The concept behind the system is this: you give it text written in your favorite markup language, be that Markdown, Textile, or just plain HTML, and it churns that through a layout or a series of layout files. 
+Jekyll is a text transformation engine and static site generator. The concept behind the system is this. You give it text written in your favorite markup language, such as Markdown or just plain HTML, and it churns that through a layout or a series of layout files. 
 
-See https://jekyllrb.com/docs/structure/
-
-[See Markdown](/markdown/index.html)
-
-Jekyll and GitHub Pages:
-
-https://24ways.org/2013/get-started-with-github-pages/
-http://jmcglone.com/guides/github-pages/
-
-# Basic Setup
+# Basic Usage
 
 Do this after installation.
 
@@ -61,7 +52,7 @@ Jekyll's configuration file is `_config.yml`. Bundler uses `Gemfile` and `Gemfil
 vi _config.yml
 ```
 
-then add some basic info:
+then add some basic information:
 
 ```
 title: Kringle KB
@@ -110,7 +101,7 @@ On an .md page, add the `site.baseurl` to the `page.url` to resolve:
 
 # Linking
 
-Links
+There are several ways to create links:
 
 ```
 [Using Instant Messaging]({{ site.baseurl }}/im/index.html)
@@ -315,6 +306,13 @@ In your template to get all the pages in the `gold` category you do:
 
 
 # Resources
+
+See https://jekyllrb.com/docs/structure/
+
+Jekyll and GitHub Pages:
+
+https://24ways.org/2013/get-started-with-github-pages/
+http://jmcglone.com/guides/github-pages/
 
 Jekyll docs, https://jekyllrb.com/docs/
 

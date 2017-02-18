@@ -1,9 +1,12 @@
 ---
 layout: home
 ---
-Simple writing sample: [Using Instant Messaging]({{ site.baseurl }}/im/index.html)
+Writing samples: 
 
-Techie notes:
+* Simple: [Using Instant Messaging]({{ site.baseurl }}/im/index.html)
+* Technical: [Jekyll Setup]({{ site.baseurl }}/jekyll/index.html)
+
+Techie notes to self:
 
 <div id="grid">
 	<ul id = "limheight">
