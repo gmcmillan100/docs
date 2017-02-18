@@ -7,9 +7,12 @@ resource: false
 
 The Company uses Jabber as an Instant Messaging (IM) and presence protocol. 
 
-For Mac users, IT supports the Adium IM client.
+For Mac users, IT supports the Adium IM client:
 
-# Adium Account Setup
+* [Create an Adium Account](#create-an-adium-account)
+* [Add Contacts](#add-contacts)
+
+# Create an Adium Account 
 
 Follow these steps to set up an Adium account:
 
@@ -21,7 +24,7 @@ Follow these steps to set up an Adium account:
 
 Depending on your version, Jabber might not appear in the list. Instead, choose XMPP.
 
-**Step 3** – For the Jabber ID, enter your Company AD username @foo.corp.company.com. For the password, use your Company AD password:
+**Step 3** – For the Jabber ID, enter your Company AD `username@foo.corp.company.com`. For the password, use your Company AD password:
 
 ![](../images/s1.png)
 
@@ -34,4 +37,26 @@ Depending on your version, Jabber might not appear in the list. Instead, choose 
 
 ![](../images/s2.png)
 
-Step 5 – Click **OK**
+**Step 5** – Click **OK**
+
+# Add Contacts
+
+Follow these steps to add contacts:
+
+**Step 1** – Go to **File** > **YourAccountName** > **Search for Users**:
+
+![](../images/s4.png)
+
+Click **Search Directory**
+
+![](../images/s5.png)
+
+Enter the contact name, then click **OK**:
+
+**Step 2** – Select the contact name then click **Add**:
+
+![](../images/s6.png)
+
+**Step 3** – The Add Contact dialog appears, then click **Add**. You can optionally organize your contacts into groups:
+
+![](../images/s7.png)
