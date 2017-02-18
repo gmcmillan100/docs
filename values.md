@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Values and Culture
+title: Values
 permalink: /values/
 resource: true
 ---
