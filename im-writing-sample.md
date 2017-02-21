@@ -16,11 +16,11 @@ For mac users, IT supports the Adium IM client:
 
 Follow these steps to set up an Adium account:
 
-**Step 1** – Start Adium
+**Step 1** – Start Adium:
 
 ![](../images/s3.png)
 
-**Step 2** – Go to **File** > **Add Account** > **Jabber**
+**Step 2** – Go to **File** > **Add Account** > **Jabber**.
 
 Depending on your version, Jabber might not appear in the list. Instead, choose XMPP.
 
@@ -30,14 +30,14 @@ Depending on your version, Jabber might not appear in the list. Instead, choose 
 
 **Step 4** – Go to the **Options** tab and configure these settings:
 
-* For **Connect to Server**, enter foo.corp.company.com
+* For **Connect to Server**, enter `foo.corp.company.com`
 * Check **Force old-style SSL**
 * Check **Require SSL/TLS**
 * UNCHECK **Do strict certificate checks** (this is okay since service is run on the internal network)
 
 ![](../images/s2.png)
 
-**Step 5** – Click **OK**
+**Step 5** – Click **OK**.
 
 # Add Contacts
 
@@ -47,7 +47,7 @@ Follow these steps to add contacts:
 
 ![](../images/s4.png)
 
-Click **Search Directory**
+Click **Search Directory**.
 
 ![](../images/s5.png)
 
@@ -57,6 +57,6 @@ Enter the contact name, then click **OK**:
 
 ![](../images/s6.png)
 
-**Step 3** – The Add Contact dialog appears, then click **Add**. You can optionally organize your contacts into groups:
+**Step 3** – When the Add Contact dialog appears, click **Add**. You can optionally organize your contacts into groups:
 
 ![](../images/s7.png)
