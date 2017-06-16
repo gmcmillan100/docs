@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Jekyll Setup
+title: Jekyll
 permalink: /jekyll/
 resource: true
 categories: [gold]
@@ -8,9 +8,10 @@ description: A 400 oz bar
 ---
 
 * [Introduction](#introduction)
-* [Basic Setup](#basic-setup)
+* [Basic Usage](#basic-usage)
 * [Baseurl](#baseurl)
 * [Linking](#linking)
+* [Search](#search)
 * [Installation](#installation)
 * [CSS](#css)
 * [Theme Install](#theme-install)
@@ -20,7 +21,7 @@ description: A 400 oz bar
 
 # Introduction
 
-Jekyll is a text transformation engine and static site generator. The concept behind the system is this. You give it text written in your favorite markup language, such as Markdown or just plain HTML, and it churns that through a layout or a series of layout files. 
+Jekyll is a static site generator and text transformation engine. The concept behind the system is this. You give it text written in your favorite markup language, such as Markdown or plain HTML, and it churns that through a layout or a series of layout files. 
 
 # Basic Usage
 
@@ -33,7 +34,7 @@ jekyll new mynewsite
 cd mynewsite
 ```
 
-These files were autogen'd at the root of the source directory:
+These files are autogen'd at the root of the source directory:
 
 ```
 _config.yml	
@@ -110,6 +111,36 @@ There are several ways to create links:
 ```
 [See Markdown](/markdown/index.html)
 ```
+
+# Search
+
+## Installing Lunr
+
+https://github.com/slashdotdash/jekyll-lunr-js-search
+
+1. Downloaded the zip
+2. Copied bundle/jekyll_lunr_js_search.rb over to the _plugins directory
+3. Tried doing a 'jekyll serve' but keeping getting this error:
+
+  Dependency Error: Yikes! It looks like you don't have /Users/gmcmilla/docs/_plugins/old_jekyll_lunr_js_search.rb or one of its dependencies installed. In order to use Jekyll as currently configured, you'll need to install this gem. The full error message from Ruby is: 'cannot load such file -- v8' If you run into trouble, you can find helpful resources at http://jekyllrb.com/help/! 
+  jekyll 3.3.1 | Error:  /Users/gmcmilla/docs/_plugins/old_jekyll_lunr_js_search.rb
+
+Looked at the file jekyll_lunr_js_search.rb and found this inside:
+
+	require 'v8'
+
+So installed therubyracer based on https://github.com/cowboyd/therubyracer
+
+	gem install therubyracer
+	bundle install
+
+Still getting the error even though 'gemlist' says it's there:
+
+	therubyracer (0.12.3)
+
+Removing the file for now...
+
+https://github.com/mathaywarduk/jekyll-search
 
 # Installation
 
