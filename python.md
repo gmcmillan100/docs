@@ -7,6 +7,11 @@ resource: true
 
 * [Hello World](#hello-world)
 * [Installation](#installation)
+* [Interpreter](#interpreter)
+* [Pip](#pip)
+* [Path](#path)
+* [Packages](#packages)
+* [Local Web Server](#local-web-server)
 * [Resources](#resources)
 
 
@@ -104,7 +109,7 @@ Python 2.7.11
 ```
 
 
-# Python Interpreter
+# Interpreter
 
 ```
 gmcmilla-mn:restli gmcmilla$ python
@@ -120,7 +125,7 @@ Be careful not to fall off!
 >>> 
 ```
 
-# pip
+# Pip
 Pip is Python's package manager, http://stackoverflow.com/questions/17271319/installing-pip-on-mac-os-x
 
 To install pip:
@@ -225,7 +230,7 @@ NameError: name 'sys' is not defined
 /usr/local/linkedin/lib/python2.6/site-packages
 ```
 
-# PYTHONPATH
+# Path
 
 Print Python's system path:
 

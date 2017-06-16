@@ -4,7 +4,7 @@ layout: home
 Writing samples: 
 
 * Simple: [Using Instant Messaging]({{ site.baseurl }}/im/index.html)
-* Technical: [Jekyll Setup]({{ site.baseurl }}/jekyll/index.html)
+* Technical: [Jekyll]({{ site.baseurl }}/jekyll/index.html)
 
 Techie notes to self:
 
