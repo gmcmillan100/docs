@@ -17,6 +17,7 @@ description: A 400 oz bar
 * [Theme Install](#theme-install)
 * [Build and Serve](#build-and-serve)
 * [Liquid Contains Property](#liquid-contains-property)
+* [Search](#search)
 * [Resources](#resources)
 
 # Introduction
@@ -111,36 +112,6 @@ There are several ways to create links:
 ```
 [See Markdown](/markdown/index.html)
 ```
-
-# Search
-
-## Installing Lunr
-
-https://github.com/slashdotdash/jekyll-lunr-js-search
-
-1. Downloaded the zip
-2. Copied bundle/jekyll_lunr_js_search.rb over to the _plugins directory
-3. Tried doing a 'jekyll serve' but keeping getting this error:
-
-  Dependency Error: Yikes! It looks like you don't have /Users/gmcmilla/docs/_plugins/old_jekyll_lunr_js_search.rb or one of its dependencies installed. In order to use Jekyll as currently configured, you'll need to install this gem. The full error message from Ruby is: 'cannot load such file -- v8' If you run into trouble, you can find helpful resources at http://jekyllrb.com/help/! 
-  jekyll 3.3.1 | Error:  /Users/gmcmilla/docs/_plugins/old_jekyll_lunr_js_search.rb
-
-Looked at the file jekyll_lunr_js_search.rb and found this inside:
-
-	require 'v8'
-
-So installed therubyracer based on https://github.com/cowboyd/therubyracer
-
-	gem install therubyracer
-	bundle install
-
-Still getting the error even though 'gemlist' says it's there:
-
-	therubyracer (0.12.3)
-
-Removing the file for now...
-
-https://github.com/mathaywarduk/jekyll-search
 
 # Installation
 
@@ -335,6 +306,29 @@ In your template to get all the pages in the `gold` category you do:
 </ul>
 ```
 
+# Search
+
+My CSE, https://cse.google.com/cse/all
+
+Options by tjohnson:
+
+* https://cse.google.com/cse/
+* Swiftype, https://swiftype.com/
+* Algolia, https://www.algolia.com/
+
+Avoid. lunr-js hits performance issues after indexing 70ish files, don't use it, https://github.com/slashdotdash/jekyll-lunr-js-search
+
+Advice from Jose Gandullia (https://www.linkedin.com/in/josegandullia/)
+
+* Having "the client browser handle all the search" (e.g., lunr-js) sounds like a bad idea unless it's a really small site.
+
+* I'd probably modify the search to index the site offline whenever it changes, have a server-side API for the search (that searches the index), and have the client call that API.
+
+* On the other hand, Google has the potential to give you a smarter search than just a straight text search.
+
+* Looks like Duck Duck go also has a searchbox you can add, of course then you have no control over the actual search.
+
+https://duckduckgo.com/search_box
 
 # Resources
 

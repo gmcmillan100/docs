@@ -19,3 +19,18 @@ Techie notes to self:
 	{% endfor %}
 	</ul>
 </div>
+
+<div>
+	<script>
+  (function() {
+    var cx = '006793602710358171439:8vsbxk9foow';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+</div>
