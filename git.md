@@ -27,7 +27,18 @@ git config --global user.email "gmcmillan100@gmail.com"
 git config --global user.name "Greg McMillan"
 ~~~~
 
-Add Repo:
+Add repo and pull down a copy:
+
+~~~~
+mkdir docs
+cd docs
+git init .
+git remote add origin git@github.com:gmcmillan100/docs.git
+cat .git/config
+git pull git@github.com:gmcmillan100/docs.git master
+~~~~
+
+Upload changes:
 
 ~~~~
 mkdir docs
