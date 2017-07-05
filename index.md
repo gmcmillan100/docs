@@ -1,6 +1,8 @@
 ---
 layout: home
 ---
+I coded this site using Jekyll, Markdown, and Git.
+
 Writing samples: 
 
 * Simple: [Using Instant Messaging]({{ site.baseurl }}/im/index.html)
