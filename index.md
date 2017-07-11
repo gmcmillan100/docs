@@ -1,7 +1,7 @@
 ---
 layout: home
 ---
-I coded this site using Jekyll, Markdown, and Git.
+This site was coded by using Jekyll, Markdown, and Git.
 
 Writing samples: 
 
