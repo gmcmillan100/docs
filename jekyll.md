@@ -8,11 +8,11 @@ description: A 400 oz bar
 ---
 
 * [Introduction](#introduction)
-* [Basic Usage](#basic-usage)
+* [Installation](#installation)
+* [Basic Setup](#basic-setup)
 * [Baseurl](#baseurl)
 * [Linking](#linking)
 * [Search](#search)
-* [Installation](#installation)
 * [CSS](#css)
 * [Theme Install](#theme-install)
 * [Build and Serve](#build-and-serve)
@@ -22,9 +22,42 @@ description: A 400 oz bar
 
 # Introduction
 
-Jekyll is a static site generator and text transformation engine. The concept behind the system is this. You give it text written in your favorite markup language, such as Markdown or plain HTML, and it churns that through a layout or a series of layout files. 
+Jekyll is a static site generator and text transformation engine. Give Jekyll text written in your favorite markup language, such as Markdown or plain HTML, and Jekyll will churn that through a layout or a series of layout files. 
 
-# Basic Usage
+# Installation
+
+Main article: https://jekyllrb.com/docs/installation/
+
+1. Install Jekyll:
+
+	```
+	$ gem install jekyll
+	```
+
+2. Verify Jekyll's installation location and version:
+
+	```
+	$ which jekyll
+	/Users/gmcmilla/.rvm/gems/ruby-2.0.0-p576/bin/jekyll
+	$ jekyll --version
+	jekyll 3.3.1
+	```
+
+3. Inspect Jekyll's locally installed gems:
+
+	```
+	$ gem list jekyll
+
+	*** LOCAL GEMS ***
+
+	jekyll (3.3.1)
+	jekyll-feed (0.8.0)
+	jekyll-sass-converter (1.5.0)
+	jekyll-theme-cayman (0.0.3)
+	jekyll-watch (1.5.0)
+	```
+
+# Basic Setup
 
 Do this after installation.
 
@@ -112,39 +145,6 @@ There are several ways to create links:
 ```
 [See Markdown](/markdown/index.html)
 ```
-
-# Installation
-
-Main article: https://jekyllrb.com/docs/installation/
-
-1. Install it:
-
-	```
-	$ gem install jekyll
-	```
-
-2. Verify location and version:
-
-	```
-	$ which jekyll
-	/Users/gmcmilla/.rvm/gems/ruby-2.0.0-p576/bin/jekyll
-	$ jekyll --version
-	jekyll 3.3.1
-	```
-
-3. Inspect Jekyll's locally installed gems:
-
-	```
-	$ gem list jekyll
-
-	*** LOCAL GEMS ***
-
-	jekyll (3.3.1)
-	jekyll-feed (0.8.0)
-	jekyll-sass-converter (1.5.0)
-	jekyll-theme-cayman (0.0.3)
-	jekyll-watch (1.5.0)
-	```
 
 # CSS
 
