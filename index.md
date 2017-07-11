@@ -5,8 +5,8 @@ I coded this site using Jekyll, Markdown, and Git.
 
 Writing samples: 
 
-* Simple: [Using Instant Messaging]({{ site.baseurl }}/im/index.html)
 * Technical: [Jekyll]({{ site.baseurl }}/jekyll/index.html)
+* Simple: [Using Instant Messaging]({{ site.baseurl }}/im/index.html)
 
 Techie notes to self:
 

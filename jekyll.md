@@ -175,6 +175,8 @@ Main articles:
 	  }
 	```
 
+See also `/assets/main.scss` for more styles. 
+
 # Theme Install
 
 Main article: https://jekyllrb.com/docs/themes/ and https://github.com/pietromenna/jekyll-cayman-theme
