@@ -292,10 +292,10 @@ description: A 400 oz bar
 ---
 ```
 
-In your template to get all the pages in the `gold` category you do:
+Do this in your template to get all the pages in the `gold` category:
 
 
-```ruby
+```
 <ul>
 {% for page in site.pages %}
   {% if page.categories contains 'gold' %}
