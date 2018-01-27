@@ -5,6 +5,7 @@ permalink: /python/
 resource: true
 ---
 
+* [Jinja2](#jinja2)
 * [Hello World](#hello-world)
 * [Installation](#installation)
 * [Interpreter](#interpreter)
@@ -13,6 +14,12 @@ resource: true
 * [Packages](#packages)
 * [Local Web Server](#local-web-server)
 * [Resources](#resources)
+
+# Jinja2
+
+Jinja2 is a full featured template engine for Python. It has full unicode support, an optional integrated sandboxed execution environment, widely used and BSD licensed.
+
+http://jinja.pocoo.org/
 
 
 # Hello World
@@ -280,6 +287,8 @@ More on sys.path here https://docs.python.org/2/library/site.html
 
 # Packages
 
+If you have PIP installed, issue `pip list` to see what packages have been installed with your installer tools.
+
 Tons of LinkedIn packages at /usr/local/linkedin/lib/python2.6/site-packages
 
 # Local Web Server
@@ -289,6 +298,18 @@ gmcmilla-mn:restli gmcmilla$ sudo python -m SimpleHTTPServer 80
 Password:
 Serving HTTP on 0.0.0.0 port 80 ...
 ```
+
+# PEX
+
+A Python EXecutable (PEX) file is a self-contained virtual environment.
+
+LinkedIn's Sphinx ECL product comes from a PEX. Sphinx’s PEX, a zip file, is located at /export/content/linkedin/bin/wrapped-python-tools.pex. It can be extracted by using python -m zipfile -e wrapped-python-tools.pex mydir/. This PEX contains Sphinx’s package and all of its dependencies, so Sphinx can run.
+
+A PEX files looks like this:
+
+	```
+	{“requirements”: [“Sphinx==1.4.1", “wrapped-python-tools==0.0.23”, “cssselect==0.9.1", “Pygments==2.1.3”, “ordereddict==1.1", “imagesize==0.7.1”, “premailer==2.9.2", “sphinx-rtd-theme==0.1.9”, “nose==1.1.2", “pytz==2016.4”, “docutils==0.12", “Babel==2.3.4”, “lxml==2.3.4", “Jinja2==2.8”, “CommonMark==0.5.4", “six==1.10.0”, “MarkupSafe==0.23", “recommonmark==0.4.0”, “snowballstemmer==1.2.1", “modernize==0.4”, “cssutils==1.0", “alabaster==0.7.8”], “inherit_path”: false, “distributions”: {“nose-1.1.2-py2-none-any.whl”: “143b9d80385276cfaff78091614f7aaf41ad2dcb”, “six-1.10.0-py2.py3-none-any.whl”: “a99dfb27e60da3957f6667853b91ea52e173da0a”, “lxml-2.3.4-cp27-none-macosx_10_9_x86_64.whl”: “964cd3f189d5f14e18f0844ba5d23016590f643f”, “imagesize-0.7.1-py2.py3-none-any.whl”: “dcc3cf481002b74e2c8fe959078d31aadf923966”, “ordereddict-1.1-py2-none-any.whl”: “848a2f5843cc654727c041783a501533bf3bdd84”, “Babel-2.3.4-py2.py3-none-any.whl”: “5f2ab82fbed8def18aa827755c505510686c0e14”, “pytz-2016.4-py2-none-any.whl”: “3d345d087668f45b40de7b858cc59a38c3c62230”, “modernize-0.4-py2-none-any.whl”: “6aca689f48e4896816a2c488f2fe6e2c403ad9fa”, “Pygments-2.1.3-py2.py3-none-any.whl”: “aef4543856715a6889040a9a7ace8efce9658613”, “cssselect-0.9.1-py2-none-any.whl”: “f69c5b692491368b2888fa96882e8d728da88bf8”, “recommonmark-0.4.0-py2.py3-none-any.whl”: “b681932ac8d118049683bc89d8d444d0a79d4527”, “sphinx_rtd_theme-0.1.9-py2-none-any.whl”: “f60ebdc7e596403cd567a90557ded55ac146507f”, “MarkupSafe-0.23-cp27-none-macosx_10_9_x86_64.whl”: “a3e7734ab71792055875afdb2b571872cbc1c890”, “Jinja2-2.8-py2.py3-none-any.whl”: “c25769aefd4fef6c1c5d506ee90f542002c52c40”, “CommonMark-0.5.4-py2-none-any.whl”: “a2c12fd2155111120d082297d83654695a541508”, “premailer-2.9.2-py2-none-any.whl”: “e30e6b64db42ff4badecd2061540aeb181db2a52”, “docutils-0.12-py2-none-any.whl”: “b704e65e6474700f372cbbfb495e6926bc1610ec”, “alabaster-0.7.8-py2.py3-none-any.whl”: “2f0a613fd95478fd6c62e4466637551ee5e8ae48”, “Sphinx-1.4.1-py2.py3-none-any.whl”: “bd867b505ac9edc475beb4fbe111e98dfacda82d”, “snowballstemmer-1.2.1-py2-none-any.whl”: “5104f870e0d1b03142ac3093ae6b4c8ad30d926b”, “cssutils-1.0-py2-none-any.whl”: “218427ef3350aa297ec27b435a3c11407d8224a7”, “wrapped_python_tools-0.0.23-py2-none-any.whl”: “fbebdcbed5491a9df24d5652e03376e1b0792b58”}, “always_write_cache”: false, “code_hash”: “da39a3ee5e6b4b0d3255bfef95601890afd80709", “zip_safe”: true, “ignore_errors”: false, “build_properties”: {“platform”: “macosx-10.9-x86_64”, “version”: [2, 7, 11], “class”: “CPython”}}
+	```
 
 # Resources
 

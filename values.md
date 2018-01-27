@@ -860,4 +860,18 @@ Remember, it’s important that you:
 Can identify sexual harassment in the workplace.
 Know what to do when you witness or experience it.
 
+# Anti-Corruption
+
+Our commitment to integrity means we always want to source the best candidate through our normal hiring process. Hiring a customer’s family member, friend, or anyone else to influence a decision can be a form of bribery, which is completely at odds with our mission of creating economic opportunity for everyone. We can’t create a positive, lasting impact on the world if we let corruption play a part in our business operations.
+
+We don’t bribe. It’s that simple. When confronted with these situations, immediately reach out to integrity@linkedin.com.
+
+If you think that hiring someone might violate our Global Anticorruption policy, disclose the situation immediately. Don’t suggest to our partners or suppliers that they should hire the applicant either.
+
+We believe in meritocracy. All applicants, no matter who they are, need to go through our normal hiring process. If you’re concerned about a hiring request, visit go/integrity to get help and report the concern.
+
+# Privacy and Customer Data
+
+Our members and customers trust us with their personal information, and we have a responsibility to protect it. We’re open and honest with them about how we use their data, and we certainly never change how we’re using member information without getting consent first. Our Privacy Policy and the terms and conditions of any agreements we have with our customers govern how we handle personal information and customer data. We honor these commitments.
+
 
