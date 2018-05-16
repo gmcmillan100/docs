@@ -4,6 +4,7 @@ title: Values
 permalink: /values/
 resource: true
 ---
+* [Managers](#managers)
 * [Values](#values)
 * [Culture](#culture)
 * [Retaliation](#retaliation)
@@ -14,6 +15,42 @@ resource: true
 * [Diversity](#diversity)
 * [Gender Identity](#gender-identity)
 * [Sexual Harassment](#sexual-harassment)
+
+# Managers
+
+A bad manager can take a good staff and destroy it, causing the best employees to flee and the remainder to lose all motivation. ~ Peter Drucker
+
+Good managers are magnets of talent. Bad managers are repellents of it.
+
+Eleven Signs Your Job Doesn't Deserve You:
+
+1) Your boss is micro-managing you and your decisions
+
+2) They do not give you credit for your work
+
+3) Your boss does not give you enough feedback and guidance
+
+4) Your boss has little interest in what you are doing, or worse avoids you
+
+5) You are underpaid
+
+6) You are not learning anything new
+
+7) Your boss is not aware of what you are capable of
+
+8) Your health is suffering because of stress
+
+9) You can not remember when was the last time your boss thanked you
+
+10) You dedication, hard work, loyalty are not appreciated
+
+11) The real deal-breaker is when your boss lacks integrity. Integrity is by far the most important asset of a leader.
+
+Go where you are celebrated, not just tolerated.
+
+Go where you can make a difference.
+
+Go where your loyalty and hard work will be appreciated.
 
 
 # Values
