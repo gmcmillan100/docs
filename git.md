@@ -4,6 +4,9 @@ title: Git
 permalink: /git/
 resource: true
 ---
+The Git protocol was created by `Linus Torvalds <https://en.wikipedia.org/wiki/Linus_Torvalds>`_. He also created the original Linux kernel.
+
+
 # Access
 
 repo, https://github.com/gmcmillan100/docs

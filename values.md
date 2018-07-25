@@ -18,6 +18,8 @@ resource: true
 
 # Managers
 
+## Good Ones
+
 A bad manager can take a good staff and destroy it, causing the best employees to flee and the remainder to lose all motivation. ~ Peter Drucker
 
 Good managers are magnets of talent. Bad managers are repellents of it.
@@ -51,6 +53,83 @@ Go where you are celebrated, not just tolerated.
 Go where you can make a difference.
 
 Go where your loyalty and hard work will be appreciated.
+
+## Google Spent a Decade Researching What Makes a Great Boss. They Came Up With These 10 Things
+
+"People leave managers, not companies."
+
+We've all heard it. Many of us have experienced it. But what makes people want to leave a manager in the first place? And if you happen to lead a team, what qualities can make you better?
+
+Those are the types of questions Google set out to answer. In 2008, they began research into what makes a good manager, code-named Project Oxygen. They originally identified eight behaviors that were common among their highest performing managers, and began training all managers to develop those behaviors. Over time, Google saw a marked improvement in key metrics such as employee turnover, satisfaction, and performance.
+
+But as the company grew, the demands on managers also increased. Google continued their research. They refined it. They learned more.
+
+"We found that, over time, the qualities of a great manager at Google had grown and evolved with along with the company," wrote Melissa Harrell and Lauren Barbato earlier this year. Harrell works as a staffing services manager and Barbato as a people analyst. 
+
+After taking a second look at its research, Google then "refreshed [its] behaviors according to internal research and Google and [employee] feedback, and put them to the test."
+
+This resulted in a new list, identifying two completely new behaviors (Nos. 9 and 10) and updating two others (Nos. 3 and 6).
+
+Here are the 10 behaviors of Google's best managers, along with some practical tips on how to develop these behaviors. (You can find more detailed advice on developing your management skills in my new book, EQ Applied: The Real-World Guide to Emotional Intelligence.)
+
+1. Is a good coach
+A good coach avoids the trap of solving every problem for their team as soon as it arises. 
+
+Rather they use these problems as teaching moments. They guide and share insights at the right time, letting their team gain valuable experience along the way.
+
+2. Empowers team and does not micromanage
+Everybody hates a micromanager. In contrast, a good team lead gives their people enough freedom--to explore new ideas, to experiment, and to develop (and adapt) their own working style.
+
+In addition, great managers make sure their people have the tools and flexibility they need to do their jobs.
+
+3. Creates an inclusive team environment, showing concern for success and well-being
+Great managers make it a priority to build trust in their teams.
+
+As Google puts it:
+
+In a team with high psychological safety, teammates feel safe to take risks around their team members. They feel confident that no one on the team will embarrass or punish anyone else for admitting a mistake, asking a question, or offering a new idea.
+
+(More on how to build this type of environment here.)
+
+4. Is productive and results-oriented
+The best managers make those around them better.
+
+They realize what their teams are capable of, and they use emotional intelligence to motivate their people and help them realize their potential.
+
+5. Is a good communicator--listens and shares information
+Great managers are great listeners--this enables understanding. They also share what they can, realizing transparency is beneficial for the team as a whole.
+
+They share sincere and specific praise, early and often. But they also don't hold back from giving necessary (negative) feedback--making sure to frame it in a way that is constructive and easy to learn from.
+
+6. Supports career development and discusses performance
+Great managers are invested in their people. They provide career path options, realizing not everyone wants to follow the same road. 
+
+They also don't hold their people back for personal gain. Rather, they support team members and help them to reach their goals.
+
+7. Has a clear vision/strategy for the team
+Great managers know where they're going, but they make sure the whole team knows, too--rather than keeping them in the dark.
+
+They are also careful to communicate "scope," realistic expectations as to what specific actions are needed to execute a strategy, and each team member's role in delivering.
+
+8. Has key technical skills to help advise the team
+Great bosses understand a job well and are skilled at the work they oversee. 
+
+If an effective manager is brought into a new department, they take time in the beginning to familiarize themselves with their people's everyday work and challenges. This earns them the respect of their team.
+
+9. Collaborates across [the company]
+Some managers create silos, running their teams with an "us versus them" mentality, competing against other teams within the company.
+
+Great managers have the ability to see the big picture, and work for the good of a company as a whole.
+
+10. Is a strong decision maker
+Great managers take the lead. They make the tough decisions, and make sure everyone understands the reasons behind those decisions.
+
+Then, they commit to following through.
+
+Of course, the first step--identifying effective manager behaviors (and tips for developing them)--is easy. Execution is the hard part.
+
+But it's managers like these that will help your people--and your company--accomplish great things.
+
 
 
 # Values
