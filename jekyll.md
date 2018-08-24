@@ -22,7 +22,9 @@ description: A 400 oz bar
 
 # Introduction
 
-Jekyll is a static site generator and text transformation engine. Give Jekyll text written in your favorite markup language, such as Markdown or plain HTML, and Jekyll will churn that through a layout or a series of layout files. 
+barr 
+
+Jekyll is a static site generator and text transformation engine. Give Jekyll text written in your favorite markup language, such as Markdown, and Jekyll will churn that through a layout or a series of layout files. 
 
 # Installation
 
@@ -136,7 +138,31 @@ On an .md page, add the `site.baseurl` to the `page.url` to resolve:
 
 # Linking
 
-There are several ways to create links:
+There are several ways to create links.
+
+Each .md has a permalink in the header like this:
+
+```
+---
+layout: guide
+title: Foo
+permalink: /DATA-Data-Schema-and-Templates
+---
+```
+
+That permalink can be linked to from within a .md like this:
+
+```
+[Click here](/rest.li/DATA-Data-Schema-and-Templates)
+```
+
+In the example, the `/rest.li` prefix is defined in `_config.yml` as `baseurl: "/rest.li"`.
+
+From within a Markdown file, use site.baseurl and %link pointing to a .md file:
+
+```
+See [click here]({{ site.baseurl }}{% link DATA-Data-Schema-and-Templates_converted.md %}).
+```
 
 ```
 [Using Instant Messaging]({{ site.baseurl }}/im/index.html)
@@ -145,6 +171,8 @@ There are several ways to create links:
 ```
 [See Markdown](/markdown/index.html)
 ```
+
+See https://jekyllrb.com/docs/templates/#link
 
 # CSS
 
@@ -176,6 +204,23 @@ Main articles:
 	```
 
 See also `/assets/main.scss` for more styles. 
+
+## Materialize Numbered Lists Not Showing
+
+vi _sass/materialize/components/_normalize.scss
+
+Then, change the list-style-type from lower-alpha to decimal:
+
+```
+.markdown-body ol {
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style-type: decimal !important;
+}
+```
+
+See http://jekyllmaterialize.panoramedia.it/ and https://github.com/macrod68/jekyll-materialize-starter-template
 
 # Theme Install
 
