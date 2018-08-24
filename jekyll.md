@@ -156,12 +156,6 @@ That permalink can be linked to from within a .md like this:
 
 In the example, the `/rest.li` prefix is defined in `_config.yml` as `baseurl: "/rest.li"`.
 
-From within a Markdown file, use site.baseurl and %link pointing to a .md file:
-
-```
-See [click here]({{ site.baseurl }}{% link DATA-Data-Schema-and-Templates_converted.md %}).
-```
-
 ```
 [Using Instant Messaging]({{ site.baseurl }}/im/index.html)
 ```

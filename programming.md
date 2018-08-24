@@ -1,6 +1,6 @@
 ---
 layout: page
-title: CS Programming
+title: Programming
 permalink: /programming/
 resource: true
 ---
