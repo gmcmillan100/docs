@@ -22,8 +22,6 @@ description: A 400 oz bar
 
 # Introduction
 
-barr 
-
 Jekyll is a static site generator and text transformation engine. Give Jekyll text written in your favorite markup language, such as Markdown, and Jekyll will churn that through a layout or a series of layout files. 
 
 # Installation

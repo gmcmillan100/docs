@@ -3,8 +3,6 @@ layout: page
 title: CS Programming
 permalink: /programming/
 resource: true
-categories: [gold]
-description: 
 ---
 
 # Terminology
@@ -17,8 +15,9 @@ CPU: It understands no programming languages. It understands only machine code r
 Low level language: Runs near the CPU (e.g., Assembly, C)
 High level language: Runs far aware from the CPU (e.g., JavaScript, Python). Source code is translated from high level to low level.
 Integrated Development Environment (IDE): A professional development text editor (e.g, Eclipse, Xcode, VS)
-Compiled language: Uses a compiler to convert source code (Python) into machine code so it can run (an executable file)
-Interpreted language: No compiler used. The source code is not compiled before it's consumed. A copy is given then run as-is by the other machine.
+Compiled language: Uses a compiler to convert source code (Python) into machine code so it can run an executable file (e.g., Objective-C, C)
+Interpreted language: No compiler used. The source code is not compiled before it's consumed. A copy is given then run as-is by the other machine. (e.g., JavaScript, PHP)
+Hybrid language: A combination of compiled code and intrepreted code (e.g., Java, Python)
 
 
 # Resources
