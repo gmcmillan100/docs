@@ -12,6 +12,7 @@ description: A 400 oz bar
 * [Basic Setup](#basic-setup)
 * [Baseurl](#baseurl)
 * [Linking](#linking)
+* [Site](#site)
 * [Search](#search)
 * [CSS](#css)
 * [Theme Install](#theme-install)
@@ -165,6 +166,36 @@ In the example, the `/rest.li` prefix is defined in `_config.yml` as `baseurl: "
 ```
 
 See https://jekyllrb.com/docs/templates/#link
+
+# Site
+
+When `jekyll serve` runs, it automatically creates a `_site` directory at the project's root. These are build files. Never check them into Git. 
+
+If they are in your `git status`, you can remove them using `git checkout <file>` like this:
+
+```
+	$ git status
+	...
+		modified:   _site/404.html
+		modified:   _site/Asynchronous-Servers-and-Clients-in-Rest_li.html
+		modified:   _site/Attachment-Streaming.html
+		modified:   _site/Building-Rest_li-from-Source.html
+	...
+	$ git checkout _site/*
+	  error: pathspec '_site/How_To_Rest_li_Avro_conversions.html' did not match any file(s) known to git.
+	$ rm _site/How_To_Rest_li_Avro_conversions.html
+	$ git checkout _site/*
+	$ git status
+	...
+
+		modified:   _config.yml
+		deleted:    _site/How_To:Rest_li_Avro_conversions.html
+		modified:   building.md
+		modified:   d2_quick_start.md
+		modified:   gradle.md
+
+```
+
 
 # CSS
 

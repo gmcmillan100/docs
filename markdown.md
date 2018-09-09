@@ -33,6 +33,8 @@ Add this Sublime keymap shortcut under Preferences > Key Bindings - User:
 
 # TOC Anchors in Markdown
 
+## Creating
+
 To create an anchor to a heading in github flavored markdown. Add - and lowercase characters between each word in the heading and wrap the value in parens (#some-markdown-heading). 
 
 So a link like this:
@@ -47,7 +49,18 @@ Will jump to a heading like this:
 # Critical System and Applications
 ```
 
-Tips. For Markdown-to-Jekyll frontend conversion to work for headings on Github Pages (https://gmcmillan100.github.io/docs/freebsd.html), the following must be true:
+## Periods in anchors
+
+The link breaks. Solution is to remove the period altogether.
+
+```
+[Using Rest.li JARs](#using-restli-jars)
+
+## Using Rest.li JARs
+```
+## Jekyll frontend conversion
+
+For Markdown-to-Jekyll frontend conversion to work for headings on Github Pages (https://gmcmillan100.github.io/docs/freebsd.html), the following must be true:
 
 * The line immediately before the heading hash (#) must be blank
 * No blank space after the #

@@ -20,6 +20,14 @@ $ ssh -T git@github.com
 Hi gmcmillan100! You've successfully authenticated, but GitHub does not provide shell access.
 ~~~~
 
+# Branch out of sync with master
+
+Do this to bring the lastest changes in master into your local Git branch:
+
+git checkout master
+git pull
+git checkout <your-branch-name>
+git rebase master
 
 # Setup Workflow
 
