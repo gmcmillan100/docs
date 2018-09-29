@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Jekyll
-permalink: /jekyll/
+permalink: /jekyll
 resource: true
 categories: [gold]
 description: A 400 oz bar
@@ -26,6 +26,8 @@ description: A 400 oz bar
 Jekyll is a static site generator and text transformation engine. Give Jekyll text written in your favorite markup language, such as Markdown, and Jekyll will churn that through a layout or a series of layout files. 
 
 # Installation
+
+It's a pain to install. There are too many dependencies and have to work with the new mac version.
 
 Main article: https://jekyllrb.com/docs/installation/
 
