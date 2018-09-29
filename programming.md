@@ -25,4 +25,4 @@ Statement: Use words, numbers, and punctuation to sent an instruction. Like a se
 
 https://www.linkedin.com/learning/programming-foundations-fundamentals/welcome?u=104
 
-[permalink test](/jekyll)
+[permalink test](/docs/jekyll)
