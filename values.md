@@ -2,7 +2,7 @@
 layout: page
 title: Values
 permalink: /values/
-resource: true
+resource: 
 ---
 * [Managers](#managers)
 * [Values](#values)
@@ -266,6 +266,8 @@ Adverse actions do not include petty slights and annoyances, such as
 isolated negative comments in an otherwise positive or neutral
 evaluation, or negative comments that are justified by an employee's
 poor work performance or history.
+
+Actions affecting employment such as threats, unjustified negative evaluations, unjustified negative references, or increased surveillance are examples of adverse action.
 
 If an employee’s terms or conditions of employment are materially
 impacted, then the action taken against them is considered adverse.

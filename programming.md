@@ -15,8 +15,8 @@ Statement: Use words, numbers, and punctuation to sent an instruction. Like a se
 * Low level language: Runs near the CPU (e.g., Assembly, C)
 * High level language: Runs far aware from the CPU (e.g., JavaScript, Python). Source code is translated from high level to low level.
 * Integrated Development Environment (IDE): A professional development text editor (e.g, Eclipse, Xcode, VS)
-* Compiled language: Uses a compiler to convert source code (Python) into machine code so it can run an executable file (e.g., Objective-C, C)
-* Interpreted language: No compiler used. The source code is not compiled and built into an executable before it's run and consumed. A copy is given then run as-is by the other machine. (e.g., JavaScript, PHP)
+* Compiled language: Uses a compiler to convert source code into machine code so it can run an executable file (e.g., Objective-C, C)
+* Interpreted language: No compiler used. The source code is not compiled and built into an executable before it's run and consumed. A copy is given then run as-is by the other machine. (e.g., Python, JavaScript, PHP)
 * Hybrid language: A combination of compiled code and intrepreted code (e.g., Java, Python)
 * Integers: They are numbers, such as 0.
 * Strings: They are characters and spaces, such as "This is an abc string"

@@ -18,7 +18,30 @@ resource: true
 
 # Terminology
 
+* **Module**: A module is a Python object with arbitrarily named attributes that you can bind and reference. Simply, a module is a file consisting of Python code. A module can define functions, classes and variables. A module can also include runnable code.
+
 * **Class**: A blue print from with objects (walls, roofs, ...) are made. What is an object? Object can be anything that has some attributes/state.
+
+* **Function**: They are defined with the `def <name>():` keyword. A function must be called and executed (for example, by an `if` statement). Functions themselves are objects that can be passed around to other pieces of python code.
+
+* **Indentation**: Python uses the indentation of the code to determine where the code belongs. The colon (:) starts the scope block.
+
+* **Comments**: Done with a # hash character
+
+* **Conditional structures**: Using if, elif, else to evaluate to true or false
+
+		```
+		def main():
+		  x, y = 100, 100
+
+		  if (x < y):
+		    st = "x is less than y"
+		  elif (x == y):
+		    st = "x is the same as y"
+		  else:
+		    st = "x is greater than y"
+		  print (st)
+		 ```
 
 # Jinja2
 
