@@ -20,13 +20,13 @@ resource: true
 
 * **Module**: A module is a Python object with arbitrarily named attributes that you can bind and reference. Simply, a module is a file consisting of Python code. A module can define functions, classes and variables. A module can also include runnable code.
 
-* **Class**: A blue print from with objects (walls, roofs, ...) are made. What is an object? Object can be anything that has some attributes/state.
+* **Class**: A blue print from which objects (walls, roofs, ...) are made. What is an object? Object can be anything that has some attributes/state. Classes encapsulate functionality that can be kept together and passed around, as a complete module for use, in other projects.
 
 * **Function**: They are defined with the `def <name>():` keyword. A function must be called and executed (for example, by an `if` statement). Functions themselves are objects that can be passed around to other pieces of python code.
 
 * **Indentation**: Python uses the indentation of the code to determine where the code belongs. The colon (:) starts the scope block.
 
-* **Comments**: Done with a # hash character
+* **Comments**: Done with a # hash character. Enter **command** = **/** to comment out lines in Sublime and VScode.
 
 * **Conditional structures**: Using if, elif, else to evaluate to true or false
 
@@ -42,6 +42,12 @@ resource: true
 		    st = "x is greater than y"
 		  print (st)
 		 ```
+
+* **__init__.py**: A python idiom that declares a python directory to be a package. Do this by putting a `__init__.py` file in the directory.
+
+* The `src` directory. All source code goes here and is bundled inside an artifact. Python test do in a different directory. This way tests are not bundled in with the src artifacts, and the size of those artifacts are not artificially inflated. Most open source projects take this approach. 
+
+* **import statements**: Python has a rich library of pre-defined code that can be imported into my program. It builds functionality into my app. An import statement tells Python where to get this functionality from. E.g., `from datetime import date`.
 
 # Jinja2
 
@@ -92,7 +98,15 @@ http://jinja.pocoo.org/
 
 Install Python using Homebrew.
 
-http://docs.python-guide.org/en/latest/starting/install/osx/
+https://docs.python-guide.org/starting/install3/osx/#install3-osx
+
+Python3 install:
+
+```
+$ brew install python3
+$ python3 --version
+```
+
 
 ```
 $ brew install python
@@ -340,6 +354,8 @@ A PEX files looks like this:
 ```
 
 # Resources
+
+How namespaces work, https://docs.python.org/3/tutorial/classes.html
 
 https://www.python.org/
 

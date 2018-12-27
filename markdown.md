@@ -9,6 +9,12 @@ resource: true
 
 https://kramdown.gettalong.org/
 
+# Sublime Indenting and Comments
+
+To shift a block of text to the right/left in Sublime Text, `cmd + ]/[` in OSX.
+
+* **Comments**: Done with a # hash character. Enter **command** = **/** to comment out lines in Sublime and VScode.
+
 # Sublime Markdown Preview
 
 Github Flavored Markdown (GFM)
@@ -48,6 +54,12 @@ Will jump to a heading like this:
 ```
 # Critical System and Applications
 ```
+
+Alternatively, use a named html anchor tag like this:
+
+[mytext-*/](#there_you_go)
+
+<a name="there_you_go"></a>
 
 ## Periods in anchors
 

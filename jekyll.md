@@ -159,9 +159,17 @@ That permalink can be linked to from within a .md like this:
 
 In the example, the `/rest.li` prefix is defined in `_config.yml` as `baseurl: "/rest.li"`.
 
+Link to a # subsection. Notice there's no forward slash (/) before the #:
+
+```
+[Dependency Injection](/rest.li/user_guide/restli_server#dependency-injection)
+```
+
 ```
 [Using Instant Messaging]({{ site.baseurl }}/im/index.html)
 ```
+
+Can link to an html file:
 
 ```
 [See Markdown](/markdown/index.html)
@@ -384,9 +392,10 @@ My CSE, https://cse.google.com/cse/all
 
 Options by tjohnson:
 
-* https://cse.google.com/cse/
+* https://github.com/slashdotdash/jekyll-lunr-js-search
+* Algolia, https://community.algolia.com/docsearch/ and https://www.algolia.com/
+* CSE, https://cse.google.com/cse/
 * Swiftype, https://swiftype.com/
-* Algolia, https://www.algolia.com/
 
 Avoid. lunr-js hits performance issues after indexing 70ish files, don't use it, https://github.com/slashdotdash/jekyll-lunr-js-search
 
@@ -401,6 +410,63 @@ Advice from Jose Gandullia (https://www.linkedin.com/in/josegandullia/)
 * Looks like Duck Duck go also has a searchbox you can add, of course then you have no control over the actual search.
 
 https://duckduckgo.com/search_box
+
+Lunr-js, https://rayhightower.com/blog/2016/01/04/how-to-make-lunrjs-jekyll-work-together/
+
+# Google Analytics
+
+Add this to _includes/head.html in your Jekyll doc project:
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-128576866-1"></script>
+
+where "UA-128576866" is your account ID.
+
+Full example:
+
+https://analytics.google.com/analytics/web/?authuser=1#/report/content-engagement-flow/a128576866w187663829p184404553/_u.date00=20181111&_u.date01=20181117/
+
+```
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-128576866-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-128576866-1');
+    </script>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+
+    <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
+    <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}" />
+
+    <link rel="icon"
+      type="image/png"
+      href="/rest.li/images/icon_pegasus.png">
+  
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen,projection" href="{{ "/assets/materialize.css" | relative_url }}" />
+    <link rel="stylesheet" type="text/css" media="screen,projection" href="{{ "/assets/main.css" | relative_url }}">
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}" />
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ "/feed.xml" | relative_url }}" />
+
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  
+    {% if jekyll.environment == 'production' and site.google_analytics %}
+    {% include google-analytics.html %}
+    {% endif %}
+    <script>
+       $(function() {
+          $("h1").addClass("no_toc");
+       });
+    </script>
+</head>
+```
 
 # Resources
 
