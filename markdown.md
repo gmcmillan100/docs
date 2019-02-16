@@ -13,7 +13,7 @@ https://kramdown.gettalong.org/
 
 To shift a block of text to the right/left in Sublime Text, `cmd + ]/[` in OSX.
 
-* **Comments**: Done with a # hash character. Enter **command** = **/** to comment out lines in Sublime and VScode.
+* **Comments**: Done with a # hash character. Use the **command** **/** toggle to comment in/out lines in Sublime and VScode.
 
 # Sublime Markdown Preview
 

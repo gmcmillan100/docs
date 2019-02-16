@@ -24,9 +24,17 @@
   }
 }
 
+.box {
+  float: right;
+  margin-right: 300px;
+  line-height: 56px;}
+
+.contact {
+  margin-left: 100px}
+
 .site-nav {
   float: right;
-  line-height: 56px;
+  line-height: 10px;
 
   .menu-icon {
     display: none;

@@ -6,6 +6,7 @@ resource: true
 ---
 
 * [Terminology](#terminology)
+* [datetime module](#datetime-module)
 * [Jinja2](#jinja2)
 * [Hello World](#hello-world)
 * [Installation](#installation)
@@ -14,6 +15,9 @@ resource: true
 * [Path](#path)
 * [Packages](#packages)
 * [Local Web Server](#local-web-server)
+* [PEX](#pex)
+* [VScode](#vscode)
+* [Raspberry Pi](#raspberry-pi)
 * [Resources](#resources)
 
 # Terminology
@@ -28,26 +32,166 @@ resource: true
 
 * **Comments**: Done with a # hash character. Enter **command** = **/** to comment out lines in Sublime and VScode.
 
-* **Conditional structures**: Using if, elif, else to evaluate to true or false
+* **Conditional structures**: Using if, elif, else to evaluate to true or false:
 
-		```
-		def main():
-		  x, y = 100, 100
+	```
+	def main():
+	  x, y = 100, 100
 
-		  if (x < y):
-		    st = "x is less than y"
-		  elif (x == y):
-		    st = "x is the same as y"
-		  else:
-		    st = "x is greater than y"
-		  print (st)
-		 ```
+	  if (x < y):
+	    st = "x is less than y"
+	  elif (x == y):
+	    st = "x is the same as y"
+	  else:
+	    st = "x is greater than y"
+	  print (st)
+	```
 
 * **__init__.py**: A python idiom that declares a python directory to be a package. Do this by putting a `__init__.py` file in the directory.
 
 * The `src` directory. All source code goes here and is bundled inside an artifact. Python test do in a different directory. This way tests are not bundled in with the src artifacts, and the size of those artifacts are not artificially inflated. Most open source projects take this approach. 
 
-* **import statements**: Python has a rich library of pre-defined code that can be imported into my program. It builds functionality into my app. An import statement tells Python where to get this functionality from. E.g., `from datetime import date`.
+* **import statements**: Python has a rich library of pre-defined code that can be imported into my program. It builds functionality into my app. An import statement tells Python where to get this functionality from. For example to manipulate dates and times, you can tell the interpreter to import the `date`, `time`, and `datetime` classes from the `datetime` standard module that comes with python's standard library:
+
+	```
+	from datetime import date
+	from datetime import time
+	from datetime import datetime
+	```
+
+
+# datetime module
+
+To manipulate dates and times, you can tell the interpreter to import the `date`, `time`, and `datetime` classes from the `datetime` standard module that comes with python's standard library:
+
+```
+from datetime import date
+from datetime import time
+from datetime import datetime
+```
+
+### date.today
+
+Call the `today` method on the `date` class to return information about the current date:
+
+```
+#!/usr/local/bin/python3
+
+# Import the date, time, and datetime classes from the datetime standard module
+
+from datetime import date
+from datetime import time
+from datetime import datetime
+
+def main():
+  ## DATE OBJECTS
+  # Get today's date from the simple today() method from the date class
+  mytoday = date.today()
+  print("Today's date is", mytoday)
+
+
+  # The date.today function has many properties associated with it. Print out the date's individual components
+  print("Date components: ", mytoday.day, mytoday.month, mytoday.year)
+
+  # The date.today function has many properties associated with it. Print out the date's individual components
+  print("Date components: ", mytoday.day, mytoday.month, mytoday.year)
+
+  # retrieve today's weekday (0=Monday, 6=Sunday)
+  print ("Today's weekday # is:", mytoday.weekday())
+  days = ["mon","tue","wed","thu","fri","sat","sun"]
+  print ("Which is a: ", days[mytoday.weekday()])
+
+if __name__ == "__main__":
+  main()
+```
+which prints this:
+```
+Today's date is 2019-01-03
+Date components:  3 1 2019
+Today's weekday # is: 3
+Which is a:  thu
+```
+
+### datetime.now
+
+```
+#!/usr/local/bin/python3
+
+# Import the date, time, and datetime classes from the datetime standard module
+
+from datetime import date
+from datetime import time
+from datetime import datetime
+
+def main():
+
+  ## DATETIME OBJECTS
+  # Get today's date from the datetime class
+  mytoday = datetime.now()
+  print ("The current date and time is ", mytoday)
+
+  # To get the current time, get the time portion of the datetime object. Get the now object from the datetime class and pass it into the time function.
+  t = datetime.time(datetime.now())
+  print(t)
+
+if __name__ == "__main__":
+  main()
+```
+which prints this:
+
+```
+The current date and time is  2019-01-03 14:45:16.963570
+14:45:16.967439
+```
+
+### now.strftime
+
+Use `now.strftime` to format dates and times.
+
+```
+from datetime import datetime
+
+def main():
+  # Times and dates can be formatted using a set of predefined string
+  # control codes 
+  now = datetime.now()
+
+  #### Date Formatting ####
+  
+  # %y/%Y - Year, %a/%A - weekday, %b/%B - month, %d - day of month
+  print(now.strftime("The current year is: %Y"))
+  print(now.strftime("%a, %d %B, %y"))
+
+
+  # %c - locale's date and time, %x - locale's date, %X - locale's time
+  print(now.strftime("Locale date and time: %c"))
+  print(now.strftime("Locale date: %x"))
+  print(now.strftime("Locale time: %X"))
+
+
+  #### Time Formatting ####
+
+  # %I/%H - 12/24 Hour, %M - minute, %S - second, %p - locale's AM/PM
+  print(now.strftime("Current time: %I:%M:%S %p"))
+  print(now.strftime("24-hour time: %H:%M"))
+
+
+
+if __name__ == "__main__":
+  main();
+```
+
+which prints this:
+
+```
+The current year is: 2019
+Sat, 12 January, 19
+Locale date and time: Sat Jan 12 15:51:40 2019
+Locale date: 01/12/19
+Locale time: 15:51:40
+Current time: 03:51:40 PM
+24-hour time: 15:51
+```
 
 # Jinja2
 
@@ -98,15 +242,39 @@ http://jinja.pocoo.org/
 
 Install Python using Homebrew.
 
-https://docs.python-guide.org/starting/install3/osx/#install3-osx
-
-Python3 install:
+## Python3
 
 ```
 $ brew install python3
-$ python3 --version
+```
+If you hit this permissions error:
+
+```
+==> Pouring python-3.7.2.mojave.bottle.tar.gz
+Error: An unexpected error occurred during the `brew link` step
+The formula built, but is not symlinked into /usr/local
+Permission denied @ dir_s_mkdir - /usr/local/Frameworks
+Error: Permission denied @ dir_s_mkdir - /usr/local/Frameworks
 ```
 
+fix it like this:
+
+```
+sudo mkdir /usr/local/Frameworks
+sudo chown $(whoami):admin /usr/local/Frameworks 
+brew link python3
+```
+now it's installed:
+
+```
+python3 --version
+Python 3.7.2
+```
+See also:
+* https://stackoverflow.com/questions/47513024/how-to-fix-permissions-on-home-brew-on-macos-high-sierra/49295044
+* https://docs.python-guide.org/starting/install3/osx/#install3-osx
+
+## Python 2
 
 ```
 $ brew install python
@@ -352,6 +520,118 @@ A PEX files looks like this:
 ```
 {“requirements”: [“Sphinx==1.4.1", “wrapped-python-tools==0.0.23”, “cssselect==0.9.1", “Pygments==2.1.3”, “ordereddict==1.1", “imagesize==0.7.1”, “premailer==2.9.2", “sphinx-rtd-theme==0.1.9”, “nose==1.1.2", “pytz==2016.4”, “docutils==0.12", “Babel==2.3.4”, “lxml==2.3.4", “Jinja2==2.8”, “CommonMark==0.5.4", “six==1.10.0”, “MarkupSafe==0.23", “recommonmark==0.4.0”, “snowballstemmer==1.2.1", “modernize==0.4”, “cssutils==1.0", “alabaster==0.7.8”], “inherit_path”: false, “distributions”: {“nose-1.1.2-py2-none-any.whl”: “143b9d80385276cfaff78091614f7aaf41ad2dcb”, “six-1.10.0-py2.py3-none-any.whl”: “a99dfb27e60da3957f6667853b91ea52e173da0a”, “lxml-2.3.4-cp27-none-macosx_10_9_x86_64.whl”: “964cd3f189d5f14e18f0844ba5d23016590f643f”, “imagesize-0.7.1-py2.py3-none-any.whl”: “dcc3cf481002b74e2c8fe959078d31aadf923966”, “ordereddict-1.1-py2-none-any.whl”: “848a2f5843cc654727c041783a501533bf3bdd84”, “Babel-2.3.4-py2.py3-none-any.whl”: “5f2ab82fbed8def18aa827755c505510686c0e14”, “pytz-2016.4-py2-none-any.whl”: “3d345d087668f45b40de7b858cc59a38c3c62230”, “modernize-0.4-py2-none-any.whl”: “6aca689f48e4896816a2c488f2fe6e2c403ad9fa”, “Pygments-2.1.3-py2.py3-none-any.whl”: “aef4543856715a6889040a9a7ace8efce9658613”, “cssselect-0.9.1-py2-none-any.whl”: “f69c5b692491368b2888fa96882e8d728da88bf8”, “recommonmark-0.4.0-py2.py3-none-any.whl”: “b681932ac8d118049683bc89d8d444d0a79d4527”, “sphinx_rtd_theme-0.1.9-py2-none-any.whl”: “f60ebdc7e596403cd567a90557ded55ac146507f”, “MarkupSafe-0.23-cp27-none-macosx_10_9_x86_64.whl”: “a3e7734ab71792055875afdb2b571872cbc1c890”, “Jinja2-2.8-py2.py3-none-any.whl”: “c25769aefd4fef6c1c5d506ee90f542002c52c40”, “CommonMark-0.5.4-py2-none-any.whl”: “a2c12fd2155111120d082297d83654695a541508”, “premailer-2.9.2-py2-none-any.whl”: “e30e6b64db42ff4badecd2061540aeb181db2a52”, “docutils-0.12-py2-none-any.whl”: “b704e65e6474700f372cbbfb495e6926bc1610ec”, “alabaster-0.7.8-py2.py3-none-any.whl”: “2f0a613fd95478fd6c62e4466637551ee5e8ae48”, “Sphinx-1.4.1-py2.py3-none-any.whl”: “bd867b505ac9edc475beb4fbe111e98dfacda82d”, “snowballstemmer-1.2.1-py2-none-any.whl”: “5104f870e0d1b03142ac3093ae6b4c8ad30d926b”, “cssutils-1.0-py2-none-any.whl”: “218427ef3350aa297ec27b435a3c11407d8224a7”, “wrapped_python_tools-0.0.23-py2-none-any.whl”: “fbebdcbed5491a9df24d5652e03376e1b0792b58”}, “always_write_cache”: false, “code_hash”: “da39a3ee5e6b4b0d3255bfef95601890afd80709", “zip_safe”: true, “ignore_errors”: false, “build_properties”: {“platform”: “macosx-10.9-x86_64”, “version”: [2, 7, 11], “class”: “CPython”}}
 ```
+
+# VScode
+
+pythonPath, https://donjayamanne.github.io/pythonVSCodeDocs/docs/python-path/
+
+Enter this in **settings.json** > **WORKSPACE SETTINGS**:
+
+```
+{
+    "python.pythonPath": "/usr/local/bin/python3"
+}
+```
+A reg squiggle underline means the file has errors.
+
+**Comments**: Done with a # hash character. Use the **command** **/** toggle to comment in/out lines in Sublime and VScode.
+
+# Input Yes/No Program
+
+```
+def main():
+
+	print("Do you like my negative ion generator?")
+	answer = input()
+	if answer == 'yes':
+	    print("Thank you!   " * 1)
+	elif answer == 'no':
+	    print("Sorry you didn't like it ...")
+
+if __name__ == "__main__":
+  main()
+```
+
+# Raspberry Pi
+
+## Intro
+
+List of Raspberry Pi models: https://www.raspberrypi.org/products/
+
+Where to download an OS for your Raspberry Pi: https://www.raspberrypi.org/downloads/
+A link to Etcher (a utility for writing disk images to USB and SD cards): https://www.balena.io/etcher/
+
+The stretch lite package has no Desktop/GUI. Good for CLI only. 
+
+Fun components to buy per Zhao (docin python dev):
+
+* https://www.sparkfun.com/
+* https://www.adafruit.com/
+
+## Equipment
+
+https://www.amazon.com/Seenda-Reader-Memory-Function-Micro/dp/B078RKJJCK/ref=sr_1_3?ie=UTF8&qid=1548964333&sr=8-3&keywords=seenda+card+reader
+
+https://www.amazon.com/C4-Labs-Zebra-Wood-Case/dp/B00ME5XUAG/ref=sr_1_1?ie=UTF8&qid=1548964370&sr=8-1&keywords=c4+labs+zebra+wood
+
+https://www.amazon.com/Anker-Premium-Adapter-Ethernet-ChromeBook/dp/B071G83L1J/ref=sr_1_3?ie=UTF8&qid=1548964395&sr=8-3&keywords=anker+usb+c+hub
+
+## OS Upgrades
+
+Manually installing the OS on a SD card. Burn/flash a .img file to the SD card by using the Etcher software www.balena.io
+
+To enable the SSH server on the SD card, create a file named "ssh" in the boot dir:
+
+cd /Volumes/boot
+touch ssh
+
+## Boot Setup
+
+A few useful commands for when you first boot up your Raspberry Pi:
+
+Update your software
+--------------------
+  $ sudo apt update
+  $ sudo apt upgrade
+
+Tweak you config (force HDMI to always be active)
+-------------------------------------------------
+Edit /boot/config.txt and change the following settings:
+  hdmi_force_hotplug=1
+  hdmi_drive=2
+
+Disable the swap file (to maximize the lifespan of your SD card)
+----------------------------------------------------------------
+  $ sudo swapoff --all
+  $ sudo apt remove dphys-swapfile
+  $ sudo rm -f /var/swap
+
+Change your current password
+----------------------------
+  $ chgpwd
+
+Create a new user
+-----------------
+  $ sudo adduser admin
+(This will create a user called "admin")
+
+Give a user "root" access
+------------------------
+  $ sudo adduser admin sudo
+  $ sudo adduser admin adm
+(This will give the "admin" user "root" access / administrator access)
+
+Disable user 'pi'
+-----------------
+  (You will need to log out of "pi" first, and then log in as another user with "root" access)
+  $ sudo passwd -l pi
+
+# Flask
+
+It's a micro web framework powered by Python.
+
+https://realpython.com/introduction-to-flask-part-1-setting-up-a-static-site/
+
 
 # Resources
 

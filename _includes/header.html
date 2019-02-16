@@ -4,10 +4,15 @@
 
     <a class="site-title" href="{{ "/" | relative_url}}">{{ site.title | escape }}</a>
 
+      <!-- .. -->
+    <form class="box" {{ site.baseurl }} action="search.html" method="get">
+    <label for="search-box"></label>
+    <input type="text" id="search-box" name="query">
+    <input type="submit" value="search">
+    </form>
+
     <nav class="site-nav">
-      <span>
-        <a href="https://www.linkedin.com/in/grmcmillan/">Contact: Greg McMillan</a>
-      </span>
+
     </nav>
 
   </div>

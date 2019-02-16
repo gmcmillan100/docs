@@ -388,18 +388,24 @@ Do this in your template to get all the pages in the `gold` category:
 
 # Search
 
-My CSE, https://cse.google.com/cse/all
+## Lunr-js
 
-Options by tjohnson:
+https://lunrjs.com/
 
-* https://github.com/slashdotdash/jekyll-lunr-js-search
-* Algolia, https://community.algolia.com/docsearch/ and https://www.algolia.com/
-* CSE, https://cse.google.com/cse/
-* Swiftype, https://swiftype.com/
+Mnorth. It's a good option for smallish sites. 
 
-Avoid. lunr-js hits performance issues after indexing 70ish files, don't use it, https://github.com/slashdotdash/jekyll-lunr-js-search
+Example setups:
+
+
+* https://katydecorah.com/code/lunr-and-jekyll/ and https://katydecorah.com/search/
+* https://arcath.net/2016/02/setting-up-lunr-js-in-jekyll
+* https://rayhightower.com/blog/2016/01/04/how-to-make-lunrjs-jekyll-work-together/
+* https://learn.cloudcannon.com/jekyll/jekyll-search-using-lunr-js/
+
 
 Advice from Jose Gandullia (https://www.linkedin.com/in/josegandullia/)
+
+Avoid. lunr-js hits performance issues after indexing 70ish files, don't use it, https://github.com/slashdotdash/jekyll-lunr-js-search
 
 * Having "the client browser handle all the search" (e.g., lunr-js) sounds like a bad idea unless it's a really small site.
 
@@ -411,7 +417,15 @@ Advice from Jose Gandullia (https://www.linkedin.com/in/josegandullia/)
 
 https://duckduckgo.com/search_box
 
-Lunr-js, https://rayhightower.com/blog/2016/01/04/how-to-make-lunrjs-jekyll-work-together/
+My CSE, https://cse.google.com/cse/all
+
+Options by tjohnson:
+
+* https://github.com/slashdotdash/jekyll-lunr-js-search
+* Algolia, https://community.algolia.com/docsearch/ and https://www.algolia.com/
+* CSE, https://cse.google.com/cse/
+* Swiftype, https://swiftype.com/
+
 
 # Google Analytics
 
