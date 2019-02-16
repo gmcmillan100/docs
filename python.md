@@ -6,7 +6,9 @@ resource: true
 ---
 
 * [Terminology](#terminology)
-* [datetime module](#datetime-module)
+* [Datetime Module](#datetime-module)
+* [Files](#files)
+* [OS Path Utilities](#os-path-utilities)
 * [Jinja2](#jinja2)
 * [Hello World](#hello-world)
 * [Installation](#installation)
@@ -18,6 +20,7 @@ resource: true
 * [PEX](#pex)
 * [VScode](#vscode)
 * [Raspberry Pi](#raspberry-pi)
+* [Flask](#flask)
 * [Resources](#resources)
 
 # Terminology
@@ -58,7 +61,12 @@ resource: true
 	from datetime import time
 	from datetime import datetime
 	```
+* **str()**: This function converts values to a string form so they can be combined with other strings.
 
+  ```
+  print("Item exists: " + str(path.exists("textfile.txt")))
+
+  ```
 
 # datetime module
 
@@ -191,6 +199,80 @@ Locale date: 01/12/19
 Locale time: 15:51:40
 Current time: 03:51:40 PM
 24-hour time: 15:51
+```
+# Files
+
+Python knows about files inherently. There's no need to import any class module to work with files. 
+
+
+```
+def main():  
+  # Open a file for writing and create it if it doesn't exist
+  f = open("textfile.txt", "w+")
+
+  # write some lines of data to the file
+  for i in range(10):
+    f.write("This is line " + str(i) + "\r\n")
+  
+  # close the file when done
+  f.close()
+    
+if __name__ == "__main__":
+  main()
+```
+
+Run the script and go look at the contents of textfile.txt
+
+To append data to an existing file, use the ``a`` attribute (instead of the ``w``):
+
+```
+  # Open the file for appending text to the end
+  f = open("textfile.txt", "a")
+```
+
+# OS Path Utilities
+
+Use the ``os`` module to work with operating system related features, such as gathering information about files. For example, discover if a file exists and its path.
+
+```
+# Example file for working with os.path module
+#
+import os
+from os import path
+import datetime
+from datetime import date, time, timedelta
+import time
+
+
+def main():
+  # Print the name of the OS
+  print(os.name)
+
+  # Check for item existence and type
+  print("Item exists: " + str(path.exists("textfile.txt")))
+  print("Item is a file: " + str(path.isfile("textfile.txt")))
+  print("Item is a directory: " + str(path.isdir("textfile.txt")))
+  
+  # Work with file paths
+  print("Item path: " + str(path.realpath("textfile.txt")))
+  print("Item path and name: " + str(path.split(path.realpath("textfile.txt"))))
+  
+  # Get the modification time
+  t = time.ctime(path.getmtime("textfile.txt"))
+  print(t)
+  print(datetime.datetime.fromtimestamp(path.getmtime("textfile.txt")))
+```
+When the above script runs, it prints the following:
+
+```
+posix
+Item exists: True
+Item is a file: True
+Item is a directory: False
+Item path: /Users/gmcmilla/training/python/Exercise Files/Ch4/textfile.txt
+Item path and name: ('/Users/gmcmilla/training/python/Exercise Files/Ch4', 'textfile.txt')
+Fri Feb 15 21:40:55 2019
+2019-02-15 21:40:55.647603
 ```
 
 # Jinja2
