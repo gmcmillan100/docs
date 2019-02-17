@@ -8,6 +8,8 @@ resource: true
 * [Terminology](#terminology)
 * [Datetime Module](#datetime-module)
 * [Files](#files)
+* [Internet Data](##internet-data)
+* [JSON](##json)
 * [OS Path Utilities](#os-path-utilities)
 * [Jinja2](#jinja2)
 * [Hello World](#hello-world)
@@ -273,6 +275,181 @@ Item path: /Users/gmcmilla/training/python/Exercise Files/Ch4/textfile.txt
 Item path and name: ('/Users/gmcmilla/training/python/Exercise Files/Ch4', 'textfile.txt')
 Fri Feb 15 21:40:55 2019
 2019-02-15 21:40:55.647603
+```
+
+# Internet Data
+
+Use ``urllib.request`` to request a URL and print the HTML:
+
+```
+import urllib.request
+
+def main():
+  webUrl = urllib.request.urlopen("http://www.google.com")
+  print("result code: " + str(webUrl.getcode()))
+  data = webUrl.read()
+  print(data)
+
+if __name__ == "__main__":
+  main()
+```
+
+which prints code ``200`` and Google's home page like this:
+
+```
+result code: 200
+```
+
+# JSON
+
+Python can retrieve JSON data from the Internet (and other sources) and process and manipulate it. 
+
+Note: To learn more about Python's handling capabilities, see https://docs.python.org/3.6/library/json.html
+
+The following example processes the USGS's earthquate JSON data feed from https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php and is based on this training session https://www.linkedin.com/learning/learning-python-2/working-with-json-data?u=104
+
+```
+# 
+# Example file for parsing and processing JSON
+#
+import urllib.request 
+import json
+
+def printResults(data):
+  # Use the json module to load the string data into a dictionary
+  theJSON = json.loads(data)
+  
+  # now we can access the contents of the JSON like any other Python object
+  if "title" in theJSON["metadata"]:
+    print(theJSON["metadata"]["title"])
+  
+  # output the number of events, plus the magnitude and each event name  
+  count = theJSON["metadata"]["count"]
+  print (str(count) + " events recorded")
+
+  # for each event, print the place where it occurred. See the json spec at https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php
+  for i in theJSON["features"]:
+    print(i["properties"]["place"])
+  print("-------------\n")
+
+  # print the events that only have a magnitude greater than 4
+  for i in theJSON["features"]:
+    if i["properties"]["mag"] >= 4.0:
+      print ("%2.1f" % i["properties"]["mag"], i["properties"]["place"])
+  print("-------------\n")
+
+  # print only the events where at least 1 person reported feeling something
+  print("Events that were felt:")
+  for i in theJSON["features"]:
+    feltReports = i["properties"]["felt"]
+    if feltReports != None:
+      if feltReports > 0:
+        print ("%2.1f" % i["properties"]["mag"], i["properties"]["place"], " reported " + str(feltReports) + " times")
+  
+def main():
+  # define a variable to hold the source URL
+  # In this case we'll use the free data feed from the USGS
+  # This feed lists all earthquakes for the last day larger than Mag 2.5
+  urlData = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_day.geojson"
+
+  # Open the URL and read the data
+  webUrl = urllib.request.urlopen(urlData)
+  print ("result code: " + str(webUrl.getcode()))
+  if (webUrl.getcode() ==200):
+    data = webUrl.read()
+    printResults(data)
+  else:
+    print("Received error, cannot parse results")
+
+if __name__ == "__main__":
+  main()
+
+```
+
+The previous example produced this output:
+
+```
+result code: 200
+USGS Magnitude 2.5+ Earthquakes, Past Day
+44 events recorded
+41km WNW of Cantwell, Alaska
+93km W of Willow, Alaska
+98km WNW of Talkeetna, Alaska
+30km NE of Basco, Philippines
+109km ENE of Ndoi Island, Fiji
+112km ESE of Kitaibaraki, Japan
+22km SSW of Gefyra, Greece
+Fiji region
+176km ENE of Petropavlovsk-Kamchatskiy, Russia
+47km NW of Namatanai, Papua New Guinea
+19km NW of Anchorage, Alaska
+23km NW of Yuto, Argentina
+113km NW of Talkeetna, Alaska
+114km NW of Talkeetna, Alaska
+85km NNE of Arecibo, Puerto Rico
+19km NNW of Tehachapi, CA
+South Georgia Island region
+84km N of Tierras Nuevas Poniente, Puerto Rico
+54km N of Isabela, Puerto Rico
+171km WSW of El Calafate, Argentina
+75km NNE of Punta Cana, Dominican Republic
+12km NNW of Otra Banda, Dominican Republic
+South of the Fiji Islands
+10km S of Kapaau, Hawaii
+7km SSW of Yountville, CA
+205km SW of Tawui, Indonesia
+15km NW of Tela, Honduras
+49km NW of San Antonio, Puerto Rico
+45km NNE of Otra Banda, Dominican Republic
+17km NNW of Anchorage, Alaska
+79km NE of Road Town, British Virgin Islands
+148km SSW of Lorengau, Papua New Guinea
+115km NE of Punta Cana, Dominican Republic
+10km SSW of Saiha, India
+83km NW of Hirara, Japan
+55km N of Brenas, Puerto Rico
+14km WSW of Big Lake, Alaska
+69km NNW of Ayna, Peru
+126km SSE of Cold Bay, Alaska
+27km SSE of Londres, Argentina
+57km SSW of Kaktovik, Alaska
+Southwest Indian Ridge
+30km SSW of Fillmore, Utah
+177km ENE of Petropavlovsk-Kamchatskiy, Russia
+-------------
+
+4.7 30km NE of Basco, Philippines
+4.8 109km ENE of Ndoi Island, Fiji
+4.8 112km ESE of Kitaibaraki, Japan
+4.8 22km SSW of Gefyra, Greece
+4.7 Fiji region
+4.4 176km ENE of Petropavlovsk-Kamchatskiy, Russia
+6.4 47km NW of Namatanai, Papua New Guinea
+5.0 23km NW of Yuto, Argentina
+5.0 South Georgia Island region
+4.3 171km WSW of El Calafate, Argentina
+4.6 South of the Fiji Islands
+4.2 205km SW of Tawui, Indonesia
+4.6 148km SSW of Lorengau, Papua New Guinea
+4.8 10km SSW of Saiha, India
+5.0 83km NW of Hirara, Japan
+4.3 69km NNW of Ayna, Peru
+4.3 27km SSE of Londres, Argentina
+4.0 57km SSW of Kaktovik, Alaska
+4.9 Southwest Indian Ridge
+4.5 177km ENE of Petropavlovsk-Kamchatskiy, Russia
+-------------
+
+Events that were felt:
+2.8 19km NW of Anchorage, Alaska  reported 5 times
+3.4 19km NNW of Tehachapi, CA  reported 110 times
+3.0 54km N of Isabela, Puerto Rico  reported 1 times
+3.1 10km S of Kapaau, Hawaii  reported 84 times
+3.7 7km SSW of Yountville, CA  reported 3442 times
+3.9 15km NW of Tela, Honduras  reported 14 times
+4.8 10km SSW of Saiha, India  reported 21 times
+3.0 14km WSW of Big Lake, Alaska  reported 5 times
+
 ```
 
 # Jinja2
@@ -716,6 +893,18 @@ https://realpython.com/introduction-to-flask-part-1-setting-up-a-static-site/
 
 
 # Resources
+
+## Training
+
+Joe Marini, Python trainer:
+
+Profile: https://www.linkedin.com/learning/instructors/joe-marini?u=104
+
+* Learning Python, https://www.linkedin.com/learning/learning-python-2?u=104
+* Advanced Python, https://www.linkedin.com/learning/advanced-python?u=104
+* Algorithms, https://www.linkedin.com/learning/programming-foundations-algorithms?u=104
+
+## Other
 
 How namespaces work, https://docs.python.org/3/tutorial/classes.html
 
