@@ -58,6 +58,17 @@ Compiled with xpdf version 4.00
 	```
 4. Open `Tester.pdf`
 
+# Control
+
+See Sphinx's `conf.py` to control different aspects of the pdf generation:
+
+```
+latex_documents = [
+    (master_doc, 'Tester.tex', u'Cerebras Documentation',
+     u'Confidential beta draft', 'manual'),
+]
+```
+
 # Full pdflatex Log
 
 ```
