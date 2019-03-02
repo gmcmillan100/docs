@@ -45,17 +45,17 @@ Compiled with xpdf version 4.00
 
 1. Output a Sphinx doc to Latex format:
 
-```
-cd docs
-sphinx-build -b latex . _build/latex
-```
+	```
+	cd docs
+	sphinx-build -b latex . _build/latex
+	```
 2. Inside the `latex` directory, the file `Tester.tex` is the root file for the pdf.
 
 3. Use `pdflatex` to convert the .tex file to pdf:
 
-```
-$ pdflatex Tester.tex
-```
+	```
+	$ pdflatex Tester.tex
+	```
 4. Open `Tester.pdf`
 
 # Full pdflatex Log
