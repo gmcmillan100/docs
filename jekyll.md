@@ -390,6 +390,8 @@ Do this in your template to get all the pages in the `gold` category:
 
 ## Lunr-js
 
+See how Maxime implemented it at https://github.com/linkedin/rest.li/pull/118/commits/a1de40702ba76ba459ffec12afda94f09569395a
+
 https://lunrjs.com/
 
 Mnorth. It's a good option for smallish sites. 
