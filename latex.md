@@ -18,7 +18,7 @@ description: A 400 oz bar
 
 Use Lamport TeX (LaTex) to export Sphinx RST/Markdown files to PDF. [Leslie Lamport](https://en.wikipedia.org/wiki/Leslie_Lamport) created LaTex.
 
-About pronunciation. According to the TeX creator, [Donald Knut](https://www.youtube.com/watch?v=8HuwiBPLV3A), the creator of LaTex (Leslie Lamport) never decided how to pronounce it. Many say "Laahh Tech"; others say "Laayy tech".
+About pronunciation. According to the TeX creator, [Donald Knut](https://www.youtube.com/watch?v=8HuwiBPLV3A), the creator of LaTex (Leslie Lamport) never decided how to pronounce it. Many say "Laahh Tech"; others say "Laayy Tech".
 
 # Installation
 
