@@ -49,7 +49,7 @@ Compiled with xpdf version 4.00
 	cd docs
 	sphinx-build -b latex . _build/latex
 	```
-2. Inside the `latex` directory, the file `Tester.tex` is the root file for the pdf.
+2. Inside the `latex` directory, the file `Tester.tex` is the default root file for the pdf.
 
 3. Use `pdflatex` to convert the .tex file to pdf:
 
@@ -58,16 +58,68 @@ Compiled with xpdf version 4.00
 	```
 4. Open `Tester.pdf`
 
+# Tree Heading Control in a PDF
+
+A mix of RST and Markdown formats is supported. The PDF can display both.
+
+However in RST formatted files, an empty dummy heading must exist at the top of the file. It never gets printed in the PDf. But if it's not there, the subsequent headings are out of order. A bug. 
+
+	```
+	Dummy RST Heading for Latex's PDF Tree
+	======================================
+
+	RST H1 (the chapter title)
+	======
+
+	RST H2
+	******
+
+	RST H3
+	^^^^^^
+
+	RST H4
+	@@@@@@
+	```
+Markdown files render fine like this:
+
+	```
+	# Markdown H1 (the chapter title)
+
+	## Markdown H2
+
+	### Markdown H3
+	```
+
 # Control
 
-See Sphinx's `conf.py` to control different aspects of the pdf generation:
+See Sphinx's `conf.py` to control different aspects over how the PDF is created.
+
+PDF generation engine:
+
+```
+latex_engine = 'pdflatex'
+```
+
+An exported Latex filename (cerebras.tex) and front matter text:
 
 ```
 latex_documents = [
-    (master_doc, 'Tester.tex', u'Cerebras Documentation',
+    (master_doc, 'cerebras.tex', u'Cerebras Documentation',
      u'Confidential beta draft', 'manual'),
 ]
 ```
+
+Logo on cover page:
+
+```
+latex_logo = 'images/logo.png'
+```
+
+
+# Bugs
+
+Sometimes the TOC in the generated PDF does not update until run a second time.
+
 
 # Full pdflatex Log
 
