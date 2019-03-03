@@ -84,6 +84,8 @@ The `toctree` in the `index.rst` controls the structure of the PDF.
     pages/file2
 ```
 
+Use a strict file order list (no `pages/*`). Otherwise, the content seems to randomly bounce around inside the PDF on each regeneration. 
+
 # Markdown and RST Support
 
 A mix of RST and Markdown formats is supported. The PDF can display both.
