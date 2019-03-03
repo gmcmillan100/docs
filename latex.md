@@ -15,6 +15,11 @@ description: A 400 oz bar
 * [Bugs](#bugs)
 * [Full pdflatex Log](#full-pdflatex-log)
 
+
+Use Lamport TeX (LaTex) to export Sphinx RST/Markdown files to PDF. [Leslie Lamport](https://en.wikipedia.org/wiki/Leslie_Lamport) created LaTex.
+
+About pronunciation. According to the TeX creator, Donald Knut, the creator of LaTex (Leslie Lamport) never decided how to pronounce it. Many say "Laahh Tech"; others say "Laayy tech". See https://www.youtube.com/watch?v=8HuwiBPLV3A
+
 # Installation
 
 For Mac, the [MacTeX distribution](http://www.tug.org/mactex/) contains everything you need, including a complete TeX system with LaTeX itself and editors to write documents.
