@@ -7,6 +7,13 @@ categories: [gold]
 description: A 400 oz bar
 ---
 
+* [Installation](#installation)
+* [Make a PDF](#make-a-pdf)
+* [TOC Control in a PDF](#toc-control-in-a-pdf)
+* [Markdown and RST Support](#markdown-and-rst-support)
+* [Configuration Control](#configuration-control)
+* [Bugs](#bugs)
+* [Full pdflatex Log](#full-pdflatex-log)
 
 # Installation
 
@@ -58,7 +65,21 @@ Compiled with xpdf version 4.00
 	```
 4. Open `Tester.pdf`
 
-# Tree Heading Control in a PDF
+# TOC Control in a PDF
+
+The `toctree` in the `index.rst` controls the structure of the PDF.
+
+```
+.. toctree::
+    :maxdepth: 3
+    :caption: Table of Contents
+    :name: mastertoc
+
+    pages/file1
+    pages/file2
+```
+
+# Markdown and RST Support
 
 A mix of RST and Markdown formats is supported. The PDF can display both.
 
@@ -93,7 +114,7 @@ Markdown files render fine like this:
 ### Markdown H3
 ```
 
-# Control
+# Configuration Control
 
 See Sphinx's `conf.py` to control different aspects over how the PDF is created.
 
@@ -122,7 +143,7 @@ More customizations at http://www.sphinx-doc.org/en/1.6/latex.html
 
 # Bugs
 
-Sometimes the TOC in the generated PDF does not update until run a second time.
+Sometimes the TOC in the generated PDF does not update until run a second time. If there are errors in the log, run it again. The second time sticks.
 
 
 # Full pdflatex Log
