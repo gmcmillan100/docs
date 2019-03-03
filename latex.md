@@ -62,33 +62,36 @@ Compiled with xpdf version 4.00
 
 A mix of RST and Markdown formats is supported. The PDF can display both.
 
-However in RST formatted files, an empty dummy heading must exist at the top of the file. It never gets printed in the PDf. But if it's not there, the subsequent headings are out of order. A bug. 
+However in RST formatted files, an empty dummy heading must exist at the top of the file. It never gets printed in the PDF. If it's not there, the subsequent headings are out of order. A bug. 
 
-	```
-	Dummy RST Heading for Latex's PDF Tree
-	======================================
+RST files render fine like this:
 
-	RST H1 (the chapter title)
-	======
+```
+Dummy RST Heading for Latex's PDF Tree
+======================================
 
-	RST H2
-	******
+RST H1 (the chapter title)
+======
 
-	RST H3
-	^^^^^^
+RST H2
+******
 
-	RST H4
-	@@@@@@
-	```
+RST H3
+^^^^^^
+
+RST H4
+@@@@@@
+```
+
 Markdown files render fine like this:
 
-	```
-	# Markdown H1 (the chapter title)
+```
+# Markdown H1 (the chapter title)
 
-	## Markdown H2
+## Markdown H2
 
-	### Markdown H3
-	```
+### Markdown H3
+```
 
 # Control
 
