@@ -118,6 +118,7 @@ Logo on cover page:
 latex_logo = 'images/logo.png'
 ```
 
+More customizations at http://www.sphinx-doc.org/en/1.6/latex.html
 
 # Bugs
 
