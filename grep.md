@@ -47,3 +47,13 @@ $ find . -name gre.txt -print
 ./.snapshot/hourly.4/src/sw/sw/specs/routing/gre.txt
 ^C
 ```
+
+Word count:
+
+Use `wc -l <filename>` to print the line count.
+
+
+```
+grep "0.0." mps-using-docin.txt | wc -l
+72
+```

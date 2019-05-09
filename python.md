@@ -896,6 +896,8 @@ https://realpython.com/introduction-to-flask-part-1-setting-up-a-static-site/
 
 ## Training
 
+Nick Parlante (Google CodeLabs, creator. https://cs.stanford.edu/people/nick/)
+
 Joe Marini, Python trainer:
 
 Profile: https://www.linkedin.com/learning/instructors/joe-marini?u=104
