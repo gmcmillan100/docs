@@ -19,7 +19,7 @@ Main article: http://introcs.cs.princeton.edu/java/11hello/
 
 # Terminology
 
-* **java**: Java's runtime is named 'java'
+* **java**: Java's runtime is named `java`
 
 * **javac**: The compiler for Java
 
@@ -61,15 +61,15 @@ Main article: http://introcs.cs.princeton.edu/java/11hello/
 * **Runtime architecture**: 
 
 	```
-	+----------------------------------+
-	Custom-compiled bytecode
-	+----------------------------------+
-	Core runtime and addition libraries
-	+----------------------------------+
-	Java Virtual Machine (JVM)
-	+----------------------------------+
-	Operating system
-	+----------------------------------+
+	+-------------------------------------+
+	| Custom-compiled bytecode            |
+	+-------------------------------------+
+	| Core runtime and addition libraries |
+	+-------------------------------------+
+	| Java Virtual Machine (JVM)          |
+	+-------------------------------------+
+	| Operating system                    |
+	+-------------------------------------+
 	```
 
 # Class with Method Example
@@ -97,7 +97,7 @@ Do this to run the code:
 1. Compile `Main2.java` by using the Java compiler:
 
 	```
-	javac Main2.java
+	$ javac Main2.java
 	```
 
 	After completion, a file named `Main2.class` is created.
