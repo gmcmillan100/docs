@@ -168,6 +168,20 @@ fdesc	/dev/fd		fdescfs		rw	0	0
 proc	/proc		procfs		rw	0	0
 ```
 
+# APIs
+
+## Basics
+
+For methods, it's common to call them `get` when getting a variable and `set` when setting a variable.
+
+Networking library. Java has built in.
+
+## API Education
+
+How To Design A Good API and Why it Matters, by Joshua Bloch. See https://www.youtube.com/watch?v=aAb7hSCtvGw
+
+https://www.linkedin.com/learning/learning-java-by-example/what-is-an-api?autoplay=true&u=0
+
 # Next Learning
 
 https://www.linkedin.com/learning/java-essential-training-syntax-and-structure/welcome?u=104

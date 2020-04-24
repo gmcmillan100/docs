@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Jekyll
-permalink: /jekyll
+permalink: /jekyll/
 resource: true
 categories: [gold]
 description: A 400 oz bar
