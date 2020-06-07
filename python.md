@@ -841,8 +841,10 @@ Manually installing the OS on a SD card. Burn/flash a .img file to the SD card b
 
 To enable the SSH server on the SD card, create a file named "ssh" in the boot dir:
 
+```
 cd /Volumes/boot
 touch ssh
+```
 
 ## Boot Setup
 
@@ -850,24 +852,33 @@ A few useful commands for when you first boot up your Raspberry Pi:
 
 Update your software
 --------------------
+```
   $ sudo apt update
   $ sudo apt upgrade
+```
 
 Tweak you config (force HDMI to always be active)
 -------------------------------------------------
 Edit /boot/config.txt and change the following settings:
-  hdmi_force_hotplug=1
-  hdmi_drive=2
+
+```
+hdmi_force_hotplug=1
+hdmi_drive=2
+```
 
 Disable the swap file (to maximize the lifespan of your SD card)
 ----------------------------------------------------------------
-  $ sudo swapoff --all
-  $ sudo apt remove dphys-swapfile
-  $ sudo rm -f /var/swap
+```
+$ sudo swapoff --all
+$ sudo apt remove dphys-swapfile
+$ sudo rm -f /var/swap
+```
 
 Change your current password
 ----------------------------
-  $ chgpwd
+```
+$ chgpwd
+```
 
 Create a new user
 -----------------
@@ -876,8 +887,11 @@ Create a new user
 
 Give a user "root" access
 ------------------------
-  $ sudo adduser admin sudo
-  $ sudo adduser admin adm
+```
+$ sudo adduser admin sudo
+$ sudo adduser admin adm
+```
+
 (This will give the "admin" user "root" access / administrator access)
 
 Disable user 'pi'
@@ -887,10 +901,7 @@ Disable user 'pi'
 
 # Flask
 
-It's a micro web framework powered by Python.
-
-https://realpython.com/introduction-to-flask-part-1-setting-up-a-static-site/
-
+See [Flask]({{ site.baseurl }}/flask/index.html)
 
 # Resources
 

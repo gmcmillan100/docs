@@ -20,6 +20,8 @@ resource:
 
 ## Good Ones
 
+Leadership. The ability to inspire others to achieve a shared objective. ~ Jeff Weiner.
+
 A bad manager can take a good staff and destroy it, causing the best employees to flee and the remainder to lose all motivation. ~ Peter Drucker
 
 Good managers are magnets of talent. Bad managers are repellents of it.
