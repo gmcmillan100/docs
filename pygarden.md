@@ -1,9 +1,12 @@
 ---
 layout: page
-title: Python Magic Garden
+title: PyGarden
 permalink: /pygarden/
 resource: true
 ---
+PyGarden is a Python Spiritual Garden. It's the place where God teaches about life through activities in the garden.
+
+PyGarden is a backend service that is REST API enabled.
 
 Tutorial, https://programminghistorian.org/en/lessons/creating-apis-with-python-and-flask
 
