@@ -8,6 +8,10 @@ PyGarden is a Python Spiritual Garden. It's the place where God teaches about li
 
 PyGarden is a backend service that is REST API enabled.
 
+* [Pre-reqs](#pre-reqs)
+* [Create flask app](#create-flask-app)
+* [Create the api](#creating-the-api)
+
 Tutorial, https://programminghistorian.org/en/lessons/creating-apis-with-python-and-flask
 
 # Pre-reqs
@@ -49,7 +53,7 @@ $ python api.py
  * Debugger PIN: 887-258-551
  ```
 
- # Creating the API
+# Creating the API
 
  ```
 import flask
