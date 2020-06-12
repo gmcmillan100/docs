@@ -5,7 +5,9 @@ permalink: /flask/
 resource: true
 ---
 
-It's a micro web framework powered by Python.
+[Flask](https://palletsprojects.com/p/flask/) is a micro web framework powered by Python.
+
+[Docs](https://flask.palletsprojects.com/en/1.1.x/)
 
 https://realpython.com/introduction-to-flask-part-1-setting-up-a-static-site/
 

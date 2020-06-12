@@ -4,21 +4,48 @@ title: PyGarden
 permalink: /pygarden/
 resource: true
 ---
-PyGarden is a Python Spiritual Garden. It's the place where God teaches about life through activities in the garden.
+PyGarden is a Python Spiritual Garden. It's the place where God teaches me about life cycles and healing principles by observing activities in the garden.
 
-PyGarden is a backend service that is REST API enabled.
+PyGarden is a backend service. It is REST API enabled and uses an SQLite database.
 
 * [Pre-reqs](#pre-reqs)
+* [REST API design](#rest-api-design)
 * [Create flask app](#create-flask-app)
 * [Create the api](#creating-the-api)
-
-Tutorial, https://programminghistorian.org/en/lessons/creating-apis-with-python-and-flask
+* [SQLite database](#sqlite-database)
+* [Resources](#resources)
 
 # Pre-reqs
 
-Python
-Flask
+* [Python](https://www.python.org/)
+* [Flask](https://palletsprojects.com/p/flask/)
+* [SQLite](https://www.sqlite.org/index.html)
 
+# REST API design
+
+The prevailing design philosophy of modern APIs is called REST. For PyGarden's purposes, the most important thing about REST is that it’s based on the four methods defined by the HTTP protocol: 
+
+```
+POST, GET, PUT, DELETE
+```
+
+These correspond to the four traditional actions performed on data in a database: 
+
+```
+CREATE, READ, UPDATE, DELETE
+```
+
+A request to the API will look like this:
+
+```
+https://api.pygarden.com/v1/resources/books?id=10
+https://api.pygarden.com/v1/resources/images?id=10
+https://api.pygarden.com/v1/resources/all
+```
+
+`api.pygarden.com` -- Domain name
+`v1` -- API version number to support future versions and backward compatibility
+`resources` -- Plan to support other resources or non-resource functionality to the API in the future
 
 # Create flask app
 
@@ -55,7 +82,7 @@ $ python api.py
 
 # Creating the API
 
- ```
+```
 import flask
 from flask import request, jsonify
 
@@ -96,4 +123,18 @@ def api_all():
 
 
 app.run()
- ```
+```
+
+Visit the API to test:
+
+http://127.0.0.1:5000/api/v1/resources/books/all
+
+# SQLite database
+
+The API serves results that are stored in an SQLite database (books.db). 
+
+When the user requests an entry or set of entries, the API pulls that information from the database by building and executing an SQL query.
+
+# Resources
+
+Tutorial, https://programminghistorian.org/en/lessons/creating-apis-with-python-and-flask

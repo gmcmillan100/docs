@@ -5,9 +5,11 @@ permalink: /markdown/
 resource: true
 ---
 
-# Kramdown
+# Basic syntax
 
-https://kramdown.gettalong.org/
+See [Basic Syntax](https://www.markdownguide.org/basic-syntax/)
+
+[Kramdown](https://kramdown.gettalong.org/)
 
 # Sublime Indenting and Comments
 
