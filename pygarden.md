@@ -8,6 +8,8 @@ Spiritual Python Garden is a magical place where God inspires me. I learn about 
 
 PyGarden is a backend service. It is REST API enabled and uses an SQLite database.
 
+* End-User Requirements(#end-user-requirements)
+* Design Specification(#design-specification)
 * [Pre-reqs](#pre-reqs)
 * [REST API design](#rest-api-design)
 * [Create flask app](#create-flask-app)
@@ -16,13 +18,18 @@ PyGarden is a backend service. It is REST API enabled and uses an SQLite databas
 * [API examples](#api-examples)
 * [Resources](#resources)
 
-# Pre-reqs
+# End-User Requirements
 
-* [Python](https://www.python.org/)
-* [Flask](https://palletsprojects.com/p/flask/)
-* [SQLite](https://www.sqlite.org/index.html)
+- Read and write special moments in the garden
+- Use text and photos
+- Store data 
+- Use CLI with curl for APIs
+- Use a mobile Web UI with Chrome
+- Data backup for disaster recovery
 
-# REST API design
+# Design Specification
+
+## REST API design
 
 The prevailing design philosophy of modern APIs is called REST. For PyGarden's purposes, the most important thing about REST is that it’s based on the four methods defined by the HTTP protocol: 
 
@@ -49,6 +56,12 @@ https://api.pygarden.com/v1/resources/all
 `v1` -- API version number to support future versions and backward compatibility
 
 `resources` -- Plan to support other resources or non-resource functionality to the API in the future
+
+## Tools
+
+* [Python](https://www.python.org/)
+* [Flask](https://palletsprojects.com/p/flask/)
+* [SQLite](https://www.sqlite.org/index.html)
 
 # Create the basic flask app
 
