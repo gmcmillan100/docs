@@ -8,8 +8,8 @@ Spiritual Python Garden is a magical place where God inspires me. I learn about 
 
 PyGarden is a backend service. It is REST API enabled and uses an SQLite database.
 
-* End-User Requirements(#end-user-requirements)
-* Design Specification(#design-specification)
+* [End-User Requirements](#end-user-requirements)
+* [Design Specification](#design-specification)
 * [Pre-reqs](#pre-reqs)
 * [REST API design](#rest-api-design)
 * [Create flask app](#create-flask-app)
