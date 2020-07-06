@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Spiritual PyGarden
+title: pyGarden
 permalink: /pygarden/
 resource: true
 ---
