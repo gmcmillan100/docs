@@ -27,3 +27,9 @@ Package                                Version
 -------------------------------------- --------
 Flask                                  1.1.2 
 ```
+
+# Resources
+
+[The Flask Mega Tutorial](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) - The most well-known tutorial for learning the Flask web framework.
+
+[Building a Python App in Flask](https://hackersandslackers.com/your-first-flask-application)

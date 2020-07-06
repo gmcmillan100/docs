@@ -1,10 +1,10 @@
 ---
 layout: page
-title: PyGarden
+title: Spiritual PyGarden
 permalink: /pygarden/
 resource: true
 ---
-PyGarden is a Python Spiritual Garden. It's the place where God teaches me about life cycles and healing principles by observing activities in the garden.
+Spiritual Python Garden is a magical place where God inspires me. I learn about life cycles and healing principles through observing miracles and wonders in my backyard garden.
 
 PyGarden is a backend service. It is REST API enabled and uses an SQLite database.
 
@@ -13,6 +13,7 @@ PyGarden is a backend service. It is REST API enabled and uses an SQLite databas
 * [Create flask app](#create-flask-app)
 * [Create the api](#creating-the-api)
 * [SQLite database](#sqlite-database)
+* [API examples](#api-examples)
 * [Resources](#resources)
 
 # Pre-reqs
@@ -44,12 +45,14 @@ https://api.pygarden.com/v1/resources/all
 ```
 
 `api.pygarden.com` -- Domain name
+
 `v1` -- API version number to support future versions and backward compatibility
+
 `resources` -- Plan to support other resources or non-resource functionality to the API in the future
 
-# Create flask app
+# Create the basic flask app
 
-Add this to a file named `api.py`:
+Add this to a file named `pygarden.py`:
 
 ```
 import flask
@@ -64,6 +67,10 @@ def home():
 
 app.run()
 ```
+
+Define an `@app.route` listening at the root our app and execute a view function called home(). @app.route("/") is a Python decorator that Flask provides to assign URLs in our app to functions easily. See [flask routes](https://hackersandslackers.com/flask-routes).
+
+https://hackersandslackers.com/your-first-flask-application
 
 Start the Flask app:
 
@@ -134,6 +141,12 @@ http://127.0.0.1:5000/api/v1/resources/books/all
 The API serves results that are stored in an SQLite database (books.db). 
 
 When the user requests an entry or set of entries, the API pulls that information from the database by building and executing an SQL query.
+
+See [DB Browser for SQLite](https://sqlitebrowser.org/dl/) and [tutorials](https://github.com/sqlitebrowser/sqlitebrowser/wiki/Tutorials)
+
+# API examples
+
+curl http://127.0.0.1:5000/api/v1/resources/books/all
 
 # Resources
 
