@@ -16,20 +16,22 @@ PyGarden is a backend service. It is REST API enabled and uses an SQLite databas
 * [Create the api](#creating-the-api)
 * [SQLite database](#sqlite-database)
 * [API examples](#api-examples)
+* [Deployment](#deployment)
 * [Resources](#resources)
 
 # End-User Requirements
 
 - Read and write special moments in the garden
-- Use text and photos
+- Text descriptions and photos
 - Store data 
 - Use CLI with curl for APIs
 - Use a mobile Web UI with Chrome
 - Data backup for disaster recovery
+- Easy to demo during a job interview
 
 # Design Specification
 
-## REST API design
+## REST APIs
 
 The prevailing design philosophy of modern APIs is called REST. For PyGarden's purposes, the most important thing about REST is that it’s based on the four methods defined by the HTTP protocol: 
 
@@ -43,10 +45,10 @@ These correspond to the four traditional actions performed on data in a database
 CREATE, READ, UPDATE, DELETE
 ```
 
-A request to the API will look like this:
+Requests to the API will follow this pattern:
 
 ```
-https://api.pygarden.com/v1/resources/books?id=10
+https://api.pygarden.com/v1/resources/doc?id=10
 https://api.pygarden.com/v1/resources/images?id=10
 https://api.pygarden.com/v1/resources/all
 ```
@@ -55,13 +57,35 @@ https://api.pygarden.com/v1/resources/all
 
 `v1` -- API version number to support future versions and backward compatibility
 
-`resources` -- Plan to support other resources or non-resource functionality to the API in the future
+`resources` -- Plan to support resources or non-resource functionality to the API in the future:
 
+- `doc` -- Document resource
+- `images` -- Images resource
+- `all` -- All resource
+
+The query parameters follow the `?` in the request, and are seperated from one another by the `&` symbol:
+
+- `id=<value>` -- The ID of the document
+- `published=<value>` -- The published data of the document
+- `author=<value>` -- The author of the document
+
+# Database structure
+
+The `books` table will have these columns:
+
+```
+id
+author
+title
+insight
+published
+```
 ## Tools
 
 * [Python](https://www.python.org/)
 * [Flask](https://palletsprojects.com/p/flask/)
 * [SQLite](https://www.sqlite.org/index.html)
+* Search
 
 # Create the basic flask app
 
@@ -155,11 +179,16 @@ The API serves results that are stored in an SQLite database (books.db).
 
 When the user requests an entry or set of entries, the API pulls that information from the database by building and executing an SQL query.
 
-See [DB Browser for SQLite](https://sqlitebrowser.org/dl/) and [tutorials](https://github.com/sqlitebrowser/sqlitebrowser/wiki/Tutorials)
 
 # API examples
 
 curl http://127.0.0.1:5000/api/v1/resources/books/all
+
+# Deployment
+
+Our production enviornment is running FreeBSD
+
+http://www.michielovertoom.com/freebsd/flask-gunicorn-nginx-supervisord/#:~:text=Flask%20and%20the%20web%20application,%2Fwww%2Fpy%2Dflask.
 
 # Resources
 
