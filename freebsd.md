@@ -341,6 +341,19 @@ https://www.cyberciti.biz/tips/freebsd-how-to-start-restart-stop-network-service
 
 # Packages and Ports
 
+FreeBSD offers two primary methods of downloading applications and system tools:
+
+* Packages
+* Ports
+
+Users will have to choose between the two collections when installing these tools. Packages are pre-compiled binary packages, typically smaller in size than full port installations and they do not require compilation time. However, ports are a much more customizable option, allowing users to directly interact with the build process and configure the application to their preference. Additionally, installing an application from a port can help a user understand how the application is compiled, configured, and finally built into a binary. It can be a very rewarding process!
+
+## The Ports Collection
+
+Use the `portsnap` method as described [here](https://www.freebsdfoundation.org/freebsd/how-to-guides/installing-a-port-on-freebsd/).
+
+## pkg
+
 `pkg` is the next generation replacement for the traditional FreeBSD package management tools. Do not use `pkg_*`; it's deprecated.
 
 List installed packages:
