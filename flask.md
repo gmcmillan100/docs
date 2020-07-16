@@ -5,6 +5,8 @@ permalink: /flask/
 resource: true
 ---
 
+Flask is a back-end framework. It’s actually a micro-framework so won’t find things like form validation or a database abstraction layer. Django is the way to go for a more complete framework.
+
 [Flask](https://palletsprojects.com/p/flask/) is a micro web framework powered by Python.
 
 [Docs](https://flask.palletsprojects.com/en/1.1.x/)

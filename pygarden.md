@@ -188,7 +188,15 @@ curl http://127.0.0.1:5000/api/v1/resources/books/all
 
 Our production enviornment is running FreeBSD
 
+1. install flask on server, http://www.michielovertoom.com/freebsd/flask-gunicorn-nginx-supervisord/#:~:text=Flask%20and%20the%20web%20application,%2Fwww%2Fpy%2Dflask.
+
+2. install sqlite, https://www.osradar.com/how-to-install-sqlite-on-freebsd-12/
+
+3. Configure mod_wsgi (Apache), https://flask.palletsprojects.com/en/1.1.x/deploying/mod_wsgi/
+
 http://www.michielovertoom.com/freebsd/flask-gunicorn-nginx-supervisord/#:~:text=Flask%20and%20the%20web%20application,%2Fwww%2Fpy%2Dflask.
+
+See also https://flask.palletsprojects.com/en/1.1.x/deploying/#deployment
 
 # Resources
 

@@ -16,6 +16,8 @@ resource: true
 * [BIOS error 0271 check date and time settings](#bios-error-0271-check-date-and-time-settings)
 * [Halt Reboot](#halt-reboot)
 * [DHCP](#dhcp)
+* [DHCP Client Troubleshooting](#dhcp-client-troubleshooting)
+* [Static IP Address](#static-ip-address)
 * [Ports](#ports)
 * FTPing Packages from ftp.freebsd.org
 * Installing and Removing Software Ports
@@ -38,12 +40,10 @@ resource: true
 * Package Won't Kick Off
 * Readability Check
 * NFS Mounted File Systems
-* DHCP Client Troubleshooting
 * Mounting CDROM File System
 * Configuring xmcd for Playing Audio CDs
 * Installing a New Ethernet NIC
 * DNS Resolution
-* Static IP Address
 * Shell Scripting
 * CPU
 * Partitions and Disk Usage
@@ -228,12 +228,118 @@ After entering "sync;halt", just press the power button to turn off the machine.
 
 # DHCP
 
-If you haven't already been assigned an IP address through DHCP, enter "dhclient <interface-name>" to request an IP address and name server from the remote DHCP server. Then ping a device on the network for
-verification. Go into /stand/sysinstall and tell the networking program to enable DHCP on fxp0. The configuration info gets stored in /etc/rc.conf
+To enable:
+
+1. Identify the interface name of the Ethernet port by using `dmesg`:
+
+```
+$ dmesg | more
+...
+sis0: <NatSemi DP8381[56] 10/100BaseTX> port 0xf800-0xf8ff mem 0xfedff000-0xfedfffff irq 9 at device 14.0 on pci0
+```
+
+The name is `sis0` in this example.
+
+2. Go to `/etc/rc.conf` and enable `DHCP`:
+
+```
+ifconfig_sis0="DHCP"
+```
+
+3. Restart the system:
+
+```
+sync;reboot
+```
+
+4. On system bootup, the interface will be assigned an IP address from the DHCP IP pool. Issue `ifconfig` to see the address:
+
+```
+$ ifconfig    
+sis0: flags=8843<UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST> metric 0 mtu 1500
+  options=83808<VLAN_MTU,WOL_UCAST,WOL_MCAST,WOL_MAGIC,LINKSTATE>
+  ether 00:a0:cc:a0:e0:ce
+  inet 10.0.0.176 netmask 0xffffff00 broadcast 10.0.0.255 
+  nd6 options=29<PERFORMNUD,IFDISABLED,AUTO_LINKLOCAL>
+  media: Ethernet autoselect (100baseTX <full-duplex>)
+  status: active
+```
+
+# DHCP Client Troubleshooting
+
+If you haven't already been assigned an IP address through DHCP, enter "dhclient <interface-name>" to request an IP address and name server from the remote DHCP server. Then ping a device on the network for verification. Go into /stand/sysinstall and tell the networking program to enable DHCP on fxp0. The configuration info gets stored in /etc/rc.conf
 
 Enter "ifconfig" to display the <interface-names> and see if the box is on the network. Can also enter "ifconfig <interface-name>". On the laptop, the Ethernet interface is called "fxp0", so enter "ifconfig fxp0" as a short cut.
 
 To shutdown an interface, enter "ifconfig fxp0 down". If you unplug the Ethernet cable without doing this, might get some console messages about the network being down.
+
+A.
+
+Do this if dhcpclient is not releasing an old IP address:
+
+```
+kill `cat /var/run/dhclient.pid`
+ifconfig fxp0 down
+dhclient fxp0
+```
+
+Alternatively, do this:
+
+```
+ps aux | grep dhclient
+kill <pid>
+```
+
+B.
+
+dhclient keeps track of a history of IP addresses and hosts that got
+you on the network in the past. If dhclient fxp0 fails, dhclient will
+look in /var/db/dhclient.leases to get an assignment that worked in
+the past. 
+
+To look at this dhclient Data Base, see /var/db/dhclient.leases
+
+
+C. 
+
+A healthy set of /etc/hosts and /etc/resolve.config looks like this:
+
+```
+greg-pc# cat /etc/hosts
+127.0.0.1 localhost.procket.com localhost
+greg-pc# cat /etc/resolve.config
+search
+```
+
+# Static IP Address
+
+Insert the following into `/etc/rc.conf`:
+
+```
+ifconfig_sis0="inet 192.168.1.101/24"
+defaultrouter="192.168.1.1"
+inetd_enable="YES"
+```
+
+LinkSys is the default router, and here is what "ifconfig" looks like:
+
+```
+sis0: flags=8843<UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST> metric 0 mtu 1500
+  options=83808<VLAN_MTU,WOL_UCAST,WOL_MCAST,WOL_MAGIC,LINKSTATE>
+  ether 00:a0:cc:a0:e0:ce
+  inet 192.168.1.110 netmask 0xffffff00 broadcast 192.168.1.255 
+  nd6 options=29<PERFORMNUD,IFDISABLED,AUTO_LINKLOCAL>
+  media: Ethernet autoselect (100baseTX <full-duplex>)
+  status: active
+```
+
+Then, restart inetd service:
+
+```
+/etc/rc.d/netif start
+```
+
+https://www.cyberciti.biz/tips/freebsd-how-to-start-restart-stop-network-service.html
 
 # Ports
 
@@ -1561,47 +1667,6 @@ The /home is not local to suncs9. The /home is NFS mounted. However,
 according to Procket, /home is my home on whatever host I'm running
 programs on.
 
-
-# DHCP Client Troubleshooting
-
-A.
-
-Do this if dhcpclient is not releasing an old IP address:
-
-```
-kill `cat /var/run/dhclient.pid`
-ifconfig fxp0 down
-dhclient fxp0
-```
-
-Alternatively, do this:
-
-```
-ps aux | grep dhclient
-kill <pid>
-```
-
-B.
-
-dhclient keeps track of a history of IP addresses and hosts that got
-you on the network in the past. If dhclient fxp0 fails, dhclient will
-look in /var/db/dhclient.leases to get an assignment that worked in
-the past. 
-
-To look at this dhclient Data Base, see /var/db/dhclient.leases
-
-
-C. 
-
-A healthy set of /etc/hosts and /etc/resolve.config looks like this:
-
-```
-greg-pc# cat /etc/hosts
-127.0.0.1	localhost.procket.com localhost
-greg-pc# cat /etc/resolve.config
-search
-```
-
 # Mounting CDROM File System
 
  umount /dev/acd0c
@@ -1797,34 +1862,6 @@ So, after I commented out the nameservers:
    #nameserver 206.13.29.12
  
 sshd started accepting client connections again. 
-
-# Static IP Address
-
-Insert the following into /etc/rc.conf
-
-```
-ifconfig_sis0="inet 192.168.1.101/24"
-defaultrouter="192.168.1.1"
-inetd_enable="YES"
-```
-
-LinkSys is the default router, and here is what "ifconfig" looks like:
-
-```
-sis0: flags=8843<UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST> metric 0 mtu 1500
-	options=83808<VLAN_MTU,WOL_UCAST,WOL_MCAST,WOL_MAGIC,LINKSTATE>
-	ether 00:a0:cc:a0:e0:ce
-	inet 192.168.1.110 netmask 0xffffff00 broadcast 192.168.1.255 
-	nd6 options=29<PERFORMNUD,IFDISABLED,AUTO_LINKLOCAL>
-	media: Ethernet autoselect (100baseTX <full-duplex>)
-	status: active
-```
-
-Then, restart inetd service:
-
-# /etc/rc.d/netif start
-
-https://www.cyberciti.biz/tips/freebsd-how-to-start-restart-stop-network-service.html
 
 # Shell Scripting
 
