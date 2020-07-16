@@ -18,9 +18,7 @@ resource: true
 * [DHCP](#dhcp)
 * [DHCP Client Troubleshooting](#dhcp-client-troubleshooting)
 * [Static IP Address](#static-ip-address)
-* [Ports](#ports)
-* FTPing Packages from ftp.freebsd.org
-* Installing and Removing Software Ports
+* [Packages and Ports](#packages-and-ports)
 * FTP a New Version of XFree86
 * Configuring XFree86
 * Tab Window Manager
@@ -341,7 +339,50 @@ Then, restart inetd service:
 
 https://www.cyberciti.biz/tips/freebsd-how-to-start-restart-stop-network-service.html
 
-# Ports
+# Packages and Ports
+
+`pkg` is the next generation replacement for the traditional FreeBSD package management tools. Do not use `pkg_*`; it's deprecated.
+
+List installed packages:
+
+```
+# pkg info
+```
+
+Details about the installed python package:
+
+```
+# pkg info python
+python-2.7_2,2
+Name           : python
+Version        : 2.7_2,2
+Installed on   : Fri Feb 19 03:00:39 2016 PST
+Origin         : lang/python
+Architecture   : freebsd:10:x86:32
+Prefix         : /usr/local
+Categories     : python lang ipv6
+Licenses       : 
+Maintainer     : python@FreeBSD.org
+WWW            : http://www.python.org/
+Comment        : The "meta-port" for the default version of Python interpreter
+Annotations    :
+  repo_type      : binary
+  repository     : FreeBSD
+Flat size      : 38.0B
+Description    :
+Python is an interpreted object-oriented programming language, and is
+often compared to Tcl, Perl or Scheme.
+This is a meta port to the Python interpreter and provides symbolic links
+to bin/python, bin/pydoc, bin/idle and so on to allow compatibility with
+version agnostic python scripts.
+
+WWW: http://www.python.org/
+
+```
+
+See [Installing Applications: Packages and Ports](https://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/ports.html)
+
+## Background
 
 There are two issues when installing ports (packages and applications)
 on BSD:
@@ -364,7 +405,7 @@ x86 Solaris might be supported under BSD emulation, but don't bet the
 farm on it. 
 
 
-# FTPing Packages from ftp.freebsd.org
+## /stand/sysinstall and FTPing Packages from ftp.freebsd.org
 
 Read this:
 
@@ -466,7 +507,7 @@ wazoo> ls -l `which freeamp`
 wazoo> 
 ```
 
-# Installing and Removing Software Ports
+## Old.... Installing and Removing Software Ports
 
 A) Installing
 
