@@ -232,38 +232,38 @@ To enable:
 
 1. Identify the interface name of the Ethernet port by using `dmesg`:
 
-  ```
-  $ dmesg | more
-  ...
-  sis0: <NatSemi DP8381[56] 10/100BaseTX> port 0xf800-0xf8ff mem 0xfedff000-0xfedfffff irq 9 at device 14.0 on pci0
-  ```
+    ```
+    $ dmesg | more
+    ...
+    sis0: <NatSemi DP8381[56] 10/100BaseTX> port 0xf800-0xf8ff mem 0xfedff000-0xfedfffff irq 9 at device 14.0 on pci0
+    ```
 
-  The name is `sis0` in this example.
+    The name is `sis0` in this example.
 
 2. Go to `/etc/rc.conf` and enable `DHCP`:
 
-  ```
-  ifconfig_sis0="DHCP"
-  ```
+    ```
+    ifconfig_sis0="DHCP"
+    ```
 
 3. Restart the system:
 
-  ```
-  sync;reboot
-  ```
+    ```
+    sync;reboot
+    ```
 
 4. On system bootup, the interface will be assigned an IP address from the DHCP IP pool. Issue `ifconfig` to see the address:
 
-  ```
-  $ ifconfig    
-  sis0: flags=8843<UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST> metric 0 mtu 1500
-    options=83808<VLAN_MTU,WOL_UCAST,WOL_MCAST,WOL_MAGIC,LINKSTATE>
-    ether 00:a0:cc:a0:e0:ce
-    inet 10.0.0.176 netmask 0xffffff00 broadcast 10.0.0.255 
-    nd6 options=29<PERFORMNUD,IFDISABLED,AUTO_LINKLOCAL>
-    media: Ethernet autoselect (100baseTX <full-duplex>)
-    status: active
-  ```
+    ```
+    $ ifconfig    
+    sis0: flags=8843<UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST> metric 0 mtu 1500
+      options=83808<VLAN_MTU,WOL_UCAST,WOL_MCAST,WOL_MAGIC,LINKSTATE>
+      ether 00:a0:cc:a0:e0:ce
+      inet 10.0.0.176 netmask 0xffffff00 broadcast 10.0.0.255 
+      nd6 options=29<PERFORMNUD,IFDISABLED,AUTO_LINKLOCAL>
+      media: Ethernet autoselect (100baseTX <full-duplex>)
+      status: active
+    ```
 
 # DHCP Client Troubleshooting
 
