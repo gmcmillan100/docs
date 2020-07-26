@@ -350,19 +350,39 @@ Users will have to choose between the two collections when installing these tool
 
 ## The Ports Collection
 
+Find ports [here](https://www.freebsd.org/ports/categories-grouped.html).
+
 Use the `portsnap` method as described [here](https://www.freebsdfoundation.org/freebsd/how-to-guides/installing-a-port-on-freebsd/).
+
+No support. If get this error during a port install, it's time to upgrade the base OS to a new version. If I don't want to upgarde, then try downloading binaries using the `pkg` command:
+
+```
+[greg@bsd ~]$ cd /usr/ports/ports-mgmt/pkg
+[greg@bsd /usr/ports/ports-mgmt/pkg]$ make install
+/!\ ERROR: /!\
+
+Ports Collection support for your FreeBSD version has ended, and no ports are
+guaranteed to build on this system. Please upgrade to a supported release.
+```
 
 ## pkg
 
 `pkg` is the next generation replacement for the traditional FreeBSD package management tools. Do not use `pkg_*`; it's deprecated.
 
-List installed packages:
+Total installed packages on my local system:
+
+```
+# pkg -N
+pkg: 142 packages installed
+```
+
+Package list details:
 
 ```
 # pkg info
 ```
 
-Details about the installed python package:
+Details about a specific package:
 
 ```
 # pkg info python
@@ -391,9 +411,110 @@ version agnostic python scripts.
 
 WWW: http://www.python.org/
 
+Search for packages on the remote repository:
+
+```
+# pkg search sqlite3
+sqlite3-3.25.1                 SQL database engine in a C library
+...
+```
+Install a new package fro the remote repository:
+
+```
+# pkg install sqlite3-3.8.10.2
+Updating FreeBSD repository catalogue...
+FreeBSD repository is up-to-date.
+All repositories are up-to-date.
+Checking integrity... done (0 conflicting)
+The following 1 package(s) will be affected (of 0 checked):
+
+New packages to be INSTALLED:
+  sqlite3: 3.8.10.2
+
+The process will require 3 MiB more space.
+
+Proceed with this action? [y/N]: y
+[1/1] Installing sqlite3-3.8.10.2...
+[1/1] Extracting sqlite3-3.8.10.2: 100%
+```
+
+To delete a package:
+
+```
+pkg delete python34-3.4.3_1
 ```
 
 See [Installing Applications: Packages and Ports](https://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/ports.html)
+
+## Undefined symbol "utimensat"
+
+Hit this error during a `pkg install`:
+
+```
+0%/usr/local/lib/libpkg.so.4: Undefined symbol "utimensat"
+```
+
+See [full issue description](https://glasz.org/sheeplog/2017/02/freebsd-usrlocalliblibpkgso3-undefined-symbol-utimensat.html) and [this one](https://unix.stackexchange.com/questions/478217/freebsd-bootstrapping-pkg-pkg-static-sqlite-error-while-executing-insert-or)
+
+The solution is to do a full OS upgrade to a supported version. However as a tmp workaround, edit the `FreeBSD.conf` to point to the `release_2` repo for my supported version (FreeBSD 10.2-RELEASE as displayed by `dmesg`).
+
+```
+cd /usr/local/etc/pkg/repos
+cp /etc/pkg/FreeBSD.conf .
+```
+```
+vi FreeBSD.conf
+```
+change `quarterly` to `release_2` in the url:
+
+```
+FreeBSD: {
+  url: "pkg+http://pkg.FreeBSD.org/${ABI}/release_2",
+  mirror_type: "srv",
+  signature_type: "fingerprints",
+  fingerprints: "/usr/share/keys/pkg",
+  enabled: yes
+}
+```
+
+Confirm the new url is used by `pkg`:
+
+```
+# pkg -vv
+```
+
+Delete all the files (FreeBSD.meta, local.sqlite, ...) in `/pkg`:
+
+```
+cd /var/db/pkg/
+rm *.*
+```
+
+Reinstall `pkg`:
+
+```
+# pkg install pkg
+# pkg --version
+1.5.4
+```
+
+## pkg troubleshooting
+
+If `pkg search` returns no results:
+
+```
+$ pkg search sqlite3
+```
+force the update using `pkg update -f`. It will nuke and rebuild the package database:
+
+```
+root@bsd:/home/greg # pkg update -f
+Updating FreeBSD repository catalogue...
+Fetching meta.txz: 100%    944 B   0.9kB/s    00:01    
+Fetching packagesite.txz: 100%    6 MiB   3.4MB/s    00:02    
+Processing entries: 100%
+FreeBSD repository update completed. 32488 packages processed.
+```
 
 ## Background
 
@@ -3489,4 +3610,20 @@ Show how long system has been running:
 ```
 $ uptime
  7:53AM  up  3:29, 1 user, load averages: 0.00, 0.00, 0.00
+```
+
+# Network traffic per interface
+
+```
+$ systat -ifstat 1
+
+                    /0   /1   /2   /3   /4   /5   /6   /7   /8   /9   /10
+     Load Average   ||||||| 
+
+      Interface           Traffic               Peak                Total
+            lo0  in      0.000 KB/s          0.000 KB/s            1.301 KB
+                 out     0.000 KB/s          0.000 KB/s            1.301 KB
+
+           sis0  in      0.000 KB/s          0.707 KB/s           89.165 MB
+                 out     0.137 KB/s          0.539 KB/s            2.062 MB
 ```

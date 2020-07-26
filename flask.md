@@ -30,6 +30,18 @@ Package                                Version
 Flask                                  1.1.2 
 ```
 
+To install flask for Python3.4:
+
+```
+# pip3 install flask
+...
+# pip3 list
+Flask (1.1.2)
+...
+# which flask
+/usr/local/bin/flask
+```
+
 # Resources
 
 [The Flask Mega Tutorial](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) - The most well-known tutorial for learning the Flask web framework.

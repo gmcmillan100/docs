@@ -665,6 +665,25 @@ oauth2 (1.5.211)
 
 Tip: See also python setup.py install
 
+To install pip3 for Python3.4:
+
+```
+root@bsd:/home/greg # python3.4 -m ensurepip
+Ignoring indexes: https://pypi.python.org/simple
+Collecting setuptools
+Collecting pip
+Installing collected packages: pip, setuptools
+
+Successfully installed pip-6.0.8 setuptools-12.0.5
+root@bsd:/home/greg # pip3 -V
+pip 6.0.8 from /usr/local/lib/python3.4/site-packages (python 3.4)
+root@bsd:/home/greg # pip3 list
+You are using pip version 6.0.8, however version 20.1.1 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+pip (6.0.8)
+setuptools (12.0.5)
+```
+
 
 # .pth files
 
