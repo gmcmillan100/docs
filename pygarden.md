@@ -16,7 +16,9 @@ PyGarden is a backend service. It is REST API enabled and uses an SQLite databas
 * [Create the api](#creating-the-api)
 * [SQLite database](#sqlite-database)
 * [API examples](#api-examples)
-* [Deployment](#deployment)
+* [Deployment Release 1.0](#deployment-release-1.0)
+* [Service Bringup](#service-bringup)
+* [Testing](#testing)
 * [Resources](#resources)
 
 # End-User Requirements
@@ -184,7 +186,159 @@ When the user requests an entry or set of entries, the API pulls that informatio
 
 curl http://127.0.0.1:5000/api/v1/resources/books/all
 
-# Deployment
+# Deployment Release 1.0
+
+Supports read-only GET requests using REST APIs.
+
+## System limitations
+
+My BSD is running an old OS version:
+
+```
+# uname -a
+FreeBSD bsd 10.2-RELEASE FreeBSD 10.2-RELEASE #0: Thu Feb 25 15:49:12 PST 2016     greg@bsd:/usr/obj/usr/src/sys/GREGKERNEL  i386
+```
+
+With an old version of the `pkg` package manager:
+
+```
+# pkg info pkg-1.5.4
+pkg-1.5.4
+Name           : pkg
+Version        : 1.5.4
+```
+
+## BSD package install
+
+Release 1.0 is required to work on the existing system.
+
+The OS and its available packages supported the following:
+
+```
+pkg install python27-2.7.9_1
+pkg install py27-sqlite3-2.7.9_6
+pip install flask
+```
+
+The special binary `py27-sqlite3-2.7.9_6` was a required standard Python binding to the SQLite3 library. Without it, the setup didn't work.
+
+
+```
+# pip list
+DEPRECATION: Python 2.7 reached the end of its life on January 1st, 2020. Please upgrade your Python as Python 2.7 is no longer maintained. pip 21.0 will drop support for Python 2.7 in January 2021. More details about Python 2 support in pip, can be found at https://pip.pypa.io/en/latest/development/release-process/#python-2-support
+Package      Version
+------------ -------
+-sqlite3     0.0.0
+click        7.1.2
+Flask        1.1.2
+itsdangerous 1.1.0
+Jinja2       2.11.2
+MarkupSafe   1.1.1
+pip          20.2b1
+setuptools   17.0
+Werkzeug     1.0.1
+```
+
+```
+# pkg info
+apache24-2.4.16                Version 2.4.x of Apache web server
+...
+pkg-1.5.4                      Package manager
+py27-setuptools27-17.0         Python packages installer
+py27-sqlite3-2.7.9_6           Standard Python binding to the SQLite3 library
+python27-2.7.9_1               Interpreted object-oriented programming language
+```
+
+Note. I attempted installing Python 3 and SQLlite3, but it didn't work. There were package version conflicts, and the ports under `/usr/ports/databases/py-sqlite3` would not `make install`. Next step is to do a full OS upgrade. Additionally, BSD's `python3.4` was not compiled with sqlite3 and thus would not import, producing `ImportError: No module named _sqlite3` . See [article](https://forums.freebsd.org/threads/sqlite3-on-python3-fails.53114/).
+
+```
+# python3.4
+Python 3.4.3 (default, Jul 30 2015, 01:22:16) 
+[GCC 4.2.1 Compatible FreeBSD Clang 3.4.1 (tags/RELEASE_34/dot1-final 208032)] on freebsd10
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import sqlite3
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/usr/local/lib/python3.4/sqlite3/__init__.py", line 23, in <module>
+    from sqlite3.dbapi2 import *
+  File "/usr/local/lib/python3.4/sqlite3/dbapi2.py", line 27, in <module>
+    from _sqlite3 import *
+ImportError: No module named '_sqlite3'
+>>> 
+```
+
+## App Run on Host IP
+
+In api.py, set the `host` to the IP address of the machine to run the web application on:
+
+```
+app.run(host="10.0.0.176")
+```
+
+# Service bringup
+
+These service files exist at the Apache root:
+
+```
+pygarden.py
+pygarden.db
+```
+
+`pygarden.py` is the Flask app. `pygarden.db` is the Sqlite3 database that is imported by the Flask app on startup.
+
+Go to the Apache root:
+
+``
+cd /usr/local/www/apache24/data
+```
+
+Start the Flask app:
+
+```
+# python pygarden.py
+ * Serving Flask app "pygarden" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+ * Running on http://10.0.0.176:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 337-146-323
+``
+
+# Testing
+
+Send a GET request to http://SERVER:5000/.
+
+Test with curl:
+
+```
+$ curl http://10.0.0.176:5000/api/v1/resources/doc?published=2020
+[
+  {
+    "author": "Greg McMillan", 
+    "id": null, 
+    "insight": "1 flower, 100s of seeds, think big because God makes it grow", 
+    "published": 2020, 
+    "title": "Carrot seed flowers bloom my life"
+  }
+]
+```
+
+When successful, it produces a status 200 notification on the Flask server:
+
+```
+10.0.0.155 - - [01/Aug/2020 11:26:21] "GET /api/v1/resources/doc?published=2020 HTTP/1.1" 200 -
+```
+
+Get all docs:
+
+```
+curl http://10.0.0.176:5000/api/v1/resources/doc/all
+```
+
+## Production scalable
 
 Our production enviornment is running FreeBSD
 

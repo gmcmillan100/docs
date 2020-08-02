@@ -410,6 +410,7 @@ to bin/python, bin/pydoc, bin/idle and so on to allow compatibility with
 version agnostic python scripts.
 
 WWW: http://www.python.org/
+```
 
 Search for packages on the remote repository:
 
@@ -418,7 +419,7 @@ Search for packages on the remote repository:
 sqlite3-3.25.1                 SQL database engine in a C library
 ...
 ```
-Install a new package fro the remote repository:
+Install a new package from the remote repository:
 
 ```
 # pkg install sqlite3-3.8.10.2
