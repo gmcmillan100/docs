@@ -299,7 +299,7 @@ Start the Flask app:
  * Restarting with stat
  * Debugger is active!
  * Debugger PIN: 337-146-323
-``
+```
 
 # Testing
 
