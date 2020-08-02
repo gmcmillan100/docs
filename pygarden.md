@@ -15,8 +15,7 @@ PyGarden is a backend service. It is REST API enabled and uses an SQLite databas
 * [Create flask app](#create-flask-app)
 * [Create the api](#creating-the-api)
 * [SQLite database](#sqlite-database)
-* [API examples](#api-examples)
-* [Deployment Release 1.0](#deployment-release-1.0)
+* [Deployment](#deployment)
 * [Service Bringup](#service-bringup)
 * [Testing](#testing)
 * [Resources](#resources)
@@ -181,14 +180,9 @@ The API serves results that are stored in an SQLite database (books.db).
 
 When the user requests an entry or set of entries, the API pulls that information from the database by building and executing an SQL query.
 
+# Deployment
 
-# API examples
-
-curl http://127.0.0.1:5000/api/v1/resources/books/all
-
-# Deployment Release 1.0
-
-Supports read-only GET requests using REST APIs.
+Release 1.0 supports read-only GET requests using REST APIs.
 
 ## System limitations
 
@@ -288,7 +282,7 @@ pygarden.db
 
 Go to the Apache root:
 
-``
+```
 cd /usr/local/www/apache24/data
 ```
 
