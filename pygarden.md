@@ -12,7 +12,8 @@ PyGarden is a backend service. It is REST API enabled and uses an SQLite databas
 * [Design Specification](#design-specification)
 * [Pre-reqs](#pre-reqs)
 * [REST API design](#rest-api-design)
-* [Create the basic flask app](#create-the-basic-flask-app)
+* [Create the basic Flask app](#create-the-basic-flask-app)
+* [Start the Flask app](#start-the-flask-app)
 * [Create the api](#creating-the-api)
 * [SQLite database](#sqlite-database)
 * [Deployment](#deployment)
@@ -83,9 +84,9 @@ published
 ```
 ## Tools
 
-* [Python](https://www.python.org/)
-* [Flask](https://palletsprojects.com/p/flask/)
-* [SQLite](https://www.sqlite.org/index.html)
+* [Python](https://www.python.org/) is the programming language.
+* [Flask](https://palletsprojects.com/p/flask/) for the web framework.
+* [SQLite](https://www.sqlite.org/index.html) for the database.
 * Search
 
 # Create the basic flask app
@@ -108,7 +109,6 @@ def home():
 <p>Spiritual Python Garden is the magical place where God inspires me. I learn about life cycles and healing principles through observing miracles and wonders in my backyard garden.</p>'''
 
 app.run()
-
 ```
 
 The `import` statement is the most common way of invoking the import machinery. The basic import statement (no `from` clause) is executed in two steps:
@@ -121,28 +121,54 @@ When the statement contains multiple clauses (separated by commas) the two steps
 
 `import flask` -- Imports the Flask library, making the code available to the rest of the application.
 
-`from flask import request, jsonify` -- Flask provides a jsonify function that allows us to convert lists and dictionaries to JSON format.
+`from flask import request, jsonify` -- Flask provides a jsonify function that allows us to convert lists and dictionaries to [JSON format](https://www.json.org/). Find the module specified in the from clause, then load and initialize it.
 
-`import sqlite3` -- Imports the SQLlite3 library
+`import sqlite3` -- Imports the [SQLlite3](/docs/sqlite/) library.
 
-Define an `@app.route` listening at the root our app and execute a view function called home(). @app.route("/") is a Python decorator that Flask provides to assign URLs in our app to functions easily. See [flask routes](https://hackersandslackers.com/flask-routes).
+`app = flask.Flask(__name__)` -- Creates the Flask application object. It contains data about the application and also methods (object functions) that tell the application to do certain actions. The last line, `app.run()`, is one such method.
 
-https://hackersandslackers.com/your-first-flask-application
-
-Start the Flask app:
+`app.config["DEBUG"] = True` -- Starts the debugger. With this line, if my code is malformed, I’ll see an error when I visit my app. Otherwise, only a generic message such as `Bad Gateway` is displayed in the browser when there’s a problem with my code.
 
 ```
-$ python api.py
- * Serving Flask app "api" (lazy loading)
+@app.route('/', methods=['GET'])
+def home():
+    return '''<h1>Spiritual pyGarden</h1>
+<p></p>'''''
+```
+
+Flask maps HTTP requests to Python functions. The @app.route decorator creates an association between the URL given as an argument and the function. When a web browser requests the URL (/), Flask is going to invoke this function and pass the return value of it back to the browser as a response.
+
+ In this case, we’ve mapped one URL path (`/`) to one function, `home`. When we connect to the Flask server at http://127.0.0.1:5000/, Flask checks if there is a match between the path provided and a defined function. Since /, or no additional provided path, has been mapped to the home function, Flask runs the code in the function and displays the returned result in the browser. In this case, the returned result is HTML markup for a home page welcoming visitors to the site hosting our API. The process of mapping URLs to functions is called [routing](https://hackersandslackers.com/flask-routes). 
+
+The methods list `methods=['GET']` is a keyword argument that lets Flask know what kind of HTTP requests are allowed. We'll add POST requests (to receive data from a user) later.
+
+`app.run()` -- Method that runs the application server.
+
+# Start the Flask app
+
+1. Issue `python pygarden.py`:
+
+```
+$ python pygarden.py 
+ * Serving Flask app "pygarden" (lazy loading)
  * Environment: production
    WARNING: This is a development server. Do not use it in a production deployment.
    Use a production WSGI server instead.
  * Debug mode: on
- * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+ * Running on http://10.0.0.176:5000/ (Press CTRL+C to quit)
  * Restarting with stat
  * Debugger is active!
- * Debugger PIN: 887-258-551
- ```
+ * Debugger PIN: 337-146-323
+```
+
+2. Go to the URL.
+
+3. Access activity is displayed in the terminal:
+
+```
+10.0.0.155 - - [06/Sep/2020 06:29:16] "GET / HTTP/1.1" 200 -
+10.0.0.155 - - [06/Sep/2020 06:29:17] "GET /favicon.ico HTTP/1.1" 404 -
+```
 
 # Creating the API
 
@@ -366,5 +392,7 @@ http://www.michielovertoom.com/freebsd/flask-gunicorn-nginx-supervisord/#:~:text
 See also https://flask.palletsprojects.com/en/1.1.x/deploying/#deployment
 
 # Resources
+
+https://hackersandslackers.com/your-first-flask-application
 
 Tutorial, https://programminghistorian.org/en/lessons/creating-apis-with-python-and-flask

@@ -145,19 +145,20 @@ Each .md has a permalink in the header like this:
 
 ```
 ---
-layout: guide
-title: Foo
-permalink: /DATA-Data-Schema-and-Templates
+layout: page
+title: Flask
+permalink: /flask/
+resource: true
 ---
 ```
 
 That permalink can be linked to from within a .md like this:
 
 ```
-[Click here](/rest.li/DATA-Data-Schema-and-Templates)
+[Flask](/docs/flask/) provides the web ...
 ```
 
-In the example, the `/rest.li` prefix is defined in `_config.yml` as `baseurl: "/rest.li"`.
+In the example, the `/docs/` prefix is defined in `_config.yml` as `baseurl: "/docs"`.
 
 Link to a # subsection. Notice there's no forward slash (/) before the #:
 
