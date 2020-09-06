@@ -12,7 +12,7 @@ PyGarden is a backend service. It is REST API enabled and uses an SQLite databas
 * [Design Specification](#design-specification)
 * [Pre-reqs](#pre-reqs)
 * [REST API design](#rest-api-design)
-* [Create flask app](#create-flask-app)
+* [Create the basic flask app](#create-the-basic-flask-app)
 * [Create the api](#creating-the-api)
 * [SQLite database](#sqlite-database)
 * [Deployment](#deployment)
@@ -90,21 +90,40 @@ published
 
 # Create the basic flask app
 
-Add this to a file named `pygarden.py`:
+[Flask](/flask/) provides the web framework for Python, including managing HTTP requests and APIs.
+
+Create a file named `pygarden.py` and add this to it.
 
 ```
 import flask
+from flask import request, jsonify
+import sqlite3
 
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
 
-
 @app.route('/', methods=['GET'])
 def home():
-    return "<h1>Welcome to PyGarden</h1><p>A prototype API for magic in the garden.</p>"
+    return '''<h1>Spiritual pyGarden</h1>
+<p>Spiritual Python Garden is the magical place where God inspires me. I learn about life cycles and healing principles through observing miracles and wonders in my backyard garden.</p>'''
 
 app.run()
+
 ```
+
+The `import` statement is the most common way of invoking the import machinery. The basic import statement (no from clause) is executed in two steps:
+
+1. Find a module, load and initialize it
+
+2. Define a name or names in the local namespace for the scope where the import statement occurs.
+
+When the statement contains multiple clauses (separated by commas) the two steps are carried out separately for each clause, just as though the clauses had been separated out into individual import statements.
+
+`import flask` -- Imports the Flask library, making the code available to the rest of the application.
+
+`from flask import request, jsonify` -- Flask provides a jsonify function that allows us to convert lists and dictionaries to JSON format.
+
+`import sqlite3` -- Imports the SQLlite3 library
 
 Define an `@app.route` listening at the root our app and execute a view function called home(). @app.route("/") is a Python decorator that Flask provides to assign URLs in our app to functions easily. See [flask routes](https://hackersandslackers.com/flask-routes).
 
@@ -271,7 +290,7 @@ app.run(host="10.0.0.176")
 
 # Service bringup
 
-These service files exist at the Apache root:
+These service files exist in the Apache root:
 
 ```
 pygarden.py
