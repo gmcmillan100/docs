@@ -14,8 +14,8 @@ PyGarden is a backend service. It is REST API enabled and uses an SQLite databas
 * [REST API design](#rest-api-design)
 * [Create the basic Flask app](#create-the-basic-flask-app)
 * [Start the Flask app](#start-the-flask-app)
-* [SQLlite database](#sql-database)
-* [Create the api](#creating-the-api)
+* [SQLlite database](#sqllite-database)
+* [Create the API](#create-the-api)
 * [Deployment](#deployment)
 * [Service Bringup](#service-bringup)
 * [Testing](#testing)
@@ -184,7 +184,7 @@ Connect to the database using the `sqlite3` library:
 import sqlite3
 ```
 
-Create a `dict_factory` function to loop over each column and row in the table. Returns items from the database as dictionaries rather than lists—these work better when we output them to JSON:
+Create a `dict_factory` function to loop over each column and row in the table. It returns items from the database as dictionaries rather than lists; these work better when we output to JSON:
 
 ```
 def dict_factory(cursor, row):
@@ -211,7 +211,7 @@ An object representing the connection to the database is bound to the `conn` var
 
 The `api_all` function pulls in data from the database. Note that our other function that returns data, `api_filter`, will use a similar approach to pull data from the database.
 
-# Creating the API
+# Create the API
 
 ## resources/doc/all
 
