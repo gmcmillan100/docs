@@ -14,8 +14,8 @@ PyGarden is a backend service. It is REST API enabled and uses an SQLite databas
 * [REST API design](#rest-api-design)
 * [Create the basic Flask app](#create-the-basic-flask-app)
 * [Start the Flask app](#start-the-flask-app)
+* [SQLlite database](#sql-database)
 * [Create the api](#creating-the-api)
-* [SQLite database](#sqlite-database)
 * [Deployment](#deployment)
 * [Service Bringup](#service-bringup)
 * [Testing](#testing)
@@ -138,7 +138,7 @@ def home():
 
 Flask maps HTTP requests to Python functions. The @app.route decorator creates an association between the URL given as an argument and the function. When a web browser requests the URL (/), Flask is going to invoke this function and pass the return value of it back to the browser as a response.
 
- In this case, we’ve mapped one URL path (`/`) to one function, `home`. When we connect to the Flask server at http://127.0.0.1:5000/, Flask checks if there is a match between the path provided and a defined function. Since /, or no additional provided path, has been mapped to the home function, Flask runs the code in the function and displays the returned result in the browser. In this case, the returned result is HTML markup for a home page welcoming visitors to the site hosting our API. The process of mapping URLs to functions is called [routing](https://hackersandslackers.com/flask-routes). 
+In this case, we’ve mapped one URL path (`/`) to one function, `home`. When we connect to the Flask server at http://127.0.0.1:5000/, Flask checks if there is a match between the path provided and a defined function. Since /, or no additional provided path, has been mapped to the home function, Flask runs the code in the function and displays the returned result in the browser. In this case, the returned result is HTML markup for a home page welcoming visitors to the site hosting our API. The process of mapping URLs to functions is called [routing](https://hackersandslackers.com/series/build-flask-apps/).
 
 The methods list `methods=['GET']` is a keyword argument that lets Flask know what kind of HTTP requests are allowed. We'll add POST requests (to receive data from a user) later.
 
@@ -170,60 +170,98 @@ $ python pygarden.py
 10.0.0.155 - - [06/Sep/2020 06:29:17] "GET /favicon.ico HTTP/1.1" 404 -
 ```
 
+# SQLlite database
+
+The API serves results that are stored in an SQLite database (`pygarden.db`). When the user requests an entry or set of entries, the API pulls that information from the database by building and executing an SQL query.
+
+Relational databases allow for the storage and retrieval of data, which is stored in tables. Tables are similar to spread sheets in that they have columns and rows—columns indicate what the data representes, such as “title” or “date.” Rows represent individual entries, which could be books, users, transactions, or any other kind of entity.
+
+The database we’re working with has five columns `id`, `published`, `author`, `title`, and `insight`. Each row represents one document, describing an insight.
+
+Connect to the database using the `sqlite3` library:
+
+```
+import sqlite3
+```
+
+Create a `dict_factory` function to loop over each column and row in the table. Returns items from the database as dictionaries rather than lists—these work better when we output them to JSON:
+
+```
+def dict_factory(cursor, row):
+    d = {}
+    for idx, col in enumerate(cursor.description):
+        d[col[0]] = row[idx]
+    return d
+```
+
+Under each API route, specify DB connector, DB file, and select statement:
+
+```
+@app.route('/api/v1/resources/doc/all', methods=['GET'])
+def api_all():
+    conn = sqlite3.connect('pygarden.db')
+    conn.row_factory = dict_factory
+    cur = conn.cursor()
+    all_books = cur.execute('SELECT * FROM books;').fetchall()
+
+    return jsonify(all_books)
+```
+
+An object representing the connection to the database is bound to the `conn` variable. The `conn.row_factory = dict_factory` line lets the connection object know to use the `dict_factory` function we’ve defined. We then create a cursor object `cur = conn.cursor()`, which is the object that actually moves through the database to pull our data. Finally, we execute an SQL query with the `cur.execute` method to pull out all available data (`*`) from the books table of our database. At the end of our function, this data is returned as JSON: `jsonify(all_books)`. 
+
+The `api_all` function pulls in data from the database. Note that our other function that returns data, `api_filter`, will use a similar approach to pull data from the database.
+
 # Creating the API
 
+## resources/doc/all
+
 ```
-import flask
-from flask import request, jsonify
-
-app = flask.Flask(__name__)
-app.config["DEBUG"] = True
-
-# Create some test data for our catalog in the form of a list of dictionaries.
-books = [
-    {'id': 0,
-     'title': 'Carrot seeds',
-     'author': 'Greg McMillan',
-     'first_sentence': 'Each flower produces 100s of seeds. Harvest when brown.',
-     'scripture': 'Pr 3:18',
-     'year_published': 'June 2020'},
-    {'id': 1,
-     'title': 'Beet seeds',
-     'author': 'Greg McMillan',
-     'first_sentence': 'Harvest when large and brown.',
-     'scripture': 'Isa 51:3',
-     'published': 'June 2020'},
-    {'id': 2,
-     'title': 'Reproduction: The circle of life',
-     'author': 'Greg McMillan',
-     'first_sentence': 'Grow, seed, fall, die, repeat',
-     'scripture': 'Jn 12:24',
-     'published': 'June 2020'}
-]
-
-
-@app.route('/', methods=['GET'])
-def home():
-    return "<h1>Welcome to PyGarden</h1><p>A prototype API for magic in the garden.</p>"
-
-# A route to return all of the available entries in our catalog.
-@app.route('/api/v1/resources/books/all', methods=['GET'])
+@app.route('/api/v1/resources/doc/all', methods=['GET'])
 def api_all():
-    return jsonify(books)
+    conn = sqlite3.connect('pygarden.db')
+    conn.row_factory = dict_factory
+    cur = conn.cursor()
+    all_books = cur.execute('SELECT * FROM books;').fetchall()
 
-
-app.run()
+    return jsonify(all_books)
 ```
 
-Visit the API to test:
+## resources/doc
 
-http://127.0.0.1:5000/api/v1/resources/books/all
+```
+@app.route('/api/v1/resources/doc', methods=['GET'])
+def api_filter():
+    query_parameters = request.args
 
-# SQLite database
+    id = query_parameters.get('id')
+    published = query_parameters.get('published')
+    author = query_parameters.get('author')
 
-The API serves results that are stored in an SQLite database (books.db). 
+    query = "SELECT * FROM books WHERE"
+    to_filter = []
 
-When the user requests an entry or set of entries, the API pulls that information from the database by building and executing an SQL query.
+    if id:
+        query += ' id=? AND'
+        to_filter.append(id)
+    if published:
+        query += ' published=? AND'
+        to_filter.append(published)
+    if author:
+        query += ' author=? AND'
+        to_filter.append(author)
+    if not (id or published or author):
+        return page_not_found(404)
+
+    query = query[:-4] + ';'
+
+    conn = sqlite3.connect('pygarden.db')
+    conn.row_factory = dict_factory
+    cur = conn.cursor()
+
+    results = cur.execute(query, to_filter).fetchall()
+
+    return jsonify(results)
+```
 
 # Deployment
 
@@ -392,6 +430,8 @@ http://www.michielovertoom.com/freebsd/flask-gunicorn-nginx-supervisord/#:~:text
 See also https://flask.palletsprojects.com/en/1.1.x/deploying/#deployment
 
 # Resources
+
+https://hackersandslackers.com/series/build-flask-apps/
 
 https://hackersandslackers.com/your-first-flask-application
 
