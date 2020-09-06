@@ -90,7 +90,7 @@ published
 
 # Create the basic flask app
 
-[Flask](/flask/) provides the web framework for Python, including managing HTTP requests and APIs.
+[Flask](/docs/flask/) provides the web framework for Python, including managing HTTP requests and APIs.
 
 Create a file named `pygarden.py` and add this to it.
 
@@ -111,7 +111,7 @@ app.run()
 
 ```
 
-The `import` statement is the most common way of invoking the import machinery. The basic import statement (no from clause) is executed in two steps:
+The `import` statement is the most common way of invoking the import machinery. The basic import statement (no `from` clause) is executed in two steps:
 
 1. Find a module, load and initialize it
 
