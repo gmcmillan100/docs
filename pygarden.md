@@ -71,7 +71,7 @@ The query parameters follow the `?` in the request, and are seperated from one a
 - `published=<value>` -- The published data of the document
 - `author=<value>` -- The author of the document
 
-# Database structure
+## Database structure
 
 The `books` table will have these columns:
 
