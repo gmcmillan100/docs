@@ -4,10 +4,8 @@ title: pyGarden
 permalink: /pygarden/
 resource: true
 ---
-Spiritual Python Garden is a magical place where God inspires me. I learn about life cycles and healing principles through observing miracles and wonders in my backyard garden.
 
-PyGarden is a backend service. It is REST API enabled and uses an SQLite database.
-
+* [Background](#background)
 * [End-User Requirements](#end-user-requirements)
 * [Design Specification](#design-specification)
 * [Pre-reqs](#pre-reqs)
@@ -20,6 +18,28 @@ PyGarden is a backend service. It is REST API enabled and uses an SQLite databas
 * [Service Bringup](#service-bringup)
 * [Testing](#testing)
 * [Resources](#resources)
+
+# Background
+
+Python Garden (pyGarden) is a spiritual and magical place where God inspires me. 
+
+![](../images/pygarden.png)
+
+Each morning, I sit in the garden, meditate on scripture, reflect on life, and pray. Here, I find strength, peace, and serenity. I learn to let go of fear, worry, and anxiety.
+
+God shows me the life cycle where plants grow, reproduce, die, and live again.
+
+I gain insights in the pyGarden. For example, one carrot flower is a seed pod, containing 100s of seeds. God teaches me that he likes multiplication and reproduction for the next generation. God thinks big. He is not small minded and neither should I be in the way I live my life.
+
+Here, each living cell in my body receives nutritious super foods from God. He is the hand that feeds me, all organic, heirloom, without a hint of genetic modification. I am whole and complete with each tasty mouthful.
+
+I leap for joy receiving free food. I gather the seeds each year and replant them, costing me nothing to grow. Only my time and labor of love are required.
+
+PyGarden is a homestead that provides for my family. It safeguards us from a breakdown of the food supply chain in a credit crisis or civil unrest crisis.
+
+I learn about life cycles and healing principles through observing miracles and wonders in my backyard garden.
+
+PyGarden has inspired me to code a backend app for journaling meaningful experiences and insights . It's a REST API backend service that uses a SQLite database.
 
 # End-User Requirements
 
