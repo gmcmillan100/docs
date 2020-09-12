@@ -25,7 +25,7 @@ Python Garden (pyGarden) is a spiritual and magical place where God inspires me.
 
 ![](../images/pygarden.png)
 
-Each morning, I sit in the garden, meditate on scripture, reflect on life, and pray. Here, I find strength, peace, and serenity. I learn to let go of fear, worry, and anxiety.
+Each morning, I sit in the garden, meditate on scripture, reflect on life, and pray. Here, I find love, strength, peace, and serenity. I learn to let go of fear, worry, and anxiety.
 
 God shows me the life cycle where plants grow, reproduce, die, and live again.
 
