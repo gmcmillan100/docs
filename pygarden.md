@@ -226,20 +226,13 @@ The `api_all` function pulls in data from the database. Note that our other func
 
 # Create the API
 
-## resources/doc/all
+## GET: resources/doc
+
+Syntax query parameters:
 
 ```
-@app.route('/api/v1/resources/doc/all', methods=['GET'])
-def api_all():
-    conn = sqlite3.connect('pygarden.db')
-    conn.row_factory = dict_factory
-    cur = conn.cursor()
-    all_books = cur.execute('SELECT * FROM books;').fetchall()
-
-    return jsonify(all_books)
+resources/doc [ id | published=<year> | author="<name>" ]
 ```
-
-## resources/doc
 
 ```
 @app.route('/api/v1/resources/doc', methods=['GET'])
@@ -274,6 +267,56 @@ def api_filter():
     results = cur.execute(query, to_filter).fetchall()
 
     return jsonify(results)
+```
+
+Example:
+
+```
+$ curl http://10.0.0.176:5000/api/v1/resources/doc?author=Greg+McMillan
+[
+  {
+    "author": "Greg McMillan", 
+    "id": null, 
+    "insight": "1 flower, 100s of seeds, think big because God makes it grow", 
+    "published": 2020, 
+    "title": "Carrot seed flowers bloom my life"
+  }
+]
+```
+
+## GET: resources/doc/all
+
+Syntax query parameters:
+
+```
+resources/doc [all]
+```
+
+```
+@app.route('/api/v1/resources/doc/all', methods=['GET'])
+def api_all():
+    conn = sqlite3.connect('pygarden.db')
+    conn.row_factory = dict_factory
+    cur = conn.cursor()
+    all_books = cur.execute('SELECT * FROM books;').fetchall()
+
+    return jsonify(all_books)
+```
+
+Example:
+
+```
+$ curl http://10.0.0.176:5000/api/v1/resources/doc/all
+[
+  {
+    "author": "Ann Leckie ", 
+    "id": null, 
+    "insight": "The yellow body lay naked and facedown, a deathly gray, spatters of blood staining the snow around it.", 
+    "published": 2014, 
+    "title": "Ancillary Justice"
+  }, 
+  ...
+
 ```
 
 # Deployment
