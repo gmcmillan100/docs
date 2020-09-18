@@ -25,9 +25,9 @@ Python Garden (pyGarden) is a spiritual and magical place where God inspires me.
 
 ![](../images/pygarden.png)
 
-Each morning, I sit in the garden, meditate on scripture, reflect on life, and pray. Here, I find love, strength, peace, and serenity. I learn to let go of fear, worry, and anxiety.
+Each morning, I sit in the garden, meditate on scripture, reflect on life, sing, pray, and make decisions. Here, I find love, strength, peace, and serenity. I learn to let go of fear, worry, and anxiety.
 
-God shows me the life cycle where plants grow, reproduce, die, and live again.
+God shows me the life cycle where plants grow, reproduce, die, and rise to live again.
 
 I gain insights in the pyGarden. For example, one carrot flower is a seed pod, containing 100s of seeds. God teaches me that he likes multiplication and reproduction for the next generation. God thinks big. He is not small minded and neither should I be in the way I live my life.
 
@@ -131,9 +131,9 @@ def home():
 app.run()
 ```
 
-The `import` statement is the most common way of invoking the import machinery. The basic import statement (no `from` clause) is executed in two steps:
+The `import` statement invokes the import machinery. The basic import statement (no `from` clause) is executed in two steps:
 
-1. Find a module, load and initialize it
+1. Find the module, load it, and initialize
 
 2. Define a name or names in the local namespace for the scope where the import statement occurs.
 
@@ -145,22 +145,15 @@ When the statement contains multiple clauses (separated by commas) the two steps
 
 `import sqlite3` -- Imports the [SQLlite3](/docs/sqlite/) library.
 
-`app = flask.Flask(__name__)` -- Creates the Flask application object. It contains data about the application and also methods (object functions) that tell the application to do certain actions. The last line, `app.run()`, is one such method.
+`app = flask.Flask(__name__)` -- Creates the Flask application object. It contains data about the application and methods (object functions) that tell the application to do certain actions. The last line, `app.run()`, is one such method.
 
-`app.config["DEBUG"] = True` -- Starts the debugger. With this line, if my code is malformed, I’ll see an error when I visit my app. Otherwise, only a generic message such as `Bad Gateway` is displayed in the browser when there’s a problem with my code.
+`app.config["DEBUG"] = True` -- Starts the debugger. With this line, if code is malformed, an error is displayed when the app is visited. Otherwise, only a generic message such as `Bad Gateway` is displayed in the browser when there’s a problem with the code.
 
-```
-@app.route('/', methods=['GET'])
-def home():
-    return '''<h1>Spiritual pyGarden</h1>
-<p></p>'''''
-```
+`@app.route('/', methods=['GET'])` -- Flask maps HTTP requests to Python functions. The @app.route decorator creates an association between the URL given as an argument and the function. When a web browser requests the URL (/), Flask invokes this function and passes the return value of it back to the browser as a response.
 
-Flask maps HTTP requests to Python functions. The @app.route decorator creates an association between the URL given as an argument and the function. When a web browser requests the URL (/), Flask is going to invoke this function and pass the return value of it back to the browser as a response.
+In this case, the URL path (`/`) is mapped to the function `home`. When the client connects to the Flask server at `http://10.0.0.176:5000/`, Flask checks if there is a match between the path provided and a defined function. Since /, or no additional provided path, has been mapped to the home function, Flask runs the code in the function and displays the returned result in the browser. In this case, the returned result is HTML markup for a home page welcoming visitors to the site hosting our API. The process of mapping URLs to functions is called [routing](https://hackersandslackers.com/series/build-flask-apps/).
 
-In this case, we’ve mapped one URL path (`/`) to one function, `home`. When we connect to the Flask server at http://127.0.0.1:5000/, Flask checks if there is a match between the path provided and a defined function. Since /, or no additional provided path, has been mapped to the home function, Flask runs the code in the function and displays the returned result in the browser. In this case, the returned result is HTML markup for a home page welcoming visitors to the site hosting our API. The process of mapping URLs to functions is called [routing](https://hackersandslackers.com/series/build-flask-apps/).
-
-The methods list `methods=['GET']` is a keyword argument that lets Flask know what kind of HTTP requests are allowed. We'll add POST requests (to receive data from a user) later.
+The methods list `methods=['GET']` is a keyword argument that lets Flask know what kind of HTTP requests are allowed.
 
 `app.run()` -- Method that runs the application server.
 
@@ -181,9 +174,9 @@ $ python pygarden.py
  * Debugger PIN: 337-146-323
 ```
 
-2. Go to the URL.
+2. From a web client, go to the URL at `http://10.0.0.176:5000/`.
 
-3. Access activity is displayed in the terminal:
+3. From the server, monitor the activity in the terminal:
 
 ```
 10.0.0.155 - - [06/Sep/2020 06:29:16] "GET / HTTP/1.1" 200 -
