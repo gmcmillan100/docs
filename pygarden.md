@@ -161,27 +161,27 @@ The methods list `methods=['GET']` is a keyword argument that lets Flask know wh
 
 1. Issue `python pygarden.py`:
 
-  ```
-  $ python pygarden.py 
-   * Serving Flask app "pygarden" (lazy loading)
-   * Environment: production
-     WARNING: This is a development server. Do not use it in a production deployment.
-     Use a production WSGI server instead.
-   * Debug mode: on
-   * Running on http://10.0.0.176:5000/ (Press CTRL+C to quit)
-   * Restarting with stat
-   * Debugger is active!
-   * Debugger PIN: 337-146-323
-  ```
+    ```
+    $ python pygarden.py 
+     * Serving Flask app "pygarden" (lazy loading)
+     * Environment: production
+       WARNING: This is a development server. Do not use it in a production deployment.
+       Use a production WSGI server instead.
+     * Debug mode: on
+     * Running on http://10.0.0.176:5000/ (Press CTRL+C to quit)
+     * Restarting with stat
+     * Debugger is active!
+     * Debugger PIN: 337-146-323
+    ```
 
 2. From a web client, go to the URL at `http://10.0.0.176:5000/`.
 
 3. From the server, monitor the activity in the terminal:
 
-  ```
-  10.0.0.155 - - [06/Sep/2020 06:29:16] "GET / HTTP/1.1" 200 -
-  10.0.0.155 - - [06/Sep/2020 06:29:17] "GET /favicon.ico HTTP/1.1" 404 -
-  ```
+    ```
+    10.0.0.155 - - [06/Sep/2020 06:29:16] "GET / HTTP/1.1" 200 -
+    10.0.0.155 - - [06/Sep/2020 06:29:17] "GET /favicon.ico HTTP/1.1" 404 -
+    ```
 
 # SQLlite database
 
