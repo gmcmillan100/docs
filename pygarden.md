@@ -185,7 +185,7 @@ The methods list `methods=['GET']` is a keyword argument that lets Flask know wh
 
 # SQLlite database
 
-The API serves results that are stored in an SQLite database (`pygarden.db`). When the user requests an entry or set of entries, the API pulls that information from the database by building and executing an SQL query.
+The API serves data that is stored in a SQLite database (`pygarden.db`). When the client requests an entry or set of entries, the API pulls that information from the database by building and executing an SQL query.
 
 Relational databases allow for the storage and retrieval of data, which is stored in tables. Tables are similar to spread sheets in that they have columns and rows—columns indicate what the data representes, such as “title” or “date.” Rows represent individual entries, which could be books, users, transactions, or any other kind of entity.
 
@@ -231,8 +231,10 @@ The `api_all` function pulls in data from the database. Note that our other func
 Syntax query parameters:
 
 ```
-resources/doc [ id | published=<year> | author="<name>" ]
+resources/doc [ id<value> | published=<year> | author="<name>" ]
 ```
+
+Configuration:
 
 ```
 @app.route('/api/v1/resources/doc', methods=['GET'])
@@ -269,7 +271,7 @@ def api_filter():
     return jsonify(results)
 ```
 
-Example:
+Examples:
 
 ```
 $ curl http://10.0.0.176:5000/api/v1/resources/doc?author=Greg+McMillan
@@ -284,6 +286,20 @@ $ curl http://10.0.0.176:5000/api/v1/resources/doc?author=Greg+McMillan
 ]
 ```
 
+```
+$ curl http://10.0.0.176:5000/api/v1/resources/doc?id=1
+[
+  {
+    "author": "Greg McMillan", 
+    "id": "1", 
+    "insight": "1 flower, 100s of seeds from 1 seed, think big because God does, multiplication not addition, God makes it grow", 
+    "published": 2020, 
+    "title": "Carrot seed flowers bloom my life"
+  }
+]
+
+```
+
 ## GET: resources/doc/all
 
 Syntax query parameters:
@@ -291,6 +307,8 @@ Syntax query parameters:
 ```
 resources/doc [all]
 ```
+
+Configuration:
 
 ```
 @app.route('/api/v1/resources/doc/all', methods=['GET'])
