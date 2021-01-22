@@ -12,8 +12,8 @@ resource: true
 * [REST API design](#rest-api-design)
 * [Create the basic Flask app](#create-the-basic-flask-app)
 * [Start the Flask app and test it](#start-the-flask-app-and-test-it)
-* [SQLlite database](#sqllite-database)
-* [Create the API](#create-the-api)
+* [SQLite database](#sqlite-database)
+* [Create APIs](#create-apis)
 * [Deployment](#deployment)
 * [Service Bringup](#service-bringup)
 * [Testing](#testing)
@@ -102,11 +102,17 @@ title
 insight
 published
 ```
+
+as shown in the [DB Browser for SQLite](https://sqlitebrowser.org/):
+
+![](../images/sqldb-browser.png)
+
+
 ## Tools
 
-* [Python](https://www.python.org/) is the programming language.
-* [Flask](https://palletsprojects.com/p/flask/) for the web framework.
-* [SQLite](https://www.sqlite.org/index.html) for the database.
+* [Python](https://www.python.org/) for the programming language
+* [Flask](https://palletsprojects.com/p/flask/) for the web framework
+* [SQLite](https://www.sqlite.org/index.html) for the database
 * Search
 
 # Create the basic flask app
@@ -174,7 +180,7 @@ The methods list `methods=['GET']` is a keyword argument that lets Flask know wh
      * Debugger PIN: 337-146-323
     ```
 
-2. From a web client, go to the URL at `http://10.0.0.176:5000/`.
+2. From a web client, go to the URL at `http://10.0.0.176:5000/`. The Flask server binds to port 5000 by default.
 
 3. From the server, monitor the activity in the terminal:
 
@@ -183,9 +189,9 @@ The methods list `methods=['GET']` is a keyword argument that lets Flask know wh
     10.0.0.155 - - [06/Sep/2020 06:29:17] "GET /favicon.ico HTTP/1.1" 404 -
     ```
 
-# SQLlite database
+# SQLite database
 
-The API serves data that is stored in a SQLite database (`pygarden.db`). When the client requests an entry or set of entries, the API pulls that information from the database by building and executing an SQL query.
+The API serves data that is stored in a [SQLite database](/docs/sqlite/) (`pygarden.db`). When the client requests an entry or set of entries, the API pulls that information from the database by building and executing an SQL query.
 
 Relational databases allow for the storage and retrieval of data, which is stored in tables. Tables are similar to spread sheets in that they have columns and rows—columns indicate what the data representes, such as “title” or “date.” Rows represent individual entries, which could be books, users, transactions, or any other kind of entity.
 
@@ -224,15 +230,22 @@ An object representing the connection to the database is bound to the `conn` var
 
 The `api_all` function pulls in data from the database. Note that our other function that returns data, `api_filter`, will use a similar approach to pull data from the database.
 
-# Create the API
+# Create APIs
 
 ## GET: resources/doc
+
+The `resources/doc` endpoint returns articles. You can configure it with options such as:
+
+* Title ID assigned to the article
+* Year the article was published
+* Author who wrote the article
 
 Syntax query parameters:
 
 ```
 resources/doc [ id<value> | published=<year> | author="<name>" ]
 ```
+It's required that you specify at least one parameter. 
 
 Configuration:
 
@@ -271,7 +284,7 @@ def api_filter():
     return jsonify(results)
 ```
 
-Examples:
+GET examples and responses:
 
 ```
 $ curl http://10.0.0.176:5000/api/v1/resources/doc?author=Greg+McMillan
@@ -302,10 +315,12 @@ $ curl http://10.0.0.176:5000/api/v1/resources/doc?id=1
 
 ## GET: resources/doc/all
 
+The `resources/doc/all` endpoint returns all the articles stored in the system. 
+
 Syntax query parameters:
 
 ```
-resources/doc [all]
+resources/doc/all
 ```
 
 Configuration:
@@ -321,7 +336,7 @@ def api_all():
     return jsonify(all_books)
 ```
 
-Example:
+GET example and response:
 
 ```
 $ curl http://10.0.0.176:5000/api/v1/resources/doc/all
@@ -334,7 +349,6 @@ $ curl http://10.0.0.176:5000/api/v1/resources/doc/all
     "title": "Ancillary Justice"
   }, 
   ...
-
 ```
 
 # Deployment
@@ -482,6 +496,10 @@ When successful, it produces a status 200 notification on the Flask server:
 ```
 10.0.0.155 - - [01/Aug/2020 11:26:21] "GET /api/v1/resources/doc?published=2020 HTTP/1.1" 200 -
 ```
+
+Try sending the GET request using [Postman](https://www.postman.com/):
+
+![](../images/postman.png)
 
 Get all docs:
 

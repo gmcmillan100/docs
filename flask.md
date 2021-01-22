@@ -9,6 +9,8 @@ Flask is a web framework for Python. It provides functionality for building web 
 
 Flask is a back-end framework. It’s actually a micro-framework so won’t find things like form validation or a database abstraction layer. Django is the way to go for a more complete framework.
 
+The Flask server binds to port 5000 by default.
+
 [Flask](https://palletsprojects.com/p/flask/) is a micro web framework powered by Python.
 
 [Docs](https://flask.palletsprojects.com/en/1.1.x/)

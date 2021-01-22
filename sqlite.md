@@ -10,7 +10,7 @@ resource: true
 * [DB Browser](#db-browser)
 * [Installation](#installation)
 * [Getting Started](#getting-started)
-# [Resources](#resources)
+* [Resources](#resources)
 
 # DB Browser
 
