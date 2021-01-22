@@ -11,7 +11,7 @@ resource: true
 * [Pre-reqs](#pre-reqs)
 * [REST API design](#rest-api-design)
 * [Create the basic Flask app](#create-the-basic-flask-app)
-* [Start the Flask app at test it](#start-the-flask-app-and-test-it)
+* [Start the Flask app and test it](#start-the-flask-app-and-test-it)
 * [SQLlite database](#sqllite-database)
 * [Create the API](#create-the-api)
 * [Deployment](#deployment)

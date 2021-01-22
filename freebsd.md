@@ -263,9 +263,22 @@ To enable:
       status: active
     ```
 
+5. If see `status: active` in ifconfig's display, that means the Ethernet cable's Layer 2 link is working. 
+
 # DHCP Client Troubleshooting
 
-If you haven't already been assigned an IP address through DHCP, enter "dhclient <interface-name>" to request an IP address and name server from the remote DHCP server. Then ping a device on the network for verification. Go into /stand/sysinstall and tell the networking program to enable DHCP on fxp0. The configuration info gets stored in /etc/rc.conf
+Tip. If config looks correct, go to Xfinity router login and check if hostname "bsd" is being discovered. Clicking on the hostname's details in GUI resolved a mysterious connectivity problem once before. DHCP woke up.
+
+See **Connected Devices** > **Devices** > **bsd**
+
+![](../images/bsd-xfinity.png)
+
+Enter this to request an IP address and name server from the remote DHCP server:
+
+  ```
+  dhclient <interface-name>
+  ```
+Then, ping a device on the network for verification. Go into /stand/sysinstall and tell the networking program to enable DHCP on fxp0. The configuration info gets stored in /etc/rc.conf
 
 Enter "ifconfig" to display the <interface-names> and see if the box is on the network. Can also enter "ifconfig <interface-name>". On the laptop, the Ethernet interface is called "fxp0", so enter "ifconfig fxp0" as a short cut.
 
