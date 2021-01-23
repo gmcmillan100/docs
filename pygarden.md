@@ -21,7 +21,7 @@ resource: true
 
 # Background
 
-Python Garden (pyGarden) is a spiritual and magical place where God inspires me through nature. See the [demo](https://www.youtube.com/watch?v=IyGH7eptorI).
+Python Garden (pyGarden) is a spiritual and magical place where God inspires me through nature. See the [demo](https://youtu.be/23L0WEWArSo).
 
 ![](../images/pygarden.png)
 
