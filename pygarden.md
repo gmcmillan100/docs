@@ -29,7 +29,7 @@ Each morning, I sit in the garden, meditate on scripture, reflect on life, sing,
 
 God shows me the life cycle where plants grow, reproduce, die, and rise to live again.
 
-I gain insights in the pyGarden. For example, one carrot flower is a seed pod, containing 100s of seeds. God teaches me that he likes multiplication and reproduction for the next generation. God thinks big. He is not small minded and neither should I be in the way I live my life.
+I gain insights in the pyGarden. For example, one carrot flower is a seed pod, containing 100s of seeds. See the center picture above. God teaches me that he likes multiplication and reproduction for the next generation. God thinks big. He is not small minded and neither should I be in the way I live my life.
 
 Here, each living cell in my body receives nutritious super foods from God. He is the hand that feeds me, all organic, heirloom, without a hint of genetic modification. I am whole and complete with each tasty mouthful.
 
