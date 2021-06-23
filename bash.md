@@ -42,6 +42,36 @@ GNU bash, version 2.05b.0(1)-release (i386-portbld-freebsd4.7)
 Copyright (C) 2002 Free Software Foundation, Inc.
 ```
 
+# Switch to bash
+
+Discover what shells are available on local mac:
+
+```
+cat /etc/shells
+/bin/bash
+/bin/csh
+/bin/dash
+/bin/ksh
+/bin/sh
+/bin/tcsh
+/bin/zsh
+```
+
+Change to bash:
+
+```
+chsh -s /bin/bash
+```
+
+open a new terminal to trigger a new shell login:
+
+Print active shell:
+
+```
+$ echo $SHELL
+/bin/bash
+```
+
 # Install
 
 ```

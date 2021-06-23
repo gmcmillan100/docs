@@ -55,13 +55,18 @@ PyGarden has inspired me to code a backend app for journaling meaningful experie
 
 ## REST APIs
 
-The prevailing design philosophy of modern APIs is called REST. For PyGarden's purposes, the most important thing about REST is that it’s based on the four methods defined by the HTTP protocol: 
+The prevailing design philosophy of modern APIs is called REST. For PyGarden's purposes, the most important thing about REST is that it’s based on the four request methods defined by the HTTP protocol: 
 
 ```
 POST, GET, PUT, DELETE
 ```
 
-These correspond to the four traditional actions performed on data in a database: 
+- `POST` -- Creates new data.
+- `GET` -- Fetch data that already exists.
+- `PUT` -- Updates existing data.
+- `DELETE` -- Removes data.
+
+These request methods correspond to the four traditional actions performed on data in a database: 
 
 ```
 CREATE, READ, UPDATE, DELETE
@@ -351,6 +356,88 @@ $ curl http://10.0.0.176:5000/api/v1/resources/doc/all
   ...
 ```
 
+## POST: resources/doc/create
+
+Left off...
+
+Getting KeyError: 'data'
+
+```
+File "/Users/gmcmilla/webDev/pygarden/pygarden.py", line 74, in setName
+    data = posted_data['data']
+KeyError: 'data'
+```
+
+Key not in dictionary per this article. Use .get instead?
+
+https://www.knowledgehut.com/blog/programming/python-exception-handling
+
+https://gist.github.com/subfuzion/08c5d85437d5d4f00e58
+
+
+The `resources/doc/create` endpoint creates a new article.
+
+Syntax query parameters:
+
+```
+resources/doc/create
+```
+
+How to:
+
+https://levelup.gitconnected.com/simple-api-using-flask-bc1b7486af88
+
+Test:
+
+```
+@app.route('/api/v1/resources/doc/create', methods=['POST'])
+def setName():
+    if request.method=='POST':
+        posted_data = request.get_json()
+        data = posted_data['data']
+        return jsonify(str("Successfully stored  " + str(data)))
+```
+
+
+```
+@app.route("/name", methods=["POST"])
+def setName():
+    if request.method=='POST':
+        posted_data = request.get_json()
+        data = posted_data['data']
+        return jsonify(str("Successfully stored  " + str(data)))
+```
+
+@app.route decorator tells our app that whenever a client makes a call to our website with URL http://10.0.0.176:5000/api/v1/resources/doc/create with POST method, then execute the method setName().
+
+In the method setName(), we check if the call was made using the POST method, then we extract the JSON information in the variable “data” passed in the body
+
+Curl example:
+
+Here's an example of how to POST JSON data with curl.
+
+Two ways to go. 
+
+Send all in one command:
+
+```
+curl -d '{"key1":"value1", "key2":"value2"}' -H "Content-Type: application/json" -X POST http://localhost:3000/data
+```
+
+Or, put the data in a file (e.g., body.json):
+
+```
+{"value":"30","type":"Tip 3","targetModule":"Target 3","configurationGroup":null,"name":"Configuration Deneme 3","description":null,"identity":"Configuration Deneme 3","version":0,"systemId":3,"active":true}
+```
+
+Then, send the contents of the file to the server:
+
+```
+curl -d "@body.json" -X POST http://localhost:3000/data
+```
+
+https://stackoverflow.com/questions/7172784/how-do-i-post-json-data-with-curl
+
 # Deployment
 
 Release 1.0 supports read-only GET requests using REST APIs.
@@ -521,7 +608,21 @@ http://www.michielovertoom.com/freebsd/flask-gunicorn-nginx-supervisord/#:~:text
 
 See also https://flask.palletsprojects.com/en/1.1.x/deploying/#deployment
 
+# Werkzeug debugger
+
+To enable in .py:
+
+```
+app.run(debug=True)
+```
+
+https://flask.palletsprojects.com/en/master/debugging/#the-built-in-debugger
+
 # Resources
+
+Python KeyError (Raised when a key is not found in a dictionary), https://realpython.com/python-keyerror/#:~:text=The%20Python%20KeyError%20is%20a,for%20could%20not%20be%20found.
+
+Tracebacks, https://realpython.com/python-traceback/
 
 https://hackersandslackers.com/series/build-flask-apps/
 

@@ -532,6 +532,19 @@ now it's installed:
 python3 --version
 Python 3.7.2
 ```
+
+Use pip3 to install packages:
+
+```
+$ pip3 install matplotlib
+```
+
+Do this if packages won't install (e.g., TLS/SSL errors):
+
+```
+brew update && brew upgrade
+```
+
 See also:
 * https://stackoverflow.com/questions/47513024/how-to-fix-permissions-on-home-brew-on-macos-high-sierra/49295044
 * https://docs.python-guide.org/starting/install3/osx/#install3-osx

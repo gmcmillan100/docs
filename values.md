@@ -15,6 +15,9 @@ resource:
 * [Diversity](#diversity)
 * [Gender Identity](#gender-identity)
 * [Sexual Harassment](#sexual-harassment)
+* [Glint manager review questions](glint-manager-review-questions)
+
+Unconscious bias, https://www.linkedin.com/learning/unconscious-bias/why-unconscious-bias-matters-to-business?contextUrn=urn%3Ali%3AlyndaLearningPath%3A5db07b91498e92fd7131b56b&u=104
 
 # Managers
 
@@ -994,4 +997,406 @@ We believe in meritocracy. All applicants, no matter who they are, need to go th
 
 Our members and customers trust us with their personal information, and we have a responsibility to protect it. We’re open and honest with them about how we use their data, and we certainly never change how we’re using member information without getting consent first. Our Privacy Policy and the terms and conditions of any agreements we have with our customers govern how we handle personal information and customer data. We honor these commitments.
 
+# Glint manager review questions
+
+Glint logo Progress % done 17/22
+Hello!
+Welcome to the Upward Manager Feedback Survey. The survey is a pilot of a company-wide survey that will enable structured developmental feedback for people managers from their direct reports. The survey is based on manager expectations and skills that we expect every people manager to have across the company. Your feedback will help with your manager's development and enable them to learn and grow in their role as a manager.
+
+Please take 10 minutes to answer the 22 questions below. If you do not know your manager well enough to respond to a certain question, please skip the question. All questions are optional.
+
+Thank you for your response!
+
+Your responses are confidential and reported to managers and LinkedIn in aggregate groups of 3 or more respondents for both scores and comments. Take care not to identify yourself in the comments. A limited number of people on the GTO team at LinkedIn will have access to your survey responses connected to your identity. For more information view the: Data Protection Summary.
+
+Start Pulse
+
+
+Manager's Name for Survey
+Please complete the survey for your current manager: Rajon Tumbokon.
+
+For all survey questions, the wording "my manager" refers to Rajon Tumbokon.
+
+Answer question to continue
+This question is required
+
+
+01.
+I would recommend my manager as a manager to others.
+Strongly DisagreeStrongly Agree
+
+1
+Comment	
+
+2
+Comment	
+
+3
+Comment	
+
+4
+Comment	
+
+5
+CommentAnswer question to continue
+This question is required
+
+
+02.
+I have a 1:1 with my manager at least twice a month.
+Strongly DisagreeStrongly Agree
+
+1
+Comment	
+
+2
+Comment	
+
+3
+Comment	
+
+4
+Comment	
+
+5
+CommentAnswer question to continue
+This question is required
+
+
+03.
+My manager provides me with clear and actionable feedback.
+Strongly DisagreeStrongly Agree
+
+1
+Comment	
+
+2
+Comment	
+
+3
+Comment	
+
+4
+Comment	
+
+5
+CommentAnswer question to continue
+This question is required
+
+
+04.
+My manager has had at least one meaningful discussion with me about my career development in the last six months.
+Strongly DisagreeStrongly Agree
+
+1
+Comment	
+
+2
+Comment	
+
+3
+Comment	
+
+4
+Comment	
+
+5
+CommentAnswer question to continue
+This question is required
+
+
+05.
+My manager takes action to help me navigate my career.
+Strongly DisagreeStrongly Agree
+
+1
+Comment	
+
+2
+Comment	
+
+3
+Comment	
+
+4
+Comment	
+
+5
+CommentAnswer question to continue
+This question is required
+
+
+06.
+My manager is open to ideas, recommendations, and proposals from others.
+Strongly DisagreeStrongly Agree
+
+1
+Comment	
+
+2
+Comment	
+
+3
+Comment	
+
+4
+Comment	
+
+5
+CommentAnswer question to continue
+This question is required
+
+
+07.
+My manager role models how to work effectively with others.
+Strongly DisagreeStrongly Agree
+
+1
+Comment	
+
+2
+Comment	
+
+3
+Comment	
+
+4
+Comment	
+
+5
+CommentAnswer question to continue
+This question is required
+
+
+08.
+My manager communicates a clear strategy for my team.
+Strongly DisagreeStrongly Agree
+
+1
+Comment	
+
+2
+Comment	
+
+3
+Comment	
+
+4
+Comment	
+
+5
+CommentAnswer question to continue
+This question is required
+
+
+09.
+My manager keeps me focused on priorities.
+Strongly DisagreeStrongly Agree
+
+1
+Comment	
+
+2
+Comment	
+
+3
+Comment	
+
+4
+Comment	
+
+5
+CommentAnswer question to continue
+This question is required
+
+
+10.
+My manager helps me remove roadblocks to get work done.
+Strongly DisagreeStrongly Agree
+
+1
+Comment	
+
+2
+Comment	
+
+3
+Comment	
+
+4
+Comment	
+
+5
+CommentAnswer question to continue
+This question is required
+
+
+11.
+My manager helps me achieve results.
+Strongly DisagreeStrongly Agree
+
+1
+Comment	
+
+2
+Comment	
+
+3
+Comment	
+
+4
+Comment	
+
+5
+CommentAnswer question to continue
+This question is required
+
+
+12.
+My manager does not micromanage.
+Strongly DisagreeStrongly Agree
+
+1
+Comment	
+
+2
+Comment	
+
+3
+Comment	
+
+4
+Comment	
+
+5
+CommentAnswer question to continue
+This question is required
+
+
+13.
+My manager finds effective ways to scale business solutions (process, technology, services, etc.).
+Strongly DisagreeStrongly Agree
+
+1
+Comment	
+
+2
+Comment	
+
+3
+Comment	
+
+4
+Comment	
+
+5
+CommentAnswer question to continue
+This question is required
+
+
+14.
+My manager effectively communicates the rationale for change.
+Strongly DisagreeStrongly Agree
+
+1
+Comment	
+
+2
+Comment	
+
+3
+Comment	
+
+4
+Comment	
+
+5
+CommentAnswer question to continue
+This question is required
+
+
+15.
+My manager encourages me to come up with new and better ways of doing things.
+Strongly DisagreeStrongly Agree
+
+1
+Comment	
+
+2
+Comment	
+
+3
+Comment	
+
+4
+Comment	
+
+5
+CommentAnswer question to continue
+This question is required
+
+
+16.
+My manager gives me the time and freedom to pursue new ideas that create value for employees, members or customers.
+Strongly DisagreeStrongly Agree
+
+1
+Comment	
+
+2
+Comment	
+
+3
+Comment	
+
+4
+Comment	
+
+5
+CommentAnswer question to continue
+This question is required
+
+
+17.
+My manager cares about me as a person.
+Strongly DisagreeStrongly Agree
+
+1
+Comment	
+
+2
+Comment	
+
+3
+Comment	
+
+4
+Comment	
+
+5
+CommentAnswer question to continue
+This question is required
+
+
+18.
+My manager lets me know that my contributions are meaningful.
+Strongly DisagreeStrongly Agree
+
+1
+Comment	
+
+2
+Comment	
+
+3
+Comment	
+
+4
+Comment	
+
+5
+CommentSkipAnswer question to continue
+This question is required
+19
+Dismiss
 
