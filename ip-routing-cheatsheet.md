@@ -5,12 +5,6 @@ permalink: /iprouting/
 resource: true
 ---
 
-```
-Technical Documentation	            			Greg McMillan
-Personal Draft: For Greg's Eyes Only			Procket Networks
-Expiration Date: Who knows ...
-```
-
 
 # Contents
 
@@ -37,7 +31,7 @@ Expiration Date: Who knows ...
      21	  Growth of the Internet
      22   Forklift Upgrades
      24   Multicast vs MPLS
-     25   Procket Close Out
+     25   Packet Rocket Close Out
      26   Packet Processing
 
 # 1 IP Routing Terms and Routing 101 Basics
@@ -436,14 +430,14 @@ h)
 
 Comment based on http://www.cs.wisc.edu/~plonka/netgear-sntp/
 
-If they had a Procket system as their edge router and we were done
+If they had a system as their edge router and we were done
 with the QoS code, we would be able to rate limit NTP requests to that
 IP address down to something paltry.  This would be the best possible
 endgame as the time server would simply 'disappear' while it was under
 attack, the load on the server would be capped, and reliable service
 would automatically return once the 'attack' subsided.
 
-The place to put the Procket box is the edge router in their
+The place to put the box is the edge router in their
 ISP.  All DoS attacks have to be blocked in the ISP.  The
 point is that we could shape the specific Netgear attack
 traffic down to a trickle, allowing the server to deal with
@@ -535,11 +529,10 @@ expensive. Cells are agnostic. They have advantages and disadvantages. Folks who
 have a religion and don't evaluate technology on its true merits are
 condemned to preach forever.
 
-For its internal cell switching, a Procket router does not use ATM
-53-byte cells. Procket's cell size is 30 Bytes of payload plus
+For its internal cell switching, a packet rocket router does not use ATM
+53-byte cells. The cell size is 30 Bytes of payload plus
 overhead. This size efficiently uses Dynamic Random-Access Memory
-(DRAM) bandwidth and avoids IP fragmentation overhead. Unlike a
-Procket router, when cells are much larger than the packets getting
+(DRAM) bandwidth and avoids IP fragmentation overhead. Unlike packet router, when cells are much larger than the packets getting
 presented, DRAM bandwidth is wasted.
 
 
@@ -600,7 +593,7 @@ LAN) that he is connected to. The network number (01, 02, ...) goes up
 to 255. A device can be a psuedo-node for up to 255 LANs that he is
 connected to:
 
-procket7(config-if)# sh mpls te database pseudo-nodes brief
+7(config-if)# sh mpls te database pseudo-nodes brief
 Traffic Engineering database for context "default"
 TE-RID psuedo-node lsps [transit 0 terminated 0] #links 0
  * DR  57.1.1.5, area 0, ospf-p7, #adjacencies 2, 00:04:47 ago
@@ -640,7 +633,7 @@ The idea is to assign important packets a higher priority queue while
 having less important packets assigned lower priority.
 
 This is set of tables of protocol 'types', for various protocols
-running on a Procket stack. The first column, refers to the inbound RP
+running on a stack. The first column, refers to the inbound RP
 priority associated with the protocol packets. If an RP destined
 packet does not match any of the following packet-types, it gets
 assigned the lowest priority (6).
@@ -774,9 +767,9 @@ bytes are for doing subnetting and host allocation. People who
 couldn't fit into a class C were getting a class B, but they were not
 using all the address space. Not all the class B was being allocated. 
 
-On a Procket, most of the prefixes that we'll see in the routing table
+On a router, most of the prefixes that we'll see in the routing table
 will be /32 or /48. Most of the volume traffic in a core router is
-destined for both prefix IDs. A Procket router has a pipeline that is
+destined for both prefix IDs. A router has a pipeline that is
 designed to /32 addresses.  
 
 In the case of IPv4 multicast routing, the router has to do a source
@@ -828,16 +821,16 @@ More IPv6 features:
 # 9 IPsec VPNs, CPE, RFC 2547
 
 
-a)
+a) 
 
-tli
+tony
 
 2547 does not scale. This is obvious to anyone who knows a little bit
 about routing. The number of prefixes that a router needs to carry in
 a 2547 network is huge. It increases linearly with the number of
-customers. There's a large multiplier attached to it. Procket does not
-want to support it. However, some Procket customers are insisting 2547
-support or else they won't do business with Procket. Procket will not
+customers. There's a large multiplier attached to it. Packet rocket does not
+want to support it. However, some Packet customers are insisting 2547
+support or else they won't do business with Packet rocket. Packet rocket will not
 be religious but broke. ;-) We will do something we don't like yet
 provides something that 2547 does not do. :-) IPsec tunnels are the
 correct long term solution. Putting unincrypted personal/sensitive
@@ -896,7 +889,7 @@ Reply from Totti-san:
 |     and can't stop their service without an alternative solution.
 |    Do you have any idea about the alternative solution for 
 |    RFC2547 provider?
-|    (If the procket box can provide such a solution, we can 
+|    (If the Packet rocket box can provide such a solution, we can 
 |    get much more
 |    business chances! ;-) )
 
@@ -957,14 +950,6 @@ tli
 
 d)
 
-From: "Tony Li" <Tony.Li@procket.com>
-Sender: eng-beta-admin@procket.com
-To: "Takefumi Murakami" <t-murakami@netone.co.jp>,
-   "Dino Farinacci" <dino@procket.com>
-Cc: "cs-netone" <cs-netone@procket.com>, <procket-tech@netone.co.jp>
-Subject: RE: Question about NPU SRAM
-Date: Fri, 31 Jan 2003 11:36:50 -0800
-
 
 Takefumi-san,
 
@@ -1003,7 +988,7 @@ f)
 
 dino
 
-How will Procket deal with VPNs and convergence? MPLS solves three
+How will Packet rocket deal with VPNs and convergence? MPLS solves three
 main problems:
 
 o) Precisely place traffic on the various paths of a network. It
@@ -1017,17 +1002,17 @@ o) Customer want to be able to transport Layer 2 services across a
    infrastructure because that fundamentally won't scale. To solve this,
    customer put a tunnel between the two locations, such as an IP tunnel
    that is marketed as a MPLS tunnel. This is what Layer 2 VPNs is all
-   about.  How can Procket be part of delivering these Layer 2 services
+   about.  How can Packet rocket be part of delivering these Layer 2 services
    without having to implement ATM or Frame Relay directly on our router?
    That is, without having to transport cells or SONET frames over this
    kind of media. 
 
 o) From your house, being able to feel like your directly connected to
-   Procket's network. My home network being part of Procket's internal
-   network. That is, having access to all of Procket's dns names and
-   services that are inside of Procket's network without having to do
+   Packet rocket's network. My home network being part of Packet rocket's internal
+   network. That is, having access to all of Packet rocket's dns names and
+   services that are inside of Packet rocket's network without having to do
    special application translation. The way to do this is to extend
-   all the addressability out from Procket in a secure way. This is
+   all the addressability out from Packet rocket in a secure way. This is
    done by putting multiple routing tables on the backbone. Many
    telcos in Europe and Japan are trying to support tens of thousands
    of overlay networks on their existing major backbone, and they
@@ -1036,12 +1021,12 @@ o) From your house, being able to feel like your directly connected to
    will take the shortest path. Not necessarily the path with the most
    available bandwidth. 
 
-When a customer asks Procket to support 2547, we tell them it does not
-scale. Procket suggests customers use Layer 2 VPNs with the Martini or
-Kompella drafts. Procket also does not want to be the TE router that
-has terminate all these virtual routing tables. Procket wants to be at
+When a customer asks Packet rocket to support 2547, we tell them it does not
+scale. Packet rocket suggests customers use Layer 2 VPNs with the Martini or
+Kompella drafts. Packet rocket also does not want to be the TE router that
+has terminate all these virtual routing tables. Packet rocket wants to be at
 the core doing fast yet raw MPLS. That is, to build your core with
-Procket. 
+Packet rocket. 
 
 g)
 
@@ -1067,7 +1052,7 @@ from dino to innet email regarding KT wanting 2547
 >>  Recently, KT Launch VPLS service with Juniper M series
 >>  and They still testing GSR12816=20
    
-    So that means they can put Juniper boxes at the edge, and use Procket in
+    So that means they can put Juniper boxes at the edge, and use Packet rocket in
     the core moving MPLS packets at line rate. Do you agree?
 
 
@@ -1099,7 +1084,7 @@ Assumptions
   network. The CapEx and OpEx are generally about equal in
   cost. Companies spend about as much money in labor for their
   operations and engineering staff as they do for their equipment
-  costs. Procket will try to shrink the OpEx part, which is a huge
+  costs. Packet rocket will try to shrink the OpEx part, which is a huge
   win. Making our boxes easier to use and manage. 
 
   Carrier OpEx costs are dominated by labor costs.  The more we can do
@@ -1118,11 +1103,11 @@ Drivers
 
 Packets an Chips
 
-For its internal cell switching, a Procket router does not use ATM
-53-byte cells. Procket's cell size is 30 Bytes of payload plus
+For its internal cell switching, a Packet rocket router does not use ATM
+53-byte cells. Packet rocket's cell size is 30 Bytes of payload plus
 overhead. This size efficiently uses Dynamic Random-Access Memory
 (DRAM) bandwidth and avoids IP fragmentation overhead. Unlike a
-Procket router, when cells are much larger than the packets getting
+Packet rocket router, when cells are much larger than the packets getting
 presented, DRAM bandwidth is wasted.
 
 A fully loaded Atlas router contains 2 RP cards, 3 Switch Cards, 12
@@ -1167,7 +1152,7 @@ Make it easier to manage
   Fewer boxes to manage. Think about it. In my personal life, do I want to manage one
   account to pay off each one of my bills? Or do I have one checking
   account? One thing to manage, even if it has more things in it, is
-  easier than more things to manage. Procket will help customers
+  easier than more things to manage. Packet rocket will help customers
   decrease the number of systems they need to manage. 
 
   Increase flexibility
@@ -1176,7 +1161,7 @@ Make it easier to manage
   their network engineering time just trying to figure out
   which sw release to run. "Oh, this image does not work in this part
   of the network because of this bug. But it'll work over here because
-  we don't use that." Procket will give customers sw images that they
+  we don't use that." Packet rocket will give customers sw images that they
   don't have to think about. 
 
   Improve reliability for sw and hw
@@ -1257,7 +1242,7 @@ will be equivalent. There is no point to connecting an optical switch
 to a cluster. No need to shift fiber from router to router, because
 it's all "one router."
 
-Procket is designing to 1 petabit of bandwidth and
+Packet rocket is designing to 1 petabit of bandwidth and
 this will require 2084 Pro/8812's (or equivalents).
 
 
@@ -1617,7 +1602,7 @@ dino
    o This demo shows Atlas can be placed in a new build-out network that 
      provides unprecedented breakthrough multicast performance. 
    o No existing competitor can do this today. Tell the customer we are 
-     entering very new ground. Procket is completely in a different league.
+     entering very new ground. Packet rocket is completely in a different league.
 
 -------------------------------------------------------------------------------
 
@@ -1637,16 +1622,6 @@ dino
 
 
 b) Demo Setup
-
-From: John Zwiebel <jzwiebel@procket.com>
-Sender: software-admin@procket.com
-To: sw@procket.com
-Subject: help debug the multicast demo
-Date: Fri, 14 Nov 2003 14:17:08 -0800
-Status: O
-X-Status: 
-X-Keywords:                  
-X-UID: 53
 
 
 for those of you with nothing to do (Bill), 
@@ -1716,12 +1691,6 @@ clayton is not happy. ;-)
 
 Note: also see http://www.i2-multicast.northwestern.edu/
 
-From: John Zwiebel <jzwiebel@procket.com>
-To: Greg McMillan <gmcmillan@procket.com>, Clayton Wagar <cwagar@procket.com>
-Cc: John Zwiebel <jzwiebel@procket.com>
-Subject: Re: [mgurus] NANOG Mcast feed help
-Date: Mon, 9 Feb 2004 15:43:08 -0800
-
 
 On Feb 9, 2004, at 3:24 PM, Greg McMillan wrote:
 
@@ -1755,7 +1724,7 @@ object to these lines:
 You said you changed it to H.261, but the sdp file hasn't changes.
 
 So I've to leave now.
-I've shown that claytons mcast is getting to procket and
+I've shown that claytons mcast is getting to Packet rocket and
 that its now a question of getting the right applications on
 both ends to deal with things properly.
 
@@ -1779,7 +1748,7 @@ m=video 5434 RTP/AVP 97
 c=IN IP4 233.0.236.100/128/1
 
 So I've to leave now.
-I've shown that claytons mcast is getting to procket and
+I've shown that claytons mcast is getting to Packet rocket and
 that its now a question of getting the right applications on
 both ends to deal with things properly.
 
@@ -2031,7 +2000,7 @@ technology.
    T640 = 32 OC-192s/chassis x 2 per rack = 64/rack
    8812 = 48 OC-192s/chassis x 2 per rack = 96/rack
 
-Juniper routers fit in a 19" rack though, so does Avici and Procket.
+Juniper routers fit in a 19" rack though, so does Avici and Packet rocket.
 
 Buy a platform that has room for expansion and a lifetime in their
 network that exceeds the depreciation cycle of the gear.
@@ -2043,7 +2012,7 @@ interconnect, giving it 128 OC-192s.
 
 Juniper would get 5 T640's plus the TX, for 160.
 
-Procket would get 5 8812 plus , for 240.
+Packet rocket would get 5 8812 plus , for 240.
 
 Bottom line: what starts out as a small density advantage will pay
 handsomely when you look at interesting multipliers. Yes, at the small
@@ -2075,7 +2044,7 @@ network.
 
 MPLS is just an extra complication. Most customers will eventually realize they
 need to use multicast. Once they do implement multicast, they will
-realize their MPLS solution will not work with multicast. If Procket
+realize their MPLS solution will not work with multicast. If Packet rocket
 does not have a multicast over MPLS solution, customer will get rid of
 all their MPLS. 
 
@@ -2104,7 +2073,7 @@ what the People are really looking for). Way the dog. Same with
 rope to do it. 
 
  
-# 25   Procket Close Out
+# 25   Packet rocket Close Out
 
 The ">" marks a lightreading question that tli is responding to.
 
@@ -2202,7 +2171,7 @@ The ">" marks a lightreading question that tli is responding to.
                              if
                              you get it right.
 
-> I think procket will be the last routing startup to try and build its own packet
+> I think Packet rocket will be the last routing startup to try and build its own packet
 > forwarding chips. That business has to go to the big chip houses
 > because no startup can afford the costs, schedules or risks involved in designing them.
 
@@ -2249,7 +2218,7 @@ A cnet interview with tli. The ">" marks cnet's question to tli.
  would care. I am one of these strange people who doesn't think this
  is all about the money.
 
-> Procket has raised something like $300 million, and now there's talk
+> Packet rocket has raised something like $300 million, and now there's talk
 > that the company is trying to sell itself. Could it really be out of
 > money? 
 
@@ -2258,20 +2227,20 @@ A cnet interview with tli. The ">" marks cnet's question to tli.
  running out of money by now.
 
 > People have been saying that Cisco is interested in buying
-> Procket. Does this make sense to you?
+> Packet rocket. Does this make sense to you?
 
  I'm not sure what Cisco's rationale is. If it's a matter of improving
  hardware density and getting some software talent, then that makes
  sense. But I don't see how this wouldn't really (anger)
  the team that just built Cisco's new CRS-1 router.
 
-> People say that Procket could be going for between $80 million and
+> People say that Packet rocket could be going for between $80 million and
 > $100 million. What's your take on that? 
 
  Well, I'm a bit biased, but I think that's a real steal for the
  technology.
 
- Procket was one of the most highly valued start-ups in Silicon Valley
+ Packet rocket was one of the most highly valued start-ups in Silicon Valley
  at one point. What happened? 
  There was a lot of mismanagement, especially in the early
  days. Things were delayed, and the sales didn't happen. The product
@@ -2291,7 +2260,7 @@ A cnet interview with tli. The ">" marks cnet's question to tli.
  want him to leave. It was actually sad to see that
  happen.
 
-> Why did you leave Procket? I thought that you were instrumental in
+> Why did you leave Packet rocket? I thought that you were instrumental in
 > getting Roland Acra, the new CEO, to come on board. 
 
  Once he got into the company, he wasn't interested in having my
@@ -2318,7 +2287,7 @@ A cnet interview with tli. The ">" marks cnet's question to tli.
  things, like tell the truth, which customers appreciate but sometimes
  the company does not. 
 
-> Now that you're done with Procket, what are you working on? 
+> Now that you're done with Packet rocket, what are you working on? 
 
  I am doing stuff on the side, but it is not of relevance to this
  conversation.
