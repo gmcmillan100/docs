@@ -360,19 +360,73 @@ $ curl http://10.0.0.176:5000/api/v1/resources/doc/all
 
 Left off...
 
-Getting KeyError: 'data'
+app.route:
 
 ```
-File "/Users/gmcmilla/webDev/pygarden/pygarden.py", line 74, in setName
-    data = posted_data['data']
-KeyError: 'data'
+@app.route('/api/v1/resources/doc/create', methods=['POST'])
+def create():
+
+    #access the db connection
+
+    conn = sqlite3.connect('pygarden.db')
+
+    #access the cursor object
+
+    cursor = conn.cursor()
+
+    #create the POST request
+
+    if request.method=='POST':
+        id = request.form["id"]
+        author = request.form["author"]
+        insight = request.form["insight"]
+        published = request.form["published"]
+        title = request.form["title"]
+
+        posted_data = request.get_json()
+        data = posted_data
+
+    #SQL query to INSERT INTO our database
+
+        sql = """INSERT INTO books (id, author, insight, published, title) VALUES (?, ?, ?, ?, ?)"""
+
+        cursor = cursor.execute(sql, (id, author, insight, published, title))
+
+        conn.commit()
+        
+        conn.close()
+
+    return jsonify(str("Successfully stored  " + str(data)))
+```
+curl call:
+
+```
+curl -d '{"id":"8", "author":"Greg McMillan", "insight":"Hello new data", "published":"2022", "title":"First Write"}' -H "Content-Type: application/json" -X POST http://127.0.0.1:5000/api/v1/resources/doc/create
 ```
 
-Key not in dictionary per this article. Use .get instead?
+traceback error:
 
-https://www.knowledgehut.com/blog/programming/python-exception-handling
-
-https://gist.github.com/subfuzion/08c5d85437d5d4f00e58
+```
+Traceback (most recent call last):
+  File "/Users/gmcmilla/Library/Python/3.8/lib/python/site-packages/flask/app.py", line 2095, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/Users/gmcmilla/Library/Python/3.8/lib/python/site-packages/flask/app.py", line 2080, in wsgi_app
+    response = self.handle_exception(e)
+  File "/Users/gmcmilla/Library/Python/3.8/lib/python/site-packages/flask/app.py", line 2077, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/gmcmilla/Library/Python/3.8/lib/python/site-packages/flask/app.py", line 1525, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/gmcmilla/Library/Python/3.8/lib/python/site-packages/flask/app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/gmcmilla/Library/Python/3.8/lib/python/site-packages/flask/app.py", line 1509, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/Users/gmcmilla/webDev/pygarden/pygarden.py", line 84, in create
+    id = request.form["id"]
+  File "/Users/gmcmilla/Library/Python/3.8/lib/python/site-packages/werkzeug/datastructures.py", line 375, in __getitem__
+    raise exceptions.BadRequestKeyError(key)
+werkzeug.exceptions.BadRequestKeyError: 400 Bad Request: The browser (or proxy) sent a request that this server could not understand.
+KeyError: 'id'
+```
 
 
 The `resources/doc/create` endpoint creates a new article.
@@ -383,30 +437,13 @@ Syntax query parameters:
 resources/doc/create
 ```
 
-How to:
+How tos:
 
-https://levelup.gitconnected.com/simple-api-using-flask-bc1b7486af88
+https://codesnnippets.com/creating-rest-api-with-python-and-flask-web-development-with-python-and-flask-part-6/
 
-Test:
+https://www.digitalocean.com/community/tutorials/how-to-use-an-sqlite-database-in-a-flask-application#step-3-creating-posts
 
-```
-@app.route('/api/v1/resources/doc/create', methods=['POST'])
-def setName():
-    if request.method=='POST':
-        posted_data = request.get_json()
-        data = posted_data['data']
-        return jsonify(str("Successfully stored  " + str(data)))
-```
-
-
-```
-@app.route("/name", methods=["POST"])
-def setName():
-    if request.method=='POST':
-        posted_data = request.get_json()
-        data = posted_data['data']
-        return jsonify(str("Successfully stored  " + str(data)))
-```
+Notes:
 
 @app.route decorator tells our app that whenever a client makes a call to our website with URL http://10.0.0.176:5000/api/v1/resources/doc/create with POST method, then execute the method setName().
 

@@ -47,6 +47,28 @@ $ find . -name gre.txt -print
 ./.snapshot/hourly.4/src/sw/sw/specs/routing/gre.txt
 ^C
 ```
+Find all files in the 'lms-docs' directory that have a .mdx file suffix:
+
+```
+$ cd lms-docs
+$ find . -type f -name \*.mdx
+./explanation/ad-serving/overview.mdx
+./about/intro.mdx
+./about/contributing.mdx
+./reference/intro.mdx
+./reference/lms-org-chart.mdx
+./reference/teams/eng/lms.mdx
+./reference/teams/eng/adservingplatform/mvp/lmsasaplat/about.mdx
+./reference/teams/eng/adservingplatform/mvp/about.mdx
+./reference/teams/eng/adservingplatform/mvp/talentmedia/about.mdx
+./reference/teams/eng/adservingplatform/about.mdx
+./reference/teams/eng/pages/about.mdx
+./reference/teams/eng/cep/about.mdx
+./reference/teams/template.mdx
+./reference/workinggroups/techfoundations/about.mdx
+./reference/workinggroups/techfoundations/tablestakes/about.mdx
+./reference/workinggroups/productivity/about.mdx
+```
 
 Word count:
 

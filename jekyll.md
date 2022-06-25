@@ -440,6 +440,8 @@ where "UA-128576866" is your account ID.
 
 Full example:
 
+https://github.com/linkedin/rest.li/blob/gh-pages-source/src/_includes/head.html
+
 https://analytics.google.com/analytics/web/?authuser=1#/report/content-engagement-flow/a128576866w187663829p184404553/_u.date00=20181111&_u.date01=20181117/
 
 ```
