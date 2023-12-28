@@ -10,6 +10,7 @@ resource: true
 * [Class with Method Example](#class-with-method-example)
 * [Hello World](#hello-world)
 * [Installation](#installation)
+* [JAVA_HOME](#java-home)
 
 # Introduction
 
@@ -166,6 +167,85 @@ procfs(5) mounted on /proc. Add the following lines in `/etc/fstab`:
 ```
 fdesc	/dev/fd		fdescfs		rw	0	0
 proc	/proc		procfs		rw	0	0
+```
+
+Is Java installed?
+
+```
+$ which java
+/usr/bin/java
+```
+
+What version?
+
+```
+$ java -version
+openjdk version "17.0.5" 2022-10-18 LTS
+OpenJDK Runtime Environment Microsoft-6841604 (build 17.0.5+8-LTS)
+OpenJDK 64-Bit Server VM Microsoft-6841604 (build 17.0.5+8-LTS, mixed mode, sharing)
+```
+
+# JAVA_HOME
+
+Many Java applications must know the location of a $JAVA_HOME directory. If not, you'll run into a JDK version mis-match problem like this:
+
+```
+ERROR: JAVA_HOME is set to an invalid directory: /Library/Java/JavaVirtualMachines/jdk1.8.0_282-msft.jdk/Contents/Home
+
+Please set the JAVA_HOME variable in your environment to match the
+location of your Java installation.
+```
+
+Use `echo $JAVA_HOME` to display the current path:
+
+```
+$ echo $JAVA_HOME
+/Library/Java/JavaVirtualMachines/jdk17.0.5-msft.jdk/Contents/Home
+```
+
+Use `brewin` to install the new JDK version:
+
+```
+$ brewin engtools install lnkd-java-8u282-msft
+[in] => Please enter your password if prompted. 
+Password:
+[in] => Xcode Command Line Tools found.
+[in] => Checking /System/Volumes/Data/export
+[in] => Checking for missing or outdated artifacts
+     |=> Artifacts installed: 674
+     |=> All installed artifacts up to date.
+[in] => 
+ [in] => Progress: [########################################################################################################] 1/1 
+```
+
+Confirm it's installed:
+
+```
+$ ls /Library/Java/JavaVirtualMachines
+jdk1.8.0_121.jdk	jdk1.8.0_282-msft.jdk	jdk11.0.13.8-msft.jdk	jdk17.0.5-msft.jdk
+```
+
+Set the new path for JAVA_HOME:
+
+```
+$ export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_282-msft.jdk/Contents/Home
+```
+
+Echo the path to test it:
+
+```
+$ echo $JAVA_HOME
+/Library/Java/JavaVirtualMachines/jdk1.8.0_282-msft.jdk/Contents/Home
+```
+
+The new Java version is available:
+
+```
+$ java -version
+openjdk version "1.8.0_282"
+OpenJDK Runtime Environment (Microsoft)(build 1.8.0_282-b08)
+OpenJDK 64-Bit Server VM (Microsoft)(build 25.282-b08, mixed mode)
+gmcmilla@gmcmilla-mn1 ~/eng-bootcamp/training-mp-gmcmilla-1912> $ 
 ```
 
 # APIs
