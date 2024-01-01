@@ -197,7 +197,7 @@ Match host github.com user org-132020358,org-132020684,org-132020707,org-1272569
   IdentityFile %d/.ssh/%u_at_linkedin.com_ssh_key
 ```
 
-Solution. To create a personal ssh key for a personal GitHub repo that does not conflict with work's ssh key.
+Solution. To create a personal ssh key alias for a personal GitHub repo that does not conflict with work's ssh key.
 
 Article: [How do I configure git to use multiple SSH keys for different accounts](https://superuser.com/questions/1628183/how-do-i-configure-git-to-use-multiple-ssh-keys-for-different-accounts) 
 
