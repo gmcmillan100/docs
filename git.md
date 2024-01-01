@@ -204,60 +204,60 @@ Article: [How do I configure git to use multiple SSH keys for different accounts
 
 1. Create a custom ssh config file. LinkedIn does not allow me to edit `~/.ssh/config`, so all customizations must go in the custom file.
 
-```
-touch ~/.ssh/config.custom
-vi ~/.ssh/config.custom
-```
+	```
+	touch ~/.ssh/config.custom
+	vi ~/.ssh/config.custom
+	```
 
 2. Add a github alias (named `github-personal`) that points to my personal SSH key IdentityFile at `~/.ssh/id_rsa`:
 
-```
-Host github-personal
-   IdentityFile ~/.ssh/id_rsa
-   User git
-   HostName github.com
-   UseKeychain yes
-```
+	```
+	Host github-personal
+	   IdentityFile ~/.ssh/id_rsa
+	   User git
+	   HostName github.com
+	   UseKeychain yes
+	```
 
 The user must be `git`, and the HostName must be `github.com`.
 
 3. Identify the origin setting inside my personal repo:
 
-```
-$ cd /Users/gmcmilla/docs
-$ git remote -v
-origin	git@github.com:gmcmillan100/docs.git (fetch)
-origin	git@github.com:gmcmillan100/docs.git (push)
-```
+	```
+	$ cd /Users/gmcmilla/docs
+	$ git remote -v
+	origin	git@github.com:gmcmillan100/docs.git (fetch)
+	origin	git@github.com:gmcmillan100/docs.git (push)
+	```
 
 4. Change the remote origin to use the new SSH alias
 
-```
-$ git remote set-url "origin" "github-personal:gmcmillan100/docs.git"
-```
+	```
+	$ git remote set-url "origin" "github-personal:gmcmillan100/docs.git"
+	```
 
 Verify it changed:
 
-```
-$ git remote -v
-origin	github-personal:gmcmillan100/docs.git (fetch)
-origin	github-personal:gmcmillan100/docs.git (push)
-```
+	```
+	$ git remote -v
+	origin	github-personal:gmcmillan100/docs.git (fetch)
+	origin	github-personal:gmcmillan100/docs.git (push)
+	```
 
 The next time I `git push`, the alias will be used (see `github-personal`):
 
-```
-$ git push
-Enumerating objects: 5, done.
-Counting objects: 100% (5/5), done.
-Delta compression using up to 16 threads
-Compressing objects: 100% (3/3), done.
-Writing objects: 100% (3/3), 933 bytes | 933.00 KiB/s, done.
-Total 3 (delta 2), reused 0 (delta 0), pack-reused 0
-remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
-To github-personal:gmcmillan100/docs.git
-   c1e5cd9..99d1978  master -> master
-```
+	```
+	$ git push
+	Enumerating objects: 5, done.
+	Counting objects: 100% (5/5), done.
+	Delta compression using up to 16 threads
+	Compressing objects: 100% (3/3), done.
+	Writing objects: 100% (3/3), 933 bytes | 933.00 KiB/s, done.
+	Total 3 (delta 2), reused 0 (delta 0), pack-reused 0
+	remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+	To github-personal:gmcmillan100/docs.git
+	   c1e5cd9..99d1978  master -> master
+	```
 
 # Resources
 
