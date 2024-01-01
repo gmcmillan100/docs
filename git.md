@@ -6,10 +6,10 @@ resource: true
 ---
 
 * [Test key-account auth](#test-key-account-auth)
+* [Multiple SSH keys for different accounts](#multiple-ssh-keys-for-different-accounts)
 
 
 The Git protocol was created by `Linus Torvalds <https://en.wikipedia.org/wiki/Linus_Torvalds>`_. He also created the original Linux kernel.
-
 
 # Access
 
@@ -164,6 +164,55 @@ Hi gmcmilla_LinkedIn! You've successfully authenticated, but GitHub does not pro
 # Cloning
 
 git clone git@github.com:gmcmillan100/docs.git
+
+# Multiple SSH keys for different accounts
+
+Summary. To create a personal ssh key for a personal GitHub repo that does not conflict with work's ssh key.
+
+Article: How do I configure git to use multiple SSH keys for different accounts?, https://superuser.com/questions/1628183/how-do-i-configure-git-to-use-multiple-ssh-keys-for-different-accounts
+
+
+1. Create a custom ssh config file. LinkedIn does not allow me to edit `~/.ssh/config`, so all customizations must go in the custom file.
+
+```
+touch ~/.ssh/config.custom
+vi ~/.ssh/config.custom
+```
+
+2. Add a github alias (named `github-personal`) that points to my personal SSH key IdentityFile at `~/.ssh/id_rsa`:
+
+```
+Host github-personal
+   IdentityFile ~/.ssh/id_rsa
+   User git
+   HostName github.com
+   UseKeychain yes
+```
+
+The user must be `git`, and the HostName must be `github.com`.
+
+3. Identify the origin setting inside my personal repo:
+
+```
+$ cd /Users/gmcmilla/docs
+$ git remote -v
+origin	git@github.com:gmcmillan100/docs.git (fetch)
+origin	git@github.com:gmcmillan100/docs.git (push)
+```
+
+4. Change the remote origin to use the new SSH alias
+
+```
+$ git remote set-url "origin" "github-personal:gmcmillan100/docs.git"
+```
+
+Verify it changed:
+
+```
+$ git remote -v
+origin	github-personal:gmcmillan100/docs.git (fetch)
+origin	github-personal:gmcmillan100/docs.git (push)
+```
 
 # Resources
 
