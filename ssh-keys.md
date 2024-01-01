@@ -4,6 +4,12 @@ title: SSH
 permalink: /ssh/
 resource: true
 ---
+* [Generate a new ssh key](#generate-a-new-ssh-key)
+* [Add ssh keys to my keychain](#add-ssh-keys-to-my-keychain)
+* [Avoid being asked “Enter passphrase for key"](#avoid-being-asked-“Enter-passphrase-for-key")
+* [Add SSH Passphrase Permanently Across Reboots](#add-ssh-passphrase-permanently-across-reboots)
+
+
 # Generate a new ssh key
 
 ```
@@ -64,6 +70,41 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDF+17iqUOfTtcjlAEDFBNh23qXqn7WGVaXqKMEMIOt
 cat ~/.ssh/gmcmilla_at_linkedin.com_dsa_key.pub
 ```
 
+# Add ssh keys to my keychain
+
+Display the keys in my keychain. There are none found:
+
+```
+$ ssh-add -l
+The agent has no identities.
+```
+
+Add my personal key used for personal GitHub workflows. The passphrase is the private password I set up for the key:
+```
+$ ssh-add ~/.ssh/id_rsa
+Enter passphrase for /Users/gmcmilla/.ssh/id_rsa: 
+Identity added: /Users/gmcmilla/.ssh/id_rsa (gmcmillan100@gmail.com)
+```
+
+Add my work key used for work GitHub workflows:
+
+```
+$ ssh-add ~/.ssh/gmcmilla_at_linkedin.com_ssh_key
+Enter passphrase for /Users/gmcmilla/.ssh/gmcmilla_at_linkedin.com_ssh_key: 
+Identity added: /Users/gmcmilla/.ssh/gmcmilla_at_linkedin.com_ssh_key (/Users/gmcmilla/.ssh/gmcmilla_at_linkedin.com_ssh_key)
+```
+
+Confirm both keys have been added to the keychain:
+
+```
+$ ssh-add -l
+4096 SHA256:fqqsrkCl6ak0zhG1nAUCt9NYX4yJcqc3Wq1gymcLPpE gmcmillan100@gmail.com (RSA)
+4096 SHA256:XjK0A2mKWdF+x0yG4rIq3aR0PxyepcTPchMjXKbIANI /Users/gmcmilla/.ssh/gmcmilla_at_linkedin.com_ssh_key (RSA)
+```
+
+Use `ssh-add -D` to remove all identities from the keychain.
+
+
 # Copying SSH Keys from Mac to Linux
 
 On Mac, do this:
@@ -117,3 +158,8 @@ then add this inside:
 IdentityFile ~/.ssh/id_rsa.pub
 ```
 
+# Debugging
+
+```
+ssh -vvv -T git@github.com
+```
