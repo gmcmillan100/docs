@@ -14,7 +14,7 @@ resource: true
 
 # Introduction
 
-Java is a class-based programming language. It's an interpreted language. It compiles to bytecode instead of machine language. Applications are portable between platforms without recompiling. Java apps are compiled to bytecode and run on a Java Virtual Machine (JVM).
+Java is a class-based programming language. It is an interpreted language. It compiles to bytecode instead of machine language. Applications are portable between platforms without recompiling. Java apps are compiled to bytecode and run on a Java Virtual Machine (JVM).
 
 Main article: http://introcs.cs.princeton.edu/java/11hello/
 

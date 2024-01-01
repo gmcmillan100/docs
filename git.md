@@ -4,6 +4,10 @@ title: Git
 permalink: /git/
 resource: true
 ---
+
+* [Test key-account auth](#test-key-account-auth)
+
+
 The Git protocol was created by `Linus Torvalds <https://en.wikipedia.org/wiki/Linus_Torvalds>`_. He also created the original Linux kernel.
 
 
@@ -33,10 +37,20 @@ git rebase master
 
 Global config:
 
-~~~~
+```
 git config --global user.email "gmcmillan100@gmail.com"
 git config --global user.name "Greg McMillan"
-~~~~
+```
+
+Verify the global `.gitconfig` looks correct:
+
+```
+$ cat .gitconfig
+# This is Git's per-user configuration file.
+[user]
+	name = gmcmillan100
+	email = gmcmillan100@gmail.com
+```
 
 Initialize repo and pull down a copy:
 
@@ -125,13 +139,27 @@ $ cat ~/.ssh/id_rsa.pub
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDF+17iqUOfTtcjlAEDFBNh23qXqn7WGVaXqKMEMIOtezOrHTsS4TF1vLE0aQDXKjlv1JKi1PBm5ueIr+xe+WTswXRjg5dU2iijkeBLVZKo//7HCXY+W5nNO0wCKMNmnng2JwzhGW28FpwafnuhbHahzL1R8fkYUms4qsYQCoMP+femNr1aWEv9nOs7atpXjugrmhQXwZmuUOkci3pYmOXrrDZxko2EVMaSA03mN48uxQ0ZbPn6L06gzu26cZa2Wip79NmlT/+Ilc8qnjH0MahHpXe1k/fX+3VT9IYMomekOP5jTFuZpNtzrzukSnmkjBABH7Esgo+6TSp3vjOVBm8mEQk4KvUyc8s+POY4jrZr8Z8SRFQAo6XfSs0jPhxe7VIkwIt0oV1jOb0g0x/tudpf/byFWjqmQcFh27MIzf4rsPBt+sP6Tyg59Fn6nqC0UhofuxY3rkLtVnBK6VtiKoPdK1xkSJ4vRi7GzOOMe3txOClR9k0Afdj3Oa9q8GTbXjXc65NsMj33eoHnl/f1O1nHo7gFBaPBDvaSCf16sJ6UwrLy2ZfH0cJuFk9Vfp24Sb8L5o5IL8EoY3ydX1UpXEVtxU4140780mWZKgfThxGjO5xTygLs8BcymkN0ZS+RGrocH7sTf7LIzikY1cGBeBs60BaOs90sxROjPnwpTIXqRQ== gmcmillan100@gmail.com
 ~~~~
 
+# Test key-account auth
+
 After adding the key to github.com > settings, verify Github can see the key-account mapping from my local host:
 
-~~~~
+```
 $ ssh -T git@github.com
 Hi gmcmillan100! You've successfully authenticated, but GitHub does not provide shell access.
-~~~~
+```
 
+Can also use `-i` for more control:
+
+```
+$ ssh -i ~/.ssh/id_rsa -o IdentityAgent=none -T git@github.com
+Hi gmcmillan100! You've successfully authenticated, but GitHub does not provide shell access.
+```
+and notice how this key produces a different user response:
+
+```
+$ ssh -i ~/.ssh/gmcmilla_at_linkedin.com_ssh_key -o IdentityAgent=none -T git@github.com
+Hi gmcmilla_LinkedIn! You've successfully authenticated, but GitHub does not provide shell access.
+```
 
 # Cloning
 
