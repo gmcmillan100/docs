@@ -204,7 +204,7 @@ Match host github.com user org-132020358,org-132020684,org-132020707,org-1272569
   IdentityFile %d/.ssh/%u_at_linkedin.com_ssh_key
 ```
 
-Solution. Create an alias for my personal ssh key for my personal GitHub repo, so it does not conflict with work's ssh key.
+Solution. Create an alias for my personal ssh key for my personal GitHub repo, so it does not conflict with work's ssh key. 
 
 Article: [How do I configure git to use multiple SSH keys for different accounts](https://superuser.com/questions/1628183/how-do-i-configure-git-to-use-multiple-ssh-keys-for-different-accounts) 
 
@@ -236,6 +236,9 @@ Article: [How do I configure git to use multiple SSH keys for different accounts
 	origin	git@github.com:gmcmillan100/docs.git (fetch)
 	origin	git@github.com:gmcmillan100/docs.git (push)
 	```
+
+	In Git, `origin` is a shorthand name for the remote repository that a project was originally cloned from. More precisely, it is used instead of that original repository's URL - and thereby makes referencing much easier. Remotes are simply an alias that store the URL of repositories. You can see what URL belongs to each remote by using `git remote -v`.
+
 
 4. Change the remote origin to use the new SSH alias
 
