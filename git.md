@@ -167,9 +167,39 @@ git clone git@github.com:gmcmillan100/docs.git
 
 # Multiple SSH keys for different accounts
 
-Summary. To create a personal ssh key for a personal GitHub repo that does not conflict with work's ssh key.
+Problem. During a `git push` in my personal repo, git was using my work ssh key and user identity. My personal key and identity was not being used, resulting in no access.
 
-Article: How do I configure git to use multiple SSH keys for different accounts?, https://superuser.com/questions/1628183/how-do-i-configure-git-to-use-multiple-ssh-keys-for-different-accounts
+```
+$ git push
+ERROR: Permission to gmcmillan100/docs.git denied to gmcmilla_LinkedIn.
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+```
+
+`ssh -vv` revealed that my work SSH key was being used:
+
+```
+$ ssh -vv -T git@github.com
+OpenSSH_9.4p1, LibreSSL 3.3.6
+...
+debug1: identity file /Users/gmcmilla/.ssh/gmcmilla_at_linkedin.com_ssh_key type 0
+debug1: identity file /Users/gmcmilla/.ssh/gmcmilla_at_linkedin.com_ssh_key-cert type -1
+```
+and `IdentityFile` was set to my work ssh key everywhere in `~/.ssh/config`:
+
+```
+$ cat ~/.ssh/config
+...
+Match host github.com user org-132020358,org-132020684,org-132020707,org-127256988,org-132020694,org-127349224
+  ProxyCommand none
+  IdentityFile %d/.ssh/%u_at_linkedin.com_ssh_key
+```
+
+Solution. To create a personal ssh key for a personal GitHub repo that does not conflict with work's ssh key.
+
+Article: [How do I configure git to use multiple SSH keys for different accounts](https://superuser.com/questions/1628183/how-do-i-configure-git-to-use-multiple-ssh-keys-for-different-accounts) 
 
 
 1. Create a custom ssh config file. LinkedIn does not allow me to edit `~/.ssh/config`, so all customizations must go in the custom file.
@@ -212,6 +242,21 @@ Verify it changed:
 $ git remote -v
 origin	github-personal:gmcmillan100/docs.git (fetch)
 origin	github-personal:gmcmillan100/docs.git (push)
+```
+
+The next time I `git push`, the alias will be used (see `github-personal`):
+
+```
+$ git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 933 bytes | 933.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To github-personal:gmcmillan100/docs.git
+   c1e5cd9..99d1978  master -> master
 ```
 
 # Resources
