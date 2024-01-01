@@ -170,6 +170,7 @@ git clone git@github.com:gmcmillan100/docs.git
 Problem. During a `git push` in my personal repo, git was using my work ssh key and user identity. My personal key and identity was not being used, resulting in no access.
 
 ```
+$ cd /Users/gmcmilla/docs
 $ git push
 ERROR: Permission to gmcmillan100/docs.git denied to gmcmilla_LinkedIn.
 fatal: Could not read from remote repository.
@@ -197,12 +198,12 @@ Match host github.com user org-132020358,org-132020684,org-132020707,org-1272569
   IdentityFile %d/.ssh/%u_at_linkedin.com_ssh_key
 ```
 
-Solution. To create a personal ssh key alias for a personal GitHub repo that does not conflict with work's ssh key.
+Solution. Create an alias for my personal ssh key for my personal GitHub repo, so it does not conflict with work's ssh key.
 
 Article: [How do I configure git to use multiple SSH keys for different accounts](https://superuser.com/questions/1628183/how-do-i-configure-git-to-use-multiple-ssh-keys-for-different-accounts) 
 
 
-1. Create a custom ssh config file. LinkedIn does not allow me to edit `~/.ssh/config`, so all customizations must go in the custom file.
+1. Create a custom ssh config file. LinkedIn does not allow me to edit `~/.ssh/config`, so all customizations must go in a separate custom file.
 
 	```
 	touch ~/.ssh/config.custom
@@ -219,7 +220,7 @@ Article: [How do I configure git to use multiple SSH keys for different accounts
 	   UseKeychain yes
 	```
 
-The user must be `git`, and the HostName must be `github.com`.
+	The user must be `git`, and the HostName must be `github.com`.
 
 3. Identify the origin setting inside my personal repo:
 
@@ -236,7 +237,7 @@ The user must be `git`, and the HostName must be `github.com`.
 	$ git remote set-url "origin" "github-personal:gmcmillan100/docs.git"
 	```
 
-Verify it changed:
+	Verify it changed:
 
 	```
 	$ git remote -v
@@ -244,7 +245,7 @@ Verify it changed:
 	origin	github-personal:gmcmillan100/docs.git (push)
 	```
 
-The next time I `git push`, the alias will be used (see `github-personal`):
+	The next time I `git push`, the alias will be used (see `github-personal`):
 
 	```
 	$ git push
