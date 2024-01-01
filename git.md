@@ -5,11 +5,17 @@ permalink: /git/
 resource: true
 ---
 
+* [Access](#access)
+* [Branch out of sync with master](#branch-out-of-sync-with-master)
+* [Setup Workflow](#setup-workflow)
+* [SSH Keys](#ssh-keys)
 * [Test key-account auth](#test-key-account-auth)
+* [Cloning](#cloning)
 * [Multiple SSH keys for different accounts](#multiple-ssh-keys-for-different-accounts)
+* [Resources](#resources)
 
 
-The Git protocol was created by `Linus Torvalds <https://en.wikipedia.org/wiki/Linus_Torvalds>`_. He also created the original Linux kernel.
+The Git protocol was created by [Linus Torvalds](https://en.wikipedia.org/wiki/Linus_Torvalds). He also created the original Linux kernel.
 
 # Access
 
