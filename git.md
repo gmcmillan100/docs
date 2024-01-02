@@ -228,10 +228,19 @@ Article: [How do I configure git to use multiple SSH keys for different accounts
 
 	The user must be `git`, and the HostName must be `github.com`.
 
-3. Identify the origin setting inside my personal repo:
+3. Identify the origin setting inside my personal repo.
+
+	To see which remote servers you have configured, run the `git remote` command. It lists the shortnames of each remote handle you’ve specified. If you’ve cloned your repository, you should at least see `origin`. That is the default name Git gives to the server you cloned from:
 
 	```
 	$ cd /Users/gmcmilla/docs
+	$ git remote
+	origin
+	```
+
+	You can also specify `-v`, which shows you the URLs that Git has stored for the shortname to be used when reading and writing to that remote:
+
+	```
 	$ git remote -v
 	origin	git@github.com:gmcmillan100/docs.git (fetch)
 	origin	git@github.com:gmcmillan100/docs.git (push)
