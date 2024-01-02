@@ -249,7 +249,7 @@ Article: [How do I configure git to use multiple SSH keys for different accounts
 	In Git, `origin` is a shorthand name for the remote repository that a project was originally cloned from. More precisely, it is used instead of that original repository's URL - and thereby makes referencing much easier. Remotes are simply an alias that store the URL of repositories. You can see what URL belongs to each remote by using `git remote -v`.
 
 
-4. Change the remote origin to use the new SSH alias
+4. Change the remote origin to use the new SSH alias:
 
 	```
 	$ git remote set-url "origin" "github-personal:gmcmillan100/docs.git"
