@@ -17,6 +17,28 @@ hostname
 continuous "ping <ip-addr> -t". Understanding the difference between these types of ping output 
 ```
 
+# format
+
+https://www.computerhope.com/formathl.htm
+
+Example:
+
+```
+E:\> FORMAT /FS:FAT32 E:
+    The type of the file system is NTFS
+    The new file system is FAT32
+    Enter current volume label for drive E: New Volume
+
+    Warning, all data on non-removable disk Drive E: will be lost!
+    Proceed with Format (Y/N)? Y
+```
+
+```
+E:\> vol E:
+    Volume is drive E is Newe Volume
+    Volume Serial Number is 1836-BC2A
+```
+
 # ping -t
 
 ```
@@ -51,7 +73,7 @@ Reply from 210.10.10.10: bytes=32 time<1ms TTL=254
 # netstat -an
 
 ```
-C:\Documents and Settings\Greg McMillan>netstat -an | more
+netstat -an | more
 
 Active Connections
 

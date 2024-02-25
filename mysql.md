@@ -4,13 +4,22 @@ title: Mysql
 permalink: /mysql/
 resource: true
 ---
+Which version is running from Bash?
+
+```
+$ mysql -V
+mysql  Ver 14.14 Distrib 5.7.27, for Linux (x86_64) using  EditLine wrapper
+```
+
 Monitor login
 -------------
 To access the MySQL Remote Monitor, as the user (-u) "mcmillan", call that user's password (-p), then choose the db named "mcmillan":
 
+```
 $ mysql -u mcmillan -p
 Enter password: 
 $ mysql>
+```
 
 
 Start/Stop on Mac and Root Login
@@ -177,7 +186,9 @@ Start/stop/restart mysql:
 Initial root login
 ------------------
 
-	$ mysql -u root -p
+```
+$ mysql -u root -p
+```
 
 Change root's password from inside the interpreter:
 
