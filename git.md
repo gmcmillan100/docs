@@ -338,6 +338,16 @@ Article: [How do I configure git to use multiple SSH keys for different accounts
 	5b35e52..acac7c6  master -> master
 	```
 
+	If it's still not working, remove the identities and re-add:
+
+	```
+	$ ssh-add -D
+	All identities removed.
+	$ ssh-add -l
+	The agent has no identities.
+	$ ssh-add ~/.ssh/id_rsa
+	```
+
 # Resources
 
 GitHub Pages, https://pages.github.com/
