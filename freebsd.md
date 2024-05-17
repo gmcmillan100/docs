@@ -10,8 +10,10 @@ resource: true
 * [Why FreeBSD](#why-freebsd)
 * [Critical System and Applications](#critical-system-and-applications)
 * [Inventory Survey](#inventory)
+* [Memory, CPU, PCI Bus](#memory,cpu,pci-bus)
 * [Installing a New Version of BSD](#installing-a-new-version-of-bsd)
 * [Boot Manager and Partitions](#boot-manager-and-partitions)
+* [System No Boot Fully and No Signal to Monitor](#system-no-boot-fully-and-no-signal-to-monitor)
 * [Reset BIOS Setup Admin Password on Dell](#reset-bios-setup-admin-password-on-dell)
 * [BIOS error 0271 check date and time settings](#bios-error-0271-check-date-and-time-settings)
 * [Halt Reboot](#halt-reboot)
@@ -135,6 +137,97 @@ Following were some of the settings for Greg's Dell laptop:
 
    Sound card		ESS Technology Maestro3 (ESS Maestro PCI Audio wdm)
 
+# Memory, CPU, PCI Bus
+
+## Memory
+
+```
+$ grep memory /var/run/dmesg.boot
+
+real memory  = 201326592 (192 MB)
+avail memory = 182050816 (173 MB)
+```
+
+Usage:
+
+```
+$ top
+
+CPU:  0.4% user,  0.0% nice,  0.7% system,  0.0% interrupt, 98.9% idle
+Mem: 19M Active, 12M Inact, 20M Wired, 700K Cache, 18M Buf, 125M Free
+Swap: 512M Total, 3084K Used, 509M Free
+```
+
+## CPU
+
+```
+$ sysctl hw.model hw.machine hw.ncpu
+hw.model: Pentium II/Pentium II Xeon/Celeron
+hw.machine: i386
+hw.ncpu: 1
+```
+
+Is the CPU 32bit or 64?
+
+```
+$ getconf LONG_BIT
+32
+```
+
+```
+$ dmesg | grep CPU
+CPU: Pentium II/Pentium II Xeon/Celeron (233.35-MHz 686-class CPU)
+```
+
+## PCI bus
+
+Info about the PCI bus and devices on FreeBSD? See the vendor names.
+
+```
+$ pciconf -lv
+hostb0@pci0:0:0:0:  class=0x060000 card=0x00000000 chip=0x71808086 rev=0x03 hdr=0x00
+    vendor     = 'Intel Corporation'
+    device     = '440LX/EX - 82443LX/EX Host bridge'
+    class      = bridge
+    subclass   = HOST-PCI
+pcib1@pci0:0:1:0:   class=0x060400 card=0x00000000 chip=0x71818086 rev=0x03 hdr=0x01
+    vendor     = 'Intel Corporation'
+    device     = '440LX/EX - 82443LX/EX AGP bridge'
+    class      = bridge
+    subclass   = PCI-PCI
+isab0@pci0:0:7:0:   class=0x060100 card=0x00000000 chip=0x71108086 rev=0x02 hdr=0x00
+    vendor     = 'Intel Corporation'
+    device     = '82371AB/EB/MB PIIX4 ISA'
+    class      = bridge
+    subclass   = PCI-ISA
+atapci0@pci0:0:7:1: class=0x010180 card=0x00000000 chip=0x71118086 rev=0x01 hdr=0x00
+    vendor     = 'Intel Corporation'
+    device     = '82371AB/EB/MB PIIX4 IDE'
+    class      = mass storage
+    subclass   = ATA
+uhci0@pci0:0:7:2:   class=0x0c0300 card=0x00000000 chip=0x71128086 rev=0x01 hdr=0x00
+    vendor     = 'Intel Corporation'
+    device     = '82371AB/EB/MB PIIX4 USB'
+    class      = serial bus
+    subclass   = USB
+piix0@pci0:0:7:3:   class=0x068000 card=0x00000000 chip=0x71138086 rev=0x02 hdr=0x00
+    vendor     = 'Intel Corporation'
+    device     = '82371AB/EB/MB PIIX4 ACPI'
+    class      = bridge
+sis0@pci0:0:14:0:   class=0x020000 card=0xf3121385 chip=0x0020100b rev=0x00 hdr=0x00
+    vendor     = 'National Semiconductor Corporation'
+    device     = 'DP83815 (MacPhyter) Ethernet Controller'
+    class      = network
+    subclass   = ethernet
+vgapci0@pci0:1:0:0: class=0x030000 card=0x01521092 chip=0x3d07104c rev=0x01 hdr=0x00
+    vendor     = 'Texas Instruments'
+    device     = 'TVP4020 [Permedia 2]'
+    class      = display
+    subclass   = VGA
+```
+
+
+
 # Boot Manager and Partitions
 
 Use Partition Magic to partition the hard drive. That is, tell Windows
@@ -165,6 +258,33 @@ seconds, the loader will default to the last command it was told.
 
 Note: As an alternative to Partition Magic, use fdisk to partition my hard
 drive.
+
+# System No Boot Fully and No Signal to Monitor
+
+Symptoms:
+
+* Power supply not booting up PC
+* Power supply small power detection (4v) to motherboard pin connector
+* No signal to monitor
+* Hard disk making noise but no full boot
+* Eth0 nic card LED is on
+
+Root cause:
+
+* Dust and black soot buildup on RAM sticks
+
+Solution:
+
+* Remove each RAM stick and remove dust with a brush
+* Use a pencil eraser to rub off the black soot on all the contact points on the RAM sticks. This is what fixed the problem.
+
+This video solved it with eraser tip, https://www.youtube.com/watch?v=F-dLBIomghY
+
+See also for good power troubleshooting:
+
+* https://www.youtube.com/watch?v=nfYwKPtDiw4
+
+* https://www.warzone.org/2022/09/19/dell-pentium-pro-restoration-part-1a-the-power-supply/
 
 # Reset BIOS Setup Admin Password on Dell
 
