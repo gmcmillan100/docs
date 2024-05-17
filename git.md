@@ -278,6 +278,49 @@ Article: [How do I configure git to use multiple SSH keys for different accounts
 	   c1e5cd9..99d1978  master -> master
 	```
 
+4. Troubleshooting no identity and no keychain
+
+During a `git push`, I noticed my work permissions started overriding my personal account:
+
+	```
+	$ git push
+	ERROR: Permission to gmcmillan100/docs.git denied to gmcmilla_LinkedIn.
+	fatal: Could not read from remote repository.
+	```
+
+There was no personal id_rsa key identity in my keychain. It got lost somehow. Maybe LinkedIn SysOps reset it.
+
+	```
+	$ ssh-add -l
+	The agent has no identities.
+
+So I added it back in:
+
+	```
+	$ ssh-add ~/.ssh/id_rsa
+	Enter passphrase for /Users/gmcmilla/.ssh/id_rsa: 
+	Identity added: /Users/gmcmilla/.ssh/id_rsa (gmcmillan100@gmail.com)
+	$ ssh-add -l
+	4096 SHA256:fqqsrkCl6ak0zhG1nAUCt9NYX4yJcqc3Wq1gymcLPpE gmcmillan100@gmail.com (RSA)
+	```
+
+then `git push` in my `docs` repo started working again:
+
+	```
+	$ cd docs
+	$ git push
+	Enumerating objects: 7, done.
+	Counting objects: 100% (7/7), done.
+	Delta compression using up to 16 threads
+	Compressing objects: 100% (4/4), done.
+	Writing objects: 100% (4/4), 806 bytes | 806.00 KiB/s, done.
+	Total 4 (delta 3), reused 0 (delta 0), pack-reused 0
+	remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
+	To github-personal:gmcmillan100/docs.git
+	5b35e52..acac7c6  master -> master
+	```
+
+
 # Resources
 
 GitHub Pages, https://pages.github.com/
