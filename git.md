@@ -282,11 +282,11 @@ Article: [How do I configure git to use multiple SSH keys for different accounts
 
 During a `git push`, I noticed my work permissions started overriding my personal account:
 
-	```
-	$ git push
+```
+$ git push
 	ERROR: Permission to gmcmillan100/docs.git denied to gmcmilla_LinkedIn.
 	fatal: Could not read from remote repository.
-	```
+```
 
 There was no personal id_rsa key identity in my keychain. It got lost somehow. Maybe LinkedIn SysOps reset it.
 
