@@ -10,7 +10,7 @@ resource: true
 * [Why FreeBSD](#why-freebsd)
 * [Critical System and Applications](#critical-system-and-applications)
 * [Inventory Survey](#inventory)
-* [Memory, CPU, PCI Bus](#memory,cpu,pci-bus)
+* [Memory, CPU, PCI Bus](#memory-cpu-pci-bus)
 * [Installing a New Version of BSD](#installing-a-new-version-of-bsd)
 * [Boot Manager and Partitions](#boot-manager-and-partitions)
 * [System No Boot Fully and No Signal to Monitor](#system-no-boot-fully-and-no-signal-to-monitor)
