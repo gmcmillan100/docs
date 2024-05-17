@@ -173,7 +173,7 @@ git clone git@github.com:gmcmillan100/docs.git
 
 # Multiple SSH keys for different accounts
 
-Problem. During a `git push` in my personal repo, git was using my work ssh key and user identity. My personal key and identity was not being used, resulting in no access.
+Problem. During a `git push` in my personal `docs` repo, git was using my work ssh key and user identity. My personal key identity was not being used, resulting in no access.
 
 ```
 $ cd /Users/gmcmilla/docs
@@ -185,7 +185,15 @@ Please make sure you have the correct access rights
 and the repository exists.
 ```
 
-`ssh -vv` revealed that my work SSH key was being used:
+But outside of `git push` and the repo, my personal ssh key could authenticate with github.com when the key file is read directly:
+
+```
+$ cd ~
+$ ssh -i ~/.ssh/id_rsa -o IdentityAgent=none -T git@github.com
+Hi gmcmillan100! You've successfully authenticated, but GitHub does not provide shell access.
+```
+
+`ssh -vv` revealed that only my work SSH key was being used:
 
 ```
 $ ssh -vv -T git@github.com
