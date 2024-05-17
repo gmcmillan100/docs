@@ -280,21 +280,21 @@ Article: [How do I configure git to use multiple SSH keys for different accounts
 
 4. Troubleshooting no identity and no keychain
 
-During a `git push`, I noticed my work permissions started overriding my personal account:
+	During a `git push`, I noticed my work permissions reverted and started overriding my personal account again:
 
-```
-$ git push
+	```
+	$ git push
 	ERROR: Permission to gmcmillan100/docs.git denied to gmcmilla_LinkedIn.
 	fatal: Could not read from remote repository.
-```
+	```
 
-There was no personal id_rsa key identity in my keychain. It got lost somehow. Maybe LinkedIn SysOps reset it.
+	There was no personal id_rsa key identity in my keychain. It got lost somehow. Maybe LinkedIn SysOps reset it.
 
 	```
 	$ ssh-add -l
 	The agent has no identities.
-
-So I added it back in:
+	```
+	So I added it back in:
 
 	```
 	$ ssh-add ~/.ssh/id_rsa
@@ -304,7 +304,7 @@ So I added it back in:
 	4096 SHA256:fqqsrkCl6ak0zhG1nAUCt9NYX4yJcqc3Wq1gymcLPpE gmcmillan100@gmail.com (RSA)
 	```
 
-then `git push` in my `docs` repo started working again:
+	Then, `git push` in my `docs` repo started working again:
 
 	```
 	$ cd docs
@@ -319,7 +319,6 @@ then `git push` in my `docs` repo started working again:
 	To github-personal:gmcmillan100/docs.git
 	5b35e52..acac7c6  master -> master
 	```
-
 
 # Resources
 
