@@ -209,14 +209,24 @@ Solution. Create an alias for my personal ssh key for my personal GitHub repo, s
 Article: [How do I configure git to use multiple SSH keys for different accounts](https://superuser.com/questions/1628183/how-do-i-configure-git-to-use-multiple-ssh-keys-for-different-accounts) 
 
 
-1. Create a custom ssh config file. LinkedIn does not allow me to edit `~/.ssh/config`, so all customizations must go in a separate custom file.
+1. Before I do anything, ensure my private id_rsa key is added to the keychain:
+
+	```
+	$ ssh-add ~/.ssh/id_rsa
+	Enter passphrase for /Users/gmcmilla/.ssh/id_rsa: 
+	Identity added: /Users/gmcmilla/.ssh/id_rsa (gmcmillan100@gmail.com)
+	$ ssh-add -l
+	4096 SHA256:fqqsrkCl6ak0zhG1nAUCt9NYX4yJcqc3Wq1gymcLPpE gmcmillan100@gmail.com (RSA)
+	```
+
+2. Create a custom ssh config file. LinkedIn does not allow me to edit `~/.ssh/config`, so all customizations must go in a separate custom file.
 
 	```
 	touch ~/.ssh/config.custom
 	vi ~/.ssh/config.custom
 	```
 
-2. Add a github alias (named `github-personal`) that points to my personal SSH key IdentityFile at `~/.ssh/id_rsa`:
+3. Add a github alias (named `github-personal`) that points to my personal SSH key IdentityFile at `~/.ssh/id_rsa`:
 
 	```
 	Host github-personal
@@ -228,7 +238,7 @@ Article: [How do I configure git to use multiple SSH keys for different accounts
 
 	The user must be `git`, and the HostName must be `github.com`.
 
-3. Identify the origin setting inside my personal repo.
+4. Identify the origin setting inside my personal repo.
 
 	To see which remote servers you have configured, run the `git remote` command. It lists the shortnames of each remote handle you’ve specified. If you’ve cloned your repository, you should at least see `origin`. That is the default name Git gives to the server you cloned from:
 
@@ -249,7 +259,7 @@ Article: [How do I configure git to use multiple SSH keys for different accounts
 	In Git, `origin` is a shorthand name for the remote repository that a project was originally cloned from. More precisely, it is used instead of that original repository's URL - and thereby makes referencing much easier. Remotes are simply an alias that store the URL of repositories. You can see what URL belongs to each remote by using `git remote -v`.
 
 
-4. Change the remote origin to use the new SSH alias:
+5. Change the remote origin to use the new SSH alias:
 
 	```
 	$ git remote set-url "origin" "github-personal:gmcmillan100/docs.git"
@@ -278,7 +288,7 @@ Article: [How do I configure git to use multiple SSH keys for different accounts
 	   c1e5cd9..99d1978  master -> master
 	```
 
-4. Troubleshooting no identity and no keychain
+6. Troubleshooting no identity and no keychain
 
 	During a `git push`, I noticed my work permissions reverted and started overriding my personal account again:
 
