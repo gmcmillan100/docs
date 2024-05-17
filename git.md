@@ -25,10 +25,10 @@ pages, https://gmcmillan100.github.io/docs/
 
 Test ssh access:
 
-~~~~
+```
 $ ssh -T git@github.com
 Hi gmcmillan100! You've successfully authenticated, but GitHub does not provide shell access.
-~~~~
+```
 
 # Branch out of sync with master
 
