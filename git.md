@@ -304,7 +304,7 @@ Article: [How do I configure git to use multiple SSH keys for different accounts
 	4096 SHA256:fqqsrkCl6ak0zhG1nAUCt9NYX4yJcqc3Wq1gymcLPpE gmcmillan100@gmail.com (RSA)
 	```
 
-	Then, `git push` in my `docs` repo started working again:
+	Then, `git push` in my `docs` repo began working again:
 
 	```
 	$ cd docs
