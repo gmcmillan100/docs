@@ -13,6 +13,20 @@ $ grep -r 'Search for team names' *
 src/oncall/api/v0/teams.py:    Search for team names. Allows filtering based on a number of parameters, detailed below.
 ```
 
+Brackets `[]` in strings need to be escaped with backslashes in front `\`. If the string contains backets, they represent any one of the set of characters within the brackets.
+
+When I'm searching for this pattern:
+
+```
+ERROR [Long running task: Content Archiving [CARCH]]
+```
+
+Grep it like this:
+
+```
+grep -r 'ERROR \[Long running task: Content Archiving \[CARCH\]\]' *
+````
+
 Grepping through logs:
 
 ```

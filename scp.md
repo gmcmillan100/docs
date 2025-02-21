@@ -32,7 +32,38 @@ webworks.txt         100% |*****************************************************
 bsd1 /home/backup/fdry-files> 
 ```
 
-# Copy File from Remote to Local
+# Copy Files from Remote to Local
+
+scp 1 file:
+
+```
+$ scp gmcmilla@wus2-wikiprod03:/tmp/greglog-atlassian-confluence.log.3 .
+
+(gmcmilla@wus2-wikiprod03.linkedin.biz) Password: 
+greglog-atlassian-confluence.log.3                                                                                                                                                          100%   20MB   5.9MB/s   00:03    
+```
+
+scp multiple files (but must enter password once for each file):
+
+```
+$ scp gmcmilla@wus2-wikiprod03:/tmp/{greg-atlassian-confluence.log.1,greg-atlassian-confluence.log.2} .
+```
+
+scp multiple files using * (enter password only once for all files matching):
+
+
+```
+$ scp gmcmilla@wus2-wikiprod03:/tmp/greg-* .
+
+(gmcmilla@wus2-wikiprod03.linkedin.biz) Password: 
+greg-atlassian-confluence.log                                                                                                                                                                                        100%   13MB   4.9MB/s   00:02    
+greg-atlassian-confluence.log.1                                                                                                                                                                                      100%   20MB  13.5MB/s   00:01    
+greg-atlassian-confluence.log.2                                                                                                                                                                                      100%   20MB  12.0MB/s   00:01    
+greg-atlassian-confluence.log.3                                                                                                                                                                                      100%   20MB  14.9MB/s   00:01    
+greg-atlassian-confluence.log.4                                                                                                                                                                                      100%   20MB  15.6MB/s   00:01    
+greg-atlassian-confluence.log.5                                                                                                                                                                                      100%   20MB  16.1MB/s   00:01  
+```
+
 
 ```
 $ scp remotebox:a . 
