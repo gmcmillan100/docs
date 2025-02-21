@@ -363,11 +363,21 @@ If it's still not working, do this:
 
 Note doing `ssh-add -D` also deletes my LinkedIn work keys. Do this to add them back in:
 
-	```
-	$ ssh-add ~/.ssh/gmcmilla_at_linkedin.com_ssh_key
-	Enter passphrase for /Users/gmcmilla/.ssh/gmcmilla_at_linkedin.com_ssh_key: 
-	Identity added: /Users/gmcmilla/.ssh/gmcmilla_at_linkedin.com_ssh_key (/Users/gmcmilla/.ssh/gmcmilla_at_linkedin.com_ssh_key)
-	 ```
+```
+$ ssh-add ~/.ssh/gmcmilla_at_linkedin.com_ssh_key
+Enter passphrase for /Users/gmcmilla/.ssh/gmcmilla_at_linkedin.com_ssh_key: 
+Identity added: /Users/gmcmilla/.ssh/gmcmilla_at_linkedin.com_ssh_key (/Users/gmcmilla/.ssh/gmcmilla_at_linkedin.com_ssh_key)
+ ```
+
+Now I test my work ssh key against internal github:
+
+```
+$ ssh -T git@github.com
+Hi gmcmilla_LinkedIn! You've successfully authenticated, but GitHub does not provide shell access.
+
+```
+
+Withing 24 hours, Linkedin corp might overwrite my personal keys again.
 
 # Resources
 
