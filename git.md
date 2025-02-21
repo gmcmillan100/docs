@@ -340,34 +340,34 @@ Article: [How do I configure git to use multiple SSH keys for different accounts
 
 	If it's still not working, so do this:
 
-	1. Remove the identities. Note this will also delete my LinkedIn work keys (add back later):
+		1. Remove the identities. Note this will also delete my LinkedIn work keys (add back later):
 
-	```
-	$ ssh-add -D
-	All identities removed.
-	```
+		```
+		$ ssh-add -D
+		All identities removed.
+		```
 
-	2. Re-add my personal keys:
+		2. Re-add my personal keys:
 
-	```
-	$ ssh-add ~/.ssh/id_rsa
-	Enter passphrase for /Users/gmcmilla/.ssh/id_rsa: 
-	Identity added: /Users/gmcmilla/.ssh/id_rsa (gmcmillan100@gmail.com)
-	```
+		```
+		$ ssh-add ~/.ssh/id_rsa
+		Enter passphrase for /Users/gmcmilla/.ssh/id_rsa: 
+		Identity added: /Users/gmcmilla/.ssh/id_rsa (gmcmillan100@gmail.com)
+		```
 
-	Try to git push again:
+		3. Test by doing a git push again:
 
-	```
-	$ git push
-	```
+		```
+		$ git push
+		```
 
-	Note doing `ssh-add -D` also deletes my LinkedIn work keys. Do this to add them back in:
+		Note doing `ssh-add -D` also deletes my LinkedIn work keys. Do this to add them back in:
 
-	```
-	$ ssh-add ~/.ssh/gmcmilla_at_linkedin.com_ssh_key
-	Enter passphrase for /Users/gmcmilla/.ssh/gmcmilla_at_linkedin.com_ssh_key: 
-	Identity added: /Users/gmcmilla/.ssh/gmcmilla_at_linkedin.com_ssh_key (/Users/gmcmilla/.ssh/gmcmilla_at_linkedin.com_ssh_key)
-	 ```
+		```
+		$ ssh-add ~/.ssh/gmcmilla_at_linkedin.com_ssh_key
+		Enter passphrase for /Users/gmcmilla/.ssh/gmcmilla_at_linkedin.com_ssh_key: 
+		Identity added: /Users/gmcmilla/.ssh/gmcmilla_at_linkedin.com_ssh_key (/Users/gmcmilla/.ssh/gmcmilla_at_linkedin.com_ssh_key)
+		 ```
 
 # Resources
 
