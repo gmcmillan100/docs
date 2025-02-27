@@ -21,3 +21,4 @@ Update brew to latest version:
 ```
 $ brew update
 ```
+
